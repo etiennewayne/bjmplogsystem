@@ -19,4 +19,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/user', [App\Http\Controllers\ControllerUser::class, 'index']);
+
+// //POST, GET, PUT, DELETE
+// Route::get('/bjmp', function(){
+//     //statement
+// });
+
+Route::get('/bjmp-user', [App\Http\Controllers\Bjmpuser\BjmpUser::class, 'index'])->name('home');
