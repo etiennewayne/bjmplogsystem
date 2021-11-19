@@ -8,7 +8,7 @@
        
         <template #start>
             <b-navbar-item href="#">
-                Home
+                Homes
             </b-navbar-item>
             <b-navbar-item href="#">
                 Documentation

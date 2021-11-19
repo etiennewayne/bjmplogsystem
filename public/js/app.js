@@ -19093,7 +19093,7 @@ var render = function () {
         fn: function () {
           return [
             _c("b-navbar-item", { attrs: { href: "#" } }, [
-              _vm._v("\n            Home\n        "),
+              _vm._v("\n            Homes\n        "),
             ]),
             _vm._v(" "),
             _c("b-navbar-item", { attrs: { href: "#" } }, [
