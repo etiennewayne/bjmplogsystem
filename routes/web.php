@@ -24,6 +24,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/user', [App\Http\Controllers\ControllerUser::class, 'index']);
 
+Route::get('/login', [App\Http\Controllers\LoginpageController::class, 'index']);
+
+Route::get('/register-component', [App\Http\Controllers\RegisterController::class, 'index']);
+
+
 // //POST, GET, PUT, DELETE
 // Route::get('/bjmp', function(){
 //     //statement

@@ -7,7 +7,7 @@
         </template>
        
         <template #start>
-            <b-navbar-item href="bold">
+            <b-navbar-item href="#">
                 Homes
             </b-navbar-item>
             <b-navbar-item href="#">
@@ -17,7 +17,7 @@
                 <b-navbar-item href="#">
                     About
                 </b-navbar-item>
-                <b-navbar-item href="copperplate">
+                <b-navbar-item href="#">
                     Contact
                 </b-navbar-item>
             </b-navbar-dropdown>
@@ -26,7 +26,7 @@
         <template #end>
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <a class="button is-primary">
+                    <a class="button is-primary" href="/register-component">
                         <strong>Sign up</strong>
                     </a>
                     <a class="button is-light">
