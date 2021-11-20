@@ -6,8 +6,8 @@
                 <p class="title">
                     WELCOME TO BJMP E-LOG SYSTEM
                 </p>
-                <p class="subtitle">
-                    Fullheight subtitle
+                <p class='subtitle'>
+                    "Changing Lives, Building a Safer nation"
                 </p>
                 </div>
             </div>
@@ -29,14 +29,20 @@ export default {
 
 <style scoped>
     .nim{
-        background-image: url("/img/hero-banner.jpg");
+        background-image: url("/img/subbc.jpg");
+        background-position: center;
+        background-size: cover;
+        
+        
     }
 
     .title{
-        color: white;
+        color: black;
+        font-style: bold;
     }
 
     .subtitle{
-        color: white;
+        color: black;
+        font-style: oblique;
     }
 </style>

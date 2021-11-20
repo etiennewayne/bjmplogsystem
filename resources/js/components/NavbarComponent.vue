@@ -2,12 +2,12 @@
     <b-navbar>
         <template #brand>+
             <img class="logo"
-                src="/img/bjmplogo.jpg">
+                src="/img/logobg.png">
            
         </template>
        
         <template #start>
-            <b-navbar-item href="#">
+            <b-navbar-item href="bold">
                 Homes
             </b-navbar-item>
             <b-navbar-item href="#">
@@ -17,7 +17,7 @@
                 <b-navbar-item href="#">
                     About
                 </b-navbar-item>
-                <b-navbar-item href="#">
+                <b-navbar-item href="copperplate">
                     Contact
                 </b-navbar-item>
             </b-navbar-dropdown>
@@ -48,5 +48,6 @@
 
     .navbar{
         height: 100px;
+        background-color: lightblue;
     }
 </style>
