@@ -30,6 +30,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -19080,32 +19124,284 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _c("section", { staticClass: "hero is-fullheight nim" }, [
+        _c("div", { staticClass: "hero-body" }, [
+          _c("div", {}, [
+            _c("p", { staticClass: "title" }, [
+              _vm._v(
+                "\n                    WELCOME TO BJMP E-LOG SYSTEM\n                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "subtitle" }, [
+              _vm._v(
+                '\n                    "Changing Lives, Building a Safer nation"\n                '
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column is-4 is-offset-4" }, [
+                _c(
+                  "div",
+                  { staticClass: "time-container" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "SELECT DATE" } },
+                      [
+                        _c("b-datetimepicker", {
+                          attrs: {
+                            placeholder: "Type or select a date...",
+                            icon: "calendar-today",
+                            locale: _vm.locale,
+                            editable: "",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "wp-image-149",
+        attrs: {
+          loading: "lazy",
+          width: "250",
+          height: "249",
+          src: "https://secureservercdn.net/198.71.233.39/e0t.3dd.myftpupload.com/wp-content/uploads/2020/07/bjmp.png",
+          alt: "",
+          srcset:
+            "https://secureservercdn.net/198.71.233.39/e0t.3dd.myftpupload.com/wp-content/uploads/2020/07/bjmp.png" +
+            " 250w, " +
+            "https://secureservercdn.net/198.71.233.39/e0t.3dd.myftpupload.com/wp-content/uploads/2020/07/bjmp-150x150.png" +
+            " 150w",
+          sizes: "(max-width: 250px) 100vw, 250px",
+        },
+      }),
+      _vm._v(" "),
+      _c(
+        "h2",
+        { staticStyle: { "padding-left": "20px", "padding-right": "10px" } },
+        [_vm._v("MISSION")]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticStyle: { "padding-left": "20px", "padding-right": "10px" } },
+        [
+          _vm._v(
+            "\n“To enhance public safety by ensuring humane safekeeping and development of Persons \n"
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticStyle: { "padding-left": "20px", "padding-right": "10px" } },
+        [
+          _vm._v(
+            "\n  Deprived of Liberty (PDL) in all District, City and Municipal Jails for their reintegration to Society.”\n"
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "h2",
+        { staticStyle: { "padding-left": "20px", "padding-right": "10px" } },
+        [_vm._v("VISION")]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticStyle: { "padding-left": "20px", "padding-right": "10px" } },
+        [
+          _vm._v(
+            "\n“A premier institution highly regarded by Society for the secured and humane \n"
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticStyle: { "padding-left": "20px", "padding-right": "10px" } },
+        [
+          _vm._v(
+            "\ntreatment of Persons Deprived of Liberty (PDL) by its competent and motivated Corps.”\n"
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "marquee",
+        { attrs: { behavior: "scroll", scrollamount: "2", direction: "up" } },
+        [
+          _c(
+            "a",
+            {
+              staticStyle: { color: "black" },
+              attrs: {
+                href: "http://bjmp9.info/",
+                title: "BJMP Region IX Updates",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    "padding-left": "10px",
+                    "background-color": "#FBD603",
+                  },
+                },
+                [_c("b", [_vm._v("JAIL VISITATION")])]
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticStyle: {
+                "background-color": "#FFF176",
+                "padding-left": "15px",
+                "padding-bottom": "5px",
+                "padding-top": "5px",
+              },
+            },
+            [
+              _vm._v(
+                "Jail visitations all throughout this region are still prohibited due to the pandemic."
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticStyle: { color: "black" },
+              attrs: {
+                href: "https://secureservercdn.net/198.71.233.39/e0t.3dd.myftpupload.com/wp-content/uploads/2021/07/Partnership-Meeting-on-the-Safety-Seal-Implementation.pdf",
+                title: "BJMP Region IX Recruitment",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    "padding-left": "10px",
+                    "background-color": "#F4511E",
+                  },
+                },
+                [_c("b", [_vm._v("RECRUITMENT")])]
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticStyle: {
+                "background-color": "#FF8A65",
+                "padding-left": "15px",
+                "padding-bottom": "5px",
+                "padding-top": "5px",
+              },
+            },
+            [
+              _vm._v(
+                "We are now accepting applications for the 2022 Jail Officer 1 Quota."
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticStyle: { color: "black" },
+              attrs: {
+                href: "http://bjmp9.info/",
+                title: "BJMP Region IX Awards",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    "padding-left": "10px",
+                    "background-color": "#00897B",
+                  },
+                },
+                [_c("b", [_vm._v("AWARDS FOR THE 3RD QUARTER CY 2021")])]
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticStyle: {
+                "background-color": "#4DB6AC",
+                "padding-left": "15px",
+              },
+            },
+            [_vm._v("Top 5 Performing Regional Director")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticStyle: {
+                "background-color": "#4DD0E1",
+                "padding-left": "15px",
+              },
+            },
+            [
+              _vm._v(
+                "First Region to be granted with Safety Seal Certification"
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticStyle: {
+                "background-color": "#4FC2F2",
+                "padding-left": "15px",
+              },
+            },
+            [_vm._v("Best Regional Health Service Division")]
+          ),
+        ]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", { staticClass: "hero is-fullheight nim" }, [
-        _c("div", { staticClass: "hero-body" }, [
-          _c("div", {}, [
-            _c("p", { staticClass: "title" }, [
-              _vm._v(
-                "\n                WELCOME TO BJMP E-LOG SYSTEM\n            "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "subtitle" }, [
-              _vm._v(
-                '\n                "Changing Lives, Building a Safer nation"\n            '
-              ),
-            ]),
-          ]),
-        ]),
-      ]),
-    ])
+    return _c("h2", [_c("b", [_vm._v("NEWS")])])
   },
 ]
 render._withStripped = true
@@ -19151,6 +19447,15 @@ var render = function () {
             _c("b-navbar-item", { attrs: { href: "#" } }, [
               _vm._v("\n            Homes\n        "),
             ]),
+            _vm._v(" "),
+            _c("b-navbar-icon", {
+              attrs: {
+                pack: "fas",
+                icon: "home",
+                size: "is-large",
+                type: "is-info",
+              },
+            }),
             _vm._v(" "),
             _c("b-navbar-item", { attrs: { href: "#" } }, [
               _vm._v("\n            Documentation\n        "),
