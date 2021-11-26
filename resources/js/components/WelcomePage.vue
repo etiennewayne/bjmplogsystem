@@ -2,27 +2,20 @@
     <div>
         <section class="hero is-fullheight nim">
             <div class="hero-body">
-                <div class="">
-                <p class="title">
-                    WELCOME TO BJMP E-LOG SYSTEM
-                </p>
-                <p class='subtitle'>
-                    "Changing Lives, Building a Safer nation"
-                </p>
-                 <div class="columns">
-                <div class="column is-4 is-offset-4">
-                    <div class="time-container">
-                        <b-field label="SELECT DATE">
-                            <b-datetimepicker
-                                placeholder="Type or select a date..."
-                                icon="calendar-today"
-                                :locale="locale"
-                                editable>
-                            </b-datetimepicker>
-                        </b-field>
-                    </div>
-                </div>
-            </div>
+                <div class="hero-form">
+                    <p class="title">
+                        WELCOME TO BJMP E-LOG SYSTEM
+                    </p>
+                    <p class='subtitle'>
+                        "Changing Lives, Building a Safer nation"
+                    </p>
+
+                     <b-datetimepicker
+                        placeholder="Type or select a date..."
+                        icon="calendar-today"
+                        :locale="locale"
+                        editable>
+                    </b-datetimepicker>
                
                 </div>
             </div>
@@ -127,6 +120,22 @@ export default {
         background-size: cover;
         
         
+    }
+
+    .hero-form{
+       
+        padding: 30px;
+        margin: auto;
+        background-color: rgb(70, 70, 70);
+        border-radius: 10px;
+    }
+        
+
+    .hero-form > .title, .subtitle{
+        color: white;
+    }
+    .hero-form > .subtitle{
+        color: white;
     }
 
     .title{

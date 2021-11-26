@@ -115,13 +115,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -18401,7 +18394,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.nim[data-v-a4d20914]{\n    background-image: url(\"/img/subbc.jpg\");\n    background-position: center;\n    background-size: cover;\n}\n.title[data-v-a4d20914]{\n    color: black;\n    font-style: bold;\n}\n.subtitle[data-v-a4d20914]{\n    color: black;\n    font-style: oblique;\n}\n.section[data-v-a4d20914]{\n    margin-top: 50px;\n}\n.mv-title[data-v-a4d20914]{\n    padding-bottom: 10px;\n    border-bottom: 2px solid rgb(74, 92, 255);\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.nim[data-v-a4d20914]{\n    background-image: url(\"/img/subbc.jpg\");\n    background-position: center;\n    background-size: cover;\n}\n.hero-form[data-v-a4d20914]{\n   \n    padding: 30px;\n    margin: auto;\n    background-color: rgb(70, 70, 70);\n    border-radius: 10px;\n}\n.hero-form > .title[data-v-a4d20914], .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.hero-form > .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.title[data-v-a4d20914]{\n    color: black;\n    font-style: bold;\n}\n.subtitle[data-v-a4d20914]{\n    color: black;\n    font-style: oblique;\n}\n.section[data-v-a4d20914]{\n    margin-top: 50px;\n}\n.mv-title[data-v-a4d20914]{\n    padding-bottom: 10px;\n    border-bottom: 2px solid rgb(74, 92, 255);\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -19460,46 +19453,33 @@ var render = function () {
   return _c("div", [
     _c("section", { staticClass: "hero is-fullheight nim" }, [
       _c("div", { staticClass: "hero-body" }, [
-        _c("div", {}, [
-          _c("p", { staticClass: "title" }, [
-            _vm._v(
-              "\n                    WELCOME TO BJMP E-LOG SYSTEM\n                "
-            ),
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "subtitle" }, [
-            _vm._v(
-              '\n                    "Changing Lives, Building a Safer nation"\n                '
-            ),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-4 is-offset-4" }, [
-              _c(
-                "div",
-                { staticClass: "time-container" },
-                [
-                  _c(
-                    "b-field",
-                    { attrs: { label: "SELECT DATE" } },
-                    [
-                      _c("b-datetimepicker", {
-                        attrs: {
-                          placeholder: "Type or select a date...",
-                          icon: "calendar-today",
-                          locale: _vm.locale,
-                          editable: "",
-                        },
-                      }),
-                    ],
-                    1
-                  ),
-                ],
-                1
+        _c(
+          "div",
+          { staticClass: "hero-form" },
+          [
+            _c("p", { staticClass: "title" }, [
+              _vm._v(
+                "\n                        WELCOME TO BJMP E-LOG SYSTEM\n                    "
               ),
             ]),
-          ]),
-        ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "subtitle" }, [
+              _vm._v(
+                '\n                        "Changing Lives, Building a Safer nation"\n                    '
+              ),
+            ]),
+            _vm._v(" "),
+            _c("b-datetimepicker", {
+              attrs: {
+                placeholder: "Type or select a date...",
+                icon: "calendar-today",
+                locale: _vm.locale,
+                editable: "",
+              },
+            }),
+          ],
+          1
+        ),
       ]),
     ]),
     _vm._v(" "),
