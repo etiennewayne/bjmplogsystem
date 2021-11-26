@@ -27,8 +27,54 @@
                 </div>
             </div>
         </section>
+
         
-        <img loading="lazy" width="250" height="249" src="https://secureservercdn.net/198.71.233.39/e0t.3dd.myftpupload.com/wp-content/uploads/2020/07/bjmp.png" alt="" class="wp-image-149" srcset="https://secureservercdn.net/198.71.233.39/e0t.3dd.myftpupload.com/wp-content/uploads/2020/07/bjmp.png 250w, https://secureservercdn.net/198.71.233.39/e0t.3dd.myftpupload.com/wp-content/uploads/2020/07/bjmp-150x150.png 150w" sizes="(max-width: 250px) 100vw, 250px">
+        <div class="section">
+
+             <h1 class="title is-4" style="text-align: center;">
+                <span class="mv-title">MISSION & VISION</span>
+            </h1>
+
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+
+                    <div class="columns">
+                        <div class="column">
+                            <div class="panel is-link">
+                                <p class="panel-heading">
+                                    MISSION
+                                </p>
+
+                                <div class="panel-body">
+                                    “To enhance public safety by ensuring humane safekeeping and development of Persons
+
+                                    Deprived of Liberty (PDL) in all District, City and Municipal Jails for their reintegration to Society.”
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column">
+                            <div class="panel is-link">
+                                <p class="panel-heading">
+                                    VISION
+                                </p>
+
+                                <div class="panel-body">
+                                    “A premier institution highly regarded by Society for the secured and humane
+
+                                    treatment of Persons Deprived of Liberty (PDL) by its competent and motivated Corps.”
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--columns-->
+                </div><!--column-->
+            </div>
+
+            
+        </div>
+<!-- 
+        
+        <img width="250" height="249" src="/img/bjmp.png" alt="">
         <h2 style="padding-left:20px;padding-right:10px">MISSION</h2>
        
         <p style="padding-left:20px;padding-right:10px">
@@ -55,9 +101,11 @@ treatment of Persons Deprived of Liberty (PDL) by its competent and motivated Co
 <a href="http://bjmp9.info/" title="BJMP Region IX Awards" style="color:black"><div style="padding-left: 10px;background-color: #00897B"><b>AWARDS FOR THE 3RD QUARTER CY 2021</b></div></a>
 <div style="background-color:#4DB6AC;padding-left: 15px">Top 5 Performing Regional Director</div>
 <div style="background-color:#4DD0E1;padding-left: 15px">First Region to be granted with Safety Seal Certification</div>
-<div style="background-color:#4FC2F2;padding-left: 15px">Best Regional Health Service Division</div></marquee>
+<div style="background-color:#4FC2F2;padding-left: 15px">Best Regional Health Service Division</div></marquee>-->
 
-    </div>
+    </div> 
+
+
    
 </template>
 <script>
@@ -65,7 +113,7 @@ treatment of Persons Deprived of Liberty (PDL) by its competent and motivated Co
 export default {
     data(){
         return{
-
+            locale: undefined
         }
     }
 }
@@ -90,5 +138,21 @@ export default {
         color: black;
         font-style: oblique;
     }
+
+    .section{
+        margin-top: 50px;
+    }
+
+    .mv-title{
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgb(74, 92, 255);
+    }
+
+    .panel-body{
+        padding: 20px;
+    }
+ 
+
+
 </style>
 

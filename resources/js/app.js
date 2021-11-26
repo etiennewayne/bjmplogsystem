@@ -28,7 +28,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 Vue.component('navbar-component', require('./components/NavbarComponent.vue').default);
 
-Vue.component('hero-component', require('./components/HeroComponent.vue').default);
+Vue.component('welcome-page', require('./components/WelcomePage.vue').default);
+Vue.component('mission-vision', require('./components/MissionVissionComponent.vue').default);
 
 Vue.component('register-page', require('./components/RegisterPage.vue').default);
 

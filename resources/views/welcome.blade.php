@@ -2,6 +2,7 @@
 
 @section('content')
     <navbar-component></navbar-component>
-    <hero-component></hero-component>
+    <welcome-page></welcome-page>
+
 
 @endsection

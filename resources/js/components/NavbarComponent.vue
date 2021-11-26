@@ -1,5 +1,5 @@
 <template>
-    <b-navbar>
+    <b-navbar fixed-top>
         <template #brand>+
             <img class="logo"
                 src="/img/logobg.png">
@@ -11,12 +11,7 @@
             <b-navbar-item href="#">
                 Homes
             </b-navbar-item>
-            <b-navbar-icon
-                pack="fas"
-                icon="home"
-                size="is-large"
-                type="is-info">
-            </b-navbar-icon>
+            
             <b-navbar-item href="#">
                 Documentation
             </b-navbar-item>
