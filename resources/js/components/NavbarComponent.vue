@@ -26,7 +26,7 @@
         <template #end>
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <a class="button is-primary" href="/register-component">
+                    <a class="button is-primary" href="/register-page">
                         <strong>Sign up</strong>
                     </a>
                     <a class="button is-light">
