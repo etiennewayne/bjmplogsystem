@@ -33,6 +33,8 @@ Vue.component('mission-vision', require('./components/MissionVissionComponent.vu
 
 Vue.component('register-page', require('./components/RegisterPage.vue').default);
 
+Vue.component('login-page', require('./components/LoginPage.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -24,10 +24,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/user', [App\Http\Controllers\ControllerUser::class, 'index']);
 
-Route::get('/login', [App\Http\Controllers\LoginpageController::class, 'index']);
-
-
 Route::get('/register-page', [App\Http\Controllers\RegisterPageController::class, 'index']);
+
+Route::get('/login-page', [App\Http\Controllers\LoginpageController::class, 'index']);
 
 
 
