@@ -32,7 +32,6 @@ Vue.component('welcome-page', require('./components/WelcomePage.vue').default);
 Vue.component('mission-vision', require('./components/MissionVissionComponent.vue').default);
 
 Vue.component('register-page', require('./components/RegisterPage.vue').default);
-
 Vue.component('login-page', require('./components/LoginPage.vue').default);
 
 
@@ -43,7 +42,7 @@ Vue.component('login-page', require('./components/LoginPage.vue').default);
  */
 
 
- Vue.use(Buefy);
+Vue.use(Buefy);
 
 
 const app = new Vue({

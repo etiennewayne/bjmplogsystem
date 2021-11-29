@@ -31,7 +31,7 @@
                     <a class="button is-primary" href="/register-page">
                         <strong>Sign up</strong>
                     </a>
-                    <a class="button is-light">
+                    <a href="/login" class="button is-light">
                         Log in
                     </a>
                 </div>

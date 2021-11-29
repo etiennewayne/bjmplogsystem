@@ -1,11 +1,11 @@
 <template>
-  
+
     <section>
 
         <div class="columns">
             <div class="column is-8 is-offset-2">
                 <div class="panel p-5">
-                    
+
                     <div class="columns">
                         <div class="column">
                             <b-field label="Username">
@@ -47,7 +47,7 @@
                             </b-field>
                         </div>
                     </div>
-                  
+
 
                      <div class="columns">
                         <div class="column">
@@ -94,12 +94,12 @@
 
 
                     <div class="buttons is-right">
-                         <b-button @click="Register" type="is-success">Register</b-button>
+                         <b-button type="is-success">Register</b-button>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
+
+
     </section>
 </template>
