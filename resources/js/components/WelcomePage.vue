@@ -95,7 +95,29 @@ treatment of Persons Deprived of Liberty (PDL) by its competent and motivated Co
 <div style="background-color:#4DB6AC;padding-left: 15px">Top 5 Performing Regional Director</div>
 <div style="background-color:#4DD0E1;padding-left: 15px">First Region to be granted with Safety Seal Certification</div>
 <div style="background-color:#4FC2F2;padding-left: 15px">Best Regional Health Service Division</div></marquee>-->
+<style>
+    <div class="wp-block-columns">
+<div class="wp-block-column">
+<div class="wp-block-image"><figure class="aligncenter size-full"><img loading="lazy" width="180" height="180" src="https://bjmp8.com/gwt/wp-content/uploads/2021/10/bjmp-logo-180.png" alt="" class="wp-image-112" srcset="https://bjmp8.com/wp-content/uploads/2021/10/bjmp-logo-180.png 180w, https://bjmp8.com/wp-content/uploads/2021/10/bjmp-logo-180-150x150.png 150w" sizes="(max-width: 180px) 100vw, 180px"></figure></div>
+</div>
 
+
+
+<div class="wp-block-column">
+
+<h3><span style="color: #ffffff;">The BJMP</span></h3>
+<p><span style="color: #ffffff;">As one of the five pillars of the Criminal Justice System, the BJMP was created to address the growing concern of jail management and penology problem.</span></p>
+</div>
+
+
+
+<div class="wp-block-column">
+
+<h3><span style="color: #ffffff;">Our Location</span></h3>
+<p><span style="color: #ffffff;">BJMP Regional Office 8</span><br><span style="color: #ffffff;">Brgy. Guindapunan, Palo, Leyte</span><br><span style="color: #ffffff;">6501, Philippines</span></p>
+</div>
+</div>
+</style>
     </div> 
 
 
