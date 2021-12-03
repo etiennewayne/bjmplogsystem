@@ -65,6 +65,47 @@
 
             
         </div> <!-- section -->
+        <section>
+            <div class ="bjmp">
+                <div class = "column">
+                    <div class = "column is-8 is-offset-3">
+                        <div class="panel p-5">
+                            
+                                    THE BJMP
+                               
+
+                                <div class="panel-body">
+                                   As one of the five pillars of the Criminal Justice System,
+                                    the BJMP was created to address the growing 
+                                    concern of jail management and penology problem.
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column">
+                            <div class="panelp-5">
+                                
+                                    OUR LOCATION
+                              
+                                <div class="panel-body">
+                                   BJMP Regional Office 8
+                                Brgy. Guindapunan, Palo, Leyte
+                                    6501, Philippines
+                                </div>
+                                 <img class="logo"
+                src="/img/logobg.png">
+                                
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+               
+        </section>
+
+           
 
     </div>  <!-- root div -->
    
@@ -128,6 +169,18 @@ export default {
     .panel-body{
         padding: 20px;
     }
+    .bjmp{
+        margin-top: 50px;
+    }
+    .panel-body{
+        padding: 20px;
+    }
+    .bjmp{
+        background-color: black;
+    }
+    
+    
+    
  
 
 
