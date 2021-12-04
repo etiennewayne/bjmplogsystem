@@ -10,13 +10,22 @@
                         "Changing Lives, Building a Safer nation"
                     </p>
 
-                     <b-datetimepicker
-                        placeholder="Type or select a date..."
-                        icon="calendar-today"
-                        :locale="locale"
-                        editable>
-                    </b-datetimepicker>
+                    <b-field expanded>
+                        <b-datepicker
+                            placeholder="Type or select a date..."
+                            icon="calendar-today"
+                            :locale="locale"
+                            editable>
+                        </b-datepicker >
+                        <b-select expanded>
+                            <option>MORNING</option>
+                            <option>AFTERNOON</option>
+                        </b-select>
+                    </b-field>
 
+                    <div class="buttons is-right">
+                        <b-button type="is-success" icon="right-arrow">BOOK NOW</b-button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -71,9 +80,16 @@
             <div class ="footer">
 
                 <div class = "columns">
+
+                    <div class="column">
+                        <div class="footer-logo-wrapper">
+                            <img class="footer-logo" src="/img/logobg.png">
+                        </div>
+                    </div>
+
                     <div class = "column">
                         <div class="p-5">
-                            <div>
+                            <div class="footer-component-title">
                                 THE BJMP
                             </div>
 
@@ -87,18 +103,18 @@
 
                     <div class="column">
                         <div class="p-5">
-                            OUR LOCATION
+                            <div class="footer-component-title">
+                                OUR LOCATION
+                            </div>
+
+                            <div>
+                                BJMP Regional Office 8
+                                Brgy. Guindapunan, Palo, Leyte
+                                6501, Philippines
+                            </div>
                         </div>
 
-                        <div>
-                            BJMP Regional Office 8
-                            Brgy. Guindapunan, Palo, Leyte
-                            6501, Philippines
-                        </div>
-                    </div>
 
-                    <div class="column">
-                        <img class="footer-logo" src="/img/logobg.png">
                     </div>
 
                 </div>
@@ -128,12 +144,9 @@ export default {
         background-image: url("/img/subbc.jpg");
         background-position: center;
         background-size: cover;
-
-
     }
 
     .hero-form{
-
         padding: 30px;
         margin: auto;
         background-color: rgb(70, 70, 70);
@@ -178,12 +191,25 @@ export default {
     }
     .footer{
         margin-top: 50px;
-        background-color: black;
+        background-color: #333333;
+        color: #cecece;
     }
 
-        .footer-logo{
-            height: 100px;
-        }
+    .footer-logo{
+        height: 100px;
+        margin: auto;
+    }
+    .footer-logo-wrapper{
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-component-title{
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
 
 
 </style>

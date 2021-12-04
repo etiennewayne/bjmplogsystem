@@ -3,15 +3,15 @@
         <template #brand>+
             <img class="logo"
                 src="/img/logobg.png">
-           
+
         </template>
-       
+
         <template #start>
-            
+
             <b-navbar-item href="#">
                 Homes
             </b-navbar-item>
-            
+
             <b-navbar-item href="#">
                 Documentation
             </b-navbar-item>
@@ -29,7 +29,7 @@
             <b-navbar-item tag="div">
                 <div class="buttons">
                     <a class="button is-primary" href="/register-page">
-                        <strong>Sign up</strong>
+                        <strong>Register</strong>
                     </a>
                     <a href="/login" class="button is-light">
                         Log in

@@ -30,6 +30,12 @@ Route::get('/login-page', [App\Http\Controllers\LoginpageController::class, 'ind
 
 
 
+Route::get('/fetch-address-provinces', [App\Http\Controllers\AddressController::class, 'getProvinces']);
+
+
+
+
+
 // //POST, GET, PUT, DELETE
 // Route::get('/bjmp', function(){
 //     //statement
