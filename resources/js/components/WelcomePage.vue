@@ -121,6 +121,79 @@
             </div>
 
         </section>
+        
+        <section>
+            <div class ="footertwo">
+
+                <div class = "columns">
+
+                    <div class="column">
+                        <div class="footertwo-logo-wrapper">
+                            <img class="footertwo-logo" src="/img/roplogo.png">
+                        </div>
+                         </div>
+
+                    <div class = "column">
+                        <div class="p-5">
+                            <div class="footer-component-title">
+                                REPUBLIC OF THE PHILIPPINES
+                            </div>
+                            <div>
+                               All content is in the public domain unless otherwise stated.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="p-5">
+                            <div class="footer-component-title">
+                                ABOUT GOVPH
+                            </div>
+                             <div>
+                                Learn more about the Philippine government, its structure, 
+                                how government works and the people behind it.
+                             </div>
+                             <div>
+                                GOV.PH 
+                             </div>
+                             <div>
+                                  Open Data Portal
+                             </div>
+                             <div>
+                                 Official Gazette
+                             </div>
+                        </div>
+                        </div>
+                    <div class="column">
+                        <div class="p-5">
+                            <div class="footer-component-title">
+                                GOVERNMENT LINKS
+                            </div>
+                             <div>
+                                Office of the President 
+                             </div>
+                               <div>
+                                Office of the Vice President
+                               </div>
+                               <div>
+                                   Senate of the Philippines
+                               </div>
+                               <div>
+                                    House of Representatives
+                               </div>
+                              <div>
+                                   Supreme Court
+                              </div>
+                            <div>
+                                Court of Appeals
+                            </div>
+                        </div>
+
+                         </div>
+
+                </div>
+            </div>
+        </section>
+        
 
 
 
@@ -196,12 +269,12 @@ export default {
     }
 
     .footer-logo{
-        height: 100px;
+        height: 200px;
         margin: auto;
     }
     .footer-logo-wrapper{
         display: flex;
-        height: 100%;
+        height: 130%;
         justify-content: center;
         align-items: center;
     }
@@ -210,6 +283,17 @@ export default {
         font-weight: bold;
         margin-bottom: 10px;
     }
+    .footertwo-logo{
+        height: 130px;
+        margin: auto;
+    }
+    .footertwo-logo-wrapper{
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
 
 
 </style>

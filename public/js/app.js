@@ -319,6 +319,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -18700,7 +18773,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.nim[data-v-a4d20914]{\n    background-image: url(\"/img/subbc.jpg\");\n    background-position: center;\n    background-size: cover;\n}\n.hero-form[data-v-a4d20914]{\n    padding: 30px;\n    margin: auto;\n    background-color: rgb(70, 70, 70);\n    border-radius: 10px;\n}\n.hero-form > .title[data-v-a4d20914], .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.hero-form > .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.title[data-v-a4d20914]{\n    color: black;\n    font-style: bold;\n}\n.subtitle[data-v-a4d20914]{\n    color: black;\n    font-style: oblique;\n}\n.section[data-v-a4d20914]{\n    margin-top: 50px;\n}\n.mv-title[data-v-a4d20914]{\n    padding-bottom: 10px;\n    border-bottom: 2px solid rgb(74, 92, 255);\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.footer[data-v-a4d20914]{\n    margin-top: 50px;\n    background-color: #333333;\n    color: #cecece;\n}\n.footer-logo[data-v-a4d20914]{\n    height: 100px;\n    margin: auto;\n}\n.footer-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 100%;\n    justify-content: center;\n    align-items: center;\n}\n.footer-component-title[data-v-a4d20914]{\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.nim[data-v-a4d20914]{\n    background-image: url(\"/img/subbc.jpg\");\n    background-position: center;\n    background-size: cover;\n}\n.hero-form[data-v-a4d20914]{\n    padding: 30px;\n    margin: auto;\n    background-color: rgb(70, 70, 70);\n    border-radius: 10px;\n}\n.hero-form > .title[data-v-a4d20914], .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.hero-form > .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.title[data-v-a4d20914]{\n    color: black;\n    font-style: bold;\n}\n.subtitle[data-v-a4d20914]{\n    color: black;\n    font-style: oblique;\n}\n.section[data-v-a4d20914]{\n    margin-top: 50px;\n}\n.mv-title[data-v-a4d20914]{\n    padding-bottom: 10px;\n    border-bottom: 2px solid rgb(74, 92, 255);\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.footer[data-v-a4d20914]{\n    margin-top: 50px;\n    background-color: #333333;\n    color: #cecece;\n}\n.footer-logo[data-v-a4d20914]{\n    height: 200px;\n    margin: auto;\n}\n.footer-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 130%;\n    justify-content: center;\n    align-items: center;\n}\n.footer-component-title[data-v-a4d20914]{\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n.footertwo-logo[data-v-a4d20914]{\n    height: 130px;\n    margin: auto;\n}\n.footertwo-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 100%;\n    justify-content: center;\n    align-items: center;\n}\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18787,12 +18860,9 @@ module.exports = function (cssWithMappingToString) {
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
   \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Can't find stylesheet to import.\n   ╷\n28 │ @import '~animate.css/animate';\r\n   │         ^^^^^^^^^^^^^^^^^^^^^^\n   ╵\n  resources\\sass\\app.scss 28:9  root stylesheet\n    at processResult (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:751:19)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:853:5\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:399:11\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:251:18\n    at context.callback (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass-loader\\dist\\index.js:54:7\n    at Function.call$2 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:96399:16)\n    at render_closure1.call$2 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:82305:12)\n    at _RootZone.runBinary$3$3 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:28284:18)\n    at _FutureListener.handleError$1 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:26806:21)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:27113:49)\n    at Object._Future__propagateToListeners (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:12137:77)\n    at _Future._completeError$2 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:26959:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:26618:12)\n    at Object._asyncRethrow (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:11940:17)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:15783:20");
 
 /***/ }),
 
@@ -20272,6 +20342,8 @@ var render = function () {
     _vm._m(0),
     _vm._v(" "),
     _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
   ])
 }
 var staticRenderFns = [
@@ -20368,6 +20440,121 @@ var staticRenderFns = [
               _c("div", [
                 _vm._v(
                   "\n                            BJMP Regional Office 8\n                            Brgy. Guindapunan, Palo, Leyte\n                            6501, Philippines\n                        "
+                ),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", [
+      _c("div", { staticClass: "footertwo" }, [
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "footertwo-logo-wrapper" }, [
+              _c("img", {
+                staticClass: "footertwo-logo",
+                attrs: { src: "/img/roplogo.png" },
+              }),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "p-5" }, [
+              _c("div", { staticClass: "footer-component-title" }, [
+                _vm._v(
+                  "\n                            REPUBLIC OF THE PHILIPPINES\n                        "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                           All content is in the public domain unless otherwise stated.\n                        "
+                ),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "p-5" }, [
+              _c("div", { staticClass: "footer-component-title" }, [
+                _vm._v(
+                  "\n                            ABOUT GOVPH\n                        "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                            Learn more about the Philippine government, its structure, \n                            how government works and the people behind it.\n                         "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                            GOV.PH \n                         "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                              Open Data Portal\n                         "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                             Official Gazette\n                         "
+                ),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "p-5" }, [
+              _c("div", { staticClass: "footer-component-title" }, [
+                _vm._v(
+                  "\n                            GOVERNMENT LINKS\n                        "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                            Office of the President \n                         "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                            Office of the Vice President\n                           "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                               Senate of the Philippines\n                           "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                                House of Representatives\n                           "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                               Supreme Court\n                          "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                            Court of Appeals\n                        "
                 ),
               ]),
             ]),
@@ -32566,42 +32753,7 @@ Vue.compile = compileToFunctions;
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	(() => {
-/******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
-/******/ 			if(chunkIds) {
-/******/ 				priority = priority || 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
-/******/ 				return;
-/******/ 			}
-/******/ 			var notFulfilled = Infinity;
-/******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
-/******/ 				var fulfilled = true;
-/******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
-/******/ 						chunkIds.splice(j--, 1);
-/******/ 					} else {
-/******/ 						fulfilled = false;
-/******/ 						if(priority < notFulfilled) notFulfilled = priority;
-/******/ 					}
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferred.splice(i--, 1)
-/******/ 					var r = fn();
-/******/ 					if (r !== undefined) result = r;
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -32654,68 +32806,13 @@ Vue.compile = compileToFunctions;
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0;
-/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
-/******/ 				for(moduleId in moreModules) {
-/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 					}
-/******/ 				}
-/******/ 				if(runtime) var result = runtime(__webpack_require__);
-/******/ 			}
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					installedChunks[chunkId][0]();
-/******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
-/******/ 			}
-/******/ 			return __webpack_require__.O(result);
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	})();
-/******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	__webpack_require__("./resources/js/app.js");
+/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./resources/sass/app.scss");
 /******/ 	
 /******/ })()
 ;
