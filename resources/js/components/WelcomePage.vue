@@ -108,10 +108,15 @@
                             </div>
 
                             <div>
-                                BJMP Regional Office 8
-                                Brgy. Guindapunan, Palo, Leyte
-                                6501, Philippines
+                                 BJMP Regional Office 8
                             </div>
+                            <div>
+                                 Brgy. Santa Cruz, Tangub, City
+                            </div>
+                            <div>
+                                7214, Philippines
+                            </div>
+                                
                         </div>
 
 
@@ -184,7 +189,7 @@
                                    Supreme Court
                               </div>
                             <div>
-                                Court of Appeals
+                                Court of Appeal
                             </div>
                         </div>
 

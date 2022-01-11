@@ -28,6 +28,8 @@ Route::get('/register-page', [App\Http\Controllers\RegisterPageController::class
 
 Route::get('/login-page', [App\Http\Controllers\LoginpageController::class, 'index']);
 
+Route::get('/about-page', [App\Http\Controllers\AboutPageController::class, 'index']);
+
 
 
 Route::get('/fetch-address-provinces', [App\Http\Controllers\AddressController::class, 'getProvinces']);

@@ -392,6 +392,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -438,6 +443,7 @@ Vue.component('welcome-page', (__webpack_require__(/*! ./components/WelcomePage.
 Vue.component('mission-vision', (__webpack_require__(/*! ./components/MissionVissionComponent.vue */ "./resources/js/components/MissionVissionComponent.vue")["default"]));
 Vue.component('register-page', (__webpack_require__(/*! ./components/RegisterPage.vue */ "./resources/js/components/RegisterPage.vue")["default"]));
 Vue.component('login-page', (__webpack_require__(/*! ./components/LoginPage.vue */ "./resources/js/components/LoginPage.vue")["default"]));
+Vue.component('about-page', (__webpack_require__(/*! ./components/AboutPage.vue */ "./resources/js/components/AboutPage.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -18862,7 +18868,7 @@ module.exports = function (cssWithMappingToString) {
   \*********************************/
 /***/ (() => {
 
-throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Can't find stylesheet to import.\n   ╷\n28 │ @import '~animate.css/animate';\r\n   │         ^^^^^^^^^^^^^^^^^^^^^^\n   ╵\n  resources\\sass\\app.scss 28:9  root stylesheet\n    at processResult (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:751:19)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:853:5\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:399:11\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:251:18\n    at context.callback (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass-loader\\dist\\index.js:54:7\n    at Function.call$2 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:96399:16)\n    at render_closure1.call$2 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:82305:12)\n    at _RootZone.runBinary$3$3 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:28284:18)\n    at _FutureListener.handleError$1 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:26806:21)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:27113:49)\n    at Object._Future__propagateToListeners (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:12137:77)\n    at _Future._completeError$2 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:26959:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:26618:12)\n    at Object._asyncRethrow (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:11940:17)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:15783:20");
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\nError: Can't resolve '~@mdi/font/css/materialdesignicons.css' in 'C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\resources\\sass'\n    at finishWithoutResolve (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:293:18)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:362:15\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:87:43\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:58:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\ConditionalPlugin.js:53:42\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\forEachBail.js:16:12\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\ModulesInHierachicDirectoriesPlugin.js:72:16\n    at processResult (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:751:19)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:853:5\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:399:11\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:251:18\n    at context.callback (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\css-loader\\dist\\index.js:155:5)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)");
 
 /***/ }),
 
@@ -19265,6 +19271,43 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ "./resources/js/components/AboutPage.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/AboutPage.vue ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AboutPage_vue_vue_type_template_id_1a32d7e1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AboutPage.vue?vue&type=template&id=1a32d7e1& */ "./resources/js/components/AboutPage.vue?vue&type=template&id=1a32d7e1&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _AboutPage_vue_vue_type_template_id_1a32d7e1___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AboutPage_vue_vue_type_template_id_1a32d7e1___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AboutPage.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue ***!
@@ -19593,6 +19636,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/AboutPage.vue?vue&type=template&id=1a32d7e1&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/AboutPage.vue?vue&type=template&id=1a32d7e1& ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutPage_vue_vue_type_template_id_1a32d7e1___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutPage_vue_vue_type_template_id_1a32d7e1___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutPage_vue_vue_type_template_id_1a32d7e1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AboutPage.vue?vue&type=template&id=1a32d7e1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AboutPage.vue?vue&type=template&id=1a32d7e1&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*************************************************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -19691,6 +19751,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WelcomePage_vue_vue_type_template_id_a4d20914_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WelcomePage_vue_vue_type_template_id_a4d20914_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./WelcomePage.vue?vue&type=template&id=a4d20914&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/WelcomePage.vue?vue&type=template&id=a4d20914&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AboutPage.vue?vue&type=template&id=1a32d7e1&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AboutPage.vue?vue&type=template&id=1a32d7e1& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("\r\n    hello about ko\r\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+
 
 
 /***/ }),
@@ -19918,7 +20003,7 @@ var render = function () {
               "b-navbar-dropdown",
               { attrs: { label: "Info" } },
               [
-                _c("b-navbar-item", { attrs: { href: "#" } }, [
+                _c("b-navbar-item", { attrs: { href: "/about-page" } }, [
                   _vm._v("\n                About\n            "),
                 ]),
                 _vm._v(" "),
@@ -20439,7 +20524,19 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                            BJMP Regional Office 8\n                            Brgy. Guindapunan, Palo, Leyte\n                            6501, Philippines\n                        "
+                  "\n                             BJMP Regional Office 8\n                        "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                             Brgy. Santa Cruz, Tangub, City\n                        "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                            7214, Philippines\n                        "
                 ),
               ]),
             ]),
@@ -20554,7 +20651,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                            Court of Appeals\n                        "
+                  "\n                            Court of Appeal\n                        "
                 ),
               ]),
             ]),

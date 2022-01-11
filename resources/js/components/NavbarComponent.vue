@@ -16,7 +16,7 @@
                 Documentation
             </b-navbar-item>
             <b-navbar-dropdown label="Info">
-                <b-navbar-item href="#">
+                <b-navbar-item href="/about-page">
                     About
                 </b-navbar-item>
                 <b-navbar-item href="#">

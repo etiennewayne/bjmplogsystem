@@ -35,6 +35,8 @@ Vue.component('register-page', require('./components/RegisterPage.vue').default)
 Vue.component('login-page', require('./components/LoginPage.vue').default);
 
 
+Vue.component('about-page', require('./components/AboutPage.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
