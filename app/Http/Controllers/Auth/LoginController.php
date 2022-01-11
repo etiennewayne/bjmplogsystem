@@ -33,8 +33,12 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function index()
-    {
-       return views('loginpages');
+//    public function index()
+//    {
+//       return views('loginpages');
+//    }
+
+    public function username(){
+        return 'username';
     }
 }

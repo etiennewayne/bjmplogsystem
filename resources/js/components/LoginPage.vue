@@ -3,12 +3,12 @@
         <div class="login">
             <div class="panel">
                 <div class="panel-heading">
-                    SECURITY CHECK
+                    LOGIN
                 </div>
 
                 <div class="panel-body">
-                    <b-field label="Email" label-position="on-border">
-                        <b-input type="text" v-model="fields.email" placeholder="Email" />
+                    <b-field label="Username" label-position="on-border">
+                        <b-input type="text" v-model="fields.username" placeholder="Username" />
                     </b-field>
 
                     <b-field label="Password" label-position="on-border">
@@ -16,7 +16,7 @@
                     </b-field>
 
                     <div class="buttons">
-                        <b-button type="is-success">LOGIN</b-button>
+                        <b-button type="is-success" @click="submit">LOGIN</b-button>
                     </div>
                 </div>
             </div>
@@ -30,14 +30,28 @@ export default {
     data(){
         return {
             fields: {
-                email: '',
+                //email: '',
+                username: '',
                 password: '',
             },
+            erros: {},
+
         }
     },
 
     methods: {
+        submit: function(){
+            if(this.username == '' && this.password == ''){
+                alert('Please input username and password.');
+            }
 
+            axios.post('/login', this.fields).then(res=>{
+                window.location = '/dashboard';
+                console.log(res.data);
+            }).catch(err=>{
+                console.log(err);
+            });
+        }
     }
 }
 </script>

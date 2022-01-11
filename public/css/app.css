@@ -49881,3 +49881,8 @@ body.has-spaced-navbar-fixed-bottom {
     padding: 18rem 6rem;
   }
 }
+
+.panel > .panel-heading {
+  background-color: #535fe1;
+  color: #ffffff;
+}
