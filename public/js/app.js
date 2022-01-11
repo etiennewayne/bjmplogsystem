@@ -21120,7 +21120,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.nim[data-v-a4d20914]{\n    background-image: url(\"/img/subbc.jpg\");\n    background-position: center;\n    background-size: cover;\n}\n.hero-form[data-v-a4d20914]{\n    padding: 30px;\n    margin: auto;\n    background-color: rgb(70, 70, 70);\n    border-radius: 10px;\n}\n.hero-form > .title[data-v-a4d20914], .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.hero-form > .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.title[data-v-a4d20914]{\n    color: black;\n    font-style: bold;\n}\n.subtitle[data-v-a4d20914]{\n    color: black;\n    font-style: oblique;\n}\n.section[data-v-a4d20914]{\n    margin-top: 50px;\n}\n.mv-title[data-v-a4d20914]{\n    padding-bottom: 10px;\n    border-bottom: 2px solid rgb(74, 92, 255);\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.footer[data-v-a4d20914]{\n    margin-top: 50px;\n    background-color: #333333;\n    color: #cecece;\n}\n.footer-logo[data-v-a4d20914]{\n    height: 200px;\n    margin: auto;\n}\n.footer-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 130%;\n    justify-content: center;\n    align-items: center;\n}\n.footer-component-title[data-v-a4d20914]{\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n.footertwo-logo[data-v-a4d20914]{\n    height: 130px;\n    margin: auto;\n}\n.footertwo-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 100%;\n    justify-content: center;\n    align-items: center;\n}\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.nim[data-v-a4d20914]{\n    background-image: url(\"/img/subbc.jpg\");\n    background-position: center;\n    background-size: cover;\n}\n.hero-form[data-v-a4d20914]{\n    padding: 30px;\n    margin: auto;\n    background-color: rgb(70, 70, 70);\n    border-radius: 10px;\n}\n.hero-form > .title[data-v-a4d20914], .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.hero-form > .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.title[data-v-a4d20914]{\n    color: black;\n    font-style: bold;\n}\n.subtitle[data-v-a4d20914]{\n    color: black;\n    font-style: oblique;\n}\n.section[data-v-a4d20914]{\n    margin-top: 50px;\n}\n.mv-title[data-v-a4d20914]{\n    padding-bottom: 10px;\n    border-bottom: 2px solid rgb(74, 92, 255);\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.footer[data-v-a4d20914]{\n    margin-top: 50px;\n    background-color: #333333;\n    color: #cecece;\n}\n.footer-logo[data-v-a4d20914]{\n    height: 200px;\n    margin: auto;\n}\n.footer-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 130%;\n    justify-content: center;\n    align-items: center;\n}\n.footer-component-title[data-v-a4d20914]{\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n.footertwo-logo[data-v-a4d20914]{\n    height: 130px;\n    margin: auto;\n    opacity: 0.5;\n}\n.footertwo-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 100%;\n    justify-content: center;\n    align-items: center;\n}\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21207,12 +21207,9 @@ module.exports = function (cssWithMappingToString) {
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
   \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\nError: Can't resolve '~@mdi/font/css/materialdesignicons.css' in 'C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\resources\\sass'\n    at finishWithoutResolve (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:293:18)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:362:15\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:87:43\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:58:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\ConditionalPlugin.js:53:42\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\Resolver.js:410:5\n    at eval (eval at create (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\forEachBail.js:16:12\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\enhanced-resolve\\lib\\ModulesInHierachicDirectoriesPlugin.js:72:16\n    at processResult (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:751:19)\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:853:5\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:399:11\n    at C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:251:18\n    at context.callback (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\Users\\ACER\\Desktop\\thesis\\bjmplogsystem\\node_modules\\css-loader\\dist\\index.js:155:5)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)");
 
 /***/ }),
 
@@ -22534,7 +22531,265 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", [
       _c("div", { staticClass: "section" }, [
-        _vm._v("\n        hello about ko\n    "),
+        _c("h5", { attrs: { itemprop: "name" } }, [
+          _vm._v("\r\n\t\t\t\tBJMP Profile\t\t\t"),
+        ]),
+        _vm._v(" "),
+        _c("div", { attrs: { itemprop: "articleBody" } }, [
+          _c("hr"),
+          _vm._v(" "),
+          _c("p", [_c("strong", [_vm._v("Overview")])]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "justify" } }, [
+            _vm._v(
+              "As one of the five pillars of the Criminal Justice System, the BJMP was created to address growing concern of jail management and penology problem. Primarily, its clients are detainees accused before a court who are temporarily confined in such jails while undergoing investigation, waiting final judgement and those who are serving sentence promulgated by the court 3 years and below. As provided for under R.A. No. 6975, the Jail Bureau is mandated to take operational and administrative control over all city, district and municipal jails. The Bureau has four major areas of rehabilitation program, namely: Livelihood Projects, Educational and Vocational Training, Recreation and Sports, and Religious/ Spiritual Activities. These were continuously implemented to eliminate the offenders' pattern of criminal behaviour and to reform them to become law-abiding and productive citizens. Although the workplace of the Jail Bureau is confined inside the portals of jail to safeguard PDL, nonetheless, the Bureau has an inherent function of informing the public of jail operations and other matters concerning the corrections pillar of the Philippines. Coincidentally, being a new and growing Bureau, BJMP aims to keep the public abreast of information regarding jail management and penology."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("p", [_c("strong", [_vm._v("Organizations and Key Positions")])]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "justify" } }, [
+            _vm._v(
+              "The Bureau of Jail Management and Penology, also referred to as the Jail Bureau, was created pursuant to Section 60 to 65, Chapter V, RA No. 6975, and initially consisting of uniformed officers and members of the Jail Management and Penology service as constituted under Presidential Decree No. 765. RA 9263 provides that the Bureau shall be headed by a Chief who is assisted by two (2) Deputy Chiefs, one (1) for Administration and another for Operations, and one (1) Chief of Directorial Staff, all of whom are appointed by the President upon the recommendation of the DILG Secretary from among the qualified officers with the rank of at least Senior Superintendent in the BJMP. The Chief of the BJMP carries the rank of Director and serves a tour of duty that must not exceed four (4) years, unless extended by the President in times of war and other national emergencies. Officers who have retired or are within six (6) months from their compulsory retirement age are not qualified to be appointed as Jail Director or designated as BJMP Chief."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "justify" } }, [
+            _vm._v(
+              "The second officer in command of the BJMP is the Deputy Chief for Administration, the third officer in command is the Deputy Chief for Operations, and the fourth officer in command is The Chief of the Directorial Staff, all of whom carry the rank of Chief Superintendent. They are assisted by the Directors of the Directorates in the National Headquarters who carry the rank of at least Senior Superintendent."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "justify" } }, [
+            _vm._v(
+              "The BJMP operates and maintains Regional Offices in each of the administrative regions of the country, headed by a Regional Director for Jail Management and Penology, with the rank of at least Senior Superintendent. The Regional Director is assisted by an Assistant Regional Director for Administration, Assistant Regional Director for Operations, and Regional Chief of Directorial Staff, who are all officers with the rank of at least Superintendent."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "justify" } }, [
+            _vm._v(
+              "The National Headquarters is the Command and Staff Office of the BJMP, and is composed of the Command Group, Directorates and Management Support Staff , namely:"
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "padding-left": "30px" } }, [
+            _c("strong", [_vm._v("Command  Group:")]),
+          ]),
+          _vm._v(" "),
+          _c("ol", [
+            _c("li", { staticStyle: { "list-style-type": "none" } }, [
+              _c("ol", [
+                _c("li", { staticStyle: { "list-style-type": "none" } }, [
+                  _c("ol", [
+                    _c("li", [_vm._v("Chief, BJMP")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Deputy Chief for Administration of the Jail Bureau"
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Deputy Chief for Operation of the Jail Bureau"),
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Chief of Directorial Staff")]),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "padding-left": "30px" } }, [
+            _c("strong", [_vm._v("Directorates")]),
+          ]),
+          _vm._v(" "),
+          _c("ol", [
+            _c("li", { staticStyle: { "list-style-type": "none" } }, [
+              _c("ol", [
+                _c("li", { staticStyle: { "list-style-type": "none" } }, [
+                  _c("ol", [
+                    _c("li", [
+                      _vm._v(
+                        "Directorate for Personnel and Records Management"
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Directorate for Intelligence")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Directorate for Operations")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Directorate for Comptrollership")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Directorate for Logistics")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Directorate for Human Resource Development"),
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Directorate for Welfare and Development"),
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Directorate for Investigation and Prosecution"),
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Directorate for Program Development")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Directorate for Information and Communications Technology Management"
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Directorate for Health Service")]),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "padding-left": "30px" } }, [
+            _c("strong", [_vm._v("Support Services")]),
+          ]),
+          _vm._v(" "),
+          _c("ol", [
+            _c("li", { staticStyle: { "list-style-type": "none" } }, [
+              _c("ol", [
+                _c("li", { staticStyle: { "list-style-type": "none" } }, [
+                  _c("ol", [
+                    _c("li", [_vm._v("Chaplaincy Service Office")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Legislative Liaison Office")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Finance Service Office")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Headquarters Support Serivce Office")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Legal Service Office")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Community Relations Service Office")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("National Executive Senior Jail Officer (NESJO)"),
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Supply Accountable Office")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Accounting Office")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Retirement and Separation Benefits Administration Service Office"
+                      ),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("p", [_c("strong", [_vm._v("Regional Office.")])]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "justify" } }, [
+            _vm._v(
+              "The BJMP operates and maintains Regional Offices in each of the administrative regions of the country, headed by a Regional Director for Jail Management and Penology, with the rank of at least Senior Superintendent. The Regional Director is assisted by an Assistant Regional Director for Administration, Assistant Regional Director for Operations, and Regional Chief of Directorial Staff, who are all officers with the rank of at least Superintendent."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("strong", [
+              _vm._v("Provincial "),
+              _c("strong", [_vm._v("Jail ")]),
+              _vm._v(" Administrator's Office."),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "justify" } }, [
+            _vm._v(
+              "In every province, the BJMP operates and maintains a Provincial Jail Administrator’s Office headed by a Provincial Administrator, to oversee the implementation of jail services of all district, city and municipal jails within its territorial jurisdiction."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", [_c("strong", [_vm._v("District Jail.")])]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "justify" } }, [
+            _vm._v(
+              "Within large cities or a group of clustered municipalities, a District Jail headed by a District Warden may be established."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", [_c("strong", [_vm._v("City and Municipal Jails.")])]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "justify" } }, [
+            _vm._v(
+              "The BJMP operates and maintains City and Municipal Jails, each headed by a City or Municipal Warden, as the case may be."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("p", [_c("strong", [_vm._v("Our Core Values and Competence")])]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "left" } }, [
+            _c("strong", [_vm._v("PRO.T.E.C.S.")]),
+          ]),
+          _vm._v(" "),
+          _c(
+            "p",
+            { staticStyle: { "text-align": "left", "padding-left": "30px" } },
+            [
+              _c("strong", [_vm._v("PRO ")]),
+              _vm._v("- Professionalism"),
+              _c("br"),
+              _c("strong", [_vm._v("T")]),
+              _vm._v(" - Teamwork"),
+              _c("br"),
+              _c("strong", [_vm._v("E")]),
+              _vm._v(" - Efficiency / Competence"),
+              _c("br"),
+              _c("strong", [_vm._v("C")]),
+              _vm._v(" - Commitment"),
+              _c("br"),
+              _c("strong", [_vm._v("S")]),
+              _vm._v(" - Self-Discipline"),
+            ]
+          ),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "text-align": "left" } }, [
+            _c("br"),
+            _c("strong", [_vm._v("Core Competence")]),
+          ]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", { staticStyle: { "list-style-type": "none" } }, [
+              _c("ul", [
+                _c("li", { staticStyle: { "text-align": "left" } }, [
+                  _vm._v("Continuous skills enhancement of personnel"),
+                ]),
+                _vm._v(" "),
+                _c("li", { staticStyle: { "text-align": "left" } }, [
+                  _vm._v("Ability to establish linkages and Partnerships"),
+                ]),
+                _vm._v(" "),
+                _c("li", { staticStyle: { "text-align": "left" } }, [
+                  _vm._v("Responsive Planning"),
+                ]),
+                _vm._v(" "),
+                _c("li", { staticStyle: { "text-align": "left" } }, [
+                  _vm._v("Timely decision-making"),
+                ]),
+                _vm._v(" "),
+                _c("li", { staticStyle: { "text-align": "left" } }, [
+                  _vm._v("Expedient implementation"),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
       ]),
     ])
   },
@@ -36095,42 +36350,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	(() => {
-/******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
-/******/ 			if(chunkIds) {
-/******/ 				priority = priority || 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
-/******/ 				return;
-/******/ 			}
-/******/ 			var notFulfilled = Infinity;
-/******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
-/******/ 				var fulfilled = true;
-/******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
-/******/ 						chunkIds.splice(j--, 1);
-/******/ 					} else {
-/******/ 						fulfilled = false;
-/******/ 						if(priority < notFulfilled) notFulfilled = priority;
-/******/ 					}
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferred.splice(i--, 1)
-/******/ 					var r = fn();
-/******/ 					if (r !== undefined) result = r;
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -36183,68 +36403,13 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0;
-/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
-/******/ 				for(moduleId in moreModules) {
-/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 					}
-/******/ 				}
-/******/ 				if(runtime) var result = runtime(__webpack_require__);
-/******/ 			}
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					installedChunks[chunkId][0]();
-/******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
-/******/ 			}
-/******/ 			return __webpack_require__.O(result);
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	})();
-/******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	__webpack_require__("./resources/js/app.js");
+/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./resources/sass/app.scss");
 /******/ 	
 /******/ })()
 ;
