@@ -291,6 +291,7 @@ export default {
     .footertwo-logo{
         height: 130px;
         margin: auto;
+        opacity: 0.5;
     }
     .footertwo-logo-wrapper{
         display: flex;
