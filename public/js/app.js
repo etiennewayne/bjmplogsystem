@@ -20040,6 +20040,494 @@ var staticRenderFns = [
           ]),
         ]),
       ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pageContentWrapper" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "footer" }, [
+        _c("div", [
+          _c("div", [_vm._v(" ")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "large-4 medium-6 columns",
+              staticStyle: {
+                "box-sizing": "border-box",
+                "padding-left": "20px",
+                "padding-bottom": "20px",
+                top: "859.489px",
+                opacity: "1",
+                left: "0px",
+              },
+              attrs: { "data-grid-prepared": "true" },
+            },
+            [
+              _c("div", { staticClass: "cw-width-1-1 cw-row-first" }, [
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "span",
+                    {
+                      staticStyle: {
+                        color: "#000000",
+                        "font-family": "helvetica",
+                        "font-size": "16pt",
+                      },
+                    },
+                    [_c("strong", [_vm._v("Online Services")])]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "/EPLM/index.html",
+                        target: "_blank",
+                        rel: "noreferrer",
+                      },
+                    },
+                    [_vm._v("E- Paralegal Learning Module")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://bjmpfinanceservice.com.ph/Default.aspx",
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                      },
+                    },
+                    [_vm._v("Finance Service")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [_vm._v(" ")]),
+                _vm._v(" "),
+                _c("div", [_vm._v(" ")]),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "span",
+                    {
+                      staticStyle: {
+                        color: "#000000",
+                        "font-family": "helvetica",
+                        "font-size": "16pt",
+                      },
+                    },
+                    [_c("strong", [_vm._v("Downloads")])]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c("a", { attrs: { href: "/index.php/manuals" } }, [
+                    _vm._v("Manuals"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c("a", { attrs: { href: "/index.php/bjmp-housing" } }, [
+                    _vm._v("BJMP Housing"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c("a", { attrs: { href: "/index.php/bjmp-forms" } }, [
+                    _vm._v("BJMP Forms"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c("a", { attrs: { href: "/index.php/legal-forms" } }, [
+                    _vm._v("Legal Forms"),
+                  ]),
+                ]),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "large-3 medium-6 columns",
+              staticStyle: {
+                "box-sizing": "border-box",
+                "padding-left": "20px",
+                "padding-bottom": "20px",
+                top: "859.489px",
+                opacity: "1",
+                left: "0px",
+              },
+              attrs: { "data-grid-prepared": "true" },
+            },
+            [
+              _c("div", { staticClass: "cw-width-1-1 cw-row-first" }, [
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "span",
+                    {
+                      staticStyle: {
+                        color: "#000000",
+                        "font-family": "helvetica",
+                        "font-size": "16pt",
+                      },
+                    },
+                    [_c("strong", [_vm._v("Quick Links")])]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/index.php/about-us/bjmp-profile" } },
+                    [_vm._v("BJMP Profile")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c("a", { attrs: { href: "/index.php/careers/vacancies" } }, [
+                    _vm._v("Vacancies"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/index.php/careers/recruitments" } },
+                    [_vm._v("Recruitment")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c("a", { attrs: { href: "/index.php/about-us/programs" } }, [
+                    _vm._v("Programs"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "/index.php/good-governance/transparency-seal",
+                      },
+                    },
+                    [_vm._v("Transparency Seal")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "/images/files/BJMP-CITIZENS-CHARTER-2020.pdf",
+                        target: "_blank",
+                      },
+                    },
+                    [_vm._v("Citizen's Charter")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "/index.php/bid-notices-and-invitations" },
+                    },
+                    [_vm._v("Bid Notices and Invitations")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://www.covid19.gov.ph/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("Covid-19 Update")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c("a", { attrs: { href: "/index.php/contact-us" } }, [
+                    _vm._v("Contact us"),
+                  ]),
+                ]),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "large-5 medium-12 columns",
+              staticStyle: {
+                "box-sizing": "border-box",
+                "padding-left": "20px",
+                "padding-bottom": "20px",
+                top: "859.489px",
+                opacity: "1",
+                left: "0px",
+              },
+              attrs: { "data-grid-prepared": "true" },
+            },
+            [
+              _c("div", { staticClass: "cw-width-1-1 cw-row-first" }, [
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "span",
+                    {
+                      staticStyle: {
+                        color: "#000000",
+                        "font-family": "helvetica",
+                        "font-size": "16pt",
+                      },
+                    },
+                    [_c("strong", [_vm._v("Linked Agencies")])]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "http://www.csc.gov.ph/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("Civil Service Commission ")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://www.dilg.gov.ph/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("Department of Interior and Local Governement")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://ppsc.gov.ph/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("Philippine Public Safety College")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "http://www.pnp.gov.ph/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("Philippine National Police")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://bfp.gov.ph/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("Bureau of Fire Protection")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://www.bucor.gov.ph/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("Bureau of Corrections")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [_vm._v(" ")]),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://bjmpmbai.com/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("BJMP Mutual Benefit Association, Inc.")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "http://www.bjmpmpc.com/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("BJMP Multi-Purpose Cooperative")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://bjmpslai.com/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [_vm._v("BJMP Savings and Loan Association Inc.")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    { attrs: { href: "/index.php/bjmp-provident-fund" } },
+                    [_vm._v("BJMP Provident Fund")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://www.afpslai.com.ph/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [
+                      _vm._v(
+                        "Armed Forces and Police Savings and Loans Association, Inc."
+                      ),
+                    ]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticStyle: { margin: "0" } }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { margin: "0" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://afpmbai.com.ph/",
+                        target: "_blank",
+                        rel: "noopener",
+                      },
+                    },
+                    [
+                      _vm._v(
+                        "Armed Forces and Police Mutual Benifits Association, Inc."
+                      ),
+                    ]
+                  ),
+                ]),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _vm._v(" "),
+        ]),
+      ]),
     ])
   },
 ]

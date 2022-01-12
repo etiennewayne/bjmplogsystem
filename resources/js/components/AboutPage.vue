@@ -1,4 +1,4 @@
-2z<template>
+<template>
 
 <div>
 
@@ -87,11 +87,94 @@
 </ul>	</div>
     </div>
 
-     
+     <div class="pageContentWrapper">
+            <!-- All the page content goes here-->
+        </div>
+        
+        <div class="footer">
+            <div><!-- START: Articles Anywhere --><div>&nbsp;</div>
+<div class="large-4 medium-6 columns" style="box-sizing: border-box; padding-left: 20px; padding-bottom: 20px; top: 859.489px; opacity: 1; left: 0px;" data-grid-prepared="true">
+<div class="cw-width-1-1 cw-row-first">
+<p style="margin: 0;"><span style="color: #000000; font-family: helvetica; font-size: 16pt;"><strong>Online Services</strong></span></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/EPLM/index.html" target="_blank" rel="noreferrer">E- Paralegal Learning Module</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="https://bjmpfinanceservice.com.ph/Default.aspx" target="_blank" rel="noopener noreferrer">Finance Service</a></p>
+<p style="margin: 0;">&nbsp;</p>
+<div>&nbsp;</div>
+<p style="margin: 0;"><span style="color: #000000; font-family: helvetica; font-size: 16pt;"><strong>Downloads</strong></span></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/manuals">Manuals</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/bjmp-housing">BJMP Housing</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/bjmp-forms">BJMP Forms</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/legal-forms">Legal Forms</a></p>
+</div>
+</div>
+<div class="large-3 medium-6 columns" style="box-sizing: border-box; padding-left: 20px; padding-bottom: 20px; top: 859.489px; opacity: 1; left: 0px;" data-grid-prepared="true">
+<div class="cw-width-1-1 cw-row-first">
+    
+<p style="margin: 0;"><span style="color: #000000; font-family: helvetica; font-size: 16pt;"><strong>Quick Links</strong></span></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/about-us/bjmp-profile">BJMP Profile</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/careers/vacancies">Vacancies</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/careers/recruitments">Recruitment</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/about-us/programs">Programs</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/good-governance/transparency-seal">Transparency Seal</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/images/files/BJMP-CITIZENS-CHARTER-2020.pdf" target="_blank">Citizen's Charter</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/bid-notices-and-invitations">Bid Notices and Invitations</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="https://www.covid19.gov.ph/" target="_blank" rel="noopener">Covid-19 Update</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/contact-us">Contact us</a></p>
+</div>
+</div>
+<div class="large-5 medium-12 columns" style="box-sizing: border-box; padding-left: 20px; padding-bottom: 20px; top: 859.489px; opacity: 1; left: 0px;" data-grid-prepared="true">
+<div class="cw-width-1-1 cw-row-first">
+<p style="margin: 0;"><span style="color: #000000; font-family: helvetica; font-size: 16pt;"><strong>Linked Agencies</strong></span></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="http://www.csc.gov.ph/" target="_blank" rel="noopener">Civil Service Commission&nbsp;</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="https://www.dilg.gov.ph/" target="_blank" rel="noopener">Department of Interior and Local Governement</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="https://ppsc.gov.ph/" target="_blank" rel="noopener">Philippine Public Safety College</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="http://www.pnp.gov.ph/" target="_blank" rel="noopener">Philippine National Police</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="https://bfp.gov.ph/" target="_blank" rel="noopener">Bureau of Fire Protection</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="https://www.bucor.gov.ph/" target="_blank" rel="noopener">Bureau of Corrections</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;">&nbsp;</p>
+<p style="margin: 0;"><a href="https://bjmpmbai.com/" target="_blank" rel="noopener">BJMP Mutual Benefit Association, Inc.</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="http://www.bjmpmpc.com/" target="_blank" rel="noopener">BJMP Multi-Purpose Cooperative</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="https://bjmpslai.com/" target="_blank" rel="noopener">BJMP Savings and Loan Association Inc.</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="/index.php/bjmp-provident-fund">BJMP Provident Fund</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="https://www.afpslai.com.ph/" target="_blank" rel="noopener">Armed Forces and Police Savings and Loans Association, Inc.</a></p>
+<hr style="margin: 0;">
+<p style="margin: 0;"><a href="https://afpmbai.com.ph/" target="_blank" rel="noopener">Armed Forces and Police Mutual Benifits Association, Inc.</a></p>
+</div>
+</div>
+<!-- END: Articles Anywhere -->&nbsp;</div>
 
 
-                    
+
+        </div>
+   
                     </div>
+                    
 
 
 </template>
