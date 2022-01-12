@@ -8,6 +8,9 @@
 
 window.Vue = require('vue').default;
 
+window.axios = require('axios');
+
+
 //import Vue from 'vue'
 import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
@@ -34,8 +37,22 @@ Vue.component('mission-vision', require('./components/MissionVissionComponent.vu
 Vue.component('register-page', require('./components/RegisterPage.vue').default);
 Vue.component('login-page', require('./components/LoginPage.vue').default);
 
-
 Vue.component('about-page', require('./components/AboutPage.vue').default);
+
+
+
+
+
+
+//ADMINISTRATOR
+Vue.component('dashboard-page', require('./components/Administrator/DashboardPage.vue').default);
+
+Vue.component('navbar-component', require('./components/Administrator/NavbarComponent.vue').default);
+
+Vue.component('user-page', require('./components/Administrator/UserPage.vue').default);
+
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="hero is-fullheight nim">
+        <div class="hero is-fullheight nim">
             <div class="hero-body">
                 <div class="hero-form">
                     <p class="title">
@@ -28,7 +28,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
 
 
         <div class="section">
@@ -116,7 +117,7 @@
                             <div>
                                 7214, Philippines
                             </div>
-                                
+
                         </div>
 
 
@@ -126,7 +127,7 @@
             </div>
 
         </section>
-        
+
         <section>
             <div class ="footertwo">
 
@@ -154,11 +155,11 @@
                                 ABOUT GOVPH
                             </div>
                              <div>
-                                Learn more about the Philippine government, its structure, 
+                                Learn more about the Philippine government, its structure,
                                 how government works and the people behind it.
                              </div>
                              <div>
-                                GOV.PH 
+                                GOV.PH
                              </div>
                              <div>
                                   Open Data Portal
@@ -174,7 +175,7 @@
                                 GOVERNMENT LINKS
                             </div>
                              <div>
-                                Office of the President 
+                                Office of the President
                              </div>
                                <div>
                                 Office of the Vice President
@@ -198,7 +199,7 @@
                 </div>
             </div>
         </section>
-        
+
 
 
 

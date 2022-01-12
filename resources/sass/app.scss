@@ -131,3 +131,11 @@ $navbar-item-img-max-height: 4rem;
 @import "~bulma/sass/layout/hero.sass";
 @import "~bulma/sass/layout/section.sass";
 
+
+$panel-heading-color: #535fe1;
+
+
+.panel > .panel-heading{
+    background-color: $panel-heading-color;
+    color: #ffffff;
+}
