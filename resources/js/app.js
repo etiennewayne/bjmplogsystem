@@ -24,20 +24,20 @@ import 'buefy/dist/buefy.css';
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.component('navbar-component', require('./components/NavbarComponent.vue').default);
+// Vue.component('navbar-component', require('./components/NavbarComponent.vue').default);
 
-Vue.component('welcome-page', require('./components/WelcomePage.vue').default);
-Vue.component('mission-vision', require('./components/MissionVissionComponent.vue').default);
+// Vue.component('welcome-page', require('./components/WelcomePage.vue').default);
+// Vue.component('mission-vision', require('./components/MissionVissionComponent.vue').default);
 
-Vue.component('register-page', require('./components/RegisterPage.vue').default);
-Vue.component('login-page', require('./components/LoginPage.vue').default);
+// Vue.component('register-page', require('./components/RegisterPage.vue').default);
+// Vue.component('login-page', require('./components/LoginPage.vue').default);
 
-Vue.component('about-page', require('./components/AboutPage.vue').default);
+// Vue.component('about-page', require('./components/AboutPage.vue').default);
 
 
 
@@ -45,11 +45,11 @@ Vue.component('about-page', require('./components/AboutPage.vue').default);
 
 
 //ADMINISTRATOR
-Vue.component('dashboard-page', require('./components/Administrator/DashboardPage.vue').default);
+// Vue.component('dashboard-page', require('./components/Administrator/DashboardPage.vue').default);
 
-Vue.component('navbar-component', require('./components/Administrator/NavbarComponent.vue').default);
+// Vue.component('navbar-component', require('./components/Administrator/NavbarComponent.vue').default);
 
-Vue.component('user-page', require('./components/Administrator/UserPage.vue').default);
+// Vue.component('user-page', require('./components/Administrator/UserPage.vue').default);
 
 
 

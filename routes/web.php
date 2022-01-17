@@ -43,8 +43,15 @@ Route::get('/fetch-address-provinces', [App\Http\Controllers\AddressController::
 //ADMINISTRATOR
 Route::resource('/dashboard', App\Http\Controllers\Administrator\AdminDashboardController::class);
 
-Route::resource('/user', App\Http\Controllers\Administrator\UserController::class);
-Route::get('/fetch-users', [App\Http\Controllers\Administrator\UserController::class, 'fetchUsers']);
+Route::resource('/users', App\Http\Controllers\Administrator\UserController::class);
+Route::get('/get-users', [App\Http\Controllers\Administrator\UserController::class, 'getUsers']);
+
+
+//ADDRESS
+Route::get('/load-provinces', [App\Http\Controllers\AddressController::class, 'loadProvinces']);
+Route::get('/load-cities', [App\Http\Controllers\AddressController::class, 'loadCities']);
+Route::get('/load-barangays', [App\Http\Controllers\AddressController::class, 'loadBarangays']);
+
 
 
 
@@ -54,6 +61,12 @@ Route::get('/fetch-users', [App\Http\Controllers\Administrator\UserController::c
 // });
 
 //Route::get('/bjmp-user', [App\Http\Controllers\Bjmpuser\BjmpUser::class, 'index'])->name('home');
+
+
+
+//APPOINTMENT
+Route::resource('/appointments', App\Http\Controllers\AppointmentController::class);
+
 
 Route::get('/session', function(){
     return Session::all();

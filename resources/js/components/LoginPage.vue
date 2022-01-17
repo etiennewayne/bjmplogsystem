@@ -16,7 +16,7 @@
                     </b-field>
 
                     <div class="buttons">
-                        <b-button type="is-success" @click="submit">LOGIN</b-button>
+                        <b-button type="is-primary" @click="submit">LOGIN</b-button>
                     </div>
                 </div>
             </div>

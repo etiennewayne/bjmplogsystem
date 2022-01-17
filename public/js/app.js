@@ -2082,10 +2082,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarComponent.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarComponent.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2131,7 +2131,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "NavbarComponent",
   props: ['firstname'],
   methods: {
     logout: function logout() {
@@ -2251,6 +2250,210 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "UserPage",
   data: function data() {
@@ -2266,7 +2469,20 @@ __webpack_require__.r(__webpack_exports__);
       //table variables
       search: {
         lname: ''
-      }
+      },
+      fields: {},
+      errors: {},
+      global_id: 0,
+      provinces: [],
+      cities: [],
+      barangays: [],
+      street: '',
+      btnClass: {
+        'is-success': true,
+        'button': true,
+        'is-loading': false
+      },
+      isModalCreate: false
     };
   },
   methods: {
@@ -2275,7 +2491,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var params = ["sort_by=".concat(this.sortField, ".").concat(this.sortOrder), "lname=".concat(this.search.lname), "perpage=".concat(this.perPage), "page=".concat(this.page)].join('&');
       this.loading = true;
-      axios.get("/fetch-users?".concat(params)).then(function (_ref) {
+      axios.get("/get-users?".concat(params)).then(function (_ref) {
         var data = _ref.data;
         _this.data = [];
         var currentTotal = data.total;
@@ -2312,10 +2528,158 @@ __webpack_require__.r(__webpack_exports__);
     },
     setPerPage: function setPerPage() {
       this.loadAsyncData();
+    },
+    openModal: function openModal() {
+      this.isModalCreate = true;
+      this.fields = {};
+      this.errors = {};
+    },
+    loadProvince: function loadProvince() {
+      var _this2 = this;
+
+      axios.get('/load-provinces').then(function (res) {
+        _this2.provinces = res.data;
+      });
+    },
+    loadCity: function loadCity() {
+      var _this3 = this;
+
+      axios.get('/load-cities?prov=' + this.fields.province).then(function (res) {
+        _this3.cities = res.data;
+      });
+    },
+    loadBarangay: function loadBarangay() {
+      var _this4 = this;
+
+      axios.get('/load-barangays?prov=' + this.fields.province + '&city_code=' + this.fields.city).then(function (res) {
+        _this4.barangays = res.data;
+      });
+    },
+    clearFields: function clearFields() {
+      this.fields = {
+        username: '',
+        lname: '',
+        fname: '',
+        mname: '',
+        suffix: '',
+        password: '',
+        password_confirmation: '',
+        sex: '',
+        role: '',
+        email: '',
+        contact_no: '',
+        province: '',
+        city: '',
+        barangay: '',
+        street: ''
+      };
+    },
+    //alert box ask for deletion
+    confirmDelete: function confirmDelete(delete_id) {
+      var _this5 = this;
+
+      this.$buefy.dialog.confirm({
+        title: 'DELETE!',
+        type: 'is-danger',
+        message: 'Are you sure you want to delete this data?',
+        cancelText: 'Cancel',
+        confirmText: 'Delete user account?',
+        onConfirm: function onConfirm() {
+          return _this5.deleteSubmit(delete_id);
+        }
+      });
+    },
+    //execute delete after confirming
+    deleteSubmit: function deleteSubmit(delete_id) {
+      var _this6 = this;
+
+      axios["delete"]('/users/' + delete_id).then(function (res) {
+        _this6.loadAsyncData();
+      })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this6.errors = err.response.data.errors;
+        }
+      });
+    },
+    submit: function submit() {
+      var _this7 = this;
+
+      if (this.global_id > 0) {
+        //update
+        axios.put('/users/' + this.global_id, this.fields).then(function (res) {
+          if (res.data.status === 'updated') {
+            _this7.$buefy.dialog.confirm({
+              title: 'UPDATED!',
+              message: 'Successfully updated.',
+              type: 'is-success',
+              onConfirm: function onConfirm() {
+                _this7.loadAsyncData();
+
+                _this7.clearFields();
+
+                _this7.global_id = 0;
+                _this7.isModalCreate = false;
+              }
+            });
+          }
+        })["catch"](function (err) {
+          if (err.response.status === 422) {
+            _this7.errors = err.response.data.errors;
+          }
+        });
+      } else {
+        //INSERT HERE
+        axios.post('/users', this.fields).then(function (res) {
+          if (res.data.status === 'saved') {
+            _this7.$buefy.dialog.confirm({
+              title: 'SAVED!',
+              message: 'Successfully saved.',
+              type: 'is-success',
+              confirmText: 'OK',
+              onConfirm: function onConfirm() {
+                _this7.isModalCreate = false;
+
+                _this7.loadAsyncData();
+
+                _this7.clearFields();
+
+                _this7.global_id = 0;
+              }
+            });
+          }
+        })["catch"](function (err) {
+          if (err.response.status === 422) {
+            _this7.errors = err.response.data.errors;
+          }
+        });
+      }
+    },
+    //update code here
+    getData: function getData(data_id) {
+      var _this8 = this;
+
+      this.clearFields();
+      this.global_id = data_id;
+      this.isModalCreate = true; //nested axios for getting the address 1 by 1 or request by request
+
+      axios.get('/users/' + data_id).then(function (res) {
+        _this8.fields = res.data;
+        var tempData = res.data; //load city first
+
+        axios.get('/load-cities?prov=' + _this8.fields.province).then(function (res) {
+          //load barangay
+          _this8.cities = res.data;
+          axios.get('/load-barangays?prov=' + _this8.fields.province + '&city_code=' + _this8.fields.city).then(function (res) {
+            _this8.barangays = res.data;
+            _this8.fields = tempData;
+          });
+        });
+      });
     }
   },
   mounted: function mounted() {
     this.loadAsyncData();
+    this.loadProvince();
   }
 });
 
@@ -2733,11 +3097,148 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      locale: undefined
+      locale: undefined,
+      fields: {},
+      errors: {},
+      creds: {},
+      isModal: false,
+      btnClass: {
+        'is-success': true,
+        'button': true,
+        'is-loading': false
+      }
     };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      axios.post('/appointments', this.fields).then(function (res) {
+        console.log(res.data.message);
+      })["catch"](function (err) {
+        if (err.response.status === 401) {
+          _this.isModal = true;
+        }
+      });
+    },
+    loginSubmit: function loginSubmit() {
+      axios.post('/login', this.creds).then(function (res) {});
+    }
   }
 });
 
@@ -2771,20 +3272,23 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
-Vue.component('navbar-component', (__webpack_require__(/*! ./components/NavbarComponent.vue */ "./resources/js/components/NavbarComponent.vue")["default"]));
-Vue.component('welcome-page', (__webpack_require__(/*! ./components/WelcomePage.vue */ "./resources/js/components/WelcomePage.vue")["default"]));
-Vue.component('mission-vision', (__webpack_require__(/*! ./components/MissionVissionComponent.vue */ "./resources/js/components/MissionVissionComponent.vue")["default"]));
-Vue.component('register-page', (__webpack_require__(/*! ./components/RegisterPage.vue */ "./resources/js/components/RegisterPage.vue")["default"]));
-Vue.component('login-page', (__webpack_require__(/*! ./components/LoginPage.vue */ "./resources/js/components/LoginPage.vue")["default"]));
-Vue.component('about-page', (__webpack_require__(/*! ./components/AboutPage.vue */ "./resources/js/components/AboutPage.vue")["default"])); //ADMINISTRATOR
+var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
 
-Vue.component('dashboard-page', (__webpack_require__(/*! ./components/Administrator/DashboardPage.vue */ "./resources/js/components/Administrator/DashboardPage.vue")["default"]));
-Vue.component('navbar-component', (__webpack_require__(/*! ./components/Administrator/NavbarComponent.vue */ "./resources/js/components/Administrator/NavbarComponent.vue")["default"]));
-Vue.component('user-page', (__webpack_require__(/*! ./components/Administrator/UserPage.vue */ "./resources/js/components/Administrator/UserPage.vue")["default"]));
+files.keys().map(function (key) {
+  return Vue.component(key.split('/').pop().split('.')[0], files(key)["default"]);
+}); // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('navbar-component', require('./components/NavbarComponent.vue').default);
+// Vue.component('welcome-page', require('./components/WelcomePage.vue').default);
+// Vue.component('mission-vision', require('./components/MissionVissionComponent.vue').default);
+// Vue.component('register-page', require('./components/RegisterPage.vue').default);
+// Vue.component('login-page', require('./components/LoginPage.vue').default);
+// Vue.component('about-page', require('./components/AboutPage.vue').default);
+//ADMINISTRATOR
+// Vue.component('dashboard-page', require('./components/Administrator/DashboardPage.vue').default);
+// Vue.component('navbar-component', require('./components/Administrator/NavbarComponent.vue').default);
+// Vue.component('user-page', require('./components/Administrator/UserPage.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -21885,10 +22389,10 @@ component.options.__file = "resources/js/components/Administrator/DashboardPage.
 
 /***/ }),
 
-/***/ "./resources/js/components/Administrator/NavbarComponent.vue":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/Administrator/NavbarComponent.vue ***!
-  \*******************************************************************/
+/***/ "./resources/js/components/Administrator/NavbarAdmin.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/Administrator/NavbarAdmin.vue ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21896,8 +22400,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _NavbarComponent_vue_vue_type_template_id_5dc66390_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NavbarComponent.vue?vue&type=template&id=5dc66390&scoped=true& */ "./resources/js/components/Administrator/NavbarComponent.vue?vue&type=template&id=5dc66390&scoped=true&");
-/* harmony import */ var _NavbarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavbarComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Administrator/NavbarComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _NavbarAdmin_vue_vue_type_template_id_f3e7733c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NavbarAdmin.vue?vue&type=template&id=f3e7733c&scoped=true& */ "./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=template&id=f3e7733c&scoped=true&");
+/* harmony import */ var _NavbarAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavbarAdmin.vue?vue&type=script&lang=js& */ "./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -21907,19 +22411,19 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _NavbarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _NavbarComponent_vue_vue_type_template_id_5dc66390_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _NavbarComponent_vue_vue_type_template_id_5dc66390_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _NavbarAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NavbarAdmin_vue_vue_type_template_id_f3e7733c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _NavbarAdmin_vue_vue_type_template_id_f3e7733c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "5dc66390",
+  "f3e7733c",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Administrator/NavbarComponent.vue"
+component.options.__file = "resources/js/components/Administrator/NavbarAdmin.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -22216,10 +22720,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Administrator/NavbarComponent.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/Administrator/NavbarComponent.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22227,8 +22731,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NavbarComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NavbarAdmin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -22373,19 +22877,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Administrator/NavbarComponent.vue?vue&type=template&id=5dc66390&scoped=true&":
-/*!**************************************************************************************************************!*\
-  !*** ./resources/js/components/Administrator/NavbarComponent.vue?vue&type=template&id=5dc66390&scoped=true& ***!
-  \**************************************************************************************************************/
+/***/ "./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=template&id=f3e7733c&scoped=true&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=template&id=f3e7733c&scoped=true& ***!
+  \**********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarComponent_vue_vue_type_template_id_5dc66390_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarComponent_vue_vue_type_template_id_5dc66390_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarAdmin_vue_vue_type_template_id_f3e7733c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarAdmin_vue_vue_type_template_id_f3e7733c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarComponent_vue_vue_type_template_id_5dc66390_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NavbarComponent.vue?vue&type=template&id=5dc66390&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarComponent.vue?vue&type=template&id=5dc66390&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavbarAdmin_vue_vue_type_template_id_f3e7733c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NavbarAdmin.vue?vue&type=template&id=f3e7733c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=template&id=f3e7733c&scoped=true&");
 
 
 /***/ }),
@@ -23316,10 +23820,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarComponent.vue?vue&type=template&id=5dc66390&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarComponent.vue?vue&type=template&id=5dc66390&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=template&id=f3e7733c&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/NavbarAdmin.vue?vue&type=template&id=f3e7733c&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23362,9 +23866,9 @@ var render = function () {
                         ),
                       ]),
                       _vm._v(" "),
-                      _c("b-navbar-item", { attrs: { href: "/user" } }, [
+                      _c("b-navbar-item", { attrs: { href: "/users" } }, [
                         _vm._v(
-                          "\n                        User\n                    "
+                          "\n                        Users\n                    "
                         ),
                       ]),
                       _vm._v(" "),
@@ -23423,115 +23927,57 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("section", { staticClass: "section" }, [
-      _c("h1", { staticClass: "title" }, [_vm._v("USER PANEL")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "panel" }, [
-        _c("div", { staticClass: "panel-heading" }, [
-          _vm._v("\n                USERS\n            "),
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "panel-body" },
-          [
-            _c("div", { staticClass: "level" }, [
-              _c(
-                "div",
-                { staticClass: "level-left" },
-                [
-                  _c(
-                    "b-field",
-                    { attrs: { label: "Page" } },
-                    [
-                      _c(
-                        "b-select",
-                        {
-                          on: { input: _vm.setPerPage },
-                          model: {
-                            value: _vm.perPage,
-                            callback: function ($$v) {
-                              _vm.perPage = $$v
-                            },
-                            expression: "perPage",
-                          },
-                        },
-                        [
-                          _c("option", { attrs: { value: "5" } }, [
-                            _vm._v("5 per page"),
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "10" } }, [
-                            _vm._v("10 per page"),
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "15" } }, [
-                            _vm._v("15 per page"),
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "20" } }, [
-                            _vm._v("20 per page"),
-                          ]),
-                        ]
-                      ),
-                    ],
-                    1
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "level-right" }, [
+  return _c(
+    "div",
+    [
+      _c("section", { staticClass: "section" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-heading" }, [
+            _vm._v("\n                USERS\n            "),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "panel-body" },
+            [
+              _c("div", { staticClass: "level" }, [
                 _c(
                   "div",
-                  { staticClass: "level-item" },
+                  { staticClass: "level-left" },
                   [
                     _c(
                       "b-field",
-                      { attrs: { label: "Search" } },
+                      { attrs: { label: "Page" } },
                       [
-                        _c("b-input", {
-                          attrs: {
-                            type: "text",
-                            placeholder: "Search Lastname",
-                          },
-                          nativeOn: {
-                            keyup: function ($event) {
-                              if (
-                                !$event.type.indexOf("key") &&
-                                _vm._k(
-                                  $event.keyCode,
-                                  "enter",
-                                  13,
-                                  $event.key,
-                                  "Enter"
-                                )
-                              ) {
-                                return null
-                              }
-                              return _vm.loadAsyncData.apply(null, arguments)
-                            },
-                          },
-                          model: {
-                            value: _vm.search.lname,
-                            callback: function ($$v) {
-                              _vm.$set(_vm.search, "lname", $$v)
-                            },
-                            expression: "search.lname",
-                          },
-                        }),
-                        _vm._v(" "),
                         _c(
-                          "p",
-                          { staticClass: "control" },
+                          "b-select",
+                          {
+                            on: { input: _vm.setPerPage },
+                            model: {
+                              value: _vm.perPage,
+                              callback: function ($$v) {
+                                _vm.perPage = $$v
+                              },
+                              expression: "perPage",
+                            },
+                          },
                           [
-                            _c("b-button", {
-                              attrs: { type: "is-primary", label: "Search" },
-                              on: { click: _vm.loadAsyncData },
-                            }),
-                          ],
-                          1
+                            _c("option", { attrs: { value: "5" } }, [
+                              _vm._v("5 per page"),
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "10" } }, [
+                              _vm._v("10 per page"),
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "15" } }, [
+                              _vm._v("15 per page"),
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "20" } }, [
+                              _vm._v("20 per page"),
+                            ]),
+                          ]
                         ),
                       ],
                       1
@@ -23539,217 +23985,982 @@ var render = function () {
                   ],
                   1
                 ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "buttons" },
-              [
-                _c(
-                  "b-button",
-                  { attrs: { type: "is-success", "icon-right": "account" } },
-                  [_vm._v("NEW USER")]
-                ),
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "b-table",
-              {
-                attrs: {
-                  data: _vm.data,
-                  loading: _vm.loading,
-                  paginated: "",
-                  "backend-pagination": "",
-                  total: _vm.total,
-                  "per-page": _vm.perPage,
-                  "aria-next-label": "Next page",
-                  "aria-previous-label": "Previous page",
-                  "aria-page-label": "Page",
-                  "aria-current-label": "Current page",
-                  "backend-sorting": "",
-                  "default-sort-direction": _vm.defaultSortDirection,
-                },
-                on: { "page-change": _vm.onPageChange, sort: _vm.onSort },
-              },
-              [
-                _c("b-table-column", {
-                  attrs: { field: "id", label: "ID" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "default",
-                      fn: function (props) {
-                        return [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(props.row.user_id) +
-                              "\n                    "
-                          ),
-                        ]
-                      },
-                    },
-                  ]),
-                }),
                 _vm._v(" "),
-                _c("b-table-column", {
-                  attrs: { field: "username", label: "Username" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "default",
-                      fn: function (props) {
-                        return [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(props.row.username) +
-                              "\n                    "
-                          ),
-                        ]
-                      },
-                    },
-                  ]),
-                }),
-                _vm._v(" "),
-                _c("b-table-column", {
-                  attrs: { field: "name", label: "Name" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "default",
-                      fn: function (props) {
-                        return [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(props.row.lname) +
-                              ", " +
-                              _vm._s(props.row.fname) +
-                              " " +
-                              _vm._s(props.row.mname) +
-                              "\n                    "
-                          ),
-                        ]
-                      },
-                    },
-                  ]),
-                }),
-                _vm._v(" "),
-                _c("b-table-column", {
-                  attrs: { field: "sex", label: "Sex" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "default",
-                      fn: function (props) {
-                        return [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(props.row.sex) +
-                              "\n                    "
-                          ),
-                        ]
-                      },
-                    },
-                  ]),
-                }),
-                _vm._v(" "),
-                _c("b-table-column", {
-                  attrs: { field: "email", label: "Email" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "default",
-                      fn: function (props) {
-                        return [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(props.row.email) +
-                              "\n                    "
-                          ),
-                        ]
-                      },
-                    },
-                  ]),
-                }),
-                _vm._v(" "),
-                _c("b-table-column", {
-                  attrs: { field: "userType", label: "Role" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "default",
-                      fn: function (props) {
-                        return [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(props.row.role) +
-                              "\n                    "
-                          ),
-                        ]
-                      },
-                    },
-                  ]),
-                }),
-                _vm._v(" "),
-                _c("b-table-column", {
-                  attrs: { field: "ay_id", label: "Action" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "default",
-                      fn: function (props) {
-                        return [
+                _c("div", { staticClass: "level-right" }, [
+                  _c(
+                    "div",
+                    { staticClass: "level-item" },
+                    [
+                      _c(
+                        "b-field",
+                        { attrs: { label: "Search" } },
+                        [
+                          _c("b-input", {
+                            attrs: {
+                              type: "text",
+                              placeholder: "Search Lastname",
+                            },
+                            nativeOn: {
+                              keyup: function ($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.loadAsyncData.apply(null, arguments)
+                              },
+                            },
+                            model: {
+                              value: _vm.search.lname,
+                              callback: function ($$v) {
+                                _vm.$set(_vm.search, "lname", $$v)
+                              },
+                              expression: "search.lname",
+                            },
+                          }),
+                          _vm._v(" "),
                           _c(
-                            "div",
-                            { staticClass: "is-flex" },
+                            "p",
+                            { staticClass: "control" },
                             [
-                              _c(
-                                "b-button",
-                                {
+                              _c("b-button", {
+                                attrs: { type: "is-primary", label: "Search" },
+                                on: { click: _vm.loadAsyncData },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "buttons" },
+                [
+                  _c(
+                    "b-button",
+                    {
+                      attrs: { type: "is-success", "icon-right": "account" },
+                      on: { click: _vm.openModal },
+                    },
+                    [_vm._v("NEW USER")]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-table",
+                {
+                  attrs: {
+                    data: _vm.data,
+                    loading: _vm.loading,
+                    paginated: "",
+                    "backend-pagination": "",
+                    total: _vm.total,
+                    "per-page": _vm.perPage,
+                    "aria-next-label": "Next page",
+                    "aria-previous-label": "Previous page",
+                    "aria-page-label": "Page",
+                    "aria-current-label": "Current page",
+                    "backend-sorting": "",
+                    "default-sort-direction": _vm.defaultSortDirection,
+                  },
+                  on: { "page-change": _vm.onPageChange, sort: _vm.onSort },
+                },
+                [
+                  _c("b-table-column", {
+                    attrs: { field: "id", label: "ID" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function (props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.user_id) +
+                                "\n                    "
+                            ),
+                          ]
+                        },
+                      },
+                    ]),
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "username", label: "Username" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function (props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.username) +
+                                "\n                    "
+                            ),
+                          ]
+                        },
+                      },
+                    ]),
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "name", label: "Name" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function (props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.lname) +
+                                ", " +
+                                _vm._s(props.row.fname) +
+                                " " +
+                                _vm._s(props.row.mname) +
+                                "\n                    "
+                            ),
+                          ]
+                        },
+                      },
+                    ]),
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "sex", label: "Sex" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function (props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.sex) +
+                                "\n                    "
+                            ),
+                          ]
+                        },
+                      },
+                    ]),
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "email", label: "Email" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function (props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.email) +
+                                "\n                    "
+                            ),
+                          ]
+                        },
+                      },
+                    ]),
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "userType", label: "Role" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function (props) {
+                          return [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(props.row.role) +
+                                "\n                    "
+                            ),
+                          ]
+                        },
+                      },
+                    ]),
+                  }),
+                  _vm._v(" "),
+                  _c("b-table-column", {
+                    attrs: { field: "ay_id", label: "Action" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function (props) {
+                          return [
+                            _c(
+                              "div",
+                              { staticClass: "is-flex" },
+                              [
+                                _c("b-button", {
                                   staticClass:
                                     "button is-small is-warning mr-1",
-                                  attrs: {
-                                    outlined: "",
-                                    tag: "a",
-                                    "icon-right": "lead-pencil",
-                                  },
+                                  attrs: { tag: "a", "icon-right": "pencil" },
                                   on: {
                                     click: function ($event) {
-                                      return _vm.getData(props.row.id)
+                                      return _vm.getData(props.row.user_id)
                                     },
                                   },
-                                },
-                                [_vm._v("EDIT")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-button",
-                                {
+                                }),
+                                _vm._v(" "),
+                                _c("b-button", {
                                   staticClass: "button is-small is-danger mr-1",
-                                  attrs: {
-                                    outlined: "",
-                                    "icon-right": "delete",
-                                  },
+                                  attrs: { "icon-right": "delete" },
                                   on: {
                                     click: function ($event) {
-                                      return _vm.confirmDelete(props.row.id)
+                                      return _vm.confirmDelete(
+                                        props.row.user_id
+                                      )
                                     },
                                   },
+                                }),
+                              ],
+                              1
+                            ),
+                          ]
+                        },
+                      },
+                    ]),
+                  }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            "has-modal-card": "",
+            "trap-focus": "",
+            width: 640,
+            "aria-role": "dialog",
+            "aria-label": "Modal",
+            "aria-modal": "",
+          },
+          model: {
+            value: _vm.isModalCreate,
+            callback: function ($$v) {
+              _vm.isModalCreate = $$v
+            },
+            expression: "isModalCreate",
+          },
+        },
+        [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.submit.apply(null, arguments)
+                },
+              },
+            },
+            [
+              _c("div", { staticClass: "modal-card" }, [
+                _c("header", { staticClass: "modal-card-head" }, [
+                  _c("p", { staticClass: "modal-card-title" }, [
+                    _vm._v("User Information"),
+                  ]),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "delete",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function ($event) {
+                        _vm.isModalCreate = false
+                      },
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "modal-card-body" }, [
+                  _c("div", {}, [
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Username",
+                                "label-position": "on-border",
+                                type: this.errors.username ? "is-danger" : "",
+                                message: this.errors.username
+                                  ? this.errors.username[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: {
+                                  placeholder: "Username",
+                                  required: "",
                                 },
-                                [_vm._v("DELETE")]
+                                model: {
+                                  value: _vm.fields.username,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.fields, "username", $$v)
+                                  },
+                                  expression: "fields.username",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Last Name",
+                                "label-position": "on-border",
+                                type: this.errors.lname ? "is-danger" : "",
+                                message: this.errors.lname
+                                  ? this.errors.lname[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: {
+                                  placeholder: "Last Name",
+                                  required: "",
+                                },
+                                model: {
+                                  value: _vm.fields.lname,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.fields, "lname", $$v)
+                                  },
+                                  expression: "fields.lname",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "First Name",
+                                "label-position": "on-border",
+                                type: this.errors.fname ? "is-danger" : "",
+                                message: this.errors.fname
+                                  ? this.errors.fname[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: {
+                                  placeholder: "First Name",
+                                  required: "",
+                                },
+                                model: {
+                                  value: _vm.fields.fname,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.fields, "fname", $$v)
+                                  },
+                                  expression: "fields.fname",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Middle Name",
+                                "label-position": "on-border",
+                                type: this.errors.mname ? "is-danger" : "",
+                                message: this.errors.mname
+                                  ? this.errors.mname[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: { placeholder: "Middle Name" },
+                                model: {
+                                  value: _vm.fields.mname,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.fields, "mname", $$v)
+                                  },
+                                  expression: "fields.mname",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Suffix",
+                                "label-position": "on-border",
+                                type: this.errors.suffix ? "is-danger" : "",
+                                message: this.errors.suffix
+                                  ? this.errors.suffix[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: { placeholder: "Suffix" },
+                                model: {
+                                  value: _vm.fields.suffix,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.fields, "suffix", $$v)
+                                  },
+                                  expression: "fields.suffix",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Contact No",
+                                "label-position": "on-border",
+                                type: this.errors.contact_no ? "is-danger" : "",
+                                message: this.errors.contact_no
+                                  ? this.errors.contact_no[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: {
+                                  type: "number",
+                                  placeholder: "Contact No",
+                                  required: "",
+                                },
+                                model: {
+                                  value: _vm.fields.contact_no,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.fields, "contact_no", $$v)
+                                  },
+                                  expression: "fields.contact_no",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Email",
+                                "label-position": "on-border",
+                                type: this.errors.email ? "is-danger" : "",
+                                message: this.errors.email
+                                  ? this.errors.email[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: {
+                                  type: "email",
+                                  placeholder: "Email",
+                                  required: "",
+                                },
+                                model: {
+                                  value: _vm.fields.email,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.fields, "email", $$v)
+                                  },
+                                  expression: "fields.email",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _vm.global_id < 1
+                      ? _c("div", { staticClass: "columns" }, [
+                          _c(
+                            "div",
+                            { staticClass: "column" },
+                            [
+                              _c(
+                                "b-field",
+                                {
+                                  attrs: {
+                                    label: "Password",
+                                    "label-position": "on-border",
+                                    type: this.errors.password
+                                      ? "is-danger"
+                                      : "",
+                                    message: this.errors.password
+                                      ? this.errors.password[0]
+                                      : "",
+                                  },
+                                },
+                                [
+                                  _c("b-input", {
+                                    attrs: {
+                                      type: "password",
+                                      "password-reveal": "",
+                                      placeholder: "Password",
+                                      required: "",
+                                    },
+                                    model: {
+                                      value: _vm.fields.password,
+                                      callback: function ($$v) {
+                                        _vm.$set(_vm.fields, "password", $$v)
+                                      },
+                                      expression: "fields.password",
+                                    },
+                                  }),
+                                ],
+                                1
                               ),
                             ],
                             1
                           ),
-                        ]
-                      },
-                    },
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "column" },
+                            [
+                              _c(
+                                "b-field",
+                                {
+                                  attrs: {
+                                    label: "Confirm Password",
+                                    "label-position": "on-border",
+                                    type: this.errors.password_confirmation
+                                      ? "is-danger"
+                                      : "",
+                                    message: this.errors.password_confirmation
+                                      ? this.errors.password_confirmation[0]
+                                      : "",
+                                  },
+                                },
+                                [
+                                  _c("b-input", {
+                                    attrs: {
+                                      type: "password",
+                                      "password-reveal": "",
+                                      placeholder: "Confirm Password",
+                                      required: "",
+                                    },
+                                    model: {
+                                      value: _vm.fields.password_confirmation,
+                                      callback: function ($$v) {
+                                        _vm.$set(
+                                          _vm.fields,
+                                          "password_confirmation",
+                                          $$v
+                                        )
+                                      },
+                                      expression:
+                                        "fields.password_confirmation",
+                                    },
+                                  }),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          ),
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Sex",
+                                "label-position": "on-border",
+                                expanded: "",
+                                type: this.errors.sex ? "is-danger" : "",
+                                message: this.errors.sex
+                                  ? this.errors.sex[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  attrs: { expanded: "" },
+                                  model: {
+                                    value: _vm.fields.sex,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.fields, "sex", $$v)
+                                    },
+                                    expression: "fields.sex",
+                                  },
+                                },
+                                [
+                                  _c("option", { attrs: { value: "MALE" } }, [
+                                    _vm._v("MALE"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "FEMALE" } }, [
+                                    _vm._v("FEMALE"),
+                                  ]),
+                                ]
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Role",
+                                "label-position": "on-border",
+                                expanded: "",
+                                type: this.errors.role ? "is-danger" : "",
+                                message: this.errors.role
+                                  ? this.errors.role[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  attrs: { expanded: "" },
+                                  model: {
+                                    value: _vm.fields.role,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.fields, "role", $$v)
+                                    },
+                                    expression: "fields.role",
+                                  },
+                                },
+                                [
+                                  _c("option", { attrs: { value: "ADMIN" } }, [
+                                    _vm._v("ADMINISTRATOR"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "USER" } }, [
+                                    _vm._v("USER"),
+                                  ]),
+                                ]
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Province",
+                                "label-position": "on-border",
+                                expanded: "",
+                                type: this.errors.province ? "is-danger" : "",
+                                message: this.errors.province
+                                  ? this.errors.province[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  attrs: { expanded: "" },
+                                  on: { input: _vm.loadCity },
+                                  model: {
+                                    value: _vm.fields.province,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.fields, "province", $$v)
+                                    },
+                                    expression: "fields.province",
+                                  },
+                                },
+                                _vm._l(_vm.provinces, function (item, index) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: index,
+                                      domProps: { value: item.provCode },
+                                    },
+                                    [_vm._v(_vm._s(item.provDesc))]
+                                  )
+                                }),
+                                0
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "City",
+                                "label-position": "on-border",
+                                expanded: "",
+                                type: this.errors.city ? "is-danger" : "",
+                                message: this.errors.city
+                                  ? this.errors.city[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  attrs: { expanded: "" },
+                                  on: { input: _vm.loadBarangay },
+                                  model: {
+                                    value: _vm.fields.city,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.fields, "city", $$v)
+                                    },
+                                    expression: "fields.city",
+                                  },
+                                },
+                                _vm._l(_vm.cities, function (item, index) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: index,
+                                      domProps: { value: item.citymunCode },
+                                    },
+                                    [_vm._v(_vm._s(item.citymunDesc))]
+                                  )
+                                }),
+                                0
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Barangay",
+                                "label-position": "on-border",
+                                expanded: "",
+                                type: this.errors.barangay ? "is-danger" : "",
+                                message: this.errors.barangay
+                                  ? this.errors.barangay[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  attrs: { expanded: "" },
+                                  model: {
+                                    value: _vm.fields.barangay,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.fields, "barangay", $$v)
+                                    },
+                                    expression: "fields.barangay",
+                                  },
+                                },
+                                _vm._l(_vm.barangays, function (item, index) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: index,
+                                      domProps: { value: item.brgyCode },
+                                    },
+                                    [_vm._v(_vm._s(item.brgyDesc))]
+                                  )
+                                }),
+                                0
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Street",
+                                "label-position": "on-border",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: { placeholder: "Street", required: "" },
+                                model: {
+                                  value: _vm.fields.street,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.fields, "street", $$v)
+                                  },
+                                  expression: "fields.street",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
                   ]),
-                }),
-              ],
-              1
-            ),
-          ],
-          1
-        ),
-      ]),
-    ]),
-  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "footer",
+                  { staticClass: "modal-card-foot" },
+                  [
+                    _c("b-button", {
+                      attrs: { label: "Close" },
+                      on: {
+                        click: function ($event) {
+                          _vm.isModalCreate = false
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        class: _vm.btnClass,
+                        attrs: { label: "Save", type: "is-success" },
+                      },
+                      [_vm._v("SAVE")]
+                    ),
+                  ],
+                  1
+                ),
+              ]),
+            ]
+          ),
+        ]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23879,7 +25090,7 @@ var render = function () {
               [
                 _c(
                   "b-button",
-                  { attrs: { type: "is-success" }, on: { click: _vm.submit } },
+                  { attrs: { type: "is-primary" }, on: { click: _vm.submit } },
                   [_vm._v("LOGIN")]
                 ),
               ],
@@ -24345,73 +25556,360 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "hero is-fullheight nim" }, [
-      _c("div", { staticClass: "hero-body" }, [
-        _c(
-          "div",
-          { staticClass: "hero-form" },
-          [
-            _c("p", { staticClass: "title" }, [
-              _vm._v(
-                "\n                    WELCOME TO BJMP E-LOG SYSTEM\n                "
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "hero is-fullheight nim" }, [
+        _c("div", { staticClass: "hero-head" }, [
+          _c("nav", { staticClass: "navbar" }, [
+            _c("div", { staticClass: "container" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "navbar-menu",
+                  attrs: { id: "navbarMenuHeroB" },
+                },
+                [
+                  _c("div", { staticClass: "navbar-end" }, [
+                    _c(
+                      "span",
+                      { staticClass: "navbar-item" },
+                      [
+                        _c(
+                          "b-button",
+                          {
+                            attrs: {
+                              type: "is-primary",
+                              tag: "a",
+                              href: "/login",
+                              "icon-left": "login",
+                            },
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        LOGIN\n                                    "
+                            ),
+                          ]
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                ]
               ),
             ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "subtitle" }, [
-              _vm._v(
-                '\n                    "Changing Lives, Building a Safer nation"\n                '
-              ),
-            ]),
-            _vm._v(" "),
-            _c(
-              "b-field",
-              { attrs: { expanded: "" } },
-              [
-                _c("b-datepicker", {
-                  attrs: {
-                    placeholder: "Type or select a date...",
-                    icon: "calendar-today",
-                    locale: _vm.locale,
-                    editable: "",
-                  },
-                }),
-                _vm._v(" "),
-                _c("b-select", { attrs: { expanded: "" } }, [
-                  _c("option", [_vm._v("MORNING")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("AFTERNOON")]),
-                ]),
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "buttons is-right" },
-              [
-                _c(
-                  "b-button",
-                  { attrs: { type: "is-success", icon: "right-arrow" } },
-                  [_vm._v("BOOK NOW")]
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hero-body" }, [
+          _c(
+            "div",
+            { staticClass: "hero-form" },
+            [
+              _c("p", { staticClass: "title" }, [
+                _vm._v(
+                  "\n                        WELCOME TO BJMP E-LOG SYSTEM\n                    "
                 ),
-              ],
-              1
-            ),
-          ],
-          1
-        ),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "subtitle" }, [
+                _vm._v(
+                  '\n                        "Changing Lives, Building a Safer nation"\n                    '
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "b-field",
+                { attrs: { expanded: "" } },
+                [
+                  _c("b-datepicker", {
+                    attrs: {
+                      placeholder: "Type or select a date...",
+                      icon: "calendar-today",
+                      locale: _vm.locale,
+                      editable: "",
+                    },
+                    model: {
+                      value: _vm.fields.appointment_date,
+                      callback: function ($$v) {
+                        _vm.$set(_vm.fields, "appointment_date", $$v)
+                      },
+                      expression: "fields.appointment_date",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "b-select",
+                    {
+                      attrs: { expanded: "" },
+                      model: {
+                        value: _vm.fields.meridian,
+                        callback: function ($$v) {
+                          _vm.$set(_vm.fields, "meridian", $$v)
+                        },
+                        expression: "fields.meridian",
+                      },
+                    },
+                    [
+                      _c("option", { attrs: { value: "AM" } }, [
+                        _vm._v("MORNING"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "PM" } }, [
+                        _vm._v("AFTERNOON"),
+                      ]),
+                    ]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-field",
+                [
+                  _c("b-input", {
+                    attrs: {
+                      type: "text",
+                      placeholder: "Inmate Name",
+                      required: "",
+                    },
+                    model: {
+                      value: _vm.fields.inmate,
+                      callback: function ($$v) {
+                        _vm.$set(_vm.fields, "inmate", $$v)
+                      },
+                      expression: "fields.inmate",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "buttons is-right" },
+                [
+                  _c(
+                    "b-button",
+                    {
+                      attrs: { type: "is-success", icon: "right-arrow" },
+                      on: { click: _vm.submit },
+                    },
+                    [_vm._v("BOOK NOW")]
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ]),
       ]),
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _vm._m(2),
-  ])
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            "has-modal-card": "",
+            "trap-focus": "",
+            width: 640,
+            "aria-role": "dialog",
+            "aria-label": "Modal",
+            "aria-modal": "",
+          },
+          model: {
+            value: _vm.isModal,
+            callback: function ($$v) {
+              _vm.isModal = $$v
+            },
+            expression: "isModal",
+          },
+        },
+        [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.loginSubmit.apply(null, arguments)
+                },
+              },
+            },
+            [
+              _c("div", { staticClass: "modal-card" }, [
+                _c("header", { staticClass: "modal-card-head" }, [
+                  _c("p", { staticClass: "modal-card-title" }, [
+                    _vm._v("LOGIN"),
+                  ]),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "delete",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function ($event) {
+                        _vm.isModal = false
+                      },
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "modal-card-body" }, [
+                  _c("div", {}, [
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Username",
+                                "label-position": "on-border",
+                                type: this.errors.username ? "is-danger" : "",
+                                message: this.errors.username
+                                  ? this.errors.username[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: {
+                                  placeholder: "Username",
+                                  required: "",
+                                },
+                                model: {
+                                  value: _vm.creds.username,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.creds, "username", $$v)
+                                  },
+                                  expression: "creds.username",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Password",
+                                "label-position": "on-border",
+                                type: this.errors.password ? "is-danger" : "",
+                                message: this.errors.password
+                                  ? this.errors.password[0]
+                                  : "",
+                              },
+                            },
+                            [
+                              _c("b-input", {
+                                attrs: {
+                                  type: "password",
+                                  "password-reveal": "",
+                                  placeholder: "Password",
+                                  required: "",
+                                },
+                                model: {
+                                  value: _vm.creds.password,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.creds, "password", $$v)
+                                  },
+                                  expression: "creds.password",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("footer", { staticClass: "modal-card-foot" }, [
+                  _c("div", { staticClass: "level" }, [
+                    _c("div", { staticClass: "level-left" }, [
+                      _c("div", { staticClass: "level-item" }, [
+                        _c(
+                          "button",
+                          {
+                            class: _vm.btnClass,
+                            attrs: { label: "Save", type: "is-success" },
+                          },
+                          [_vm._v("LOGIN")]
+                        ),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "level-right" }, [
+                      _c("div", { staticClass: "level-item" }, [
+                        _c(
+                          "div",
+                          { staticClass: "buttons is-right" },
+                          [
+                            _c(
+                              "b-button",
+                              {
+                                attrs: {
+                                  type: "is-link",
+                                  tag: "a",
+                                  href: "/register",
+                                },
+                              },
+                              [_vm._v("REGISTER HERE")]
+                            ),
+                          ],
+                          1
+                        ),
+                      ]),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ]
+          ),
+        ]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "navbar-brand" }, [
+      _c(
+        "span",
+        {
+          staticClass: "navbar-burger",
+          attrs: { "data-target": "navbarMenuHeroB" },
+        },
+        [_c("span"), _vm._v(" "), _c("span"), _vm._v(" "), _c("span")]
+      ),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -24430,13 +25928,13 @@ var staticRenderFns = [
               _c("div", { staticClass: "panel is-link" }, [
                 _c("p", { staticClass: "panel-heading" }, [
                   _vm._v(
-                    "\n                                MISSION\n                            "
+                    "\n                                    MISSION\n                                "
                   ),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "panel-body" }, [
                   _vm._v(
-                    "\n                                “To enhance public safety by ensuring humane safekeeping and development of Persons\n\n                                Deprived of Liberty (PDL) in all District, City and Municipal Jails for their reintegration to Society.”\n                            "
+                    "\n                                    “To enhance public safety by ensuring humane safekeeping and development of Persons\n\n                                    Deprived of Liberty (PDL) in all District, City and Municipal Jails for their reintegration to Society.”\n                                "
                   ),
                 ]),
               ]),
@@ -24446,13 +25944,13 @@ var staticRenderFns = [
               _c("div", { staticClass: "panel is-link" }, [
                 _c("p", { staticClass: "panel-heading" }, [
                   _vm._v(
-                    "\n                                VISION\n                            "
+                    "\n                                    VISION\n                                "
                   ),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "panel-body" }, [
                   _vm._v(
-                    "\n                                “A premier institution highly regarded by Society for the secured and humane\n\n                                treatment of Persons Deprived of Liberty (PDL) by its competent and motivated Corps.”\n                            "
+                    "\n                                    “A premier institution highly regarded by Society for the secured and humane\n\n                                    treatment of Persons Deprived of Liberty (PDL) by its competent and motivated Corps.”\n                                "
                   ),
                 ]),
               ]),
@@ -24482,13 +25980,13 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                            THE BJMP\n                        "
+                  "\n                                THE BJMP\n                            "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                           As one of the five pillars of the Criminal Justice System,\n                            the BJMP was created to address the growing\n                            concern of jail management and penology problem.\n                        "
+                  "\n                               As one of the five pillars of the Criminal Justice System,\n                                the BJMP was created to address the growing\n                                concern of jail management and penology problem.\n                            "
                 ),
               ]),
             ]),
@@ -24498,25 +25996,25 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                            OUR LOCATION\n                        "
+                  "\n                                OUR LOCATION\n                            "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                             BJMP Regional Office 8\n                        "
+                  "\n                                 BJMP Regional Office 8\n                            "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                             Brgy. Santa Cruz, Tangub, City\n                        "
+                  "\n                                 Brgy. Santa Cruz, Tangub, City\n                            "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                            7214, Philippines\n                        "
+                  "\n                                7214, Philippines\n                            "
                 ),
               ]),
             ]),
@@ -24545,13 +26043,13 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                            REPUBLIC OF THE PHILIPPINES\n                        "
+                  "\n                                REPUBLIC OF THE PHILIPPINES\n                            "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                           All content is in the public domain unless otherwise stated.\n                        "
+                  "\n                               All content is in the public domain unless otherwise stated.\n                            "
                 ),
               ]),
             ]),
@@ -24561,31 +26059,31 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                            ABOUT GOVPH\n                        "
+                  "\n                                ABOUT GOVPH\n                            "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                            Learn more about the Philippine government, its structure,\n                            how government works and the people behind it.\n                         "
+                  "\n                                Learn more about the Philippine government, its structure,\n                                how government works and the people behind it.\n                             "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                            GOV.PH\n                         "
+                  "\n                                GOV.PH\n                             "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                              Open Data Portal\n                         "
+                  "\n                                  Open Data Portal\n                             "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                             Official Gazette\n                         "
+                  "\n                                 Official Gazette\n                             "
                 ),
               ]),
             ]),
@@ -24595,43 +26093,43 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                            GOVERNMENT LINKS\n                        "
+                  "\n                                GOVERNMENT LINKS\n                            "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                            Office of the President\n                         "
+                  "\n                                Office of the President\n                             "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                            Office of the Vice President\n                           "
+                  "\n                                Office of the Vice President\n                               "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                               Senate of the Philippines\n                           "
+                  "\n                                   Senate of the Philippines\n                               "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                House of Representatives\n                           "
+                  "\n                                    House of Representatives\n                               "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                               Supreme Court\n                          "
+                  "\n                                   Supreme Court\n                              "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                            Court of Appeal\n                        "
+                  "\n                                Court of Appeal\n                            "
                 ),
               ]),
             ]),
@@ -36801,6 +38299,47 @@ Vue.compile = compileToFunctions;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Vue);
 
+
+/***/ }),
+
+/***/ "./resources/js sync recursive \\.vue$/":
+/*!************************************!*\
+  !*** ./resources/js/ sync \.vue$/ ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./components/AboutPage.vue": "./resources/js/components/AboutPage.vue",
+	"./components/Administrator/DashboardPage.vue": "./resources/js/components/Administrator/DashboardPage.vue",
+	"./components/Administrator/NavbarAdmin.vue": "./resources/js/components/Administrator/NavbarAdmin.vue",
+	"./components/Administrator/UserPage.vue": "./resources/js/components/Administrator/UserPage.vue",
+	"./components/ExampleComponent.vue": "./resources/js/components/ExampleComponent.vue",
+	"./components/LoginPage.vue": "./resources/js/components/LoginPage.vue",
+	"./components/MissionVissionComponent.vue": "./resources/js/components/MissionVissionComponent.vue",
+	"./components/NavbarComponent.vue": "./resources/js/components/NavbarComponent.vue",
+	"./components/RegisterPage.vue": "./resources/js/components/RegisterPage.vue",
+	"./components/WelcomePage.vue": "./resources/js/components/WelcomePage.vue"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/js sync recursive \\.vue$/";
 
 /***/ }),
 

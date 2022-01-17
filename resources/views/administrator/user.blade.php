@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <navbar-component firstname="{{auth()->user()->fname}}"></navbar-component>
+    <navbar-admin firstname="{{auth()->user()->fname}}"></navbar-admin>
     <user-page></user-page>
 
 @endsection

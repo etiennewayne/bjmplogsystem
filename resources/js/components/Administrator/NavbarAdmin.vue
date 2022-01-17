@@ -12,8 +12,8 @@
                     <b-navbar-item href="#">
                         Home
                     </b-navbar-item>
-                    <b-navbar-item href="/user">
-                        User
+                    <b-navbar-item href="/users">
+                        Users
                     </b-navbar-item>
 
                     <b-navbar-dropdown :label="firstname">
@@ -37,7 +37,7 @@
 
 <script>
 export default {
-    name: "NavbarComponent",
+
     props: ['firstname'],
     methods: {
         logout(){

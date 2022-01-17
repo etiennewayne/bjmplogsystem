@@ -1,6 +1,44 @@
 <template>
     <div>
         <div class="hero is-fullheight nim">
+
+            <div class="hero-head">
+                <nav class="navbar">
+                    <div class="container">
+                        <div class="navbar-brand">
+<!--                            <a class="navbar-item">-->
+<!--                                <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">-->
+<!--                            </a>-->
+
+                            <span class="navbar-burger" data-target="navbarMenuHeroB">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </div>
+                        <div id="navbarMenuHeroB" class="navbar-menu">
+                            <div class="navbar-end">
+<!--                                <a class="navbar-item is-active">-->
+<!--                                    Home-->
+<!--                                </a>-->
+<!--                                <a class="navbar-item">-->
+<!--                                    Examples-->
+<!--                                </a>-->
+<!--                                <a class="navbar-item">-->
+<!--                                    Documentation-->
+<!--                                </a>-->
+                                <span class="navbar-item">
+                                    <b-button type="is-primary" tag="a" href="/login" icon-left="login">
+                                        LOGIN
+                                    </b-button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+
             <div class="hero-body">
                 <div class="hero-form">
                     <p class="title">
@@ -15,16 +53,20 @@
                             placeholder="Type or select a date..."
                             icon="calendar-today"
                             :locale="locale"
+                            v-model="fields.appointment_date"
                             editable>
                         </b-datepicker >
-                        <b-select expanded>
-                            <option>MORNING</option>
-                            <option>AFTERNOON</option>
+                        <b-select expanded v-model="fields.meridian">
+                            <option value="AM">MORNING</option>
+                            <option value="PM">AFTERNOON</option>
                         </b-select>
+                    </b-field>
+                    <b-field>
+                        <b-input type="text" v-model="fields.inmate" placeholder="Inmate Name" required></b-input>
                     </b-field>
 
                     <div class="buttons is-right">
-                        <b-button type="is-success" icon="right-arrow">BOOK NOW</b-button>
+                        <b-button type="is-success" @click="submit" icon="right-arrow">BOOK NOW</b-button>
                     </div>
                 </div>
             </div>
@@ -193,12 +235,82 @@
                                 Court of Appeal
                             </div>
                         </div>
-
                          </div>
-
                 </div>
             </div>
         </section>
+
+
+
+        <!--modal create-->
+        <b-modal v-model="isModal" has-modal-card
+                 trap-focus
+                 :width="640"
+                 aria-role="dialog"
+                 aria-label="Modal"
+                 aria-modal>
+
+            <form @submit.prevent="loginSubmit">
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">LOGIN</p>
+                        <button
+                            type="button"
+                            class="delete"
+                            @click="isModal = false"/>
+                    </header>
+
+                    <section class="modal-card-body">
+                        <div class="">
+                            <div class="columns">
+                                <div class="column">
+                                    <b-field label="Username" label-position="on-border"
+                                             :type="this.errors.username ? 'is-danger':''"
+                                             :message="this.errors.username ? this.errors.username[0] : ''">
+                                        <b-input v-model="creds.username"
+                                                 placeholder="Username" required>
+                                        </b-input>
+                                    </b-field>
+                                </div>
+                            </div>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <b-field label="Password" label-position="on-border"
+                                             :type="this.errors.password ? 'is-danger':''"
+                                             :message="this.errors.password ? this.errors.password[0] : ''">
+                                        <b-input type="password" password-reveal v-model="creds.password"
+                                                 placeholder="Password" required>
+                                        </b-input>
+                                    </b-field>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <div class="level">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <button
+                                        :class="btnClass"
+                                        label="Save"
+                                        type="is-success">LOGIN</button>
+                                </div>
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <div class="buttons is-right">
+                                        <b-button type="is-link" tag="a" href="/register">REGISTER HERE</b-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </form><!--close form-->
+        </b-modal>
+        <!--close modal-->
+
 
 
 
@@ -211,7 +323,38 @@
 export default {
     data(){
         return{
-            locale: undefined
+            locale: undefined,
+            fields: {},
+            errors: {},
+
+            creds: {},
+
+            isModal: false,
+
+            btnClass: {
+                'is-success': true,
+                'button': true,
+                'is-loading':false,
+            },
+
+        }
+    },
+    methods: {
+        submit: function(){
+            axios.post('/appointments', this.fields).then(res=>{
+                console.log(res.data.message);
+            }).catch(err=>{
+                if(err.response.status === 401){
+                    this.isModal = true;
+                }
+            });
+        },
+
+
+        loginSubmit: function(){
+            axios.post('/login', this.creds).then(res=>{
+
+            });
         }
     }
 }

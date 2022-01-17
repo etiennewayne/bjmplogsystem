@@ -1,7 +1,7 @@
 <template>
 <div>
     <section class="section">
-        <h1 class="title">USER PANEL</h1>
+
 
         <div class="panel">
             <div class="panel-heading">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="buttons">
-                    <b-button type="is-success" icon-right="account">NEW USER</b-button>
+                    <b-button @click="openModal" type="is-success" icon-right="account">NEW USER</b-button>
                 </div>
 
                 <b-table
@@ -80,8 +80,8 @@
 
                     <b-table-column field="ay_id" label="Action" v-slot="props">
                         <div class="is-flex">
-                            <b-button outlined class="button is-small is-warning mr-1" tag="a" icon-right="lead-pencil" @click="getData(props.row.id)">EDIT</b-button>
-                            <b-button outlined class="button is-small is-danger mr-1" icon-right="delete" @click="confirmDelete(props.row.id)">DELETE</b-button>
+                            <b-button class="button is-small is-warning mr-1" tag="a" icon-right="pencil" @click="getData(props.row.user_id)"></b-button>
+                            <b-button class="button is-small is-danger mr-1" icon-right="delete" @click="confirmDelete(props.row.user_id)"></b-button>
                         </div>
                     </b-table-column>
 
@@ -90,6 +90,210 @@
 
         </div>
     </section>
+
+
+    <!--modal create-->
+    <b-modal v-model="isModalCreate" has-modal-card
+             trap-focus
+             :width="640"
+             aria-role="dialog"
+             aria-label="Modal"
+             aria-modal>
+
+        <form @submit.prevent="submit">
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">User Information</p>
+                    <button
+                        type="button"
+                        class="delete"
+                        @click="isModalCreate = false"/>
+                </header>
+
+                <section class="modal-card-body">
+                    <div class="">
+                        <div class="columns">
+                            <div class="column">
+                                <b-field label="Username" label-position="on-border"
+                                         :type="this.errors.username ? 'is-danger':''"
+                                         :message="this.errors.username ? this.errors.username[0] : ''">
+                                    <b-input v-model="fields.username"
+                                             placeholder="Username" required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <b-field label="Last Name" label-position="on-border"
+                                         :type="this.errors.lname ? 'is-danger':''"
+                                         :message="this.errors.lname ? this.errors.lname[0] : ''">
+                                    <b-input v-model="fields.lname"
+                                             placeholder="Last Name" required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                            <div class="column">
+                                <b-field label="First Name" label-position="on-border"
+                                         :type="this.errors.fname ? 'is-danger':''"
+                                         :message="this.errors.fname ? this.errors.fname[0] : ''">
+                                    <b-input v-model="fields.fname"
+                                             placeholder="First Name" required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <b-field label="Middle Name" label-position="on-border"
+                                         :type="this.errors.mname ? 'is-danger':''"
+                                         :message="this.errors.mname ? this.errors.mname[0] : ''">
+                                    <b-input v-model="fields.mname" placeholder="Middle Name">
+                                    </b-input>
+                                </b-field>
+                            </div>
+
+                            <div class="column">
+                                <b-field label="Suffix" label-position="on-border"
+                                         :type="this.errors.suffix ? 'is-danger':''"
+                                         :message="this.errors.suffix ? this.errors.suffix[0] : ''">
+                                    <b-input v-model="fields.suffix"
+                                             placeholder="Suffix">
+                                    </b-input>
+                                </b-field>
+                            </div>
+
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <b-field label="Contact No" label-position="on-border"
+                                         :type="this.errors.contact_no ? 'is-danger':''"
+                                         :message="this.errors.contact_no ? this.errors.contact_no[0] : ''">
+                                    <b-input type="number" v-model="fields.contact_no"
+                                             placeholder="Contact No" required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                            <div class="column">
+                                <b-field label="Email" label-position="on-border"
+                                         :type="this.errors.email ? 'is-danger':''"
+                                         :message="this.errors.email ? this.errors.email[0] : ''">
+                                    <b-input type="email" v-model="fields.email"
+                                             placeholder="Email" required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                        </div>
+
+                        <div class="columns" v-if="global_id < 1">
+                            <div class="column">
+                                <b-field label="Password" label-position="on-border"
+                                         :type="this.errors.password ? 'is-danger':''"
+                                         :message="this.errors.password ? this.errors.password[0] : ''">
+                                    <b-input type="password" password-reveal v-model="fields.password"
+                                             placeholder="Password" required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                            <div class="column">
+                                <b-field label="Confirm Password" label-position="on-border"
+                                         :type="this.errors.password_confirmation ? 'is-danger':''"
+                                         :message="this.errors.password_confirmation ? this.errors.password_confirmation[0] : ''">
+                                    <b-input type="password" v-model="fields.password_confirmation" password-reveal
+                                             placeholder="Confirm Password" required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                        </div>
+
+
+                        <div class="columns">
+                            <div class="column">
+                                <b-field label="Sex" label-position="on-border" expanded
+                                         :type="this.errors.sex ? 'is-danger':''"
+                                         :message="this.errors.sex ? this.errors.sex[0] : ''"
+                                >
+                                    <b-select v-model="fields.sex" expanded>
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+                                    </b-select>
+                                </b-field>
+                            </div>
+
+                            <div class="column">
+                                <b-field label="Role" label-position="on-border" expanded
+                                         :type="this.errors.role ? 'is-danger':''"
+                                         :message="this.errors.role ? this.errors.role[0] : ''"
+                                >
+                                    <b-select v-model="fields.role" expanded>
+                                        <option value="ADMIN">ADMINISTRATOR</option>
+                                        <option value="USER">USER</option>
+                                    </b-select>
+                                </b-field>
+                            </div>
+                        </div>
+
+
+
+                        <div class="columns">
+                            <div class="column">
+                                <b-field label="Province" label-position="on-border" expanded
+                                         :type="this.errors.province ? 'is-danger':''"
+                                         :message="this.errors.province ? this.errors.province[0] : ''">
+                                    <b-select v-model="fields.province" @input="loadCity" expanded>
+                                        <option v-for="(item, index) in provinces" :key="index" :value="item.provCode">{{ item.provDesc }}</option>
+                                    </b-select>
+                                </b-field>
+                            </div>
+
+                            <div class="column">
+                                <b-field label="City" label-position="on-border" expanded
+                                         :type="this.errors.city ? 'is-danger':''"
+                                         :message="this.errors.city ? this.errors.city[0] : ''">
+                                    <b-select v-model="fields.city" @input="loadBarangay" expanded>
+                                        <option v-for="(item, index) in cities" :key="index" :value="item.citymunCode">{{ item.citymunDesc }}</option>
+                                    </b-select>
+                                </b-field>
+                            </div>
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <b-field label="Barangay" label-position="on-border" expanded
+                                         :type="this.errors.barangay ? 'is-danger':''"
+                                         :message="this.errors.barangay ? this.errors.barangay[0] : ''">
+                                    <b-select v-model="fields.barangay" expanded>
+                                        <option v-for="(item, index) in barangays" :key="index" :value="item.brgyCode">{{ item.brgyDesc }}</option>
+                                    </b-select>
+                                </b-field>
+                            </div>
+                            <div class="column">
+                                <b-field label="Street" label-position="on-border">
+                                    <b-input v-model="fields.street"
+                                             placeholder="Street" required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <b-button
+                        label="Close"
+                        @click="isModalCreate=false"/>
+                    <button
+                        :class="btnClass"
+                        label="Save"
+                        type="is-success">SAVE</button>
+                </footer>
+            </div>
+        </form><!--close form-->
+    </b-modal>
+    <!--close modal-->
+
 
 </div>
 </template>
@@ -109,10 +313,26 @@ export default {
             defaultSortDirection: 'asc',
             //table variables
 
-
             search: {
                 lname: '',
-            }
+            },
+
+            fields: {},
+            errors: {},
+            global_id: 0,
+
+            provinces: [],
+            cities: [],
+            barangays: [],
+            street: '',
+
+            btnClass: {
+                'is-success': true,
+                'button': true,
+                'is-loading':false,
+            },
+
+            isModalCreate: false,
         }
     },
     methods: {
@@ -125,7 +345,7 @@ export default {
             ].join('&')
 
             this.loading = true
-            axios.get(`/fetch-users?${params}`)
+            axios.get(`/get-users?${params}`)
                 .then(({ data }) => {
                     this.data = [];
                     let currentTotal = data.total
@@ -164,10 +384,139 @@ export default {
         setPerPage(){
             this.loadAsyncData()
         },
+        openModal(){
+            this.isModalCreate=true;
+            this.fields = {};
+            this.errors = {};
+        },
+
+        loadProvince: function(){
+            axios.get('/load-provinces').then(res=>{
+                this.provinces = res.data;
+            })
+        },
+
+        loadCity: function(){
+            axios.get('/load-cities?prov=' + this.fields.province).then(res=>{
+                this.cities = res.data;
+            })
+        },
+
+        loadBarangay: function(){
+            axios.get('/load-barangays?prov=' + this.fields.province + '&city_code='+this.fields.city).then(res=>{
+                this.barangays = res.data;
+            })
+        },
+
+        clearFields(){
+            this.fields = {
+                username: '',
+                lname: '', fname: '', mname: '', suffix: '',
+                password: '', password_confirmation : '',
+                sex : '', role: '',  email : '', contact_no : '',
+                province: '', city: '', barangay: '', street: ''
+            };
+        },
+
+        //alert box ask for deletion
+        confirmDelete(delete_id) {
+            this.$buefy.dialog.confirm({
+                title: 'DELETE!',
+                type: 'is-danger',
+                message: 'Are you sure you want to delete this data?',
+                cancelText: 'Cancel',
+                confirmText: 'Delete user account?',
+                onConfirm: () => this.deleteSubmit(delete_id)
+            });
+        },
+        //execute delete after confirming
+        deleteSubmit(delete_id) {
+            axios.delete('/users/' + delete_id).then(res => {
+                this.loadAsyncData();
+            }).catch(err => {
+                if (err.response.status === 422) {
+                    this.errors = err.response.data.errors;
+                }
+            });
+        },
+
+        submit: function(){
+            if(this.global_id > 0){
+                //update
+                axios.put('/users/'+this.global_id, this.fields).then(res=>{
+                    if(res.data.status === 'updated'){
+                        this.$buefy.dialog.confirm({
+                            title: 'UPDATED!',
+                            message: 'Successfully updated.',
+                            type: 'is-success',
+                            onConfirm: () => {
+                                this.loadAsyncData();
+                                this.clearFields();
+                                this.global_id = 0;
+                                this.isModalCreate = false;
+                            }
+                        })
+                    }
+                }).catch(err=>{
+                    if(err.response.status === 422){
+                        this.errors = err.response.data.errors;
+                    }
+                })
+            }else{
+                //INSERT HERE
+                axios.post('/users', this.fields).then(res=>{
+                    if(res.data.status === 'saved'){
+                        this.$buefy.dialog.confirm({
+                            title: 'SAVED!',
+                            message: 'Successfully saved.',
+                            type: 'is-success',
+                            confirmText: 'OK',
+                            onConfirm: () => {
+                                this.isModalCreate = false;
+                                this.loadAsyncData();
+                                this.clearFields();
+                                this.global_id = 0;
+                            }
+                        })
+                    }
+                }).catch(err=>{
+                    if(err.response.status === 422){
+                        this.errors = err.response.data.errors;
+                    }
+                });
+
+
+            }
+        },
+
+
+        //update code here
+        getData: function(data_id){
+            this.clearFields();
+            this.global_id = data_id;
+            this.isModalCreate = true;
+
+
+            //nested axios for getting the address 1 by 1 or request by request
+            axios.get('/users/'+data_id).then(res=>{
+                this.fields = res.data;
+                let tempData = res.data;
+                //load city first
+                axios.get('/load-cities?prov=' + this.fields.province).then(res=>{
+                    //load barangay
+                    this.cities = res.data;
+                    axios.get('/load-barangays?prov=' + this.fields.province + '&city_code='+this.fields.city).then(res=>{
+                        this.barangays = res.data;
+                        this.fields = tempData;
+                    });
+                });
+            });
+        }
 
     },
     mounted() {
         this.loadAsyncData();
+        this.loadProvince();
     }
 }
 </script>
