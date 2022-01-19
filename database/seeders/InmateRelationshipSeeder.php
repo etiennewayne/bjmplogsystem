@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\InmateRelationship;
 use Illuminate\Database\Seeder;
 
 class InmateRelationshipSeeder extends Seeder
@@ -31,5 +32,7 @@ class InmateRelationshipSeeder extends Seeder
                 'inmate_relationship'=>'COUNCIL'
             ]
         ];
+
+        InmateRelationship::insertOrIgnore($data);
     }
 }

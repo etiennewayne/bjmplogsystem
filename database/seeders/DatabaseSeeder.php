@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
         //\App\Models\User::create();
         $this->call([
             UserSeeder::class,
+            InmateRelationshipSeeder::class,
+            MaxCompanionSeeder::class,
+            LimiterSeeder::class,
         ]);
     }
 }
