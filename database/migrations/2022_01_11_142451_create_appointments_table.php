@@ -22,8 +22,9 @@ class CreateAppointmentsTable extends Migration
             $table->date('appointment_date');
             $table->string('meridian', 10);
             $table->string('inmate', 100);
-
+            $table->tinyInteger('is_cancel');
             $table->timestamps();
+
         });
     }
 

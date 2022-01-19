@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAppointmentTypesTable extends Migration
+class CreateInmateRelationshipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAppointmentTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('appointment_types', function (Blueprint $table) {
-            $table->id('appointment_type_id');
-            $table->string('appointment');
+        Schema::create('inmate_relationships', function (Blueprint $table) {
+            $table->id();
+            $table->string('inmate_relationship')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateAppointmentTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointment_types');
+        Schema::dropIfExists('inmate_relationships');
     }
 }
