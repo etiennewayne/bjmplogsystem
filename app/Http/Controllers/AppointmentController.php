@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Companion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,8 @@ class AppointmentController extends Controller
 
     public function store(Request $req){
 
+
+
         $date =  $req->appointment_date;
         $ndate = date("Y-m-d", strtotime($date));
 
@@ -29,7 +32,7 @@ class AppointmentController extends Controller
             'inmate_relationship' => ['required']
         ]);
 
-        Appointment::create([
+        $data = Appointment::create([
             'appointment_date' => $ndate,
             'meridian' => $req->meridian,
             'inmate' => $req->inmate,
@@ -37,9 +40,26 @@ class AppointmentController extends Controller
             'user_id' => $id
         ]);
 
-        return response()->json([
-            'status' => 'saved'
-        ]);
+        $id = $data->appointment_id;
 
+        $countCompanions = count($req->companions);
+
+        if($countCompanions > 0){
+            //if naa sulod
+            foreach($req->companions as $item){
+                Companion::create([
+                    'appointment_id' => $id,
+                    'fullname' => $item['fullname'],
+                    'inmate_relationship' => $item['inmate_relationship']
+                ]);
+            }
+            return response()->json([
+                'status' => 'saved'
+            ], 200);
+        }else{
+            return response()->json([
+                'status' => 'server error'
+            ], 500);
+        }
     }
 }

@@ -3517,6 +3517,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     propUser: {
@@ -3527,7 +3554,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       locale: undefined,
-      fields: {},
+      fields: {
+        appointment_date: null,
+        meridian: '',
+        inmate: '',
+        inmate_relationship: '',
+        purpose: '',
+        companions: []
+      },
+      //companions: [],
       errors: {},
       user: null,
       creds: {},
@@ -3557,18 +3592,17 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this2 = this;
 
-      //this.fields
       axios.post('/appointments', this.fields).then(function (res) {
         console.log(res.data.message);
 
         if (res.data.status === 'saved') {
-          _this2.$buefy.dialog.confirm({
+          _this2.$buefy.dialog.alert({
             title: 'BOOKED!',
             message: 'Your book information successfully saved.',
-            type: 'is-success',
-            confirmText: 'OK',
-            onConfirm: function onConfirm() {}
+            type: 'is-success'
           });
+
+          _this2.clearFields();
         }
       })["catch"](function (err) {
         if (err.response.status === 422) {
@@ -3579,6 +3613,16 @@ __webpack_require__.r(__webpack_exports__);
           _this2.isModal = true;
         }
       });
+    },
+    clearFields: function clearFields() {
+      this.fields = {
+        appointment_date: null,
+        meridian: '',
+        inmate: '',
+        inmate_relationship: '',
+        purpose: '',
+        companions: []
+      };
     },
     loginSubmit: function loginSubmit() {
       var _this3 = this;
@@ -3594,6 +3638,17 @@ __webpack_require__.r(__webpack_exports__);
           _this3.credErrors = err;
         }
       });
+    },
+    add: function add() {
+      this.fields.companions.push({
+        appointment_id: 0,
+        fullname: '',
+        inmate_relationship: ''
+      });
+    },
+    remove: function remove(index) {
+      //alert(index);
+      this.fields.companions.splice(index, 1);
     },
     loadUser: function loadUser() {
       var _this4 = this;
@@ -21996,7 +22051,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.nim[data-v-a4d20914]{\n    background-image: url(\"/img/subbc.jpg\");\n    background-position: center;\n    background-size: cover;\n}\n.hero-form[data-v-a4d20914]{\n    padding: 30px;\n    margin: auto;\n    background-color: rgb(70, 70, 70);\n    border-radius: 10px;\n}\n.hero-form > .title[data-v-a4d20914], .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.hero-form > .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.title[data-v-a4d20914]{\n    color: black;\n    font-style: bold;\n}\n.subtitle[data-v-a4d20914]{\n    color: black;\n    font-style: oblique;\n}\n.section[data-v-a4d20914]{\n    margin-top: 50px;\n}\n.mv-title[data-v-a4d20914]{\n    padding-bottom: 10px;\n    border-bottom: 2px solid rgb(74, 92, 255);\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.footer[data-v-a4d20914]{\n    margin-top: 50px;\n    background-color: #333333;\n    color: #cecece;\n}\n.footer-logo[data-v-a4d20914]{\n    height: 200px;\n    margin: auto;\n}\n.footer-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 130%;\n    justify-content: center;\n    align-items: center;\n}\n.footer-component-title[data-v-a4d20914]{\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n.footertwo-logo[data-v-a4d20914]{\n    height: 130px;\n    margin: auto;\n    opacity: 0.5;\n}\n.footertwo-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 100%;\n    justify-content: center;\n    align-items: center;\n}\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.nim[data-v-a4d20914]{\n    background-image: url(\"/img/subbc.jpg\");\n    background-position: center;\n    background-size: cover;\n}\n.hero-form[data-v-a4d20914]{\n    padding: 30px;\n    margin: auto;\n    background-color: rgb(70, 70, 70);\n    border-radius: 10px;\n}\n.hero-form > .title[data-v-a4d20914], .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.hero-form > .subtitle[data-v-a4d20914]{\n    color: white;\n}\n.title[data-v-a4d20914]{\n    color: black;\n    font-style: bold;\n}\n.subtitle[data-v-a4d20914]{\n    color: black;\n    font-style: oblique;\n}\n.section[data-v-a4d20914]{\n    margin-top: 50px;\n}\n.mv-title[data-v-a4d20914]{\n    padding-bottom: 10px;\n    border-bottom: 2px solid rgb(74, 92, 255);\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.panel-body[data-v-a4d20914]{\n    padding: 20px;\n}\n.footer[data-v-a4d20914]{\n    margin-top: 50px;\n    background-color: #333333;\n    color: #cecece;\n}\n.footer-logo[data-v-a4d20914]{\n    height: 200px;\n    margin: auto;\n}\n.footer-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 130%;\n    justify-content: center;\n    align-items: center;\n}\n.footer-component-title[data-v-a4d20914]{\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n.footertwo-logo[data-v-a4d20914]{\n    height: 130px;\n    margin: auto;\n    opacity: 0.5;\n}\n.footertwo-logo-wrapper[data-v-a4d20914]{\n    display: flex;\n    height: 100%;\n    justify-content: center;\n    align-items: center;\n}\n.item-row[data-v-a4d20914]{\n    padding: 15px;\n}\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -24450,13 +24505,13 @@ var render = function () {
                     return [
                       _c("b-navbar-item", { attrs: { href: "#" } }, [
                         _vm._v(
-                          "\r\n                        Home\r\n                    "
+                          "\n                        Home\n                    "
                         ),
                       ]),
                       _vm._v(" "),
                       _c("b-navbar-item", { attrs: { href: "/users" } }, [
                         _vm._v(
-                          "\r\n                        Users\r\n                    "
+                          "\n                        Users\n                    "
                         ),
                       ]),
                       _vm._v(" "),
@@ -24466,13 +24521,13 @@ var render = function () {
                         [
                           _c("b-navbar-item", { attrs: { href: "#" } }, [
                             _vm._v(
-                              "\r\n                            Profile\r\n                        "
+                              "\n                            Profile\n                        "
                             ),
                           ]),
                           _vm._v(" "),
                           _c("b-navbar-item", { on: { click: _vm.logout } }, [
                             _vm._v(
-                              "\r\n                            Logout\r\n                        "
+                              "\n                            Logout\n                        "
                             ),
                           ]),
                         ],
@@ -24521,7 +24576,7 @@ var render = function () {
       _c("section", { staticClass: "section" }, [
         _c("div", { staticClass: "panel" }, [
           _c("div", { staticClass: "panel-heading" }, [
-            _vm._v("\r\n                USERS\r\n            "),
+            _vm._v("\n                USERS\n            "),
           ]),
           _vm._v(" "),
           _c(
@@ -24678,9 +24733,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.user_id) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -24696,9 +24751,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.username) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -24714,13 +24769,13 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.lname) +
                                 ", " +
                                 _vm._s(props.row.fname) +
                                 " " +
                                 _vm._s(props.row.mname) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -24736,9 +24791,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.sex) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -24754,9 +24809,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.email) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -24772,9 +24827,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.role) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -25584,7 +25639,7 @@ var render = function () {
             _c("div", { staticClass: "panel" }, [
               _c("div", { staticClass: "panel-heading" }, [
                 _vm._v(
-                  "\n                        My Appointment\n                    "
+                  "\r\n                        My Appointment\r\n                    "
                 ),
               ]),
               _vm._v(" "),
@@ -25620,9 +25675,9 @@ var render = function () {
                             fn: function (props) {
                               return [
                                 _vm._v(
-                                  "\n                                " +
+                                  "\r\n                                " +
                                     _vm._s(props.row.appointment_id) +
-                                    "\n                            "
+                                    "\r\n                            "
                                 ),
                               ]
                             },
@@ -25641,11 +25696,11 @@ var render = function () {
                             fn: function (props) {
                               return [
                                 _vm._v(
-                                  "\n                                " +
+                                  "\r\n                                " +
                                     _vm._s(props.row.appointment_date) +
                                     " (" +
                                     _vm._s(props.row.meridian) +
-                                    ")\n                            "
+                                    ")\r\n                            "
                                 ),
                               ]
                             },
@@ -25661,9 +25716,9 @@ var render = function () {
                             fn: function (props) {
                               return [
                                 _vm._v(
-                                  "\n                                " +
+                                  "\r\n                                " +
                                     _vm._s(props.row.inmate) +
-                                    "\n                            "
+                                    "\r\n                            "
                                 ),
                               ]
                             },
@@ -26741,6 +26796,135 @@ var render = function () {
               ),
               _vm._v(" "),
               _c(
+                "b-field",
+                [
+                  _c("b-input", {
+                    attrs: { type: "text", placeholder: "PURPOSE" },
+                    model: {
+                      value: _vm.fields.purpose,
+                      callback: function ($$v) {
+                        _vm.$set(_vm.fields, "purpose", $$v)
+                      },
+                      expression: "fields.purpose",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c(
+                "h3",
+                { staticStyle: { color: "white", "margin-bottom": "1em" } },
+                [_vm._v("COMPANION")]
+              ),
+              _vm._v(" "),
+              _vm._l(this.fields.companions, function (item, k) {
+                return _c("div", { key: k, staticClass: "item-row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "wrapper-item" },
+                    [
+                      _c(
+                        "b-field",
+                        [
+                          _c("b-input", {
+                            attrs: { type: "text", placeholder: "Fullname" },
+                            model: {
+                              value: item.fullname,
+                              callback: function ($$v) {
+                                _vm.$set(item, "fullname", $$v)
+                              },
+                              expression: "item.fullname",
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        { attrs: { expanded: "" } },
+                        [
+                          _c(
+                            "b-select",
+                            {
+                              attrs: {
+                                expanded: "",
+                                placeholder: "Inmate Relationship",
+                                required: "",
+                              },
+                              model: {
+                                value: item.inmate_relationship,
+                                callback: function ($$v) {
+                                  _vm.$set(item, "inmate_relationship", $$v)
+                                },
+                                expression: "item.inmate_relationship",
+                              },
+                            },
+                            _vm._l(
+                              _vm.inmate_relationships,
+                              function (i, index) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: index,
+                                    domProps: { value: i.inmate_relationship },
+                                  },
+                                  [_vm._v(_vm._s(i.inmate_relationship))]
+                                )
+                              }
+                            ),
+                            0
+                          ),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "buttons mt-4 mb-4 is-right" },
+                    [
+                      _c("b-button", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value:
+                              k || (!k && _vm.fields.companions.length > 0),
+                            expression:
+                              "k || ( !k && fields.companions.length > 0)",
+                          },
+                        ],
+                        staticClass: "is-small",
+                        attrs: { type: "is-danger", "icon-left": "delete" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.remove(k)
+                          },
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                ])
+              }),
+              _vm._v(" "),
+              _c(
+                "b-button",
+                {
+                  staticClass: "is-small",
+                  attrs: { type: "is-success", "icon-left": "add" },
+                  on: { click: _vm.add },
+                },
+                [_vm._v("ADD")]
+              ),
+              _vm._v(" "),
+              _c(
                 "div",
                 { staticClass: "buttons is-right" },
                 [
@@ -26756,7 +26940,7 @@ var render = function () {
                 1
               ),
             ],
-            1
+            2
           ),
         ]),
       ]),
@@ -39395,7 +39579,7 @@ webpackContext.id = "./resources/js sync recursive \\.vue$/";
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Users\\\\wayne\\\\Desktop\\\\GitHub\\\\bjmplogsystem"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\Users\\\\wayne\\\\Desktop\\\\GitHub\\\\bjmplogsystem","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/","#USER"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\Users\\\\eshen\\\\Desktop\\\\Github\\\\bjmplogsystem","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

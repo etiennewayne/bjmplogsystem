@@ -80,6 +80,33 @@
                         </b-select>
                     </b-field>
 
+                    <b-field>
+                        <b-input type="text" placeholder="PURPOSE" v-model="fields.purpose"/>
+                    </b-field>
+
+                    <hr>
+                    <h3 style="color: white; margin-bottom: 1em;">COMPANION</h3>
+
+                    <div class="item-row" v-for="(item, k) in this.fields.companions" :key="k">
+                        <div class="wrapper-item">
+                            <b-field>
+                                <b-input type="text" v-model="item.fullname" placeholder="Fullname"></b-input>
+                            </b-field>
+
+                            <b-field expanded>
+                                <b-select expanded v-model="item.inmate_relationship" placeholder="Inmate Relationship" required>
+                                    <option v-for="(i, index) in inmate_relationships" :key="index" :value="i.inmate_relationship">{{ i.inmate_relationship }}</option>
+                                </b-select>
+                            </b-field>
+                        </div>
+
+                        <div class="buttons mt-4 mb-4 is-right">
+                            <b-button @click="remove(k)" v-show="k || ( !k && fields.companions.length > 0)" type="is-danger" class="is-small" icon-left="delete"></b-button>
+                        </div>
+                    </div>
+
+                    <b-button @click="add" type="is-success" class="is-small" icon-left="add">ADD</b-button>
+
                     <div class="buttons is-right">
                         <b-button type="is-success" @click="submit" icon="right-arrow">BOOK NOW</b-button>
                     </div>
@@ -340,7 +367,15 @@ export default {
     data(){
         return{
             locale: undefined,
-            fields: {},
+            fields: {
+                appointment_date: null,
+                meridian: '',
+                inmate: '',
+                inmate_relationship: '',
+                purpose: '',
+                companions: []
+            },
+            //companions: [],
             errors: {},
 
             user: null,
@@ -377,17 +412,17 @@ export default {
         },
 
         submit: function(){
-            //this.fields
+
             axios.post('/appointments', this.fields).then(res=>{
                 console.log(res.data.message);
                 if(res.data.status === 'saved'){
-                    this.$buefy.dialog.confirm({
+                    this.$buefy.dialog.alert({
                         title: 'BOOKED!',
                         message: 'Your book information successfully saved.',
                         type: 'is-success',
-                        confirmText: 'OK',
-                        onConfirm: ()=> {}
                     })
+
+                    this.clearFields();
                 }
             }).catch(err=>{
                 if(err.response.status === 422){
@@ -397,6 +432,17 @@ export default {
                     this.isModal = true;
                 }
             });
+        },
+
+        clearFields(){
+            this.fields = {
+                appointment_date: null,
+                    meridian: '',
+                    inmate: '',
+                    inmate_relationship: '',
+                    purpose: '',
+                    companions: []
+            }
         },
 
 
@@ -412,6 +458,19 @@ export default {
                 }
             });
         },
+
+        add () {
+            this.fields.companions.push({
+                appointment_id: 0,
+                fullname: '',
+                inmate_relationship: ''
+            })
+        },
+        remove(index){
+            //alert(index);
+            this.fields.companions.splice(index, 1);
+        },
+
 
 
         loadUser(){
@@ -516,6 +575,12 @@ export default {
         height: 100%;
         justify-content: center;
         align-items: center;
+    }
+
+
+
+    .item-row{
+        padding: 15px;
     }
 
 

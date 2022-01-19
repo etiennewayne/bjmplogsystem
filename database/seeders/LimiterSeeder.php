@@ -17,13 +17,10 @@ class LimiterSeeder extends Seeder
         //
         $data = [
             [
-                'meridian'=> 'AM',
-                'limit' => 50,
+                'am_limit'=> 50,
+                'pm_limit' => 50,
             ],
-            [
-                'meridian'=> 'PM',
-                'limit' => 50,
-            ]
+
         ];
 
         Limiter::insertOrIgnore($data);

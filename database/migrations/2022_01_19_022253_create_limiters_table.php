@@ -15,8 +15,8 @@ class CreateLimitersTable extends Migration
     {
         Schema::create('limiters', function (Blueprint $table) {
             $table->id();
-            $table->string('meridian')->nullable();
-            $table->integer('limit')->default(0);
+            $table->integer('am_limit')->default();
+            $table->integer('pm_limit')->default(0);
             $table->timestamps();
         });
     }
