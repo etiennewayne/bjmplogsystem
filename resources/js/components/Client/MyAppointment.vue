@@ -13,6 +13,29 @@
                     </div>
                     <div class="panel-body">
 
+                        <div class="level">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <b-field label="Page" label-position="on-border">
+                                        <b-select v-model="perPage" @input="setPerPage">
+                                            <option value="5">5 per page</option>
+                                            <option value="10">10 per page</option>
+                                            <option value="15">15 per page</option>
+                                            <option value="20">20 per page</option>
+                                        </b-select>
+                                    </b-field>
+                                </div>
+                            </div>
+
+<!--                            <div class="level-right">-->
+<!--                                <div class="level-item">-->
+<!--                                    <b-field label="Lastname" label-position="on-border">-->
+<!--                                        <b-input type="input" v-model="search.lname" @keyup.native.enter="loadAsyncData" placeholder="Lastname..."></b-input>-->
+<!--                                    </b-field>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+
                         <b-table
                             :data="data"
                             :loading="loading"
@@ -55,7 +78,10 @@
                             </b-table-column>
                         </b-table>
 
-                    </div>
+                        <div class="buttons">
+                            <b-button type="is-primary" tag="a" href="/" icon-left="add">New</b-button>
+                        </div>
+                    </div> <!--panel -body-->
                 </div>
             </div>
         </div>

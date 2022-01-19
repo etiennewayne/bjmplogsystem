@@ -2766,6 +2766,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -25639,7 +25665,7 @@ var render = function () {
             _c("div", { staticClass: "panel" }, [
               _c("div", { staticClass: "panel-heading" }, [
                 _vm._v(
-                  "\r\n                        My Appointment\r\n                    "
+                  "\n                        My Appointment\n                    "
                 ),
               ]),
               _vm._v(" "),
@@ -25647,6 +25673,60 @@ var render = function () {
                 "div",
                 { staticClass: "panel-body" },
                 [
+                  _c("div", { staticClass: "level" }, [
+                    _c("div", { staticClass: "level-left" }, [
+                      _c(
+                        "div",
+                        { staticClass: "level-item" },
+                        [
+                          _c(
+                            "b-field",
+                            {
+                              attrs: {
+                                label: "Page",
+                                "label-position": "on-border",
+                              },
+                            },
+                            [
+                              _c(
+                                "b-select",
+                                {
+                                  on: { input: _vm.setPerPage },
+                                  model: {
+                                    value: _vm.perPage,
+                                    callback: function ($$v) {
+                                      _vm.perPage = $$v
+                                    },
+                                    expression: "perPage",
+                                  },
+                                },
+                                [
+                                  _c("option", { attrs: { value: "5" } }, [
+                                    _vm._v("5 per page"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "10" } }, [
+                                    _vm._v("10 per page"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "15" } }, [
+                                    _vm._v("15 per page"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "20" } }, [
+                                    _vm._v("20 per page"),
+                                  ]),
+                                ]
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "b-table",
                     {
@@ -25675,9 +25755,9 @@ var render = function () {
                             fn: function (props) {
                               return [
                                 _vm._v(
-                                  "\r\n                                " +
+                                  "\n                                " +
                                     _vm._s(props.row.appointment_id) +
-                                    "\r\n                            "
+                                    "\n                            "
                                 ),
                               ]
                             },
@@ -25696,11 +25776,11 @@ var render = function () {
                             fn: function (props) {
                               return [
                                 _vm._v(
-                                  "\r\n                                " +
+                                  "\n                                " +
                                     _vm._s(props.row.appointment_date) +
                                     " (" +
                                     _vm._s(props.row.meridian) +
-                                    ")\r\n                            "
+                                    ")\n                            "
                                 ),
                               ]
                             },
@@ -25716,9 +25796,9 @@ var render = function () {
                             fn: function (props) {
                               return [
                                 _vm._v(
-                                  "\r\n                                " +
+                                  "\n                                " +
                                     _vm._s(props.row.inmate) +
-                                    "\r\n                            "
+                                    "\n                            "
                                 ),
                               ]
                             },
@@ -25795,6 +25875,26 @@ var render = function () {
                           },
                         ]),
                       }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "buttons" },
+                    [
+                      _c(
+                        "b-button",
+                        {
+                          attrs: {
+                            type: "is-primary",
+                            tag: "a",
+                            href: "/",
+                            "icon-left": "add",
+                          },
+                        },
+                        [_vm._v("New")]
+                      ),
                     ],
                     1
                   ),
