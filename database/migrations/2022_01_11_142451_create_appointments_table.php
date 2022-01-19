@@ -23,6 +23,7 @@ class CreateAppointmentsTable extends Migration
             $table->string('meridian', 10);
             $table->string('inmate', 100);
             $table->tinyInteger('is_cancel')->default(0);
+            $table->string('inmate_relationship')->nullable();
             $table->timestamps();
 
         });

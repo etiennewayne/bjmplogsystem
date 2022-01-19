@@ -3209,36 +3209,98 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    propUser: {
+      type: String,
+      "default": ''
+    }
+  },
   data: function data() {
     return {
       locale: undefined,
       fields: {},
       errors: {},
+      user: null,
       creds: {},
+      credErrors: {},
       isModal: false,
       btnClass: {
         'is-success': true,
         'button': true,
         'is-loading': false
-      }
+      },
+      inmate_relationships: []
     };
   },
   methods: {
-    submit: function submit() {
+    loadInmateRelationship: function loadInmateRelationship() {
       var _this = this;
+
+      axios.get('/get-inmate-relationships').then(function (res) {
+        _this.inmate_relationships = res.data;
+      });
+    },
+    logout: function logout() {
+      axios.post('/logout').then(function () {
+        window.location = '/';
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
 
       axios.post('/appointments', this.fields).then(function (res) {
         console.log(res.data.message);
       })["catch"](function (err) {
         if (err.response.status === 401) {
-          _this.isModal = true;
+          _this2.isModal = true;
         }
       });
     },
     loginSubmit: function loginSubmit() {
-      axios.post('/login', this.creds).then(function (res) {});
+      var _this3 = this;
+
+      axios.post('/login', this.creds).then(function (res) {
+        console.log('login'); //window.location = '/';
+
+        _this3.isModal = false;
+
+        _this3.loadUser();
+      })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this3.credErrors = err;
+        }
+      });
+    },
+    loadUser: function loadUser() {
+      var _this4 = this;
+
+      axios.get('/user').then(function (res) {
+        _this4.user = res.data;
+      });
+    },
+    initData: function initData() {
+      if (this.propUser != '') {
+        this.user = JSON.parse(this.propUser);
+      }
     }
+  },
+  mounted: function mounted() {
+    this.loadInmateRelationship();
+    this.initData();
   }
 });
 
@@ -21711,9 +21773,12 @@ module.exports = function (cssWithMappingToString) {
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
   \*********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Can't find stylesheet to import.\n   ╷\n26 │ @import '~animate.css/animate';\r\n   │         ^^^^^^^^^^^^^^^^^^^^^^\n   ╵\n  resources\\sass\\app.scss 26:9  root stylesheet\n    at processResult (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:751:19)\n    at C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\webpack\\lib\\NormalModule.js:853:5\n    at C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:399:11\n    at C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:251:18\n    at context.callback (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass-loader\\dist\\index.js:54:7\n    at Function.call$2 (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:96399:16)\n    at render_closure1.call$2 (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:82305:12)\n    at _RootZone.runBinary$3$3 (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:28284:18)\n    at _FutureListener.handleError$1 (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:26806:21)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:27113:49)\n    at Object._Future__propagateToListeners (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:12137:77)\n    at _Future._completeError$2 (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:26959:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:26618:12)\n    at Object._asyncRethrow (C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:11940:17)\n    at C:\\Users\\wayne\\Desktop\\GitHub\\bjmplogsystem\\node_modules\\sass\\sass.dart.js:15783:20");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
 
 /***/ }),
 
@@ -25574,22 +25639,78 @@ var render = function () {
                       "span",
                       { staticClass: "navbar-item" },
                       [
-                        _c(
-                          "b-button",
-                          {
-                            attrs: {
-                              type: "is-primary",
-                              tag: "a",
-                              href: "/login",
-                              "icon-left": "login",
-                            },
-                          },
-                          [
-                            _vm._v(
-                              "\n                                        LOGIN\n                                    "
+                        _vm.user != null
+                          ? _c(
+                              "b-dropdown",
+                              {
+                                attrs: { "aria-role": "list" },
+                                scopedSlots: _vm._u(
+                                  [
+                                    {
+                                      key: "trigger",
+                                      fn: function (ref) {
+                                        var active = ref.active
+                                        return [
+                                          _c("b-button", {
+                                            attrs: {
+                                              label:
+                                                _vm.user.username.toUpperCase(),
+                                              type: "is-primary",
+                                              "icon-right": active
+                                                ? "menu-up"
+                                                : "menu-down",
+                                            },
+                                          }),
+                                        ]
+                                      },
+                                    },
+                                  ],
+                                  null,
+                                  false,
+                                  1327076181
+                                ),
+                              },
+                              [
+                                _vm._v(" "),
+                                _c(
+                                  "b-dropdown-item",
+                                  { attrs: { "aria-role": "listitem" } },
+                                  [_vm._v("Action")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-dropdown-item",
+                                  { attrs: { "aria-role": "listitem" } },
+                                  [_vm._v("Another action")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-dropdown-item",
+                                  {
+                                    attrs: { "aria-role": "listitem" },
+                                    on: { click: _vm.logout },
+                                  },
+                                  [_vm._v("LOGOUT")]
+                                ),
+                              ],
+                              1
+                            )
+                          : _c(
+                              "b-button",
+                              {
+                                attrs: {
+                                  type: "is-primary",
+                                  tag: "a",
+                                  href: "/login",
+                                  "icon-left": "login",
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        LOGIN\n                                    "
+                                ),
+                              ]
                             ),
-                          ]
-                        ),
                       ],
                       1
                     ),
@@ -25685,6 +25806,42 @@ var render = function () {
               ),
               _vm._v(" "),
               _c(
+                "b-field",
+                { attrs: { expanded: "" } },
+                [
+                  _c(
+                    "b-select",
+                    {
+                      attrs: {
+                        expanded: "",
+                        placeholder: "Inmate Relationship",
+                        required: "",
+                      },
+                      model: {
+                        value: _vm.fields.inmate_relationship,
+                        callback: function ($$v) {
+                          _vm.$set(_vm.fields, "inmate_relationship", $$v)
+                        },
+                        expression: "fields.inmate_relationship",
+                      },
+                    },
+                    _vm._l(_vm.inmate_relationships, function (item, index) {
+                      return _c(
+                        "option",
+                        {
+                          key: index,
+                          domProps: { value: item.inmate_relationship },
+                        },
+                        [_vm._v(_vm._s(item.inmate_relationship))]
+                      )
+                    }),
+                    0
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
                 "div",
                 { staticClass: "buttons is-right" },
                 [
@@ -25772,9 +25929,11 @@ var render = function () {
                               attrs: {
                                 label: "Username",
                                 "label-position": "on-border",
-                                type: this.errors.username ? "is-danger" : "",
-                                message: this.errors.username
-                                  ? this.errors.username[0]
+                                type: this.credErrors.username
+                                  ? "is-danger"
+                                  : "",
+                                message: this.credErrors.username
+                                  ? this.credErrors.username[0]
                                   : "",
                               },
                             },
@@ -25811,9 +25970,11 @@ var render = function () {
                               attrs: {
                                 label: "Password",
                                 "label-position": "on-border",
-                                type: this.errors.password ? "is-danger" : "",
-                                message: this.errors.password
-                                  ? this.errors.password[0]
+                                type: this.credErrors.password
+                                  ? "is-danger"
+                                  : "",
+                                message: this.credErrors.password
+                                  ? this.credErrors.password[0]
                                   : "",
                               },
                             },
@@ -38377,7 +38538,42 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Users\\\\wayne\\\\
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -38430,13 +38626,68 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Users\\\\wayne\\\\
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"/js/app": 0,
+/******/ 			"css/app": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	__webpack_require__("./resources/js/app.js");
-/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./resources/sass/app.scss");
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;

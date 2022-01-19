@@ -28,7 +28,20 @@
 <!--                                    Documentation-->
 <!--                                </a>-->
                                 <span class="navbar-item">
-                                    <b-button type="is-primary" tag="a" href="/login" icon-left="login">
+                                    <b-dropdown aria-role="list" v-if="user != null">
+                                        <template #trigger="{ active }">
+                                            <b-button
+                                                :label="user.username.toUpperCase()"
+                                                type="is-primary"
+                                                :icon-right="active ? 'menu-up' : 'menu-down'" />
+                                        </template>
+
+
+                                        <b-dropdown-item aria-role="listitem">Action</b-dropdown-item>
+                                        <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
+                                        <b-dropdown-item @click="logout" aria-role="listitem">LOGOUT</b-dropdown-item>
+                                    </b-dropdown>
+                                    <b-button v-else type="is-primary" tag="a" href="/login" icon-left="login">
                                         LOGIN
                                     </b-button>
                                 </span>
@@ -63,6 +76,11 @@
                     </b-field>
                     <b-field>
                         <b-input type="text" v-model="fields.inmate" placeholder="Inmate Name" required></b-input>
+                    </b-field>
+                    <b-field expanded>
+                        <b-select expanded v-model="fields.inmate_relationship" placeholder="Inmate Relationship" required>
+                            <option v-for="(item, index) in inmate_relationships" :key="index" :value="item.inmate_relationship">{{ item.inmate_relationship }}</option>
+                        </b-select>
                     </b-field>
 
                     <div class="buttons is-right">
@@ -121,9 +139,7 @@
 
         <section>
             <div class ="footer">
-
                 <div class = "columns">
-
                     <div class="column">
                         <div class="footer-logo-wrapper">
                             <img class="footer-logo" src="/img/logobg.png">
@@ -159,10 +175,7 @@
                             <div>
                                 7214, Philippines
                             </div>
-
                         </div>
-
-
                     </div>
 
                 </div>
@@ -265,8 +278,8 @@
                             <div class="columns">
                                 <div class="column">
                                     <b-field label="Username" label-position="on-border"
-                                             :type="this.errors.username ? 'is-danger':''"
-                                             :message="this.errors.username ? this.errors.username[0] : ''">
+                                             :type="this.credErrors.username ? 'is-danger':''"
+                                             :message="this.credErrors.username ? this.credErrors.username[0] : ''">
                                         <b-input v-model="creds.username"
                                                  placeholder="Username" required>
                                         </b-input>
@@ -277,8 +290,8 @@
                             <div class="columns">
                                 <div class="column">
                                     <b-field label="Password" label-position="on-border"
-                                             :type="this.errors.password ? 'is-danger':''"
-                                             :message="this.errors.password ? this.errors.password[0] : ''">
+                                             :type="this.credErrors.password ? 'is-danger':''"
+                                             :message="this.credErrors.password ? this.credErrors.password[0] : ''">
                                         <b-input type="password" password-reveal v-model="creds.password"
                                                  placeholder="Password" required>
                                         </b-input>
@@ -321,13 +334,22 @@
 <script>
 
 export default {
+    props: {
+        propUser: {
+            type: String,
+            default: ''
+        }
+    },
     data(){
         return{
             locale: undefined,
             fields: {},
             errors: {},
 
+            user: null,
+
             creds: {},
+            credErrors: {},
 
             isModal: false,
 
@@ -337,9 +359,26 @@ export default {
                 'is-loading':false,
             },
 
+            inmate_relationships: [],
+
         }
     },
     methods: {
+
+        loadInmateRelationship: function(){
+            axios.get('/get-inmate-relationships')
+            .then(res=>{
+                this.inmate_relationships = res.data;
+            });
+        },
+
+        logout(){
+            axios.post('/logout')
+            .then(()=>{
+                window.location = '/';
+            })
+        },
+
         submit: function(){
             axios.post('/appointments', this.fields).then(res=>{
                 console.log(res.data.message);
@@ -353,9 +392,34 @@ export default {
 
         loginSubmit: function(){
             axios.post('/login', this.creds).then(res=>{
-
+                console.log('login');
+                //window.location = '/';
+                this.isModal = false;
+                this.loadUser();
+            }).catch(err=>{
+                if(err.response.status === 422){
+                    this.credErrors = err;
+                }
             });
+        },
+
+
+        loadUser(){
+            axios.get('/user').then(res=>{
+                this.user = res.data;
+            })
+        },
+
+        initData(){
+            if(this.propUser != ''){
+                this.user = JSON.parse(this.propUser);
+            }
         }
+    },
+
+    mounted() {
+        this.loadInmateRelationship();
+        this.initData();
     }
 }
 </script>

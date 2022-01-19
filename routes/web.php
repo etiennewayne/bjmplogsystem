@@ -53,6 +53,11 @@ Route::get('/load-cities', [App\Http\Controllers\AddressController::class, 'load
 Route::get('/load-barangays', [App\Http\Controllers\AddressController::class, 'loadBarangays']);
 
 
+//INMATE RELATIONSHIP
+Route::get('/get-inmate-relationships', function(){
+    return App\Models\InmateRelationship::orderBy('inmate_relationship', 'asc')->get();
+});
+
 
 
 // //POST, GET, PUT, DELETE
@@ -76,4 +81,8 @@ Route::get('/logout', function(Request $request){
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
+});
+
+Route::middleware('auth')->get('/user', function(){
+    return Auth::user();
 });

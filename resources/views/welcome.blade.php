@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <welcome-page></welcome-page>
+    <welcome-page prop-user="{{ Auth::user() }}"></welcome-page>
 
 @endsection
