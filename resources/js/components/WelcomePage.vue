@@ -3,52 +3,37 @@
         <div class="hero is-fullheight nim">
 
             <div class="hero-head">
-                <nav class="navbar">
-                    <div class="container">
-                        <div class="navbar-brand">
-<!--                            <a class="navbar-item">-->
-<!--                                <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">-->
-<!--                            </a>-->
+                <b-navbar>
 
-                            <span class="navbar-burger" data-target="navbarMenuHeroB">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
-                        </div>
-                        <div id="navbarMenuHeroB" class="navbar-menu">
-                            <div class="navbar-end">
-<!--                                <a class="navbar-item is-active">-->
-<!--                                    Home-->
-<!--                                </a>-->
-<!--                                <a class="navbar-item">-->
-<!--                                    Examples-->
-<!--                                </a>-->
-<!--                                <a class="navbar-item">-->
-<!--                                    Documentation-->
-<!--                                </a>-->
-                                <span class="navbar-item">
-                                    <b-dropdown aria-role="list" v-if="user != null">
-                                        <template #trigger="{ active }">
-                                            <b-button
-                                                :label="user.username.toUpperCase()"
-                                                type="is-primary"
-                                                :icon-right="active ? 'menu-up' : 'menu-down'" />
-                                        </template>
+                    <template #brand>
+                        <b-navbar-item></b-navbar-item>
+                    </template>
+                    <template #start>
 
 
-                                        <b-dropdown-item aria-role="listitem">Action</b-dropdown-item>
-                                        <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
-                                        <b-dropdown-item @click="logout" aria-role="listitem">LOGOUT</b-dropdown-item>
-                                    </b-dropdown>
-                                    <b-button v-else type="is-primary" tag="a" href="/login" icon-left="login">
-                                        LOGIN
-                                    </b-button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
+                    </template>
+                    <template #end>
+                        <b-navbar-item tag="div">
+                                <b-dropdown aria-role="list" v-if="user != null">
+                                    <template #trigger="{ active }">
+                                        <b-button
+                                            :label="user.username.toUpperCase()"
+                                            type="is-primary"
+                                            :icon-right="active ? 'menu-up' : 'menu-down'" />
+                                    </template>
+
+
+                                    <b-dropdown-item aria-role="listitem">Action</b-dropdown-item>
+                                    <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
+                                    <b-dropdown-item @click="logout" aria-role="listitem">LOGOUT</b-dropdown-item>
+                                </b-dropdown>
+                                <b-button v-else type="is-primary" tag="a" href="/login" icon-left="login">
+                                    LOGIN
+                                </b-button>
+                            </b-navbar-item>
+                    </template>
+
+                </b-navbar>
             </div>
 
 
@@ -61,23 +46,36 @@
                         "Changing Lives, Building a Safer nation"
                     </p>
 
-                    <b-field expanded>
-                        <b-datepicker
-                            placeholder="Type or select a date..."
-                            icon="calendar-today"
-                            :locale="locale"
-                            v-model="fields.appointment_date"
-                            editable>
-                        </b-datepicker >
-                        <b-select expanded v-model="fields.meridian">
-                            <option value="AM">MORNING</option>
-                            <option value="PM">AFTERNOON</option>
-                        </b-select>
+                    <b-field grouped>
+                        <b-field :type="errors.appointment_date ? 'is-danger' : ''"
+                                 :message="errors.appointment_date ? errors.appointment_date[0] : ''">
+                            <b-datepicker
+                                placeholder="Type or select a date..."
+                                icon="calendar-today"
+                                :locale="locale"
+                                v-model="fields.appointment_date"
+                                editable>
+                            </b-datepicker >
+                        </b-field>
+
+                        <b-field expanded
+                            :type="errors.meridian ? 'is-danger' : ''"
+                            :message="errors.meridian ? errors.meridian[0] : ''">
+                            <b-select expanded v-model="fields.meridian">
+                                <option value="AM">MORNING</option>
+                                <option value="PM">AFTERNOON</option>
+                            </b-select>
+                        </b-field>
+
                     </b-field>
-                    <b-field>
+                    <b-field
+                        :type="errors.inmate ? 'is-danger' : ''"
+                        :message="errors.inmate ? errors.inmate[0] : ''">
                         <b-input type="text" v-model="fields.inmate" placeholder="Inmate Name" required></b-input>
                     </b-field>
-                    <b-field expanded>
+                    <b-field expanded
+                             :type="errors.inmate_relationship ? 'is-danger' : ''"
+                             :message="errors.inmate_relationship ? errors.inmate_relationship[0] : ''">
                         <b-select expanded v-model="fields.inmate_relationship" placeholder="Inmate Relationship" required>
                             <option v-for="(item, index) in inmate_relationships" :key="index" :value="item.inmate_relationship">{{ item.inmate_relationship }}</option>
                         </b-select>
@@ -380,9 +378,22 @@ export default {
         },
 
         submit: function(){
+            //this.fields
             axios.post('/appointments', this.fields).then(res=>{
                 console.log(res.data.message);
+                if(res.data.status === 'saved'){
+                    this.$buefy.dialog.confirm({
+                        title: 'BOOKED!',
+                        message: 'Your book information successfully saved.',
+                        type: 'is-success',
+                        confirmText: 'OK',
+                        onConfirm: ()=> {}
+                    })
+                }
             }).catch(err=>{
+                if(err.response.status === 422){
+                    this.errors = err.response.data.errors;
+                }
                 if(err.response.status === 401){
                     this.isModal = true;
                 }

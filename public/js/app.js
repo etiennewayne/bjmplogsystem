@@ -3220,8 +3220,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     propUser: {
@@ -3262,9 +3260,24 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this2 = this;
 
+      //this.fields
       axios.post('/appointments', this.fields).then(function (res) {
         console.log(res.data.message);
+
+        if (res.data.status === 'saved') {
+          _this2.$buefy.dialog.confirm({
+            title: 'BOOKED!',
+            message: 'Your book information successfully saved.',
+            type: 'is-success',
+            confirmText: 'OK',
+            onConfirm: function onConfirm() {}
+          });
+        }
       })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this2.errors = err.response.data.errors;
+        }
+
         if (err.response.status === 401) {
           _this2.isModal = true;
         }
@@ -25622,104 +25635,118 @@ var render = function () {
     "div",
     [
       _c("div", { staticClass: "hero is-fullheight nim" }, [
-        _c("div", { staticClass: "hero-head" }, [
-          _c("nav", { staticClass: "navbar" }, [
-            _c("div", { staticClass: "container" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "div",
+        _c(
+          "div",
+          { staticClass: "hero-head" },
+          [
+            _c("b-navbar", {
+              scopedSlots: _vm._u([
                 {
-                  staticClass: "navbar-menu",
-                  attrs: { id: "navbarMenuHeroB" },
+                  key: "brand",
+                  fn: function () {
+                    return [_c("b-navbar-item")]
+                  },
+                  proxy: true,
                 },
-                [
-                  _c("div", { staticClass: "navbar-end" }, [
-                    _c(
-                      "span",
-                      { staticClass: "navbar-item" },
-                      [
-                        _vm.user != null
-                          ? _c(
-                              "b-dropdown",
-                              {
-                                attrs: { "aria-role": "list" },
-                                scopedSlots: _vm._u(
-                                  [
-                                    {
-                                      key: "trigger",
-                                      fn: function (ref) {
-                                        var active = ref.active
-                                        return [
-                                          _c("b-button", {
-                                            attrs: {
-                                              label:
-                                                _vm.user.username.toUpperCase(),
-                                              type: "is-primary",
-                                              "icon-right": active
-                                                ? "menu-up"
-                                                : "menu-down",
-                                            },
-                                          }),
-                                        ]
+                {
+                  key: "start",
+                  fn: function () {
+                    return undefined
+                  },
+                  proxy: true,
+                },
+                {
+                  key: "end",
+                  fn: function () {
+                    return [
+                      _c(
+                        "b-navbar-item",
+                        { attrs: { tag: "div" } },
+                        [
+                          _vm.user != null
+                            ? _c(
+                                "b-dropdown",
+                                {
+                                  attrs: { "aria-role": "list" },
+                                  scopedSlots: _vm._u(
+                                    [
+                                      {
+                                        key: "trigger",
+                                        fn: function (ref) {
+                                          var active = ref.active
+                                          return [
+                                            _c("b-button", {
+                                              attrs: {
+                                                label:
+                                                  _vm.user.username.toUpperCase(),
+                                                type: "is-primary",
+                                                "icon-right": active
+                                                  ? "menu-up"
+                                                  : "menu-down",
+                                              },
+                                            }),
+                                          ]
+                                        },
                                       },
-                                    },
-                                  ],
-                                  null,
-                                  false,
-                                  1327076181
-                                ),
-                              },
-                              [
-                                _vm._v(" "),
-                                _c(
-                                  "b-dropdown-item",
-                                  { attrs: { "aria-role": "listitem" } },
-                                  [_vm._v("Action")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "b-dropdown-item",
-                                  { attrs: { "aria-role": "listitem" } },
-                                  [_vm._v("Another action")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "b-dropdown-item",
-                                  {
-                                    attrs: { "aria-role": "listitem" },
-                                    on: { click: _vm.logout },
-                                  },
-                                  [_vm._v("LOGOUT")]
-                                ),
-                              ],
-                              1
-                            )
-                          : _c(
-                              "b-button",
-                              {
-                                attrs: {
-                                  type: "is-primary",
-                                  tag: "a",
-                                  href: "/login",
-                                  "icon-left": "login",
+                                    ],
+                                    null,
+                                    false,
+                                    1327076181
+                                  ),
                                 },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                        LOGIN\n                                    "
-                                ),
-                              ]
-                            ),
-                      ],
-                      1
-                    ),
-                  ]),
-                ]
-              ),
-            ]),
-          ]),
-        ]),
+                                [
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-dropdown-item",
+                                    { attrs: { "aria-role": "listitem" } },
+                                    [_vm._v("Action")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-dropdown-item",
+                                    { attrs: { "aria-role": "listitem" } },
+                                    [_vm._v("Another action")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-dropdown-item",
+                                    {
+                                      attrs: { "aria-role": "listitem" },
+                                      on: { click: _vm.logout },
+                                    },
+                                    [_vm._v("LOGOUT")]
+                                  ),
+                                ],
+                                1
+                              )
+                            : _c(
+                                "b-button",
+                                {
+                                  attrs: {
+                                    type: "is-primary",
+                                    tag: "a",
+                                    href: "/login",
+                                    "icon-left": "login",
+                                  },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                LOGIN\n                            "
+                                  ),
+                                ]
+                              ),
+                        ],
+                        1
+                      ),
+                    ]
+                  },
+                  proxy: true,
+                },
+              ]),
+            }),
+          ],
+          1
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "hero-body" }, [
           _c(
@@ -25728,57 +25755,86 @@ var render = function () {
             [
               _c("p", { staticClass: "title" }, [
                 _vm._v(
-                  "\n                        WELCOME TO BJMP E-LOG SYSTEM\n                    "
+                  "\n                    WELCOME TO BJMP E-LOG SYSTEM\n                "
                 ),
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "subtitle" }, [
                 _vm._v(
-                  '\n                        "Changing Lives, Building a Safer nation"\n                    '
+                  '\n                    "Changing Lives, Building a Safer nation"\n                '
                 ),
               ]),
               _vm._v(" "),
               _c(
                 "b-field",
-                { attrs: { expanded: "" } },
+                { attrs: { grouped: "" } },
                 [
-                  _c("b-datepicker", {
-                    attrs: {
-                      placeholder: "Type or select a date...",
-                      icon: "calendar-today",
-                      locale: _vm.locale,
-                      editable: "",
-                    },
-                    model: {
-                      value: _vm.fields.appointment_date,
-                      callback: function ($$v) {
-                        _vm.$set(_vm.fields, "appointment_date", $$v)
-                      },
-                      expression: "fields.appointment_date",
-                    },
-                  }),
-                  _vm._v(" "),
                   _c(
-                    "b-select",
+                    "b-field",
                     {
-                      attrs: { expanded: "" },
-                      model: {
-                        value: _vm.fields.meridian,
-                        callback: function ($$v) {
-                          _vm.$set(_vm.fields, "meridian", $$v)
-                        },
-                        expression: "fields.meridian",
+                      attrs: {
+                        type: _vm.errors.appointment_date ? "is-danger" : "",
+                        message: _vm.errors.appointment_date
+                          ? _vm.errors.appointment_date[0]
+                          : "",
                       },
                     },
                     [
-                      _c("option", { attrs: { value: "AM" } }, [
-                        _vm._v("MORNING"),
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "PM" } }, [
-                        _vm._v("AFTERNOON"),
-                      ]),
-                    ]
+                      _c("b-datepicker", {
+                        attrs: {
+                          placeholder: "Type or select a date...",
+                          icon: "calendar-today",
+                          locale: _vm.locale,
+                          editable: "",
+                        },
+                        model: {
+                          value: _vm.fields.appointment_date,
+                          callback: function ($$v) {
+                            _vm.$set(_vm.fields, "appointment_date", $$v)
+                          },
+                          expression: "fields.appointment_date",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      attrs: {
+                        expanded: "",
+                        type: _vm.errors.meridian ? "is-danger" : "",
+                        message: _vm.errors.meridian
+                          ? _vm.errors.meridian[0]
+                          : "",
+                      },
+                    },
+                    [
+                      _c(
+                        "b-select",
+                        {
+                          attrs: { expanded: "" },
+                          model: {
+                            value: _vm.fields.meridian,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.fields, "meridian", $$v)
+                            },
+                            expression: "fields.meridian",
+                          },
+                        },
+                        [
+                          _c("option", { attrs: { value: "AM" } }, [
+                            _vm._v("MORNING"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "PM" } }, [
+                            _vm._v("AFTERNOON"),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
                   ),
                 ],
                 1
@@ -25786,6 +25842,12 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "b-field",
+                {
+                  attrs: {
+                    type: _vm.errors.inmate ? "is-danger" : "",
+                    message: _vm.errors.inmate ? _vm.errors.inmate[0] : "",
+                  },
+                },
                 [
                   _c("b-input", {
                     attrs: {
@@ -25807,7 +25869,15 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "b-field",
-                { attrs: { expanded: "" } },
+                {
+                  attrs: {
+                    expanded: "",
+                    type: _vm.errors.inmate_relationship ? "is-danger" : "",
+                    message: _vm.errors.inmate_relationship
+                      ? _vm.errors.inmate_relationship[0]
+                      : "",
+                  },
+                },
                 [
                   _c(
                     "b-select",
@@ -25862,11 +25932,11 @@ var render = function () {
         ]),
       ]),
       _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
       _vm._m(1),
       _vm._v(" "),
       _vm._m(2),
-      _vm._v(" "),
-      _vm._m(3),
       _vm._v(" "),
       _c(
         "b-modal",
@@ -26057,21 +26127,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-brand" }, [
-      _c(
-        "span",
-        {
-          staticClass: "navbar-burger",
-          attrs: { "data-target": "navbarMenuHeroB" },
-        },
-        [_c("span"), _vm._v(" "), _c("span"), _vm._v(" "), _c("span")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "section" }, [
       _c(
         "h1",
@@ -26086,13 +26141,13 @@ var staticRenderFns = [
               _c("div", { staticClass: "panel is-link" }, [
                 _c("p", { staticClass: "panel-heading" }, [
                   _vm._v(
-                    "\n                                    MISSION\n                                "
+                    "\n                                MISSION\n                            "
                   ),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "panel-body" }, [
                   _vm._v(
-                    "\n                                    “To enhance public safety by ensuring humane safekeeping and development of Persons\n\n                                    Deprived of Liberty (PDL) in all District, City and Municipal Jails for their reintegration to Society.”\n                                "
+                    "\n                                “To enhance public safety by ensuring humane safekeeping and development of Persons\n\n                                Deprived of Liberty (PDL) in all District, City and Municipal Jails for their reintegration to Society.”\n                            "
                   ),
                 ]),
               ]),
@@ -26102,13 +26157,13 @@ var staticRenderFns = [
               _c("div", { staticClass: "panel is-link" }, [
                 _c("p", { staticClass: "panel-heading" }, [
                   _vm._v(
-                    "\n                                    VISION\n                                "
+                    "\n                                VISION\n                            "
                   ),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "panel-body" }, [
                   _vm._v(
-                    "\n                                    “A premier institution highly regarded by Society for the secured and humane\n\n                                    treatment of Persons Deprived of Liberty (PDL) by its competent and motivated Corps.”\n                                "
+                    "\n                                “A premier institution highly regarded by Society for the secured and humane\n\n                                treatment of Persons Deprived of Liberty (PDL) by its competent and motivated Corps.”\n                            "
                   ),
                 ]),
               ]),
@@ -26138,13 +26193,13 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                                THE BJMP\n                            "
+                  "\n                            THE BJMP\n                        "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                               As one of the five pillars of the Criminal Justice System,\n                                the BJMP was created to address the growing\n                                concern of jail management and penology problem.\n                            "
+                  "\n                           As one of the five pillars of the Criminal Justice System,\n                            the BJMP was created to address the growing\n                            concern of jail management and penology problem.\n                        "
                 ),
               ]),
             ]),
@@ -26154,25 +26209,25 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                                OUR LOCATION\n                            "
+                  "\n                            OUR LOCATION\n                        "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                 BJMP Regional Office 8\n                            "
+                  "\n                             BJMP Regional Office 8\n                        "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                 Brgy. Santa Cruz, Tangub, City\n                            "
+                  "\n                             Brgy. Santa Cruz, Tangub, City\n                        "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                7214, Philippines\n                            "
+                  "\n                            7214, Philippines\n                        "
                 ),
               ]),
             ]),
@@ -26201,13 +26256,13 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                                REPUBLIC OF THE PHILIPPINES\n                            "
+                  "\n                            REPUBLIC OF THE PHILIPPINES\n                        "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                               All content is in the public domain unless otherwise stated.\n                            "
+                  "\n                           All content is in the public domain unless otherwise stated.\n                        "
                 ),
               ]),
             ]),
@@ -26217,31 +26272,31 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                                ABOUT GOVPH\n                            "
+                  "\n                            ABOUT GOVPH\n                        "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                Learn more about the Philippine government, its structure,\n                                how government works and the people behind it.\n                             "
+                  "\n                            Learn more about the Philippine government, its structure,\n                            how government works and the people behind it.\n                         "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                GOV.PH\n                             "
+                  "\n                            GOV.PH\n                         "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                  Open Data Portal\n                             "
+                  "\n                              Open Data Portal\n                         "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                 Official Gazette\n                             "
+                  "\n                             Official Gazette\n                         "
                 ),
               ]),
             ]),
@@ -26251,43 +26306,43 @@ var staticRenderFns = [
             _c("div", { staticClass: "p-5" }, [
               _c("div", { staticClass: "footer-component-title" }, [
                 _vm._v(
-                  "\n                                GOVERNMENT LINKS\n                            "
+                  "\n                            GOVERNMENT LINKS\n                        "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                Office of the President\n                             "
+                  "\n                            Office of the President\n                         "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                Office of the Vice President\n                               "
+                  "\n                            Office of the Vice President\n                           "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                   Senate of the Philippines\n                               "
+                  "\n                               Senate of the Philippines\n                           "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                    House of Representatives\n                               "
+                  "\n                                House of Representatives\n                           "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                   Supreme Court\n                              "
+                  "\n                               Supreme Court\n                          "
                 ),
               ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "\n                                Court of Appeal\n                            "
+                  "\n                            Court of Appeal\n                        "
                 ),
               ]),
             ]),
