@@ -69,8 +69,31 @@ Route::get('/get-inmate-relationships', function(){
 
 
 
+
 //APPOINTMENT
 Route::resource('/appointments', App\Http\Controllers\AppointmentController::class);
+
+Route::resource('/appointments', App\Http\Controllers\AppointmentController::class);
+Route::resource('/appointments', App\Http\Controllers\AppointmentController::class);
+
+
+
+
+
+//CLIENT SIDE
+Route::resource('/my-dashboard', App\Http\Controllers\Client\MyDashboardController::class);
+
+Route::resource('/my-appointment', App\Http\Controllers\Client\MyAppointmentController::class);
+Route::get('/get-appointments', [App\Http\Controllers\Client\MyAppointmentController::class, 'getAppointments']);
+Route::post('/my-appointment-cancel/{id}', [App\Http\Controllers\Client\MyAppointmentController::class, 'cancelAppointment']);
+
+
+
+
+
+
+
+
 
 
 Route::get('/session', function(){

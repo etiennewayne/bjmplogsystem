@@ -23,8 +23,7 @@
                                     </template>
 
 
-                                    <b-dropdown-item aria-role="listitem">Action</b-dropdown-item>
-                                    <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
+                                    <b-dropdown-item tag="a" href="/my-dashboard" aria-role="listitem">My Dashboard</b-dropdown-item>
                                     <b-dropdown-item @click="logout" aria-role="listitem">LOGOUT</b-dropdown-item>
                                 </b-dropdown>
                                 <b-button v-else type="is-primary" tag="a" href="/login" icon-left="login">

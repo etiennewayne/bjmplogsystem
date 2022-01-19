@@ -24,6 +24,7 @@ class CreateAppointmentsTable extends Migration
             $table->string('inmate', 100);
             $table->tinyInteger('is_cancel')->default(0);
             $table->string('inmate_relationship')->nullable();
+            $table->string('purpose')->nullable();
             $table->timestamps();
 
         });
