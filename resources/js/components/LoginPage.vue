@@ -7,7 +7,9 @@
                 </div>
 
                 <div class="panel-body">
-                    <b-field label="Username" label-position="on-border">
+                    <b-field label="Username" label-position="on-border"
+                             :type="this.errors.username ? 'is-danger':''"
+                             :message="this.errors.username ? this.errors.username[0] : ''">
                         <b-input type="text" v-model="fields.username" placeholder="Username" />
                     </b-field>
 
@@ -17,6 +19,7 @@
 
                     <div class="buttons">
                         <b-button type="is-primary" @click="submit">LOGIN</b-button>
+                        <b-button tag="a" href="/register-page">REGISTER</b-button>
                     </div>
                 </div>
             </div>
@@ -34,7 +37,7 @@ export default {
                 username: '',
                 password: '',
             },
-            erros: {},
+            errors: {},
 
         }
     },
@@ -49,7 +52,9 @@ export default {
                 window.location = '/dashboard';
                 console.log(res.data);
             }).catch(err=>{
-                console.log(err);
+               if(err.response.status === 422){
+                    this.errors = err.response.data.errors;
+               }
             });
         }
     }

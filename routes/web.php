@@ -45,6 +45,7 @@ Route::resource('/dashboard', App\Http\Controllers\Administrator\AdminDashboardC
 
 Route::resource('/users', App\Http\Controllers\Administrator\UserController::class);
 Route::get('/get-users', [App\Http\Controllers\Administrator\UserController::class, 'getUsers']);
+Route::post('/user-reset-password/{id}', [App\Http\Controllers\Administrator\UserController::class, 'resetPassword']);
 
 
 //ADDRESS

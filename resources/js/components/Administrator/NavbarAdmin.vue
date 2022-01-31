@@ -13,6 +13,9 @@
                         Home
                     </b-navbar-item>
                     <b-navbar-item href="/users">
+                        Appointments
+                    </b-navbar-item>
+                    <b-navbar-item href="/users">
                         Users
                     </b-navbar-item>
 

@@ -43,7 +43,6 @@ class UserController extends Controller
             'username' => ['required', 'string', 'unique:users'],
             'lname' => ['required', 'string', 'max:100'],
             'fname' => ['required', 'string', 'max:100'],
-            'mname' => ['required', 'string', 'max:100'],
             'sex' => ['required', 'string', 'max:20'],
             'email' => ['required', 'unique:users'],
             'password' => ['required', 'string', 'confirmed'],
@@ -84,7 +83,6 @@ class UserController extends Controller
             'username' => ['required', 'string', 'unique:users,username,' .$id. ',user_id'],
             'lname' => ['required', 'string', 'max:100'],
             'fname' => ['required', 'string', 'max:100'],
-            'mname' => ['required', 'string', 'max:100'],
             'sex' => ['required', 'string', 'max:20'],
             'email' => ['required', 'unique:users,email,' .$id. ',user_id'],
             'role' => ['required', 'string'],
@@ -121,6 +119,22 @@ class UserController extends Controller
         return response()->json([
             'status' => 'deleted'
         ],200);
+    }
+
+
+    public function resetPassword(Request $req, $id){
+
+        $req->validate([
+            'password' => ['required',  'confirmed', 'min:4']
+        ]);
+
+        $data = User::find($id);
+        $data->password = Hash::make($req->password);
+        $data->save();
+
+        return response()->json([
+            'status' => 'reseted'
+        ]);
     }
 
 }

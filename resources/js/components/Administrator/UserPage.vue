@@ -82,6 +82,7 @@
                         <div class="is-flex">
                             <b-button class="button is-small is-warning mr-1" tag="a" icon-right="pencil" @click="getData(props.row.user_id)"></b-button>
                             <b-button class="button is-small is-danger mr-1" icon-right="delete" @click="confirmDelete(props.row.user_id)"></b-button>
+                            <b-button class="button is-small is-link mr-1" icon-right="lock-reset" @click="openModalResetPassword(props.row.user_id)"></b-button>
                         </div>
                     </b-table-column>
 
@@ -295,6 +296,62 @@
     <!--close modal-->
 
 
+
+
+    <!-- reset password modal -->
+
+    <!--modal create-->
+    <b-modal v-model="isModalResetPassword" has-modal-card
+             trap-focus
+             :width="640"
+             aria-role="dialog"
+             aria-label="Modal"
+             aria-modal>
+
+        <form @submit.prevent="submitResetPassword">
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">User Password</p>
+                    <button
+                        type="button"
+                        class="delete"
+                        @click="isModalResetPassword = false"/>
+                </header>
+
+                <section class="modal-card-body">
+                    <div class="">
+
+                        <b-field label="Password" label-position="on-border"
+                                 :type="this.errors.password ? 'is-danger':''"
+                                 :message="this.errors.password ? this.errors.password[0] : ''">
+                            <b-input v-model="fields.password" placeholder="Password">
+                            </b-input>
+                        </b-field>
+                        <b-field label="Re-type Password" label-position="on-border"
+                                 :type="this.errors.password_confirmation ? 'is-danger':''"
+                                 :message="this.errors.password_confirmation ? this.errors.password_confirmation[0] : ''">
+                            <b-input v-model="fields.password_confirmation"
+                                     placeholder="Re-type Password">
+                            </b-input>
+                        </b-field>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <b-button
+                        label="Close"
+                        @click="isModalResetPassword=false"/>
+                    <button
+                        :class="btnClass"
+                        label="Save"
+                        type="is-success">RESET PASSWORD</button>
+                </footer>
+            </div>
+        </form><!--close form-->
+    </b-modal>
+    <!--close modal reset password-->
+
+
+
 </div>
 </template>
 
@@ -333,6 +390,7 @@ export default {
             },
 
             isModalCreate: false,
+            isModalResetPassword: false,
         }
     },
     methods: {
@@ -445,7 +503,7 @@ export default {
                 //update
                 axios.put('/users/'+this.global_id, this.fields).then(res=>{
                     if(res.data.status === 'updated'){
-                        this.$buefy.dialog.confirm({
+                        this.$buefy.dialog.alert({
                             title: 'UPDATED!',
                             message: 'Successfully updated.',
                             type: 'is-success',
@@ -466,7 +524,7 @@ export default {
                 //INSERT HERE
                 axios.post('/users', this.fields).then(res=>{
                     if(res.data.status === 'saved'){
-                        this.$buefy.dialog.confirm({
+                        this.$buefy.dialog.alert({
                             title: 'SAVED!',
                             message: 'Successfully saved.',
                             type: 'is-success',
@@ -511,6 +569,36 @@ export default {
                     });
                 });
             });
+        },
+
+
+        //---------RESET PASSWORD---------//
+
+        openModalResetPassword(dataId){
+            this.fields = {};
+            this.isModalResetPassword = true;
+            this.global_id = dataId;
+        },
+        submitResetPassword: function(){
+            axios.post('/user-reset-password/' +this.global_id, this.fields).then(res=>{
+                if(res.data.status === 'reseted'){
+                    this.$buefy.dialog.alert({
+                        title: 'RESET SUCCESSFULLY!',
+                        message: 'Password reset successfully',
+                        type: 'is-success',
+                        onConfirm: ()=>{
+                            this.fields = {};
+                            this.global_id = 0;
+                            this.loadAsyncData();
+                            this.isModalResetPassword = false;
+                        }
+                    });
+                }
+            }).catch(err=>{
+                if(err.response.status === 422){
+                    this.errors = err.response.data.errors;
+                }
+            })
         }
 
     },
