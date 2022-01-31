@@ -2793,6 +2793,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2804,9 +2807,10 @@ __webpack_require__.r(__webpack_exports__);
       page: 1,
       perPage: 5,
       defaultSortDirection: 'asc',
+      mydateSearch: new Date(),
       global_id: 0,
       search: {
-        appointment_date: ''
+        appointment_date: null
       },
       fields: {},
       errors: {},
@@ -2837,7 +2841,7 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         _this.total = currentTotal;
-        data.forEach(function (item) {
+        data.data.forEach(function (item) {
           //item.release_date = item.release_date ? item.release_date.replace(/-/g, '/') : null
           _this.data.push(item);
         });
@@ -2910,6 +2914,12 @@ __webpack_require__.r(__webpack_exports__);
           _this4.errors = err.response.data.errors;
         }
       });
+    },
+    searchAppointment: function searchAppointment() {
+      var ndate = new Date(this.mydateSearch);
+      this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate(); // console.log(this.search.appointment_date);
+
+      this.loadAsyncData();
     }
   },
   mounted: function mounted() {
@@ -2957,8 +2967,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
 //
 //
 //
@@ -3270,7 +3278,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/register-page', this.fields).then(function (res) {
         if (res.data.status === 'saved') {
-          _this4.$buefy.dailog.alert({
+          _this4.$buefy.dialog.alert({
             title: "SAVED!",
             message: 'You account is successfully saved. Please wait for the approval.',
             type: 'is-success',
@@ -25916,17 +25924,28 @@ var render = function () {
                                   },
                                 },
                                 model: {
-                                  value: _vm.search.appointment_date,
+                                  value: _vm.mydateSearch,
                                   callback: function ($$v) {
-                                    _vm.$set(
-                                      _vm.search,
-                                      "appointment_date",
-                                      $$v
-                                    )
+                                    _vm.mydateSearch = $$v
                                   },
-                                  expression: "search.appointment_date",
+                                  expression: "mydateSearch",
                                 },
                               }),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                { staticClass: "control" },
+                                [
+                                  _c("b-button", {
+                                    attrs: {
+                                      type: "is-link",
+                                      "icon-left": "magnify",
+                                    },
+                                    on: { click: _vm.searchAppointment },
+                                  }),
+                                ],
+                                1
+                              ),
                             ],
                             1
                           ),
@@ -26099,7 +26118,7 @@ var render = function () {
                             type: "is-primary",
                             tag: "a",
                             href: "/",
-                            "icon-left": "add",
+                            "icon-left": "book-plus",
                           },
                         },
                         [_vm._v("New")]
@@ -26173,12 +26192,7 @@ var render = function () {
         fn: function () {
           return [
             _c("b-navbar-item", [
-              _c("img", {
-                attrs: {
-                  src: "https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png",
-                  alt: "Lightweight UI components for Vue.js based on Bulma",
-                },
-              }),
+              _c("h1", { staticClass: "title is-5" }, [_vm._v("DASHBOARD")]),
             ]),
           ]
         },

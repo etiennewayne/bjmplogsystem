@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Auth;
 
 class MyAppointmentController extends Controller
 {
@@ -20,9 +21,17 @@ class MyAppointmentController extends Controller
     }
 
     public function getAppointments(Request $req){
-        $ndate = $req->appointment_date;
+        
+        $sort = explode('.', $req->sort_by);
+        $date =  $req->appointment_date;
+        $ndate = date("Y-m-d", strtotime($date));
+        
+        $userid = Auth::user()->user_id;
 
-        return Appointment::orderBy('appointment_id', 'desc')->get();
+        return Appointment::where('appointment_date', 'like', $ndate . '%')
+            ->where('user_id', $userid)
+            ->orderBy($sort[0], $sort[1])
+            ->paginate($req->perpage);
     }
 
 

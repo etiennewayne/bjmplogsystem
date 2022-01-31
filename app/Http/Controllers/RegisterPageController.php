@@ -37,7 +37,7 @@ class RegisterPageController extends Controller
         $refcode = substr(md5($n), -8);
 
         User::create([
-            'qr_ref' => $refcode,
+            'qr_ref' => strtoupper($refcode),
             'username' => $req->username,
             'password' => Hash::make($req->password),
             'email' => $req->email,
@@ -53,9 +53,7 @@ class RegisterPageController extends Controller
             'barangay' => strtoupper($req->barangay),
 
             'street' => $req->street,
-
-
-
+            'role' => 'USER'
         ]);
 
 

@@ -185,7 +185,7 @@ export default {
             axios.post('/register-page', this.fields).then(res=>{
 
                 if(res.data.status === 'saved'){
-                    this.$buefy.dailog.alert({
+                    this.$buefy.dialog.alert({
                         title: "SAVED!",
                         message: 'You account is successfully saved. Please wait for the approval.',
                         type: 'is-success',

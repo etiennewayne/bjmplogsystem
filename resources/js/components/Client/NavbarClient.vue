@@ -3,10 +3,8 @@
     <b-navbar>
         <template #brand>
             <b-navbar-item>
-                <img
-                    src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-                    alt="Lightweight UI components for Vue.js based on Bulma"
-                >
+                <h1 class="title is-5">DASHBOARD</h1>
+               
             </b-navbar-item>
         </template>
         <template #start>

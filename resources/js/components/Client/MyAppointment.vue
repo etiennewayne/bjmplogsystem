@@ -30,7 +30,10 @@
                             <div class="level-right">
                                 <div class="level-item">
                                     <b-field label="Appointment Date" label-position="on-border">
-                                        <b-datepicker v-model="search.appointment_date" @keyup.native.enter="loadAsyncData" placeholder="Appointment date..."></b-datepicker>
+                                        <b-datepicker v-model="mydateSearch" @keyup.native.enter="loadAsyncData" placeholder="Appointment date..."></b-datepicker>
+                                        <p class="control">
+                                            <b-button type="is-link" icon-left="magnify" @click="searchAppointment"></b-button>
+                                        </p>
                                     </b-field>
                                 </div>
                             </div>
@@ -80,7 +83,7 @@
                         </b-table>
 
                         <div class="buttons">
-                            <b-button type="is-primary" tag="a" href="/" icon-left="add">New</b-button>
+                            <b-button type="is-primary" tag="a" href="/" icon-left="book-plus">New</b-button>
                         </div>
                     </div> <!--panel -body-->
                 </div>
@@ -108,11 +111,12 @@ export default {
             perPage: 5,
             defaultSortDirection: 'asc',
 
+            mydateSearch: new Date(),
 
             global_id : 0,
 
             search: {
-                appointment_date: '',
+                appointment_date: null,
             },
 
             fields: {},
@@ -152,7 +156,7 @@ export default {
                     }
 
                     this.total = currentTotal
-                    data.forEach((item) => {
+                    data.data.forEach((item) => {
                         //item.release_date = item.release_date ? item.release_date.replace(/-/g, '/') : null
                         this.data.push(item)
                     })
@@ -224,6 +228,14 @@ export default {
                 }
             });
         },
+
+        searchAppointment: function(){
+            let ndate = new Date(this.mydateSearch);
+
+            this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate();
+           // console.log(this.search.appointment_date);
+            this.loadAsyncData();
+        }
 
     },
     mounted() {
