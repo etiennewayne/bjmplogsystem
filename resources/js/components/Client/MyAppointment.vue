@@ -27,13 +27,14 @@
                                 </div>
                             </div>
 
-<!--                            <div class="level-right">-->
-<!--                                <div class="level-item">-->
-<!--                                    <b-field label="Lastname" label-position="on-border">-->
-<!--                                        <b-input type="input" v-model="search.lname" @keyup.native.enter="loadAsyncData" placeholder="Lastname..."></b-input>-->
-<!--                                    </b-field>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <b-field label="Appointment Date" label-position="on-border">
+                                        <b-datepicker v-model="search.appointment_date" @keyup.native.enter="loadAsyncData" placeholder="Appointment date..."></b-datepicker>
+                                    </b-field>
+                                </div>
+                            </div>
+
                         </div>
 
                         <b-table

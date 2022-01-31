@@ -26,7 +26,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/register-page', [App\Http\Controllers\RegisterPageController::class, 'index']);
+Route::resource('/register-page', App\Http\Controllers\RegisterPageController::class);
 
 //Route::get('/login-page', [App\Http\Controllers\LoginpageController::class, 'index']);
 
@@ -73,8 +73,8 @@ Route::get('/get-inmate-relationships', function(){
 //APPOINTMENT
 Route::resource('/appointments', App\Http\Controllers\AppointmentController::class);
 
-Route::resource('/appointments', App\Http\Controllers\AppointmentController::class);
-Route::resource('/appointments', App\Http\Controllers\AppointmentController::class);
+//Route::resource('/appointments', App\Http\Controllers\AppointmentController::class);
+//Route::resource('/appointments', App\Http\Controllers\AppointmentController::class);
 
 
 

@@ -18,8 +18,6 @@ class AppointmentController extends Controller
 
     public function store(Request $req){
 
-
-
         $date =  $req->appointment_date;
         $ndate = date("Y-m-d", strtotime($date));
 
@@ -53,13 +51,10 @@ class AppointmentController extends Controller
                     'inmate_relationship' => $item['inmate_relationship']
                 ]);
             }
-            return response()->json([
-                'status' => 'saved'
-            ], 200);
-        }else{
-            return response()->json([
-                'status' => 'server error'
-            ], 500);
         }
+
+        return response()->json([
+            'status' => 'saved'
+        ], 200);
     }
 }

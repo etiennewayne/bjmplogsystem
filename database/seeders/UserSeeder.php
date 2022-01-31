@@ -33,7 +33,8 @@ class UserSeeder extends Seeder
                 'city' => '104215',
                 'barangay' => '104215025',
                 'street' => 'P-BOUGAINVILLA',
-                'role' => 'ADMINISTRATOR'
+                'role' => 'ADMINISTRATOR',
+                'is_approved' => 1
             ],
             [
                 'username' => 'user01',
@@ -50,7 +51,8 @@ class UserSeeder extends Seeder
                 'city' => '104215',
                 'barangay' => '104215025',
                 'street' => 'P-BOUGAINVILLA',
-                'role' => 'USER'
+                'role' => 'USER',
+                'is_approved' => 0
             ]
         ];
 
