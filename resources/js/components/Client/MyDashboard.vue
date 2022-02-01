@@ -24,7 +24,7 @@
 
                         <div class="buttons mt-4">
                             <b-button icon-left="qrcode" @click="openModalQR" class="button">SHOW QR</b-button>
-                            <b-button icon-left="account-edit-outline" class="button">EDIT PROFILE</b-button>
+                            <b-button icon-left="account-edit-outline" @click="openModalProfile" class="button">EDIT PROFILE</b-button>
                         </div>
                     </div>
                 </div>
@@ -77,6 +77,56 @@
         </b-modal>
         <!--close modal-->
 
+
+
+        <!--modal create-->
+        <b-modal v-model="isModalProfile" has-modal-card
+                 trap-focus
+                 :width="640"
+                 aria-role="dialog"
+                 aria-label="Modal"
+                 aria-modal>
+
+
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">QR Code</p>
+                    <button
+                        type="button"
+                        class="delete"
+                        @click="isModalProfile = false"/>
+                </header>
+
+                <section class="modal-card-body">
+                    <div class="">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="qr-container">
+                                    <div>QR CODE: {{user.qr_ref }}</div>
+                                    <div>
+                                        <qrcode :value="user.qr_ref" :options="{ width: 200 }"></qrcode>
+                                    </div>
+                                    <div>
+                                        <b>NAME: </b>{{user.lname}}, {{ user.fname}} {{ user.mname }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <b-button
+                        label="Close"
+                        @click="isModalProfile=false"/>
+                </footer>
+            </div>
+
+        </b-modal>
+        <!--close modal-->
+
+
+
+
     </div><!-- root div -->
 
 
@@ -90,6 +140,9 @@ export default {
     data(){
         return{
             user: {},
+            fields: {},
+            errors: {},
+
 
             isQRModal: false,
             isModalProfile: false,
@@ -115,6 +168,12 @@ export default {
 
         openModalQR: function(){
             this.isQRModal = true;
+        },
+
+        openModalProfile(){
+            this.fields = {};
+            this.isModalProfile = true;
+
         }
     },
 

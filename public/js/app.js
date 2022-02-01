@@ -8970,10 +8970,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       user: {},
+      fields: {},
+      errors: {},
       isQRModal: false,
       isModalProfile: false,
       btnClass: {
@@ -8994,6 +9046,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     openModalQR: function openModalQR() {
       this.isQRModal = true;
+    },
+    openModalProfile: function openModalProfile() {
+      this.fields = {};
+      this.isModalProfile = true;
     }
   },
   mounted: function mounted() {
@@ -34093,6 +34149,7 @@ var render = function () {
                       {
                         staticClass: "button",
                         attrs: { "icon-left": "account-edit-outline" },
+                        on: { click: _vm.openModalProfile },
                       },
                       [_vm._v("EDIT PROFILE")]
                     ),
@@ -34189,6 +34246,101 @@ var render = function () {
                     on: {
                       click: function ($event) {
                         _vm.isQRModal = false
+                      },
+                    },
+                  }),
+                ],
+                1
+              ),
+            ]),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "b-modal",
+          {
+            attrs: {
+              "has-modal-card": "",
+              "trap-focus": "",
+              width: 640,
+              "aria-role": "dialog",
+              "aria-label": "Modal",
+              "aria-modal": "",
+            },
+            model: {
+              value: _vm.isModalProfile,
+              callback: function ($$v) {
+                _vm.isModalProfile = $$v
+              },
+              expression: "isModalProfile",
+            },
+          },
+          [
+            _c("div", { staticClass: "modal-card" }, [
+              _c("header", { staticClass: "modal-card-head" }, [
+                _c("p", { staticClass: "modal-card-title" }, [
+                  _vm._v("QR Code"),
+                ]),
+                _vm._v(" "),
+                _c("button", {
+                  staticClass: "delete",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function ($event) {
+                      _vm.isModalProfile = false
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("section", { staticClass: "modal-card-body" }, [
+                _c("div", {}, [
+                  _c("div", { staticClass: "columns" }, [
+                    _c("div", { staticClass: "column" }, [
+                      _c("div", { staticClass: "qr-container" }, [
+                        _c("div", [
+                          _vm._v("QR CODE: " + _vm._s(_vm.user.qr_ref)),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _c("qrcode", {
+                              attrs: {
+                                value: _vm.user.qr_ref,
+                                options: { width: 200 },
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("b", [_vm._v("NAME: ")]),
+                          _vm._v(
+                            _vm._s(_vm.user.lname) +
+                              ", " +
+                              _vm._s(_vm.user.fname) +
+                              " " +
+                              _vm._s(_vm.user.mname) +
+                              "\n                                    "
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "footer",
+                { staticClass: "modal-card-foot" },
+                [
+                  _c("b-button", {
+                    attrs: { label: "Close" },
+                    on: {
+                      click: function ($event) {
+                        _vm.isModalProfile = false
                       },
                     },
                   }),
