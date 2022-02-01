@@ -90,7 +90,7 @@
 
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">QR Code</p>
+                    <p class="modal-card-title">Profile Information</p>
                     <button
                         type="button"
                         class="delete"
@@ -98,21 +98,42 @@
                 </header>
 
                 <section class="modal-card-body">
-                    <div class="">
+                    <div class="container">
+
                         <div class="columns">
+
                             <div class="column">
-                                <div class="qr-container">
-                                    <div>QR CODE: {{user.qr_ref }}</div>
-                                    <div>
-                                        <qrcode :value="user.qr_ref" :options="{ width: 200 }"></qrcode>
-                                    </div>
-                                    <div>
-                                        <b>NAME: </b>{{user.lname}}, {{ user.fname}} {{ user.mname }}
-                                    </div>
-                                </div>
+                                <b-field label="Last Name" label-position="on-border">
+                                    <b-input v-model="fields.lname" placholder="Last Name" />
+                                </b-field>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <b-field label="First Name" label-position="on-border">
+                                    <b-input v-model="fields.fname" placholder="First Name" />
+                                </b-field>
+                            </div>
+                            
+                        </div>
+
+                        <div class="columns">
+                            <div class="column">
+                                <b-field label="Middle Name" label-position="on-border">
+                                    <b-input v-model="fields.mname" placholder="Middle Name" />
+                                </b-field>
+                            </div>
+                            <div class="column">
+                                <b-field label="Suffix" label-position="on-border">
+                                    <b-input v-model="fields.suffix" placholder="Suffix" />
+                                </b-field>
+                            </div>
+                        </div>
+
+
+
+                    </div><!--container -->
                 </section>
                 <footer class="modal-card-foot">
                     <b-button
@@ -160,7 +181,7 @@ export default {
         loadUser: function(){
             axios.get('/get-user').then(res=>{
                 this.user = res.data;
-                console.log(this.user)
+
             }).catch(err=>{
 
             })
@@ -173,6 +194,9 @@ export default {
         openModalProfile(){
             this.fields = {};
             this.isModalProfile = true;
+
+            this.fields = this.user;
+            
 
         }
     },

@@ -9020,6 +9020,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -9041,7 +9062,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/get-user').then(function (res) {
         _this.user = res.data;
-        console.log(_this.user);
       })["catch"](function (err) {});
     },
     openModalQR: function openModalQR() {
@@ -9050,6 +9070,7 @@ __webpack_require__.r(__webpack_exports__);
     openModalProfile: function openModalProfile() {
       this.fields = {};
       this.isModalProfile = true;
+      this.fields = this.user;
     }
   },
   mounted: function mounted() {
@@ -34279,7 +34300,7 @@ var render = function () {
             _c("div", { staticClass: "modal-card" }, [
               _c("header", { staticClass: "modal-card-head" }, [
                 _c("p", { staticClass: "modal-card-title" }, [
-                  _vm._v("QR Code"),
+                  _vm._v("Profile Information"),
                 ]),
                 _vm._v(" "),
                 _c("button", {
@@ -34294,40 +34315,131 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("section", { staticClass: "modal-card-body" }, [
-                _c("div", {}, [
+                _c("div", { staticClass: "container" }, [
                   _c("div", { staticClass: "columns" }, [
-                    _c("div", { staticClass: "column" }, [
-                      _c("div", { staticClass: "qr-container" }, [
-                        _c("div", [
-                          _vm._v("QR CODE: " + _vm._s(_vm.user.qr_ref)),
-                        ]),
-                        _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "column" },
+                      [
                         _c(
-                          "div",
+                          "b-field",
+                          {
+                            attrs: {
+                              label: "Last Name",
+                              "label-position": "on-border",
+                            },
+                          },
                           [
-                            _c("qrcode", {
-                              attrs: {
-                                value: _vm.user.qr_ref,
-                                options: { width: 200 },
+                            _c("b-input", {
+                              attrs: { placholder: "Last Name" },
+                              model: {
+                                value: _vm.fields.lname,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.fields, "lname", $$v)
+                                },
+                                expression: "fields.lname",
                               },
                             }),
                           ],
                           1
                         ),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c("b", [_vm._v("NAME: ")]),
-                          _vm._v(
-                            _vm._s(_vm.user.lname) +
-                              ", " +
-                              _vm._s(_vm.user.fname) +
-                              " " +
-                              _vm._s(_vm.user.mname) +
-                              "\n                                    "
-                          ),
-                        ]),
-                      ]),
-                    ]),
+                      ],
+                      1
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "columns" }, [
+                    _c(
+                      "div",
+                      { staticClass: "column" },
+                      [
+                        _c(
+                          "b-field",
+                          {
+                            attrs: {
+                              label: "First Name",
+                              "label-position": "on-border",
+                            },
+                          },
+                          [
+                            _c("b-input", {
+                              attrs: { placholder: "First Name" },
+                              model: {
+                                value: _vm.fields.fname,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.fields, "fname", $$v)
+                                },
+                                expression: "fields.fname",
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "columns" }, [
+                    _c(
+                      "div",
+                      { staticClass: "column" },
+                      [
+                        _c(
+                          "b-field",
+                          {
+                            attrs: {
+                              label: "Middle Name",
+                              "label-position": "on-border",
+                            },
+                          },
+                          [
+                            _c("b-input", {
+                              attrs: { placholder: "Middle Name" },
+                              model: {
+                                value: _vm.fields.mname,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.fields, "mname", $$v)
+                                },
+                                expression: "fields.mname",
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "column" },
+                      [
+                        _c(
+                          "b-field",
+                          {
+                            attrs: {
+                              label: "Suffix",
+                              "label-position": "on-border",
+                            },
+                          },
+                          [
+                            _c("b-input", {
+                              attrs: { placholder: "Suffix" },
+                              model: {
+                                value: _vm.fields.suffix,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.fields, "suffix", $$v)
+                                },
+                                expression: "fields.suffix",
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
                   ]),
                 ]),
               ]),
