@@ -100,38 +100,59 @@
                 <section class="modal-card-body">
                     <div class="container">
 
-                        <div class="columns">
+                        <form action="">
+                            <div class="columns">
 
-                            <div class="column">
-                                <b-field label="Last Name" label-position="on-border">
-                                    <b-input v-model="fields.lname" placholder="Last Name" />
-                                </b-field>
+                                <div class="column">
+                                    <b-field label="Last Name" label-position="on-border"
+                                        :type="this.errors.lname ? 'is-danger':''"
+                                        :message="this.errors.lname ? this.errors.lname[0] : ''">
+                                        <b-input v-model="fields.lname" placholder="Last Name" />
+                                    </b-field>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="columns">
-                            <div class="column">
-                                <b-field label="First Name" label-position="on-border">
-                                    <b-input v-model="fields.fname" placholder="First Name" />
-                                </b-field>
+                            <div class="columns">
+                                <div class="column">
+                                    <b-field label="First Name" label-position="on-border">
+                                        <b-input v-model="fields.fname" placholder="First Name" />
+                                    </b-field>
+                                </div>
+                                
                             </div>
-                            
-                        </div>
 
-                        <div class="columns">
-                            <div class="column">
-                                <b-field label="Middle Name" label-position="on-border">
-                                    <b-input v-model="fields.mname" placholder="Middle Name" />
-                                </b-field>
+                            <div class="columns">
+                                <div class="column">
+                                    <b-field label="Middle Name" label-position="on-border">
+                                        <b-input v-model="fields.mname" placholder="Middle Name" />
+                                    </b-field>
+                                </div>
+                                <div class="column">
+                                    <b-field label="Suffix" label-position="on-border">
+                                        <b-input v-model="fields.suffix" placholder="Suffix" />
+                                    </b-field>
+                                </div>
                             </div>
-                            <div class="column">
-                                <b-field label="Suffix" label-position="on-border">
-                                    <b-input v-model="fields.suffix" placholder="Suffix" />
-                                </b-field>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <b-field label="Sex" expanded label-position="on-border">
+                                        <b-select v-model="fields.sex" placholder="Sex" expanded>
+                                            <option value="MALE">MALE</option>
+                                            <option value="FEMALE">FEMALE</option>
+                                        </b-select>
+                                    </b-field>
+                                </div>
+
+                                <div class="column">
+                                     <b-field label="Contact No." label-position="on-border">
+                                        <b-input v-model="fields.contact_no" placholder="Contact No" />
+                                    </b-field>
+                                </div>
                             </div>
-                        </div>
 
 
+                        </form>
 
                     </div><!--container -->
                 </section>
@@ -196,7 +217,7 @@ export default {
             this.isModalProfile = true;
 
             this.fields = this.user;
-            
+
 
         }
     },
