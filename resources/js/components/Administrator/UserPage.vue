@@ -231,6 +231,7 @@
                                 >
                                     <b-select v-model="fields.role" expanded>
                                         <option value="ADMIN">ADMINISTRATOR</option>
+                                        <option value="BJMP">BJMP</option>
                                         <option value="USER">USER</option>
                                     </b-select>
                                 </b-field>

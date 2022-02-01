@@ -6,7 +6,7 @@
             <div class="column is-8 is-offset-2">
                 <div class="panel">
                     <div class="panel-heading">
-                        <b-button icon-left="chevron-left" tag="a" href="/" type="is-primary" inverted outlined></b-button> 
+                        <b-button icon-left="chevron-left" tag="a" href="/" type="is-primary" inverted outlined></b-button>
                         <div class="mt-2">
                             REGISTER HERE
                         </div>
@@ -46,6 +46,25 @@
                                         <b-input type="email" v-model="fields.email" icon="email"></b-input>
                                     </b-field>
                                 </div>
+                                <div class="column">
+                                    <b-field label="Upload Image"
+                                             :type="this.errors.img_path ? 'is-danger':''"
+                                             :message="this.errors.img_path ? this.errors.img_path[0] : ''">
+                                        <b-field class="file is-primary" :class="{'has-name': !!fields.img_path}">
+                                            <b-upload v-model="fields.img_path" class="file-label">
+                                        <span class="file-cta">
+                                            <b-icon class="file-icon" icon="upload"></b-icon>
+                                            <span class="file-label">Click to upload</span>
+                                        </span>
+                                                <span class="file-name" v-if="fields.img_path">
+                                            {{ fields.img_path.name }}
+                                        </span>
+                                            </b-upload>
+                                        </b-field>
+                                    </b-field>
+
+                                </div>
+
                             </div>
 
                             <div class="columns">
@@ -133,7 +152,7 @@
 
                         </div><!--panel body-->
                     </form>
-                    
+
 
                 </div> <!--panel -->
             </div>
@@ -150,7 +169,15 @@ export default {
 
         return{
 
-            fields: {},
+            fields: {
+                username: '',
+                password: '',
+                password_confirmation: '',
+                img_path: null,
+                email: '',
+                lname: '', fname: '', mname: '', suffix: '',
+                sex: '', province: '', city: '', barangay: '', street: '',
+            },
             errors: {},
 
             provinces: [],
@@ -160,7 +187,7 @@ export default {
     },
 
     methods: {
-        
+
 
         //ADDRESS
         loadProvince: function(){
@@ -182,18 +209,35 @@ export default {
 
 
         submit: function(){
-            axios.post('/register-page', this.fields).then(res=>{
+
+            var formData = new FormData();
+            formData.append('username', this.fields.username);
+            formData.append('password', this.fields.password);
+            formData.append('password_confirmation', this.fields.password_confirmation);
+            formData.append('img_path', this.fields.img_path);
+            formData.append('email',  this.fields.email);
+            formData.append('lname',  this.fields.lname);
+            formData.append('fname',  this.fields.fname);
+            formData.append('mname',  this.fields.mname);
+            formData.append('suffix', this.fields.suffix);
+            formData.append('sex', this.fields.sex);
+            formData.append('province',  this.fields.province);
+            formData.append('city',  this.fields.city);
+            formData.append('barangay',  this.fields.barangay);
+            formData.append('street',  this.fields.street);
+
+
+            axios.post('/register-page', formData).then(res=>{
 
                 if(res.data.status === 'saved'){
                     this.$buefy.dialog.alert({
                         title: "SAVED!",
-                        message: 'You account is successfully saved. Please wait for the approval.',
+                        message: 'You account is successfully saved.',
                         type: 'is-success',
                         onConfirm: ()=>  window.location = '/'
                     });
                 }
 
-               
             }).catch(err=>{
                 if(err.response.status === 422){
                     this.errors = err.response.data.errors;

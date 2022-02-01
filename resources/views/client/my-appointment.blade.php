@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.client-app')
 
 @section('content')
 
@@ -6,6 +6,3 @@
 
 @endsection
 
-<script>
-
-</script>

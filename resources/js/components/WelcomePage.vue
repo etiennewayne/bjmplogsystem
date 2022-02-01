@@ -1,12 +1,11 @@
 <template>
     <div>
+
         <div class="hero is-fullheight nim">
 
             <div class="hero-head">
                 <b-navbar>
-
                     <template #brand>
-                        <b-navbar-item></b-navbar-item>
                     </template>
                     <template #start>
 
@@ -14,22 +13,22 @@
                     </template>
                     <template #end>
                         <b-navbar-item tag="div">
-                                <b-dropdown aria-role="list" v-if="user != null">
-                                    <template #trigger="{ active }">
-                                        <b-button
-                                            :label="user.username.toUpperCase()"
-                                            type="is-primary"
-                                            :icon-right="active ? 'menu-up' : 'menu-down'" />
-                                    </template>
+                            <b-dropdown aria-role="list" v-if="user != null">
+                                <template #trigger="{ active }">
+                                    <b-button
+                                        :label="user.username.toUpperCase()"
+                                        type="is-primary"
+                                        :icon-right="active ? 'menu-up' : 'menu-down'" />
+                                </template>
 
 
-                                    <b-dropdown-item tag="a" href="/my-dashboard" aria-role="listitem">My Dashboard</b-dropdown-item>
-                                    <b-dropdown-item @click="logout" aria-role="listitem">LOGOUT</b-dropdown-item>
-                                </b-dropdown>
-                                <b-button v-else type="is-primary" tag="a" href="/login" icon-left="login">
-                                    LOGIN
-                                </b-button>
-                            </b-navbar-item>
+                                <b-dropdown-item tag="a" href="/my-dashboard" aria-role="listitem">My Dashboard</b-dropdown-item>
+                                <b-dropdown-item @click="logout" aria-role="listitem">LOGOUT</b-dropdown-item>
+                            </b-dropdown>
+                            <b-button v-else type="is-primary" tag="a" href="/login" icon-left="login">
+                                LOGIN
+                            </b-button>
+                        </b-navbar-item>
                     </template>
 
                 </b-navbar>
@@ -45,44 +44,61 @@
                         "Changing Lives, Building a Safer nation"
                     </p>
 
-                    <b-field grouped>
-                        <b-field :type="errors.appointment_date ? 'is-danger' : ''"
-                                 :message="errors.appointment_date ? errors.appointment_date[0] : ''">
-                            <b-datepicker
-                                placeholder="Type or select a date..."
-                                icon="calendar-today"
-                                :locale="locale"
-                                v-model="fields.appointment_date"
-                                editable>
-                            </b-datepicker >
-                        </b-field>
+                    <div class="columns">
+                        <div class="column">
+                            <b-field :type="errors.appointment_date ? 'is-danger' : ''"
+                                     :message="errors.appointment_date ? errors.appointment_date[0] : ''">
+                                <b-datepicker
+                                    placeholder="Type or select a date..."
+                                    icon="calendar-today"
+                                    :locale="locale"
+                                    v-model="fields.appointment_date"
+                                    editable>
+                                </b-datepicker >
+                            </b-field>
+                        </div>
+                        <div class="column">
+                            <b-field expanded
+                                     :type="errors.meridian ? 'is-danger' : ''"
+                                     :message="errors.meridian ? errors.meridian[0] : ''">
+                                <b-select expanded v-model="fields.meridian">
+                                    <option value="AM">MORNING</option>
+                                    <option value="PM">AFTERNOON</option>
+                                </b-select>
+                            </b-field>
+                        </div>
+                    </div>
 
-                        <b-field expanded
-                            :type="errors.meridian ? 'is-danger' : ''"
-                            :message="errors.meridian ? errors.meridian[0] : ''">
-                            <b-select expanded v-model="fields.meridian">
-                                <option value="AM">MORNING</option>
-                                <option value="PM">AFTERNOON</option>
-                            </b-select>
-                        </b-field>
 
-                    </b-field>
-                    <b-field
-                        :type="errors.inmate ? 'is-danger' : ''"
-                        :message="errors.inmate ? errors.inmate[0] : ''">
-                        <b-input type="text" v-model="fields.inmate" placeholder="Inmate Name" required></b-input>
-                    </b-field>
-                    <b-field expanded
-                             :type="errors.inmate_relationship ? 'is-danger' : ''"
-                             :message="errors.inmate_relationship ? errors.inmate_relationship[0] : ''">
-                        <b-select expanded v-model="fields.inmate_relationship" placeholder="Inmate Relationship" required>
-                            <option v-for="(item, index) in inmate_relationships" :key="index" :value="item.inmate_relationship">{{ item.inmate_relationship }}</option>
-                        </b-select>
-                    </b-field>
+                    <div class="columns">
+                        <div class="column">
+                            <b-field
+                                :type="errors.inmate ? 'is-danger' : ''"
+                                :message="errors.inmate ? errors.inmate[0] : ''">
+                                <b-input type="text" v-model="fields.inmate" placeholder="Inmate Name" required></b-input>
+                            </b-field>
+                        </div>
+                    </div>
 
-                    <b-field>
-                        <b-input type="text" placeholder="PURPOSE" v-model="fields.purpose"/>
-                    </b-field>
+                    <div class="columns">
+                        <div class="column">
+                            <b-field expanded
+                                     :type="errors.inmate_relationship ? 'is-danger' : ''"
+                                     :message="errors.inmate_relationship ? errors.inmate_relationship[0] : ''">
+                                <b-select expanded v-model="fields.inmate_relationship" placeholder="Inmate Relationship" required>
+                                    <option v-for="(item, index) in inmate_relationships" :key="index" :value="item.inmate_relationship">{{ item.inmate_relationship }}</option>
+                                </b-select>
+                            </b-field>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <b-field>
+                                <b-input type="text" placeholder="PURPOSE" v-model="fields.purpose"/>
+                            </b-field>
+                        </div>
+                    </div>
 
                     <hr>
                     <h3 style="color: white; margin-bottom: 1em;">COMPANION</h3>
@@ -118,7 +134,7 @@
 
         <div class="section">
 
-             <h1 class="title is-4" style="text-align: center;">
+             <h1 class="title is-4 mb-6" style="text-align: center;">
                 <span class="mv-title">MISSION & VISION</span>
             </h1>
 
@@ -156,12 +172,10 @@
                     </div> <!--columns-->
                 </div><!--column-->
             </div>
-
-
         </div> <!-- section -->
 
 
-        <section>
+        <Div class="section">
             <div class ="footer">
                 <div class = "columns">
                     <div class="column">
@@ -205,9 +219,9 @@
                 </div>
             </div>
 
-        </section>
+        </Div>
 
-        <section>
+        <div class="section">
             <div class ="footertwo">
 
                 <div class = "columns">
@@ -275,7 +289,7 @@
                          </div>
                 </div>
             </div>
-        </section>
+        </div>
 
 
 
@@ -501,12 +515,19 @@ export default {
         background-size: cover;
     }
 
+
+
+
     .hero-form{
         padding: 30px;
         margin: auto;
         background-color: rgb(70, 70, 70);
         border-radius: 10px;
     }
+
+
+
+
 
 
     .hero-form > .title, .subtitle{

@@ -20,19 +20,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'login' => false
+]);
+Route::get('/login', [App\Http\Controllers\Auth\CustomLoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [App\Http\Controllers\Auth\CustomLoginController::class, 'login']);
+Route::post('/logout', [App\Http\Controllers\Auth\CustomLoginController::class, 'logout']);
+
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::resource('/register-page', App\Http\Controllers\RegisterPageController::class);
 
 //Route::get('/login-page', [App\Http\Controllers\LoginpageController::class, 'index']);
 
 Route::get('/about-page', [App\Http\Controllers\AboutPageController::class, 'index']);
-
-
 
 Route::get('/fetch-address-provinces', [App\Http\Controllers\AddressController::class, 'getProvinces']);
 
@@ -44,6 +48,7 @@ Route::get('/fetch-address-provinces', [App\Http\Controllers\AddressController::
 Route::resource('/dashboard', App\Http\Controllers\Administrator\AdminDashboardController::class);
 
 Route::resource('/users', App\Http\Controllers\Administrator\UserController::class);
+
 Route::get('/get-users', [App\Http\Controllers\Administrator\UserController::class, 'getUsers']);
 Route::post('/user-reset-password/{id}', [App\Http\Controllers\Administrator\UserController::class, 'resetPassword']);
 
@@ -61,14 +66,21 @@ Route::get('/get-inmate-relationships', function(){
 
 
 
+
+//BJMP Side
+Route::get('/bjmp-dashboard', [App\Http\Controllers\BJMP\BJMPController::class, 'index']);
+
+
+Route::get('/qr-scanner', [App\Http\Controllers\BJMP\QRScannerController::class, 'index']);
+Route::get('/validate-qr/{qrcode}', [App\Http\Controllers\BJMP\QRScannerController::class, 'validateQR']);
+
+
 // //POST, GET, PUT, DELETE
 // Route::get('/bjmp', function(){
 //     //statement
 // });
 
 //Route::get('/bjmp-user', [App\Http\Controllers\Bjmpuser\BjmpUser::class, 'index'])->name('home');
-
-
 
 
 //APPOINTMENT
@@ -83,15 +95,12 @@ Route::resource('/appointments', App\Http\Controllers\AppointmentController::cla
 
 //CLIENT SIDE
 Route::resource('/my-dashboard', App\Http\Controllers\Client\MyDashboardController::class);
+Route::get('/get-user', [App\Http\Controllers\Client\MyDashboardController::class, 'getUserInfo']);
+
 
 Route::resource('/my-appointment', App\Http\Controllers\Client\MyAppointmentController::class);
 Route::get('/get-appointments', [App\Http\Controllers\Client\MyAppointmentController::class, 'getAppointments']);
 Route::post('/my-appointment-cancel/{id}', [App\Http\Controllers\Client\MyAppointmentController::class, 'cancelAppointment']);
-
-
-
-
-
 
 
 
@@ -109,4 +118,12 @@ Route::get('/logout', function(Request $request){
 
 Route::middleware('auth')->get('/user', function(){
     return Auth::user();
+});
+
+
+Route::get('/date-test', function(){
+    $mytime = Carbon\Carbon::now();
+
+    return date('Y-m-d A');
+    //return $mytime->toDateTimeString();
 });

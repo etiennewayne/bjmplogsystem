@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <navbar-admin firstname="{{ auth()->user()->fname }}"></navbar-admin>
+    <navbar-admin  }}"></navbar-admin>
     <dashboard-page></dashboard-page>
 
 @endsection

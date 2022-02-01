@@ -25,8 +25,11 @@ class UserController extends Controller
         $sortkey = explode(".",$req->sort_by);
 
         return DB::table('users as a')
+            ->join('provinces as b', '.a.province', 'b.provCode')
+            ->join('cities as c', 'a.city', 'c.citymunCode')
+            ->join('barangays as d', 'a.barangay', 'd.brgyCode')
+            ->select('user_id', 'username', 'lname', 'fname', 'mname', 'email', 'role', 'sex', 'img_path', 'b.provCode', 'b.provDesc')
             ->where('lname', 'like', '%'. $req->lname . '%')
-            ->select('user_id', 'username', 'lname', 'fname', 'mname', 'email', 'role', 'sex')
             ->orderBy($sortkey[0], $sortkey[1])
             ->paginate($req->perpage);
     }
@@ -50,19 +53,31 @@ class UserController extends Controller
             'province' => ['required', 'string'],
             'city' => ['required', 'string'],
             'barangay' => ['required', 'string'],
+            'img_path' =>  ['required', 'mimes:jpg,png,bmp', 'file', 'max:800'],
+        ], $message = [
+            'img_path.mimes' => 'Your uploaded image must be a file of jpg, png or bmp.',
         ]);
 
         $qr_code = substr(md5(time() . $req->lname . $req->fname), -8);
+
+        //upload image b permit
+        $imgId = $req->file('img_path');
+        if($imgId){
+            $pathFile = $imgId->store('public/imgs'); //get path of the file
+            $n = explode('/', $pathFile); //split into array using /
+        }
+
 
         User::create([
             'qr_ref' => $qr_code,
             'username' => $req->username,
             'password' => Hash::make($req->password),
+            'img_path' => $n,
+            'email' => $req->email,
             'lname' => strtoupper($req->lname),
             'fname' => strtoupper($req->fname),
             'mname' => strtoupper($req->mname),
             'sex' => $req->sex,
-            'email' => $req->email,
             'contact_no' => $req->contact_no,
             'role' => $req->role,
             'province' => $req->province,

@@ -2,7 +2,7 @@
 <div>
     <template>
         <div>
-            <b-navbar>
+            <b-navbar class="nav-shadow">
                 <template #brand>
                     <b-navbar-item>
                         <strong>ADMINISTRATOR</strong>

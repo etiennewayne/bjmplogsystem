@@ -1,10 +1,7 @@
 <template>
 <div>
-    <navbar-client></navbar-client>
-
 
     <div class="section">
-
         <div class="columns">
             <div class="column is-8 is-offset-2">
                 <div class="panel">
@@ -30,7 +27,7 @@
                             <div class="level-right">
                                 <div class="level-item">
                                     <b-field label="Appointment Date" label-position="on-border">
-                                        <b-datepicker v-model="mydateSearch" @keyup.native.enter="loadAsyncData" placeholder="Appointment date..."></b-datepicker>
+                                        <b-datepicker v-model="mydateSearch" @keyup.native.enter="searchAppointment" placeholder="Appointment date..."></b-datepicker>
                                         <p class="control">
                                             <b-button type="is-link" icon-left="magnify" @click="searchAppointment"></b-button>
                                         </p>
@@ -82,7 +79,7 @@
                             </b-table-column>
                         </b-table>
 
-                        <div class="buttons">
+                        <div class="buttons mt-4">
                             <b-button type="is-primary" tag="a" href="/" icon-left="book-plus">New</b-button>
                         </div>
                     </div> <!--panel -body-->
@@ -139,6 +136,7 @@ export default {
         * Load async data
         */
         loadAsyncData() {
+
             const params = [
                 `sort_by=${this.sortField}.${this.sortOrder}`,
                 `appointment_date=${this.search.appointment_date}`,
@@ -233,13 +231,14 @@ export default {
             let ndate = new Date(this.mydateSearch);
 
             this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate();
-           // console.log(this.search.appointment_date);
+           // console.log(this.search.appointhis.loadAsyncData();
             this.loadAsyncData();
         }
 
     },
     mounted() {
-        this.loadAsyncData();
+        this.searchAppointment();
+
     }
 }
 </script>

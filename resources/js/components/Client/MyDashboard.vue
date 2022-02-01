@@ -1,6 +1,85 @@
 <template>
 <div>
-    <navbar-client></navbar-client>
+
+    <div class="section">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img v-if="user.img_path" class="cover" :src="`/storage/imgs/${user.img_path}`">
+                            <b-loading v-else :is-full-page="false" :can-cancel="true"></b-loading>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <hr>
+                        <div class="">
+                            <p class="title is-4">{{user.fname}} {{user.mname}} {{ user.lname }}</p>
+                            <p class="subtitle is-6">@{{ user.username }}</p>
+                        </div>
+
+                        <div class="content">
+                           <p><b-icon icon="map-marker"></b-icon>{{ user.street }} {{ user.brgyDesc }}, {{ user.citymunDesc }}, {{user.provDesc}}</p>
+                        </div>
+
+                        <div class="buttons mt-4">
+                            <b-button icon-left="qrcode" @click="openModalQR" class="button">SHOW QR</b-button>
+                            <b-button icon-left="account-edit-outline" class="button">EDIT PROFILE</b-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--modal create-->
+        <b-modal v-model="isQRModal" has-modal-card
+                 trap-focus
+                 :width="640"
+                 aria-role="dialog"
+                 aria-label="Modal"
+                 aria-modal>
+
+
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">QR Code</p>
+                    <button
+                        type="button"
+                        class="delete"
+                        @click="isQRModal = false"/>
+                </header>
+
+                <section class="modal-card-body">
+                    <div class="">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="qr-container">
+                                    <div>QR CODE: {{user.qr_ref }}</div>
+                                    <div>
+                                        <qrcode :value="user.qr_ref" :options="{ width: 200 }"></qrcode>
+                                    </div>
+                                    <div>
+                                        <b>NAME: </b>{{user.lname}}, {{ user.fname}} {{ user.mname }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <b-button
+                        label="Close"
+                        @click="isQRModal=false"/>
+                </footer>
+            </div>
+
+        </b-modal>
+        <!--close modal-->
+
+    </div><!-- root div -->
+
+
 </div>
 </template>
 
@@ -10,20 +89,53 @@ export default {
 
     data(){
         return{
+            user: {},
+
+            isQRModal: false,
+            isModalProfile: false,
+
+            btnClass: {
+                'is-success': true,
+                'button': true,
+                'is-loading':false,
+            },
 
         }
     },
 
     methods: {
+        loadUser: function(){
+            axios.get('/get-user').then(res=>{
+                this.user = res.data;
+                console.log(this.user)
+            }).catch(err=>{
 
+            })
+        },
+
+        openModalQR: function(){
+            this.isQRModal = true;
+        }
     },
 
     mounted() {
-
+        this.loadUser();
     }
 }
 </script>
 
 <style scoped>
+    .qr-container{
+       display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+</style>
 
+
+<style scoped>
+    .cover {
+        object-fit: scale-down;
+    }
 </style>

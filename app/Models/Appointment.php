@@ -13,6 +13,18 @@ class Appointment extends Model
 
     protected $primaryKey = 'appointment_id';
 
-    protected $fillable = ['appointment_date', 'meridian', 'inmate', 'inmate_relationship', 'user_id', 'purpose'];
+    protected $fillable = ['appointment_date', 'meridian', 'inmate', 'inmate_relationship', 'user_id', 'purpose', 'is_scanned'];
+
+
+
+    public function companions(){
+        return $this->hasMany(Companion::class, 'appointment_id', 'appointment_id');
+    }
+
+    public function user(){
+        return $this->hasOne(User::class, 'user_id', 'user_id');
+    }
+
+
 
 }

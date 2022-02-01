@@ -12,30 +12,21 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">-->
+    <!-- Fonts -->
+{{--    <link rel="dns-prefetch" href="//fonts.gstatic.com">--}}
+{{--    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">--}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <style>
-
-        @media screen and (max-width: 1023px){
-            .navbar-menu.is-active {
-                display: block;
-                border: 1px solid #d5d5d5;
-                background-color: transparent;
-            }
-
-        }
-    </style>
-
-
 </head>
 <body>
-    <div id="app">
+<div id="app">
+
+    <navbar-bjmp></navbar-bjmp>
+
+    <main>
         @yield('content')
-    </div>
+    </main>
+</div>
 </body>
 </html>

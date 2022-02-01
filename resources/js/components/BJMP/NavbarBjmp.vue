@@ -3,16 +3,19 @@
     <b-navbar class="nav-shadow">
         <template #brand>
             <b-navbar-item>
-                <b-icon icon="cog-outline"></b-icon>
+                <h1 class="title is-5">BJMP DASHBOARD</h1>
 
             </b-navbar-item>
         </template>
         <template #start>
-            <b-navbar-item href="/my-dashboard">
+            <b-navbar-item href="/bjmp-dashboard">
                 Home
             </b-navbar-item>
-            <b-navbar-item href="my-appointment">
-                My Appointment
+<!--            <b-navbar-item href="/appointments">-->
+<!--                My Appointment-->
+<!--            </b-navbar-item>-->
+            <b-navbar-item href="/qr-scanner">
+                QR Scanner
             </b-navbar-item>
             <b-navbar-dropdown label="My Account">
                 <b-navbar-item href="/my-change-password">
@@ -38,7 +41,7 @@
 
 <script>
 export default {
-    name: "NavbarClient",
+
     methods:{
         logout(){
             axios.post('/logout').then(()=>{

@@ -9,7 +9,7 @@
                 <div class="panel-body">
                     <b-field label="Username" label-position="on-border"
                              :type="this.errors.username ? 'is-danger':''"
-                             :message="this.errors.username ? this.errors.username[0] : ''">
+                             :message="this.errors.username ? this.errors.username : ''">
                         <b-input type="text" v-model="fields.username" placeholder="Username" />
                     </b-field>
 
@@ -49,8 +49,18 @@ export default {
             }
 
             axios.post('/login', this.fields).then(res=>{
-                window.location = '/dashboard';
-                console.log(res.data);
+                //window.location = '/dashboard';
+                let role = res.data.role;
+
+                if(role === 'ADMINISTRATOR'){
+                    window.location = '/dashboard';
+                }
+                else if(role === 'BJMP'){
+                    window.location = '/bjmp-dashboard'
+                }
+                else if(role === 'USER'){
+                    window.location = '/my-dashboard'
+                }
             }).catch(err=>{
                if(err.response.status === 422){
                     this.errors = err.response.data.errors;
@@ -71,7 +81,7 @@ export default {
     }
 
     .login{
-        width: 500px;
+
     }
 
     .panel > .panel-body{

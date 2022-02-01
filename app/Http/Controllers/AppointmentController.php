@@ -33,7 +33,8 @@ class AppointmentController extends Controller
         $data = Appointment::create([
             'appointment_date' => $ndate,
             'meridian' => $req->meridian,
-            'inmate' => $req->inmate,
+            'inmate' => strtoupper($req->inmate),
+            'purpose' => strtoupper($req->purpose),
             'inmate_relationship' => $req->inmate_relationship,
             'user_id' => $id
         ]);

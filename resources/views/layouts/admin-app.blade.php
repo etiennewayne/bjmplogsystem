@@ -18,24 +18,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <style>
-
-        @media screen and (max-width: 1023px){
-            .navbar-menu.is-active {
-                display: block;
-                border: 1px solid #d5d5d5;
-                background-color: transparent;
-            }
-
-        }
-    </style>
-
-
 </head>
 <body>
-    <div id="app">
+<div id="app">
+
+    <navbar-admin firstname="{{ auth()->user()->fname }}"></navbar-admin>
+    <main>
         @yield('content')
-    </div>
+    </main>
+</div>
 </body>
 </html>
+
