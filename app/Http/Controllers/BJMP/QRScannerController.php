@@ -48,14 +48,13 @@ class QRScannerController extends Controller
             ->where('is_scanned', 0)
             ->first();
 
-//        if($data){
-//            if($data->is_scanned < 1){
-//                $a = Appointment::find($data->appointment_id);
-//                $a->is_scanned = 1;
-//                $a->save();
-//            }
-//        }
-
+        if($data){
+            if($data->is_scanned < 1){
+                $a = Appointment::find($data->appointment_id);
+                $a->is_scanned = 1;
+                $a->save();
+            }
+        }
 
         return $data;
     }
