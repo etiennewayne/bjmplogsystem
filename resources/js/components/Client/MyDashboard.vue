@@ -88,85 +88,135 @@
                  aria-modal>
 
 
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Profile Information</p>
-                    <button
-                        type="button"
-                        class="delete"
-                        @click="isModalProfile = false"/>
-                </header>
+            <form @submit.prevent="submitUpdateProfile">
 
-                <section class="modal-card-body">
-                    <div class="container">
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Profile Information</p>
+                        <button
+                            type="button"
+                            class="delete"
+                            @click="isModalProfile = false"/>
+                    </header>
 
-                        <form action="">
-                            <div class="columns">
+                    <section class="modal-card-body">
+                        <div class="container">
 
-                                <div class="column">
-                                    <b-field label="Last Name" label-position="on-border"
-                                        :type="this.errors.lname ? 'is-danger':''"
-                                        :message="this.errors.lname ? this.errors.lname[0] : ''">
-                                        <b-input v-model="fields.lname" placholder="Last Name" />
-                                    </b-field>
-                                </div>
-                            </div>
+                            <form action="">
+                                <div class="columns">
 
-                            <div class="columns">
-                                <div class="column">
-                                    <b-field label="First Name" label-position="on-border">
-                                        <b-input v-model="fields.fname" placholder="First Name" />
-                                    </b-field>
-                                </div>
-                                
-                            </div>
-
-                            <div class="columns">
-                                <div class="column">
-                                    <b-field label="Middle Name" label-position="on-border">
-                                        <b-input v-model="fields.mname" placholder="Middle Name" />
-                                    </b-field>
-                                </div>
-                                <div class="column">
-                                    <b-field label="Suffix" label-position="on-border">
-                                        <b-input v-model="fields.suffix" placholder="Suffix" />
-                                    </b-field>
-                                </div>
-                            </div>
-
-                            <div class="columns">
-                                <div class="column">
-                                    <b-field label="Sex" expanded label-position="on-border">
-                                        <b-select v-model="fields.sex" placholder="Sex" expanded>
-                                            <option value="MALE">MALE</option>
-                                            <option value="FEMALE">FEMALE</option>
-                                        </b-select>
-                                    </b-field>
+                                    <div class="column">
+                                        <b-field label="Last Name" label-position="on-border"
+                                            :type="this.errors.lname ? 'is-danger':''"
+                                            :message="this.errors.lname ? this.errors.lname[0] : ''">
+                                            <b-input v-model="fields.lname" placholder="Last Name" />
+                                        </b-field>
+                                    </div>
                                 </div>
 
-                                <div class="column">
-                                     <b-field label="Contact No." label-position="on-border">
-                                        <b-input v-model="fields.contact_no" placholder="Contact No" />
-                                    </b-field>
+                                <div class="columns">
+                                    <div class="column">
+                                        <b-field label="First Name" label-position="on-border">
+                                            <b-input v-model="fields.fname" placholder="First Name" />
+                                        </b-field>
+                                    </div>
+                                    
                                 </div>
-                            </div>
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <b-field label="Middle Name" label-position="on-border">
+                                            <b-input v-model="fields.mname" placholder="Middle Name" />
+                                        </b-field>
+                                    </div>
+                                    <div class="column">
+                                        <b-field label="Suffix" label-position="on-border">
+                                            <b-input v-model="fields.suffix" placholder="Suffix" />
+                                        </b-field>
+                                    </div>
+                                </div>
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <b-field label="Sex" expanded label-position="on-border">
+                                            <b-select v-model="fields.sex" placholder="Sex" expanded>
+                                                <option value="MALE">MALE</option>
+                                                <option value="FEMALE">FEMALE</option>
+                                            </b-select>
+                                        </b-field>
+                                    </div>
+
+                                    <div class="column">
+                                        <b-field label="Contact No." label-position="on-border">
+                                            <b-input v-model="fields.contact_no" placholder="Contact No" />
+                                        </b-field>
+                                    </div>
+                                </div>
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <b-field label-position="on-border" label="E-mail">
+                                            <b-input type="text" v-model="fields.email" placeholder="E-mail" />
+                                        </b-field>
+                                    </div>
+                                </div>
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <b-field label="Province" expanded
+                                            :type="this.errors.province ? 'is-danger':''"
+                                            :message="this.errors.province ? this.errors.province[0] : ''">
+                                            <b-select v-model="fields.province" expanded placeholder="Province" @input="loadCity">
+                                                <option v-for="(item, index) in provinces" :key="index" :value="item.provCode">{{ item.provDesc }}</option>
+                                            </b-select>
+                                        </b-field>
+                                    </div>
+                                    <div class="column">
+                                        <b-field label="City/Municipality" expanded
+                                            :type="this.errors.city ? 'is-danger':''"
+                                            :message="this.errors.city ? this.errors.city[0] : ''">
+                                            <b-select expanded v-model="fields.city" placeholder="City" @input="loadBarangay">
+                                                <option v-for="(item, index) in cities" :key="index" :value="item.citymunCode">{{ item.citymunDesc }}</option>
+                                            </b-select>
+                                        </b-field>
+                                    </div>
+                                </div>
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <b-field label="Barangay" expanded
+                                            :type="this.errors.barangay ? 'is-danger':''"
+                                            :message="this.errors.barangay ? this.errors.barangay[0] : ''">
+                                            <b-select v-model="fields.barangay" expanded placeholder="Barangay">
+                                                <option v-for="(item, index) in barangays" :key="index" :value="item.brgyCode">{{ item.brgyDesc }}</option>
+                                            </b-select>
+                                        </b-field>
+                                    </div>
+                                    <div class="column">
+                                        <b-field label="House #. Street">
+                                            <b-input type="text" v-model="fields.street"></b-input>
+                                        </b-field>
+                                    </div>
+                                </div>
 
 
-                        </form>
+                            </form>
 
-                    </div><!--container -->
-                </section>
-                <footer class="modal-card-foot">
-                    <b-button
-                        label="Close"
-                        @click="isModalProfile=false"/>
-                </footer>
-            </div>
+                        </div><!--container -->
+                    </section>
+                    <footer class="modal-card-foot">
+                        <b-button
+                            label="Close"
+                            @click="isModalProfile=false"/>
+                        <button
+                            class="button is-success"
+                            >UPDATE</button>
+                    </footer>
+                </div>
+            </form>
 
         </b-modal>
         <!--close modal-->
-
-
 
 
     </div><!-- root div -->
@@ -185,6 +235,8 @@ export default {
             fields: {},
             errors: {},
 
+           
+
 
             isQRModal: false,
             isModalProfile: false,
@@ -195,6 +247,10 @@ export default {
                 'is-loading':false,
             },
 
+            provinces: [],
+            cities: [],
+            barangays: [],
+
         }
     },
 
@@ -202,7 +258,6 @@ export default {
         loadUser: function(){
             axios.get('/get-user').then(res=>{
                 this.user = res.data;
-
             }).catch(err=>{
 
             })
@@ -215,15 +270,75 @@ export default {
         openModalProfile(){
             this.fields = {};
             this.isModalProfile = true;
-
             this.fields = this.user;
+            
+            this.fields.province = this.user.provCode;
+            this.getData();
+
+        },
 
 
+         //ADDRESS
+        loadProvince: function(){
+            axios.get('/load-provinces').then(res=>{
+                this.provinces = res.data;
+            })
+        },
+
+
+        loadCity: function(){
+            axios.get('/load-cities?prov=' + this.fields.province).then(res=>{
+                this.cities = res.data;
+            })
+        },
+
+        loadBarangay: function(){
+            axios.get('/load-barangays?prov=' + this.fields.province + '&city_code='+this.fields.city).then(res=>{
+                this.barangays = res.data;
+            })
+        },
+
+
+        getData: function(){
+            axios.get('/load-cities?prov=' + this.fields.province).then(res=>{
+                //load barangay
+                this.cities = res.data;
+                this.fields.city = this.user.citymunCode;
+
+                axios.get('/load-barangays?prov=' + this.fields.province + '&city_code='+this.fields.city).then(res=>{
+                    this.barangays = res.data;
+                      this.fields.barangay = this.user.brgyCode;
+                });
+            });
+        },
+
+        submitUpdateProfile: function(){
+            axios.put('/my-dashboard-profile/' + this.user.user_id, this.fields).then(res=>{
+                if(res.data.status === 'updated'){
+                    this.$buefy.dialog.alert({
+                        title: 'UPDATED',
+                        message: 'Profile successfully updated.',
+                        type: 'is-success',
+                        onConfirm: ()=>{
+                            this.fields = {},
+                            this.isModalProfile = false;
+                        }
+                    });
+                }
+            }).catch(err=>{
+                if(err.response.status === 422){
+                    this.errors = err.response.data.errors;
+                }
+            });
         }
+
+
     },
 
     mounted() {
+        this.loadProvince();
         this.loadUser();
+        
     }
 }
 </script>

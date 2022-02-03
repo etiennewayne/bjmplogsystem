@@ -26,4 +26,7 @@ class BJMPController extends Controller
         return view('bjmp.bjmp-dashboard')
             ->with('count', $count);
     }
+
+
+    
 }

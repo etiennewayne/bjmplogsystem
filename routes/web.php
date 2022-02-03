@@ -97,6 +97,8 @@ Route::resource('/appointments', App\Http\Controllers\AppointmentController::cla
 Route::resource('/my-dashboard', App\Http\Controllers\Client\MyDashboardController::class);
 Route::get('/get-user', [App\Http\Controllers\Client\MyDashboardController::class, 'getUserInfo']);
 
+Route::put('/my-dashboard-profile/{id}', [App\Http\Controllers\Client\MyDashboardController::class, 'update']);
+
 
 Route::resource('/my-appointment', App\Http\Controllers\Client\MyAppointmentController::class);
 Route::get('/get-appointments', [App\Http\Controllers\Client\MyAppointmentController::class, 'getAppointments']);
