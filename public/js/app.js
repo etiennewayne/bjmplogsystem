@@ -8732,6 +8732,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             message: 'Frist item save successfully.',
             type: 'is-success'
           });
+
+          _this2.fields = {};
         }
       });
     }

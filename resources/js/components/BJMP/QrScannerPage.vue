@@ -182,6 +182,8 @@ export default {
                         message: 'Frist item save successfully.',
                         type: 'is-success'
                     });
+
+                    this.fields = {};
                 }
             })
         }
