@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\BJMP;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -8,15 +8,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class MyChangePassword extends Controller
+class BjmpChangePasswordController extends Controller
 {
     //
+
     public function __construct(){
         $this->middleware('auth');
+        $this->middleware('bjmp');
     }
 
 
     public function update(Request $req){
+
         $req->validate([
             'password' => ['required', 'confirmed', 'min:4'],
             'old_password' => ['required']

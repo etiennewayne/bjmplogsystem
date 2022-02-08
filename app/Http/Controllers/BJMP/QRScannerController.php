@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BJMP;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -57,5 +58,17 @@ class QRScannerController extends Controller
         }
 
         return $data;
+    }
+
+    public function saveFriskItem(Request $req, $id){
+        //return $req->frisk_item;
+
+        $data = Appointment::find($id);
+        $data->frisking_items = $req->frisk_item;
+        $data->save();
+
+        return response()->json([
+            'status' => 'saved'
+        ],200);
     }
 }

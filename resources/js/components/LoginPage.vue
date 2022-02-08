@@ -1,28 +1,38 @@
 <template>
-    <div class="login-wrapper">
-        <div class="login">
-            <div class="panel">
-                <div class="panel-heading">
-                    LOGIN
-                </div>
+    <div class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container">
 
-                <div class="panel-body">
-                    <b-field label="Username" label-position="on-border"
-                             :type="this.errors.username ? 'is-danger':''"
-                             :message="this.errors.username ? this.errors.username : ''">
-                        <b-input type="text" v-model="fields.username" placeholder="Username" />
-                    </b-field>
+                <div class="columns is-centered">
+                    <div class="column is-6">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                LOGIN
+                            </div>
 
-                    <b-field label="Password" label-position="on-border">
-                        <b-input type="password" v-model="fields.password" password-reveal placeholder="Password" />
-                    </b-field>
+                            <div class="panel-body">
+                                <b-field label="Username" label-position="on-border"
+                                        :type="this.errors.username ? 'is-danger':''"
+                                        :message="this.errors.username ? this.errors.username : ''">
+                                    <b-input type="text" v-model="fields.username" placeholder="Username" />
+                                </b-field>
 
-                    <div class="buttons">
-                        <b-button type="is-primary" @click="submit">LOGIN</b-button>
-                        <b-button tag="a" href="/register-page">REGISTER</b-button>
+                                <b-field label="Password" label-position="on-border">
+                                    <b-input type="password" v-model="fields.password" password-reveal placeholder="Password" />
+                                </b-field>
+
+                                <div class="buttons">
+                                    <b-button type="is-primary" @click="submit">LOGIN</b-button>
+                                    <b-button tag="a" href="/register-page">REGISTER</b-button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div> <!--container -->
+            
+            
+            
         </div>
     </div>
 </template>
@@ -73,23 +83,9 @@ export default {
 
 
 <style scope>
-    .login-wrapper{
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .login{
-
-    }
-
-    .panel > .panel-body{
-        padding: 20px;
-
-    }
-
-
-
+   
+.panel-body{
+    padding: 25px;
+}
 
 </style>

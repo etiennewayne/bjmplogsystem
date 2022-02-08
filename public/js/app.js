@@ -8417,11 +8417,101 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      modalChangePassword: false,
+      errors: {},
+      fields: {},
+      btnClass: {
+        'is-success': true,
+        'button': true,
+        'is-loading': false
+      }
+    };
+  },
   methods: {
     logout: function logout() {
       axios.post('/logout').then(function () {
         window.location = '/';
+      });
+    },
+    submit: function submit() {
+      var _this = this;
+
+      axios.post('/bjmp-change-password', this.fields).then(function (res) {
+        if (res.data.status == 'updated') {
+          _this.$buefy.toast.open({
+            message: 'Password changed successfully.',
+            type: 'is-success'
+          });
+
+          _this.modalChangePassword = false;
+          _this.fields = {};
+          _this.errors = {};
+        }
+      })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this.errors = err.response.data.errors;
+        }
       });
     }
   }
@@ -8539,6 +8629,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -8550,7 +8653,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       camera: 'off',
       result: null,
       isProcessing: false,
-      isModalValidModal: false
+      isModalValidModal: false,
+      fields: {}
     };
   },
   methods: {
@@ -8615,6 +8719,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     timeout: function timeout(ms) {
       return new Promise(function (resolve) {
         window.setTimeout(resolve, ms);
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      axios.post('/save-frisk-item/' + this.user.appointment_id, this.fields).then(function (res) {
+        if (res.data.status === 'saved') {
+          _this2.isModalValidModal = false;
+
+          _this2.$buefy.toast.open({
+            message: 'Frist item save successfully.',
+            type: 'is-success'
+          });
+        }
       });
     }
   },
@@ -9261,12 +9379,104 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "NavbarClient",
+  data: function data() {
+    return {
+      modalChangePassword: false,
+      errors: {},
+      fields: {},
+      btnClass: {
+        'is-success': true,
+        'button': true,
+        'is-loading': false
+      }
+    };
+  },
   methods: {
     logout: function logout() {
       axios.post('/logout').then(function () {
         window.location = '/';
+      });
+    },
+    submit: function submit() {
+      var _this = this;
+
+      axios.post('/client-change-password', this.fields).then(function (res) {
+        if (res.data.status == 'updated') {
+          _this.$buefy.toast.open({
+            message: 'Password changed successfully.',
+            type: 'is-success'
+          });
+
+          _this.modalChangePassword = false;
+          _this.fields = {};
+          _this.errors = {};
+        }
+      })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this.errors = err.response.data.errors;
+        }
       });
     }
   }
@@ -9285,6 +9495,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -28553,7 +28773,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.login-wrapper{\n    height: 100vh;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login{\n}\n.panel > .panel-body{\n    padding: 20px;\n}\n\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.panel-body{\n    padding: 25px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -33572,73 +33792,275 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("b-navbar", {
-    staticClass: "nav-shadow",
-    scopedSlots: _vm._u([
-      {
-        key: "brand",
-        fn: function () {
-          return [
-            _c("b-navbar-item", [
-              _c("h1", { staticClass: "title is-5" }, [
-                _vm._v("BJMP DASHBOARD"),
-              ]),
-            ]),
-          ]
-        },
-        proxy: true,
-      },
-      {
-        key: "start",
-        fn: function () {
-          return [
-            _c("b-navbar-item", { attrs: { href: "/bjmp-dashboard" } }, [
-              _vm._v("\n                Home\n            "),
-            ]),
-            _vm._v(" "),
-            _c("b-navbar-item", { attrs: { href: "/qr-scanner" } }, [
-              _vm._v("\n                QR Scanner\n            "),
-            ]),
-            _vm._v(" "),
-            _c(
-              "b-navbar-dropdown",
-              { attrs: { label: "My Account" } },
-              [
-                _c(
-                  "b-navbar-item",
-                  { attrs: { href: "/my-change-password" } },
-                  [
-                    _vm._v(
-                      "\n                    Change Password\n                "
-                    ),
-                  ]
-                ),
+  return _c(
+    "div",
+    [
+      _c("b-navbar", {
+        staticClass: "nav-shadow",
+        scopedSlots: _vm._u([
+          {
+            key: "brand",
+            fn: function () {
+              return [
+                _c("b-navbar-item", [
+                  _c("h1", { staticClass: "title is-5" }, [
+                    _vm._v("BJMP DASHBOARD"),
+                  ]),
+                ]),
+              ]
+            },
+            proxy: true,
+          },
+          {
+            key: "start",
+            fn: function () {
+              return [
+                _c("b-navbar-item", { attrs: { href: "/bjmp-dashboard" } }, [
+                  _vm._v("\n                Home\n            "),
+                ]),
                 _vm._v(" "),
-                _c("b-navbar-item", { attrs: { href: "/my-information" } }, [
-                  _vm._v(
-                    "\n                    My Infomation\n                "
+                _c("b-navbar-item", { attrs: { href: "/qr-scanner" } }, [
+                  _vm._v("\n                QR Scanner\n            "),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "b-navbar-dropdown",
+                  { attrs: { label: "My Account" } },
+                  [
+                    _c(
+                      "b-navbar-item",
+                      {
+                        on: {
+                          click: function ($event) {
+                            _vm.modalChangePassword = true
+                          },
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\n                    Change Password\n                "
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-navbar-item",
+                      { attrs: { href: "/my-information" } },
+                      [
+                        _vm._v(
+                          "\n                    My Infomation\n                "
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("b-navbar-item", { on: { click: _vm.logout } }, [
+                      _vm._v("\n                    LOGOUT\n                "),
+                    ]),
+                  ],
+                  1
+                ),
+              ]
+            },
+            proxy: true,
+          },
+          {
+            key: "end",
+            fn: function () {
+              return undefined
+            },
+            proxy: true,
+          },
+        ]),
+      }),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            "has-modal-card": "",
+            "trap-focus": "",
+            width: 640,
+            "aria-role": "dialog",
+            "aria-label": "Modal",
+            "aria-modal": "",
+          },
+          model: {
+            value: _vm.modalChangePassword,
+            callback: function ($$v) {
+              _vm.modalChangePassword = $$v
+            },
+            expression: "modalChangePassword",
+          },
+        },
+        [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.submit.apply(null, arguments)
+                },
+              },
+            },
+            [
+              _c("div", { staticClass: "modal-card" }, [
+                _c("header", { staticClass: "modal-card-head" }, [
+                  _c("p", { staticClass: "modal-card-title" }, [
+                    _vm._v("Change Password"),
+                  ]),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "delete",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function ($event) {
+                        _vm.modalChangePassword = false
+                      },
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "modal-card-body" }, [
+                  _c(
+                    "div",
+                    {},
+                    [
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Old Password",
+                            type: this.errors.old_password ? "is-danger" : "",
+                            message: this.errors.old_password
+                              ? this.errors.old_password[0]
+                              : "",
+                          },
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: {
+                              type: "password",
+                              "password-reveal": "",
+                              icon: "password",
+                              required: "",
+                            },
+                            model: {
+                              value: _vm.fields.old_password,
+                              callback: function ($$v) {
+                                _vm.$set(_vm.fields, "old_password", $$v)
+                              },
+                              expression: "fields.old_password",
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "New Password",
+                            type: this.errors.password ? "is-danger" : "",
+                            message: this.errors.password
+                              ? this.errors.password[0]
+                              : "",
+                          },
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: {
+                              type: "password",
+                              "password-reveal": "",
+                              icon: "password",
+                              required: "",
+                            },
+                            model: {
+                              value: _vm.fields.password,
+                              callback: function ($$v) {
+                                _vm.$set(_vm.fields, "password", $$v)
+                              },
+                              expression: "fields.password",
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Confirm Password",
+                            type: this.errors.password_confirmation
+                              ? "is-danger"
+                              : "",
+                            message: this.errors.password_confirmation
+                              ? this.errors.password_confirmation[0]
+                              : "",
+                          },
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: {
+                              type: "password",
+                              "password-reveal": "",
+                              icon: "account",
+                              required: "",
+                            },
+                            model: {
+                              value: _vm.fields.password_confirmation,
+                              callback: function ($$v) {
+                                _vm.$set(
+                                  _vm.fields,
+                                  "password_confirmation",
+                                  $$v
+                                )
+                              },
+                              expression: "fields.password_confirmation",
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
                   ),
                 ]),
                 _vm._v(" "),
-                _c("b-navbar-item", { on: { click: _vm.logout } }, [
-                  _vm._v("\n                    LOGOUT\n                "),
-                ]),
-              ],
-              1
-            ),
-          ]
-        },
-        proxy: true,
-      },
-      {
-        key: "end",
-        fn: function () {
-          return undefined
-        },
-        proxy: true,
-      },
-    ]),
-  })
+                _c(
+                  "footer",
+                  { staticClass: "modal-card-foot" },
+                  [
+                    _c("b-button", {
+                      attrs: { label: "Close" },
+                      on: {
+                        click: function ($event) {
+                          _vm.modalChangePassword = false
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        class: _vm.btnClass,
+                        attrs: { label: "Save", type: "is-success" },
+                      },
+                      [_vm._v("SAVE")]
+                    ),
+                  ],
+                  1
+                ),
+              ]),
+            ]
+          ),
+        ]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -33681,7 +34103,7 @@ var render = function () {
                 _vm.validationFailure
                   ? _c("div", { staticClass: "validation-failure" }, [
                       _vm._v(
-                        "\n                        Nimchie Bangag!!\n                    "
+                        "\n                        Already scanned.\n                    "
                       ),
                     ])
                   : _vm._e(),
@@ -33743,112 +34165,156 @@ var render = function () {
         },
         [
           _c("div", { staticClass: "modal-card" }, [
-            _c("header", { staticClass: "modal-card-head" }, [
-              _c("p", { staticClass: "modal-card-title" }, [
-                _vm._v("SCANNED INFORMATION"),
-              ]),
-              _vm._v(" "),
-              _c("button", {
-                staticClass: "delete",
-                attrs: { type: "button" },
+            _c(
+              "form",
+              {
                 on: {
-                  click: function ($event) {
-                    _vm.isModalValidModal = false
+                  submit: function ($event) {
+                    $event.preventDefault()
+                    return _vm.submit.apply(null, arguments)
                   },
                 },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("section", { staticClass: "modal-card-body" }, [
-              _c("div", {}, [
-                _c("div", { staticClass: "columns" }, [
-                  _c("div", { staticClass: "column" }, [
-                    _c(
-                      "div",
-                      { staticStyle: { border: "1px solid #cbcbcb" } },
-                      [
-                        _c("img", {
-                          staticClass: "visitor-img",
-                          attrs: {
-                            src: "/storage/imgs/" + _vm.user.user.img_path,
-                          },
-                        }),
-                      ]
-                    ),
+              },
+              [
+                _c("header", { staticClass: "modal-card-head" }, [
+                  _c("p", { staticClass: "modal-card-title" }, [
+                    _vm._v("SCANNED INFORMATION"),
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "column" }, [
-                    _c("p", [
-                      _c("b", [_vm._v("Name:")]),
-                      _vm._v(
-                        " " +
-                          _vm._s(_vm.user.user.lname) +
-                          ", " +
-                          _vm._s(_vm.user.user.fname) +
-                          " " +
-                          _vm._s(_vm.user.user.mname)
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _c("b", [_vm._v("Visit Schedule:")]),
-                      _vm._v(
-                        " " +
-                          _vm._s(_vm.user.appointment_date) +
-                          ", " +
-                          _vm._s(_vm.user.meridian)
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _c("b", [_vm._v("Relationship: ")]),
-                      _vm._v(" " + _vm._s(_vm.user.inmate_relationship)),
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _c("b", [_vm._v("Inmate to visit: ")]),
-                      _vm._v(" " + _vm._s(_vm.user.inmate)),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "companion" }, [
-                      _c("h1", { staticClass: "title is-6" }, [
-                        _vm._v("COMPANION(S)"),
+                  _c("button", {
+                    staticClass: "delete",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function ($event) {
+                        _vm.isModalValidModal = false
+                      },
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "modal-card-body" }, [
+                  _c("div", {}, [
+                    _c("div", { staticClass: "columns" }, [
+                      _c("div", { staticClass: "column" }, [
+                        _c(
+                          "div",
+                          { staticStyle: { border: "1px solid #cbcbcb" } },
+                          [
+                            _c("img", {
+                              staticClass: "visitor-img",
+                              attrs: {
+                                src: "/storage/imgs/" + _vm.user.user.img_path,
+                              },
+                            }),
+                          ]
+                        ),
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "ul",
-                        _vm._l(_vm.user.companions, function (item, index) {
-                          return _c("li", { key: index }, [
-                            _vm._v(
+                      _c("div", { staticClass: "column" }, [
+                        _c("p", [
+                          _c("b", [_vm._v("Name:")]),
+                          _vm._v(
+                            " " +
+                              _vm._s(_vm.user.user.lname) +
+                              ", " +
+                              _vm._s(_vm.user.user.fname) +
                               " " +
-                                _vm._s(item.fullname) +
-                                " - " +
-                                _vm._s(item.inmate_relationship)
-                            ),
-                          ])
-                        }),
-                        0
+                              _vm._s(_vm.user.user.mname)
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("b", [_vm._v("Visit Schedule:")]),
+                          _vm._v(
+                            " " +
+                              _vm._s(_vm.user.appointment_date) +
+                              ", " +
+                              _vm._s(_vm.user.meridian)
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("b", [_vm._v("Relationship: ")]),
+                          _vm._v(" " + _vm._s(_vm.user.inmate_relationship)),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("b", [_vm._v("Inmate to visit: ")]),
+                          _vm._v(" " + _vm._s(_vm.user.inmate)),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "companion" }, [
+                          _c("h1", { staticClass: "title is-6" }, [
+                            _vm._v("COMPANION(S)"),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "ul",
+                            _vm._l(_vm.user.companions, function (item, index) {
+                              return _c("li", { key: index }, [
+                                _vm._v(
+                                  " " +
+                                    _vm._s(item.fullname) +
+                                    " - " +
+                                    _vm._s(item.inmate_relationship)
+                                ),
+                              ])
+                            }),
+                            0
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        { staticClass: "column" },
+                        [
+                          _c(
+                            "b-field",
+                            { attrs: { label: "Frisk Item(s)" } },
+                            [
+                              _c("b-input", {
+                                attrs: { type: "textarea" },
+                                model: {
+                                  value: _vm.fields.frisk_item,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.fields, "frisk_item", $$v)
+                                  },
+                                  expression: "fields.frisk_item",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
                       ),
                     ]),
                   ]),
                 ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c(
-              "footer",
-              { staticClass: "modal-card-foot" },
-              [
-                _c("b-button", {
-                  attrs: { label: "Close" },
-                  on: {
-                    click: function ($event) {
-                      _vm.isModalValidModal = false
-                    },
-                  },
-                }),
-              ],
-              1
+                _vm._v(" "),
+                _c(
+                  "footer",
+                  { staticClass: "modal-card-foot" },
+                  [
+                    _c("b-button", {
+                      attrs: { label: "Close" },
+                      on: {
+                        click: function ($event) {
+                          _vm.isModalValidModal = false
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c("button", { staticClass: "button is-success" }, [
+                      _vm._v("SAVE"),
+                    ]),
+                  ],
+                  1
+                ),
+              ]
             ),
           ]),
         ]
@@ -34956,67 +35422,265 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("b-navbar", {
-    staticClass: "nav-shadow",
-    scopedSlots: _vm._u([
-      {
-        key: "brand",
-        fn: function () {
-          return [
-            _c(
-              "b-navbar-item",
-              [_c("b-icon", { attrs: { icon: "cog-outline" } })],
-              1
-            ),
-          ]
-        },
-        proxy: true,
-      },
-      {
-        key: "start",
-        fn: function () {
-          return [
-            _c("b-navbar-item", { attrs: { href: "/my-dashboard" } }, [
-              _vm._v("\n            Home\n        "),
-            ]),
-            _vm._v(" "),
-            _c("b-navbar-item", { attrs: { href: "my-appointment" } }, [
-              _vm._v("\n            My Appointment\n        "),
-            ]),
-            _vm._v(" "),
-            _c(
-              "b-navbar-dropdown",
-              { attrs: { label: "My Account" } },
-              [
+  return _c(
+    "div",
+    [
+      _c("b-navbar", {
+        staticClass: "nav-shadow",
+        scopedSlots: _vm._u([
+          {
+            key: "brand",
+            fn: function () {
+              return [
                 _c(
                   "b-navbar-item",
-                  { attrs: { href: "/my-change-password" } },
-                  [_vm._v("\n                Change Password\n            ")]
+                  [_c("b-icon", { attrs: { icon: "cog-outline" } })],
+                  1
                 ),
-                _vm._v(" "),
-                _c("b-navbar-item", { attrs: { href: "/my-information" } }, [
-                  _vm._v("\n                My Infomation\n            "),
+              ]
+            },
+            proxy: true,
+          },
+          {
+            key: "start",
+            fn: function () {
+              return [
+                _c("b-navbar-item", { attrs: { href: "/my-dashboard" } }, [
+                  _vm._v("\n                Home\n            "),
                 ]),
                 _vm._v(" "),
-                _c("b-navbar-item", { on: { click: _vm.logout } }, [
-                  _vm._v("\n                LOGOUT\n            "),
+                _c("b-navbar-item", { attrs: { href: "my-appointment" } }, [
+                  _vm._v("\n                My Appointment\n            "),
                 ]),
-              ],
-              1
-            ),
-          ]
+                _vm._v(" "),
+                _c(
+                  "b-navbar-dropdown",
+                  { attrs: { label: "My Account" } },
+                  [
+                    _c(
+                      "b-navbar-item",
+                      {
+                        on: {
+                          click: function ($event) {
+                            _vm.modalChangePassword = true
+                          },
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\n                    Change Password\n                "
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("b-navbar-item", { on: { click: _vm.logout } }, [
+                      _vm._v("\n                    LOGOUT\n                "),
+                    ]),
+                  ],
+                  1
+                ),
+              ]
+            },
+            proxy: true,
+          },
+          {
+            key: "end",
+            fn: function () {
+              return undefined
+            },
+            proxy: true,
+          },
+        ]),
+      }),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            "has-modal-card": "",
+            "trap-focus": "",
+            width: 640,
+            "aria-role": "dialog",
+            "aria-label": "Modal",
+            "aria-modal": "",
+          },
+          model: {
+            value: _vm.modalChangePassword,
+            callback: function ($$v) {
+              _vm.modalChangePassword = $$v
+            },
+            expression: "modalChangePassword",
+          },
         },
-        proxy: true,
-      },
-      {
-        key: "end",
-        fn: function () {
-          return undefined
-        },
-        proxy: true,
-      },
-    ]),
-  })
+        [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.submit.apply(null, arguments)
+                },
+              },
+            },
+            [
+              _c("div", { staticClass: "modal-card" }, [
+                _c("header", { staticClass: "modal-card-head" }, [
+                  _c("p", { staticClass: "modal-card-title" }, [
+                    _vm._v("Change Password"),
+                  ]),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "delete",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function ($event) {
+                        _vm.modalChangePassword = false
+                      },
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "modal-card-body" }, [
+                  _c(
+                    "div",
+                    {},
+                    [
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Old Password",
+                            type: this.errors.old_password ? "is-danger" : "",
+                            message: this.errors.old_password
+                              ? this.errors.old_password[0]
+                              : "",
+                          },
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: {
+                              type: "password",
+                              "password-reveal": "",
+                              icon: "password",
+                              required: "",
+                            },
+                            model: {
+                              value: _vm.fields.old_password,
+                              callback: function ($$v) {
+                                _vm.$set(_vm.fields, "old_password", $$v)
+                              },
+                              expression: "fields.old_password",
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "New Password",
+                            type: this.errors.password ? "is-danger" : "",
+                            message: this.errors.password
+                              ? this.errors.password[0]
+                              : "",
+                          },
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: {
+                              type: "password",
+                              "password-reveal": "",
+                              icon: "password",
+                              required: "",
+                            },
+                            model: {
+                              value: _vm.fields.password,
+                              callback: function ($$v) {
+                                _vm.$set(_vm.fields, "password", $$v)
+                              },
+                              expression: "fields.password",
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-field",
+                        {
+                          attrs: {
+                            label: "Confirm Password",
+                            type: this.errors.password_confirmation
+                              ? "is-danger"
+                              : "",
+                            message: this.errors.password_confirmation
+                              ? this.errors.password_confirmation[0]
+                              : "",
+                          },
+                        },
+                        [
+                          _c("b-input", {
+                            attrs: {
+                              type: "password",
+                              "password-reveal": "",
+                              icon: "account",
+                              required: "",
+                            },
+                            model: {
+                              value: _vm.fields.password_confirmation,
+                              callback: function ($$v) {
+                                _vm.$set(
+                                  _vm.fields,
+                                  "password_confirmation",
+                                  $$v
+                                )
+                              },
+                              expression: "fields.password_confirmation",
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "footer",
+                  { staticClass: "modal-card-foot" },
+                  [
+                    _c("b-button", {
+                      attrs: { label: "Close" },
+                      on: {
+                        click: function ($event) {
+                          _vm.modalChangePassword = false
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        class: _vm.btnClass,
+                        attrs: { label: "Save", type: "is-success" },
+                      },
+                      [_vm._v("SAVE")]
+                    ),
+                  ],
+                  1
+                ),
+              ]),
+            ]
+          ),
+        ]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -35089,85 +35753,103 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "login-wrapper" }, [
-    _c("div", { staticClass: "login" }, [
-      _c("div", { staticClass: "panel" }, [
-        _c("div", { staticClass: "panel-heading" }, [
-          _vm._v("\n                LOGIN\n            "),
+  return _c("div", { staticClass: "hero is-fullheight" }, [
+    _c("div", { staticClass: "hero-body" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "columns is-centered" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "panel" }, [
+              _c("div", { staticClass: "panel-heading" }, [
+                _vm._v(
+                  "\n                            LOGIN\n                        "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "panel-body" },
+                [
+                  _c(
+                    "b-field",
+                    {
+                      attrs: {
+                        label: "Username",
+                        "label-position": "on-border",
+                        type: this.errors.username ? "is-danger" : "",
+                        message: this.errors.username
+                          ? this.errors.username
+                          : "",
+                      },
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: { type: "text", placeholder: "Username" },
+                        model: {
+                          value: _vm.fields.username,
+                          callback: function ($$v) {
+                            _vm.$set(_vm.fields, "username", $$v)
+                          },
+                          expression: "fields.username",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      attrs: {
+                        label: "Password",
+                        "label-position": "on-border",
+                      },
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "password",
+                          "password-reveal": "",
+                          placeholder: "Password",
+                        },
+                        model: {
+                          value: _vm.fields.password,
+                          callback: function ($$v) {
+                            _vm.$set(_vm.fields, "password", $$v)
+                          },
+                          expression: "fields.password",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "buttons" },
+                    [
+                      _c(
+                        "b-button",
+                        {
+                          attrs: { type: "is-primary" },
+                          on: { click: _vm.submit },
+                        },
+                        [_vm._v("LOGIN")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        { attrs: { tag: "a", href: "/register-page" } },
+                        [_vm._v("REGISTER")]
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ]),
+          ]),
         ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "panel-body" },
-          [
-            _c(
-              "b-field",
-              {
-                attrs: {
-                  label: "Username",
-                  "label-position": "on-border",
-                  type: this.errors.username ? "is-danger" : "",
-                  message: this.errors.username ? this.errors.username : "",
-                },
-              },
-              [
-                _c("b-input", {
-                  attrs: { type: "text", placeholder: "Username" },
-                  model: {
-                    value: _vm.fields.username,
-                    callback: function ($$v) {
-                      _vm.$set(_vm.fields, "username", $$v)
-                    },
-                    expression: "fields.username",
-                  },
-                }),
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "b-field",
-              { attrs: { label: "Password", "label-position": "on-border" } },
-              [
-                _c("b-input", {
-                  attrs: {
-                    type: "password",
-                    "password-reveal": "",
-                    placeholder: "Password",
-                  },
-                  model: {
-                    value: _vm.fields.password,
-                    callback: function ($$v) {
-                      _vm.$set(_vm.fields, "password", $$v)
-                    },
-                    expression: "fields.password",
-                  },
-                }),
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "buttons" },
-              [
-                _c(
-                  "b-button",
-                  { attrs: { type: "is-primary" }, on: { click: _vm.submit } },
-                  [_vm._v("LOGIN")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  { attrs: { tag: "a", href: "/register-page" } },
-                  [_vm._v("REGISTER")]
-                ),
-              ],
-              1
-            ),
-          ],
-          1
-        ),
       ]),
     ]),
   ])
@@ -36404,7 +37086,7 @@ var render = function () {
                       attrs: { type: "is-success", icon: "right-arrow" },
                       on: { click: _vm.submit },
                     },
-                    [_vm._v("BOOK NOW")]
+                    [_vm._v("GET APPOINTMENT")]
                   ),
                 ],
                 1

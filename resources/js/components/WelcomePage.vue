@@ -124,7 +124,7 @@
                     <b-button @click="add" type="is-success" class="is-small" icon-left="add">ADD</b-button>
 
                     <div class="buttons is-right">
-                        <b-button type="is-success" @click="submit" icon="right-arrow">BOOK NOW</b-button>
+                        <b-button type="is-success" @click="submit" icon="right-arrow">GET APPOINTMENT</b-button>
                     </div>
                 </div>
             </div>

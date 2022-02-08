@@ -70,9 +70,12 @@ Route::get('/get-inmate-relationships', function(){
 //BJMP Side
 Route::get('/bjmp-dashboard', [App\Http\Controllers\BJMP\BJMPController::class, 'index']);
 
-
 Route::get('/qr-scanner', [App\Http\Controllers\BJMP\QRScannerController::class, 'index']);
 Route::get('/validate-qr/{qrcode}', [App\Http\Controllers\BJMP\QRScannerController::class, 'validateQR']);
+Route::post('/bjmp-change-password', [App\Http\Controllers\BJMP\BjmpChangePasswordController::class, 'update']);
+Route::post('/save-frisk-item/{user_id}', [App\Http\Controllers\BJMP\QRScannerController::class, 'saveFriskItem']);
+
+
 
 
 // //POST, GET, PUT, DELETE
@@ -104,6 +107,8 @@ Route::resource('/my-appointment', App\Http\Controllers\Client\MyAppointmentCont
 Route::get('/get-appointments', [App\Http\Controllers\Client\MyAppointmentController::class, 'getAppointments']);
 Route::post('/my-appointment-cancel/{id}', [App\Http\Controllers\Client\MyAppointmentController::class, 'cancelAppointment']);
 
+//CLIENT CHANGE PASSWORD
+Route::post('/client-change-password', [App\Http\Controllers\Client\MyChangePassword::class, 'update']);
 
 
 

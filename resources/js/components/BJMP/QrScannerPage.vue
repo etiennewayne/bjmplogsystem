@@ -10,7 +10,7 @@
 <!--                    </div>-->
 
                     <div v-if="validationFailure" class="validation-failure">
-                        Nimchie Bangag!!
+                        Already scanned.
                     </div>
 
                     <div v-if="validationPending" class="validation-pending">
@@ -39,44 +39,57 @@
 
 
             <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">SCANNED INFORMATION</p>
-                    <button
-                        type="button"
-                        class="delete"
-                        @click="isModalValidModal = false"/>
-                </header>
+                <form @submit.prevent="submit">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">SCANNED INFORMATION</p>
+                        <button
+                            type="button"
+                            class="delete"
+                            @click="isModalValidModal = false"/>
+                    </header>
 
-                <section class="modal-card-body">
-                    <div class="">
-                        <div class="columns">
-                            <div class="column">
-                                <div style="border: 1px solid #cbcbcb;">
-                                    <img :src="`/storage/imgs/${user.user.img_path}`" class="visitor-img"/>
+                    <section class="modal-card-body">
+
+                        <div class="">
+                            <div class="columns">
+                                <div class="column">
+                                    <div style="border: 1px solid #cbcbcb;">
+                                        <img :src="`/storage/imgs/${user.user.img_path}`" class="visitor-img"/>
+                                    </div>
+                                </div>
+
+                                <div class="column">
+                                    <p><b>Name:</b> {{ user.user.lname }}, {{ user.user.fname }} {{ user.user.mname }}</p>
+                                    <p><b>Visit Schedule:</b> {{ user.appointment_date }}, {{ user.meridian }}</p>
+                                    <p><b>Relationship: </b> {{ user.inmate_relationship }}</p>
+                                    <p><b>Inmate to visit: </b> {{ user.inmate }}</p>
+
+                                    <div class="companion">
+                                        <h1 class="title is-6">COMPANION(S)</h1>
+                                        <ul>
+                                            <li v-for="(item, index) in user.companions" :key="index"> {{ item.fullname }} - {{ item.inmate_relationship }}</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="column">
-                                <p><b>Name:</b> {{ user.user.lname }}, {{ user.user.fname }} {{ user.user.mname }}</p>
-                                <p><b>Visit Schedule:</b> {{ user.appointment_date }}, {{ user.meridian }}</p>
-                                <p><b>Relationship: </b> {{ user.inmate_relationship }}</p>
-                                <p><b>Inmate to visit: </b> {{ user.inmate }}</p>
-
-                                <div class="companion">
-                                    <h1 class="title is-6">COMPANION(S)</h1>
-                                    <ul>
-                                        <li v-for="(item, index) in user.companions" :key="index"> {{ item.fullname }} - {{ item.inmate_relationship }}</li>
-                                    </ul>
+                            <div class="columns">
+                                <div class="column">
+                                    <b-field label="Frisk Item(s)">
+                                        <b-input v-model="fields.frisk_item" type="textarea"></b-input>
+                                    </b-field>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-                <footer class="modal-card-foot">
-                    <b-button
-                        label="Close"
-                        @click="isModalValidModal=false"/>
-                </footer>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <b-button
+                            label="Close"
+                            @click="isModalValidModal=false"/>
+                        <button
+                            class="button is-success">SAVE</button>
+                    </footer>
+                </form>
             </div>
 
         </b-modal>
@@ -103,6 +116,8 @@ export default {
             isProcessing: false,
 
             isModalValidModal: false,
+
+            fields: {},
         }
     },
     methods: {
@@ -158,6 +173,18 @@ export default {
                 window.setTimeout(resolve, ms)
             })
         },
+
+        submit: function(){
+            axios.post('/save-frisk-item/' + this.user.appointment_id, this.fields).then(res=>{
+                if(res.data.status === 'saved'){
+                    this.isModalValidModal = false;
+                    this.$buefy.toast.open({
+                        message: 'Frist item save successfully.',
+                        type: 'is-success'
+                    });
+                }
+            })
+        }
 
     },
 
