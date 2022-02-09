@@ -113,6 +113,16 @@ Route::post('/client-change-password', [App\Http\Controllers\Client\MyChangePass
 
 
 
+//REPORT //REPORT //REPORT
+//REPORT //REPORT //REPORT
+Route::get('/log-report', [App\Http\Controllers\Report\LogReportController::class, 'index']);
+Route::get('/get-log-report', [App\Http\Controllers\Report\LogReportController::class, 'getLogReport']);
+
+
+
+//REPORT //REPORT //REPORT
+//REPORT //REPORT //REPORT
+
 Route::get('/session', function(){
     return Session::all();
 });

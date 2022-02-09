@@ -19,13 +19,15 @@
                     <b-navbar-item @click="modalChangePassword = true">
                         Change Password
                     </b-navbar-item>
-                    <b-navbar-item href="/my-information">
-                        My Infomation
-                    </b-navbar-item>
-
                     <b-navbar-item @click="logout">
                         LOGOUT
                     </b-navbar-item>
+                </b-navbar-dropdown>
+                 <b-navbar-dropdown label="Report">
+                    <b-navbar-item href="/log-report">
+                        Log Report
+                    </b-navbar-item>
+                   
                 </b-navbar-dropdown>
             </template>
 
