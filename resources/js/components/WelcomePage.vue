@@ -351,7 +351,7 @@
                             <div class="level-right">
                                 <div class="level-item">
                                     <div class="buttons is-right">
-                                        <b-button type="is-link" tag="a" href="/register">REGISTER HERE</b-button>
+                                        <b-button type="is-link" tag="a" href="/register-page">REGISTER HERE</b-button>
                                     </div>
                                 </div>
                             </div>

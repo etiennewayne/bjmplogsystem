@@ -116,8 +116,8 @@
                         <div class="columns">
                             <div class="column">
                                 <b-field label="Username" label-position="on-border"
-                                         :type="this.errors.username ? 'is-danger':''"
-                                         :message="this.errors.username ? this.errors.username[0] : ''">
+                                        :type="this.errors.username ? 'is-danger':''"
+                                        :message="this.errors.username ? this.errors.username[0] : ''">
                                     <b-input v-model="fields.username"
                                              placeholder="Username" required>
                                     </b-input>
@@ -128,8 +128,8 @@
                         <div class="columns">
                             <div class="column">
                                 <b-field label="Last Name" label-position="on-border"
-                                         :type="this.errors.lname ? 'is-danger':''"
-                                         :message="this.errors.lname ? this.errors.lname[0] : ''">
+                                        :type="this.errors.lname ? 'is-danger':''"
+                                        :message="this.errors.lname ? this.errors.lname[0] : ''">
                                     <b-input v-model="fields.lname"
                                              placeholder="Last Name" required>
                                     </b-input>
@@ -137,8 +137,8 @@
                             </div>
                             <div class="column">
                                 <b-field label="First Name" label-position="on-border"
-                                         :type="this.errors.fname ? 'is-danger':''"
-                                         :message="this.errors.fname ? this.errors.fname[0] : ''">
+                                        :type="this.errors.fname ? 'is-danger':''"
+                                        :message="this.errors.fname ? this.errors.fname[0] : ''">
                                     <b-input v-model="fields.fname"
                                              placeholder="First Name" required>
                                     </b-input>
@@ -149,8 +149,8 @@
                         <div class="columns">
                             <div class="column">
                                 <b-field label="Middle Name" label-position="on-border"
-                                         :type="this.errors.mname ? 'is-danger':''"
-                                         :message="this.errors.mname ? this.errors.mname[0] : ''">
+                                        :type="this.errors.mname ? 'is-danger':''"
+                                        :message="this.errors.mname ? this.errors.mname[0] : ''">
                                     <b-input v-model="fields.mname" placeholder="Middle Name">
                                     </b-input>
                                 </b-field>
@@ -158,8 +158,8 @@
 
                             <div class="column">
                                 <b-field label="Suffix" label-position="on-border"
-                                         :type="this.errors.suffix ? 'is-danger':''"
-                                         :message="this.errors.suffix ? this.errors.suffix[0] : ''">
+                                        :type="this.errors.suffix ? 'is-danger':''"
+                                        :message="this.errors.suffix ? this.errors.suffix[0] : ''">
                                     <b-input v-model="fields.suffix"
                                              placeholder="Suffix">
                                     </b-input>
@@ -171,8 +171,8 @@
                         <div class="columns">
                             <div class="column">
                                 <b-field label="Contact No" label-position="on-border"
-                                         :type="this.errors.contact_no ? 'is-danger':''"
-                                         :message="this.errors.contact_no ? this.errors.contact_no[0] : ''">
+                                        :type="this.errors.contact_no ? 'is-danger':''"
+                                        :message="this.errors.contact_no ? this.errors.contact_no[0] : ''">
                                     <b-input type="number" v-model="fields.contact_no"
                                              placeholder="Contact No" required>
                                     </b-input>
@@ -180,8 +180,8 @@
                             </div>
                             <div class="column">
                                 <b-field label="Email" label-position="on-border"
-                                         :type="this.errors.email ? 'is-danger':''"
-                                         :message="this.errors.email ? this.errors.email[0] : ''">
+                                        :type="this.errors.email ? 'is-danger':''"
+                                        :message="this.errors.email ? this.errors.email[0] : ''">
                                     <b-input type="email" v-model="fields.email"
                                              placeholder="Email" required>
                                     </b-input>
@@ -192,8 +192,8 @@
                         <div class="columns" v-if="global_id < 1">
                             <div class="column">
                                 <b-field label="Password" label-position="on-border"
-                                         :type="this.errors.password ? 'is-danger':''"
-                                         :message="this.errors.password ? this.errors.password[0] : ''">
+                                        :type="this.errors.password ? 'is-danger':''"
+                                        :message="this.errors.password ? this.errors.password[0] : ''">
                                     <b-input type="password" password-reveal v-model="fields.password"
                                              placeholder="Password" required>
                                     </b-input>
@@ -201,8 +201,8 @@
                             </div>
                             <div class="column">
                                 <b-field label="Confirm Password" label-position="on-border"
-                                         :type="this.errors.password_confirmation ? 'is-danger':''"
-                                         :message="this.errors.password_confirmation ? this.errors.password_confirmation[0] : ''">
+                                        :type="this.errors.password_confirmation ? 'is-danger':''"
+                                        :message="this.errors.password_confirmation ? this.errors.password_confirmation[0] : ''">
                                     <b-input type="password" v-model="fields.password_confirmation" password-reveal
                                              placeholder="Confirm Password" required>
                                     </b-input>
@@ -215,8 +215,7 @@
                             <div class="column">
                                 <b-field label="Sex" label-position="on-border" expanded
                                          :type="this.errors.sex ? 'is-danger':''"
-                                         :message="this.errors.sex ? this.errors.sex[0] : ''"
-                                >
+                                         :message="this.errors.sex ? this.errors.sex[0] : ''">
                                     <b-select v-model="fields.sex" expanded>
                                         <option value="MALE">MALE</option>
                                         <option value="FEMALE">FEMALE</option>
@@ -237,7 +236,6 @@
                                 </b-field>
                             </div>
                         </div>
-
 
 
                         <div class="columns">
@@ -281,6 +279,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </section>
                 <footer class="modal-card-foot">
                     <b-button
@@ -560,6 +559,8 @@ export default {
             axios.get('/users/'+data_id).then(res=>{
                 this.fields = res.data;
                 let tempData = res.data;
+
+                console.log(res.data);
                 //load city first
                 axios.get('/load-cities?prov=' + this.fields.province).then(res=>{
                     //load barangay
@@ -580,6 +581,7 @@ export default {
             this.isModalResetPassword = true;
             this.global_id = dataId;
         },
+
         submitResetPassword: function(){
             axios.post('/user-reset-password/' +this.global_id, this.fields).then(res=>{
                 if(res.data.status === 'reseted'){

@@ -112,6 +112,7 @@ class UserController extends Controller
         $data->fname = strtoupper($req->fname);
         $data->mname = strtoupper($req->mname);
         $data->sex = $req->sex;
+        $data->contact_no = $req->contact_no;
         $data->email = $req->email;
         $data->role = $req->role;
         $data->province = $req->province;

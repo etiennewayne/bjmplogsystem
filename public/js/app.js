@@ -8043,7 +8043,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "UserPage",
   data: function data() {
@@ -8255,7 +8254,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/users/' + data_id).then(function (res) {
         _this8.fields = res.data;
-        var tempData = res.data; //load city first
+        var tempData = res.data;
+        console.log(res.data); //load city first
 
         axios.get('/load-cities?prov=' + _this8.fields.province).then(function (res) {
           //load barangay
@@ -8686,7 +8686,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     _this.isProcessing = false;
                     _this.isValid = true;
                     _this.isModalValidModal = true;
-                    console.log(_this.user);
                   } else {
                     _this.isProcessing = false;
                     _this.isValid = false;
@@ -37325,7 +37324,7 @@ var render = function () {
                                 attrs: {
                                   type: "is-link",
                                   tag: "a",
-                                  href: "/register",
+                                  href: "/register-page",
                                 },
                               },
                               [_vm._v("REGISTER HERE")]

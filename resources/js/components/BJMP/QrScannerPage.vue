@@ -145,7 +145,7 @@ export default {
                     this.isProcessing = false;
                     this.isValid = true;
                     this.isModalValidModal = true;
-                    console.log(this.user);
+                   
                 }else{
                     this.isProcessing = false;
                     this.isValid = false;
