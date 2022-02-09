@@ -9904,6 +9904,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -36860,6 +36861,8 @@ var render = function () {
                     _c("td", [_vm._v(_vm._s(item.inmate))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(item.inmate_relationship))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.frisking_items))]),
                   ])
                 }),
               ],
@@ -36892,6 +36895,8 @@ var staticRenderFns = [
       _c("th", [_vm._v("Inmate")]),
       _vm._v(" "),
       _c("th", [_vm._v("Relationship")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Frisk Item(s)")]),
     ])
   },
 ]

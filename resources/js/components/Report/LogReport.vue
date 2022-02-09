@@ -30,13 +30,14 @@
                                 <th>Meridian</th>
                                 <th>Inmate</th>
                                 <th>Relationship</th>
+                                <th>Frisk Item(s)</th>
                             </thead>
                             <tr v-for="(item, index) in data" :key="index">
                                 <td>{{ item.appointment_date }}</td>
                                 <td>{{ item.meridian }}</td>
                                 <td>{{ item.inmate }}</td>
                                 <td>{{ item.inmate_relationship }}</td>
-
+                                <td>{{ item.frisking_items }}</td>
                             </tr>
                         </table>
                     </div>
