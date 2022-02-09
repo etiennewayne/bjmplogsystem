@@ -36796,10 +36796,10 @@ var render = function () {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "nprint" }, [
-        _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "columns is-centered" }, [
           _c(
             "div",
-            { staticClass: "column" },
+            { staticClass: "column is-6" },
             [
               _c(
                 "b-field",

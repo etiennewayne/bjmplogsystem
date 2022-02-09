@@ -7,8 +7,8 @@
             </div>
 
             <div class="nprint">
-                <div class="columns">
-                    <div class="column">
+                <div class="columns is-centered">
+                    <div class="column is-6">
                         <b-field label="From-To">
                             <b-datepicker v-model="search.dateFrom" ></b-datepicker>
                             <b-datepicker v-model="search.dateTo" ></b-datepicker>
