@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Models\Appointment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -53,7 +54,7 @@ class UserController extends Controller
             'province' => ['required', 'string'],
             'city' => ['required', 'string'],
             'barangay' => ['required', 'string'],
-            'img_path' =>  ['required', 'mimes:jpg,png,bmp', 'file', 'max:800'],
+            'img_path' =>  ['mimes:jpg,png,bmp', 'file', 'max:800'],
         ], $message = [
             'img_path.mimes' => 'Your uploaded image must be a file of jpg, png or bmp.',
         ]);
@@ -72,7 +73,7 @@ class UserController extends Controller
             'qr_ref' => $qr_code,
             'username' => $req->username,
             'password' => Hash::make($req->password),
-            'img_path' => $n,
+            'img_path' => $imgId != null ? $n : null,
             'email' => $req->email,
             'lname' => strtoupper($req->lname),
             'fname' => strtoupper($req->fname),
@@ -130,6 +131,16 @@ class UserController extends Controller
 
 
     public function destroy($id){
+        $exist = Appointment::where('user_id', $id)
+            ->exists();
+        if($exist){
+
+            return response()->json([
+                'errors' => [
+                    'exist' => ['User already have an appointment, user cannot be deleted.']
+                ]
+            ], 422);
+        }
         User::destroy($id);
 
         return response()->json([

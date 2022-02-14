@@ -279,7 +279,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </section>
                 <footer class="modal-card-foot">
                     <b-button
@@ -494,6 +494,15 @@ export default {
             }).catch(err => {
                 if (err.response.status === 422) {
                     this.errors = err.response.data.errors;
+
+
+                    if(this.errors.exist){
+                        this.$buefy.dialog.alert({
+                            title: 'CANNOT DELETE.',
+                            message: this.errors.exist[0],
+                            type: 'is-danger'
+                        });
+                    }
                 }
             });
         },

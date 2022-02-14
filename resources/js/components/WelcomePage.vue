@@ -117,11 +117,13 @@
                         </div>
 
                         <div class="buttons mt-4 mb-4 is-right">
+<!--                            <b-button @click="remove(k)" v-show="k || ( !k && fields.companions.length > 0)" type="is-danger" class="is-small" icon-left="delete"></b-button>-->
                             <b-button @click="remove(k)" v-show="k || ( !k && fields.companions.length > 0)" type="is-danger" class="is-small" icon-left="delete"></b-button>
                         </div>
-                    </div>
 
-                    <b-button @click="add" type="is-success" class="is-small" icon-left="add">ADD</b-button>
+                    </div>
+                    <b-button @click="add" type="is-success" class="is-small" v-if="fields.companions.length < 5" icon-left="add">ADD</b-button>
+
 
                     <div class="buttons is-right">
                         <b-button type="is-success" @click="submit" icon="right-arrow">GET APPOINTMENT</b-button>
