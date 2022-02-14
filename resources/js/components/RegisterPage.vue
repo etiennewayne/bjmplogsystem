@@ -47,7 +47,7 @@
                                     </b-field>
                                 </div>
                                 <div class="column">
-                                    <b-field label="Upload Image"
+                                    <b-field label="Upload Image (Image size limit 800kb only)"
                                              :type="this.errors.img_path ? 'is-danger':''"
                                              :message="this.errors.img_path ? this.errors.img_path[0] : ''">
                                         <b-field class="file is-primary" :class="{'has-name': !!fields.img_path}">
