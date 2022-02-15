@@ -46764,6 +46764,10 @@ body.has-spaced-navbar-fixed-bottom {
   color: #ffffff;
 }
 
+.debug {
+  border: 1px solid red;
+}
+
 .nav-shadow {
   padding: 25px;
   /*border-bottom: 2px solid rgba(22, 48, 69, 0.53);*/

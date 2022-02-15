@@ -26,6 +26,7 @@
 //@import '~animate.css/animate';
 
 
+
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
@@ -141,7 +142,9 @@ $panel-heading-color: #535fe1;
 }
 
 
-
+.debug{
+    border: 1px solid red;
+}
 
 .nav-shadow{
     padding: 25px;
