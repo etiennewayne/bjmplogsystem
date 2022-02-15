@@ -21,6 +21,7 @@ class AdminAppointmentController extends Controller
     }
 
     public function getAllAppointments(Request $req){
+
         $sort = explode('.', $req->sort_by);
         $date =  $req->appointment_date;
         $ndate = date("Y-m-d", strtotime($date));
@@ -28,6 +29,7 @@ class AdminAppointmentController extends Controller
 
         return Appointment::where('appointment_date', 'like', $ndate . '%')
             ->join('users', 'appointments.user_id', 'users.user_id')
+            ->where('users.lname', 'like', $req->appointer . '%')
             ->orderBy($sort[0], $sort[1])
             ->paginate($req->perpage);
     }

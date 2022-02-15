@@ -36,6 +36,23 @@
                                 </div>
                             </div>
 
+                            <div class="level">
+                                <div class="level-left">
+                                    <div class="level-item">
+                                        <b-field label="Saerch Appointer" label-position="on-border">
+                                            <b-input type="text" v-model="search.appointer" @keyup.native.enter="searchAppointment" placeholder="Appointer..."></b-input>
+                                            <p class="control">
+                                                <b-button type="is-link" icon-left="magnify" @click="searchAppointment"></b-button>
+                                            </p>
+                                        </b-field>
+                                    </div>
+                                </div>
+
+                                <div class="level-right">
+
+                                </div>
+                            </div>
+
                             <b-table
                                 :data="data"
                                 :loading="loading"
@@ -123,6 +140,7 @@ export default {
 
             search: {
                 appointment_date: null,
+                appointer: '',
             },
 
             fields: {},
@@ -149,6 +167,7 @@ export default {
             const params = [
                 `sort_by=${this.sortField}.${this.sortOrder}`,
                 `appointment_date=${this.search.appointment_date}`,
+                `appointer=${this.search.appointer}`,
                 `perpage=${this.perPage}`,
                 `page=${this.page}`
             ].join('&')

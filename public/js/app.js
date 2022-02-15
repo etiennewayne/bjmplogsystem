@@ -7700,6 +7700,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -7714,7 +7731,8 @@ __webpack_require__.r(__webpack_exports__);
       mydateSearch: new Date(),
       global_id: 0,
       search: {
-        appointment_date: null
+        appointment_date: null,
+        appointer: ''
       },
       fields: {},
       errors: {},
@@ -7733,7 +7751,7 @@ __webpack_require__.r(__webpack_exports__);
     loadAsyncData: function loadAsyncData() {
       var _this = this;
 
-      var params = ["sort_by=".concat(this.sortField, ".").concat(this.sortOrder), "appointment_date=".concat(this.search.appointment_date), "perpage=".concat(this.perPage), "page=".concat(this.page)].join('&');
+      var params = ["sort_by=".concat(this.sortField, ".").concat(this.sortOrder), "appointment_date=".concat(this.search.appointment_date), "appointer=".concat(this.search.appointer), "perpage=".concat(this.perPage), "page=".concat(this.page)].join('&');
       this.loading = true;
       axios.get("/get-all-appointments?".concat(params)).then(function (_ref) {
         var data = _ref.data;
@@ -33181,6 +33199,80 @@ var render = function () {
                       1
                     ),
                   ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "level" }, [
+                  _c("div", { staticClass: "level-left" }, [
+                    _c(
+                      "div",
+                      { staticClass: "level-item" },
+                      [
+                        _c(
+                          "b-field",
+                          {
+                            attrs: {
+                              label: "Saerch Appointer",
+                              "label-position": "on-border",
+                            },
+                          },
+                          [
+                            _c("b-input", {
+                              attrs: {
+                                type: "text",
+                                placeholder: "Appointer...",
+                              },
+                              nativeOn: {
+                                keyup: function ($event) {
+                                  if (
+                                    !$event.type.indexOf("key") &&
+                                    _vm._k(
+                                      $event.keyCode,
+                                      "enter",
+                                      13,
+                                      $event.key,
+                                      "Enter"
+                                    )
+                                  ) {
+                                    return null
+                                  }
+                                  return _vm.searchAppointment.apply(
+                                    null,
+                                    arguments
+                                  )
+                                },
+                              },
+                              model: {
+                                value: _vm.search.appointer,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.search, "appointer", $$v)
+                                },
+                                expression: "search.appointer",
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              { staticClass: "control" },
+                              [
+                                _c("b-button", {
+                                  attrs: {
+                                    type: "is-link",
+                                    "icon-left": "magnify",
+                                  },
+                                  on: { click: _vm.searchAppointment },
+                                }),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "level-right" }),
                 ]),
                 _vm._v(" "),
                 _c(
