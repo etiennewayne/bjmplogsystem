@@ -10,7 +10,7 @@
 <!--                    </div>-->
 
                     <div v-if="validationFailure" class="validation-failure">
-                        Already scanned.
+                        {{ remark }}
                     </div>
 
                     <div v-if="validationPending" class="validation-pending">
@@ -118,6 +118,8 @@ export default {
             isModalValidModal: false,
 
             fields: {},
+
+            remark: '',
         }
     },
     methods: {
@@ -140,18 +142,31 @@ export default {
             this.isProcessing = true;
             //await this.timeout(3000);
             axios.get('/validate-qr/' +content).then(res=>{
-                if(res.data){
-                    this.user = res.data;
+                if(res.data.status === 'ok'){
+                    console.log(res.data.data);
+                    this.user = res.data.data;
                     this.isProcessing = false;
                     this.isValid = true;
                     this.isModalValidModal = true;
-                   
+                   console.log(res.data);
                 }else{
                     this.isProcessing = false;
                     this.isValid = false;
                 }
             }).catch(err=>{
                 this.isProcessing = false;
+                console.log(err.response.data.status);
+
+                if(err.response.data.status === 'invalid'){
+                    this.remark = 'INVALID QR.';
+                    this.isValid = false;
+                }
+
+                if(err.response.data.status === 'scanned'){
+                    this.remark = 'ALREADY SCANNED!';
+                    this.isValid = false;
+                }
+
             })
             //this.isValid = content.startsWith('http') //this will return boolean value
 

@@ -7700,7 +7700,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -8954,7 +8953,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       result: null,
       isProcessing: false,
       isModalValidModal: false,
-      fields: {}
+      fields: {},
+      remark: ''
     };
   },
   methods: {
@@ -8981,17 +8981,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.isProcessing = true; //await this.timeout(3000);
 
                 axios.get('/validate-qr/' + content).then(function (res) {
-                  if (res.data) {
-                    _this.user = res.data;
+                  if (res.data.status === 'ok') {
+                    console.log(res.data.data);
+                    _this.user = res.data.data;
                     _this.isProcessing = false;
                     _this.isValid = true;
                     _this.isModalValidModal = true;
+                    console.log(res.data);
                   } else {
                     _this.isProcessing = false;
                     _this.isValid = false;
                   }
                 })["catch"](function (err) {
                   _this.isProcessing = false;
+                  console.log(err.response.data.status);
+
+                  if (err.response.data.status === 'invalid') {
+                    _this.remark = 'INVALID QR.';
+                    _this.isValid = false;
+                  }
+
+                  if (err.response.data.status === 'scanned') {
+                    _this.remark = 'ALREADY SCANNED!';
+                    _this.isValid = false;
+                  }
                 }); //this.isValid = content.startsWith('http') //this will return boolean value
                 // some more delay, so users have time to read the message
 
@@ -35147,7 +35160,9 @@ var render = function () {
                 _vm.validationFailure
                   ? _c("div", { staticClass: "validation-failure" }, [
                       _vm._v(
-                        "\n                        Already scanned.\n                    "
+                        "\n                        " +
+                          _vm._s(_vm.remark) +
+                          "\n                    "
                       ),
                     ])
                   : _vm._e(),

@@ -45,18 +45,32 @@ class QRScannerController extends Controller
             ->where('meridian', $meridian)
             ->where('is_approved', 1)
             ->where('is_cancel', 0)
-            ->where('is_scanned', 0)
             ->first();
+
+
 
         if($data){
             if($data->is_scanned < 1){
                 $a = Appointment::find($data->appointment_id);
                 $a->is_scanned = 1;
                 $a->save();
+
+                return response()->json([
+                    'status' => 'ok',
+                    'data' => $data
+                ],200);
+            } else {
+                return response()->json([
+                    'status' => 'scanned',
+                ],422);
             }
+        }else{
+            return response()->json([
+                'status' => 'invalid'
+            ],422);
         }
 
-        return $data;
+
     }
 
     public function saveFriskItem(Request $req, $id){

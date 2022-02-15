@@ -34,7 +34,6 @@
                                         </b-field>
                                     </div>
                                 </div>
-
                             </div>
 
                             <b-table
