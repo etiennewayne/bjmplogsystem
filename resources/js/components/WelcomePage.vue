@@ -122,11 +122,11 @@
                         </div>
 
                     </div>
-                    <b-button @click="add" type="is-success" class="is-small" v-if="fields.companions.length < 5" icon-left="add">ADD</b-button>
+                    <b-button @click="add" type="is-success" class="is-small" v-if="fields.companions.length < 4" icon-left="plus">ADD</b-button>
 
 
                     <div class="buttons is-right">
-                        <b-button type="is-success" @click="submit" icon="right-arrow">GET APPOINTMENT</b-button>
+                        <b-button type="is-success" @click="submit" icon-left="calendar-plus">GET APPOINTMENT</b-button>
                     </div>
                 </div>
             </div>

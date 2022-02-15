@@ -37374,12 +37374,12 @@ var render = function () {
                 ])
               }),
               _vm._v(" "),
-              _vm.fields.companions.length < 5
+              _vm.fields.companions.length < 4
                 ? _c(
                     "b-button",
                     {
                       staticClass: "is-small",
-                      attrs: { type: "is-success", "icon-left": "add" },
+                      attrs: { type: "is-success", "icon-left": "plus" },
                       on: { click: _vm.add },
                     },
                     [_vm._v("ADD")]
@@ -37393,7 +37393,10 @@ var render = function () {
                   _c(
                     "b-button",
                     {
-                      attrs: { type: "is-success", icon: "right-arrow" },
+                      attrs: {
+                        type: "is-success",
+                        "icon-left": "calendar-plus",
+                      },
                       on: { click: _vm.submit },
                     },
                     [_vm._v("GET APPOINTMENT")]
