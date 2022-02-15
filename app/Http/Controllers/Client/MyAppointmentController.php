@@ -21,11 +21,11 @@ class MyAppointmentController extends Controller
     }
 
     public function getAppointments(Request $req){
-        
+
         $sort = explode('.', $req->sort_by);
         $date =  $req->appointment_date;
         $ndate = date("Y-m-d", strtotime($date));
-        
+
         $userid = Auth::user()->user_id;
 
         return Appointment::where('appointment_date', 'like', $ndate . '%')
@@ -45,6 +45,7 @@ class MyAppointmentController extends Controller
 
     public function cancelAppointment($id){
         $data = Appointment::find($id);
+        $data->is_approved = 0;
         $data->is_cancel = 1;
         $data->save();
 

@@ -24,8 +24,6 @@ class QRScannerController extends Controller
 
     public function validateQR($qr){
 
-
-
         $ndate = date('Y-m-d');
         $meridian = date('A');
 
@@ -45,6 +43,7 @@ class QRScannerController extends Controller
             })
             ->where('appointment_date', $ndate)
             ->where('meridian', $meridian)
+            ->where('is_approved', 1)
             ->where('is_cancel', 0)
             ->where('is_scanned', 0)
             ->first();

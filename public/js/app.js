@@ -7583,6 +7583,295 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/AdminAppointments.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/AdminAppointments.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      data: [],
+      total: 0,
+      loading: false,
+      sortField: 'appointment_id',
+      sortOrder: 'desc',
+      page: 1,
+      perPage: 5,
+      defaultSortDirection: 'asc',
+      mydateSearch: new Date(),
+      global_id: 0,
+      search: {
+        appointment_date: null
+      },
+      fields: {},
+      errors: {},
+      isModal: false,
+      btnClass: {
+        'is-success': true,
+        'button': true,
+        'is-loading': false
+      }
+    };
+  },
+  methods: {
+    /*
+    * Load async data
+    */
+    loadAsyncData: function loadAsyncData() {
+      var _this = this;
+
+      var params = ["sort_by=".concat(this.sortField, ".").concat(this.sortOrder), "appointment_date=".concat(this.search.appointment_date), "perpage=".concat(this.perPage), "page=".concat(this.page)].join('&');
+      this.loading = true;
+      axios.get("/get-all-appointments?".concat(params)).then(function (_ref) {
+        var data = _ref.data;
+        _this.data = [];
+        var currentTotal = data.total;
+
+        if (data.total / _this.perPage > 1000) {
+          currentTotal = _this.perPage * 1000;
+        }
+
+        _this.total = currentTotal;
+        data.data.forEach(function (item) {
+          //item.release_date = item.release_date ? item.release_date.replace(/-/g, '/') : null
+          _this.data.push(item);
+        });
+        _this.loading = false;
+      })["catch"](function (error) {
+        _this.data = [];
+        _this.total = 0;
+        _this.loading = false;
+        throw error;
+      });
+    },
+
+    /*
+    * Handle page-change event
+    */
+    onPageChange: function onPageChange(page) {
+      this.page = page;
+      this.loadAsyncData();
+    },
+    onSort: function onSort(field, order) {
+      this.sortField = field;
+      this.sortOrder = order;
+      this.loadAsyncData();
+    },
+    setPerPage: function setPerPage() {
+      this.loadAsyncData();
+    },
+    openModal: function openModal() {
+      this.isModal = true;
+      this.fields = {};
+      this.errors = {};
+    },
+    getData: function getData(data_id) {
+      var _this2 = this;
+
+      this.global_id = data_id;
+      this.isModal = true; //nested axios for getting the address 1 by 1 or request by request
+
+      axios.get('/my-appointment/' + data_id).then(function (res) {
+        _this2.fields = res.data;
+      });
+    },
+    //alert approve appointment
+    approveAppointment: function approveAppointment(dataId) {
+      var _this3 = this;
+
+      this.$buefy.dialog.confirm({
+        title: 'APPROVE?',
+        type: 'is-warning',
+        message: 'Are you sure you want to approve this appointment?',
+        cancelText: 'Close',
+        confirmText: 'APPROVE APPOINTMENT?',
+        onConfirm: function onConfirm() {
+          return _this3.approveConfirm(dataId);
+        }
+      });
+    },
+    approveConfirm: function approveConfirm(dataId) {
+      var _this4 = this;
+
+      axios.post('/admin-appointment-approve/' + dataId).then(function (res) {
+        if (res.data.status === 'approved') {
+          _this4.$buefy.dialog.alert({
+            title: 'APPROVED!',
+            message: 'Appointment approved successfully.',
+            type: 'is-success'
+          });
+        }
+
+        _this4.loadAsyncData();
+      })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this4.errors = err.response.data.errors;
+        }
+      });
+    },
+    //alert box ask for deletion
+    cancelAppointment: function cancelAppointment(data_id) {
+      var _this5 = this;
+
+      this.$buefy.dialog.confirm({
+        title: 'DELETE!',
+        type: 'is-warning',
+        message: 'Are you sure you want to cancel your appointment?',
+        cancelText: 'Close',
+        confirmText: 'CANCEL APPOINTMENT?',
+        onConfirm: function onConfirm() {
+          return _this5.cancelConfirm(data_id);
+        }
+      });
+    },
+    //execute delete after confirming
+    cancelConfirm: function cancelConfirm(data_id) {
+      var _this6 = this;
+
+      axios.post('/admin-appointment-cancel/' + data_id).then(function (res) {
+        if (res.data.status === 'canceled') {
+          _this6.$buefy.dialog.alert({
+            title: 'CANCELLED.',
+            message: 'Appointment cancelled successfully.',
+            type: 'is-success'
+          });
+        }
+
+        _this6.loadAsyncData();
+      })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this6.errors = err.response.data.errors;
+        }
+      });
+    },
+    searchAppointment: function searchAppointment() {
+      var ndate = new Date(this.mydateSearch);
+      this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate(); // console.log(this.search.appointhis.loadAsyncData();
+
+      this.loadAsyncData();
+    }
+  },
+  mounted: function mounted() {
+    this.searchAppointment();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/DashboardPage.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/DashboardPage.vue?vue&type=script&lang=js& ***!
@@ -8485,6 +8774,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -8773,6 +9063,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -28825,7 +29121,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.validation-success[data-v-749c9f13],\r\n.validation-failure[data-v-749c9f13],\r\n.validation-pending[data-v-749c9f13] {\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n\r\n    background-color: rgba(255, 255, 255, .8);\r\n    text-align: center;\r\n    font-weight: bold;\r\n    font-size: 1.4rem;\r\n    padding: 10px;\r\n\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: center;\n}\n.validation-success[data-v-749c9f13] {\r\n    color: green;\n}\n.validation-failure[data-v-749c9f13] {\r\n    color: red;\n}\n.camera[data-v-749c9f13]{\r\n    margin: auto;\r\n    width: 240px;\r\n    height: 320px;\r\n    border: 1px solid gray;\n}\n.decode-result[data-v-749c9f13]{\r\n    text-align: center;\n}\n.visitor-img[data-v-749c9f13]{\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    width: 50%;\n}\n.companion[data-v-749c9f13]{\r\n    margin: 15px 0 10px 25px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.validation-success[data-v-749c9f13],\n.validation-failure[data-v-749c9f13],\n.validation-pending[data-v-749c9f13] {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n\n    background-color: rgba(255, 255, 255, .8);\n    text-align: center;\n    font-weight: bold;\n    font-size: 1.4rem;\n    padding: 10px;\n\n    display: flex;\n    flex-flow: column nowrap;\n    justify-content: center;\n}\n.validation-success[data-v-749c9f13] {\n    color: green;\n}\n.validation-failure[data-v-749c9f13] {\n    color: red;\n}\n.camera[data-v-749c9f13]{\n    margin: auto;\n    width: 240px;\n    height: 320px;\n    border: 1px solid gray;\n}\n.decode-result[data-v-749c9f13]{\n    text-align: center;\n}\n.visitor-img[data-v-749c9f13]{\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n    width: 50%;\n}\n.companion[data-v-749c9f13]{\n    margin: 15px 0 10px 25px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28897,7 +29193,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.panel-body{\r\n    padding: 25px;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.panel-body{\n    padding: 25px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30633,6 +30929,45 @@ component.options.__file = "resources/js/components/AboutPage.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Administrator/AdminAppointments.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Administrator/AdminAppointments.vue ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AdminAppointments_vue_vue_type_template_id_50086eb4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminAppointments.vue?vue&type=template&id=50086eb4& */ "./resources/js/components/Administrator/AdminAppointments.vue?vue&type=template&id=50086eb4&");
+/* harmony import */ var _AdminAppointments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminAppointments.vue?vue&type=script&lang=js& */ "./resources/js/components/Administrator/AdminAppointments.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AdminAppointments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AdminAppointments_vue_vue_type_template_id_50086eb4___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AdminAppointments_vue_vue_type_template_id_50086eb4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Administrator/AdminAppointments.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Administrator/DashboardPage.vue":
 /*!*****************************************************************!*\
   !*** ./resources/js/components/Administrator/DashboardPage.vue ***!
@@ -31267,6 +31602,22 @@ component.options.__file = "resources/js/components/WelcomePage.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Administrator/AdminAppointments.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/Administrator/AdminAppointments.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminAppointments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdminAppointments.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/AdminAppointments.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminAppointments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Administrator/DashboardPage.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************!*\
   !*** ./resources/js/components/Administrator/DashboardPage.vue?vue&type=script&lang=js& ***!
@@ -31592,6 +31943,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutPage_vue_vue_type_template_id_1a32d7e1___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutPage_vue_vue_type_template_id_1a32d7e1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AboutPage.vue?vue&type=template&id=1a32d7e1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AboutPage.vue?vue&type=template&id=1a32d7e1&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Administrator/AdminAppointments.vue?vue&type=template&id=50086eb4&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/Administrator/AdminAppointments.vue?vue&type=template&id=50086eb4& ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminAppointments_vue_vue_type_template_id_50086eb4___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminAppointments_vue_vue_type_template_id_50086eb4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminAppointments_vue_vue_type_template_id_50086eb4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdminAppointments.vue?vue&type=template&id=50086eb4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/AdminAppointments.vue?vue&type=template&id=50086eb4&");
 
 
 /***/ }),
@@ -32650,6 +33018,416 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/AdminAppointments.vue?vue&type=template&id=50086eb4&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/AdminAppointments.vue?vue&type=template&id=50086eb4& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "section" }, [
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column is-8 is-offset-2" }, [
+          _c("div", { staticClass: "panel" }, [
+            _c("div", { staticClass: "panel-heading" }, [
+              _vm._v(
+                "\n                        Appointment List\n                    "
+              ),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "panel-body" },
+              [
+                _c("div", { staticClass: "level" }, [
+                  _c("div", { staticClass: "level-left" }, [
+                    _c(
+                      "div",
+                      { staticClass: "level-item" },
+                      [
+                        _c(
+                          "b-field",
+                          {
+                            attrs: {
+                              label: "Page",
+                              "label-position": "on-border",
+                            },
+                          },
+                          [
+                            _c(
+                              "b-select",
+                              {
+                                on: { input: _vm.setPerPage },
+                                model: {
+                                  value: _vm.perPage,
+                                  callback: function ($$v) {
+                                    _vm.perPage = $$v
+                                  },
+                                  expression: "perPage",
+                                },
+                              },
+                              [
+                                _c("option", { attrs: { value: "5" } }, [
+                                  _vm._v("5 per page"),
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "10" } }, [
+                                  _vm._v("10 per page"),
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "15" } }, [
+                                  _vm._v("15 per page"),
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "20" } }, [
+                                  _vm._v("20 per page"),
+                                ]),
+                              ]
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "level-right" }, [
+                    _c(
+                      "div",
+                      { staticClass: "level-item" },
+                      [
+                        _c(
+                          "b-field",
+                          {
+                            attrs: {
+                              label: "Appointment Date",
+                              "label-position": "on-border",
+                            },
+                          },
+                          [
+                            _c("b-datepicker", {
+                              attrs: { placeholder: "Appointment date..." },
+                              nativeOn: {
+                                keyup: function ($event) {
+                                  if (
+                                    !$event.type.indexOf("key") &&
+                                    _vm._k(
+                                      $event.keyCode,
+                                      "enter",
+                                      13,
+                                      $event.key,
+                                      "Enter"
+                                    )
+                                  ) {
+                                    return null
+                                  }
+                                  return _vm.searchAppointment.apply(
+                                    null,
+                                    arguments
+                                  )
+                                },
+                              },
+                              model: {
+                                value: _vm.mydateSearch,
+                                callback: function ($$v) {
+                                  _vm.mydateSearch = $$v
+                                },
+                                expression: "mydateSearch",
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              { staticClass: "control" },
+                              [
+                                _c("b-button", {
+                                  attrs: {
+                                    type: "is-link",
+                                    "icon-left": "magnify",
+                                  },
+                                  on: { click: _vm.searchAppointment },
+                                }),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "b-table",
+                  {
+                    attrs: {
+                      data: _vm.data,
+                      loading: _vm.loading,
+                      paginated: "",
+                      "backend-pagination": "",
+                      total: _vm.total,
+                      "per-page": _vm.perPage,
+                      "aria-next-label": "Next page",
+                      "aria-previous-label": "Previous page",
+                      "aria-page-label": "Page",
+                      "aria-current-label": "Current page",
+                      "backend-sorting": "",
+                      "default-sort-direction": _vm.defaultSortDirection,
+                    },
+                    on: { "page-change": _vm.onPageChange, sort: _vm.onSort },
+                  },
+                  [
+                    _c("b-table-column", {
+                      attrs: { field: "user_id", label: "ID" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function (props) {
+                            return [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(props.row.appointment_id) +
+                                  "\n                            "
+                              ),
+                            ]
+                          },
+                        },
+                      ]),
+                    }),
+                    _vm._v(" "),
+                    _c("b-table-column", {
+                      attrs: {
+                        field: "appointment_date",
+                        label: "Appointment Date",
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function (props) {
+                            return [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(props.row.appointment_date) +
+                                  " (" +
+                                  _vm._s(props.row.meridian) +
+                                  ")\n                            "
+                              ),
+                            ]
+                          },
+                        },
+                      ]),
+                    }),
+                    _vm._v(" "),
+                    _c("b-table-column", {
+                      attrs: { field: "appointer", label: "Appointer" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function (props) {
+                            return [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(props.row.lname) +
+                                  ", " +
+                                  _vm._s(props.row.fname) +
+                                  " " +
+                                  _vm._s(props.row.mname) +
+                                  "\n                            "
+                              ),
+                            ]
+                          },
+                        },
+                      ]),
+                    }),
+                    _vm._v(" "),
+                    _c("b-table-column", {
+                      attrs: { field: "inmate", label: "Inmate" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function (props) {
+                            return [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(props.row.inmate) +
+                                  "\n                            "
+                              ),
+                            ]
+                          },
+                        },
+                      ]),
+                    }),
+                    _vm._v(" "),
+                    _c("b-table-column", {
+                      attrs: { field: "is_approved", label: "Approve" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function (props) {
+                            return [
+                              props.row.is_approved == 0
+                                ? _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "orange",
+                                        "font-weight": "bold",
+                                        "font-size": "small",
+                                      },
+                                    },
+                                    [_vm._v("NO")]
+                                  )
+                                : _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "green",
+                                        "font-weight": "bold",
+                                        "font-size": "small",
+                                      },
+                                    },
+                                    [_vm._v("APPROVED")]
+                                  ),
+                            ]
+                          },
+                        },
+                      ]),
+                    }),
+                    _vm._v(" "),
+                    _c("b-table-column", {
+                      attrs: { field: "is_cancel", label: "Cancel" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function (props) {
+                            return [
+                              props.row.is_cancel == 0
+                                ? _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "orange",
+                                        "font-weight": "bold",
+                                        "font-size": "small",
+                                      },
+                                    },
+                                    [_vm._v("NO")]
+                                  )
+                                : _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "red",
+                                        "font-weight": "bold",
+                                        "font-size": "small",
+                                      },
+                                    },
+                                    [_vm._v("CANCELED")]
+                                  ),
+                            ]
+                          },
+                        },
+                      ]),
+                    }),
+                    _vm._v(" "),
+                    _c("b-table-column", {
+                      attrs: { label: "Action" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function (props) {
+                            return [
+                              _c(
+                                "div",
+                                { staticClass: "is-flex" },
+                                [
+                                  _c("b-button", {
+                                    staticClass:
+                                      "button is-small is-primary mr-1",
+                                    attrs: { "icon-right": "thumb-up" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.approveAppointment(
+                                          props.row.appointment_id
+                                        )
+                                      },
+                                    },
+                                  }),
+                                  _vm._v(" "),
+                                  _c("b-button", {
+                                    staticClass:
+                                      "button is-small is-danger mr-1",
+                                    attrs: {
+                                      "icon-right": "file-cancel-outline",
+                                    },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.cancelAppointment(
+                                          props.row.appointment_id
+                                        )
+                                      },
+                                    },
+                                  }),
+                                ],
+                                1
+                              ),
+                            ]
+                          },
+                        },
+                      ]),
+                    }),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "buttons mt-4" },
+                  [
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          type: "is-primary",
+                          tag: "a",
+                          href: "/",
+                          "icon-left": "book-plus",
+                        },
+                      },
+                      [_vm._v("New")]
+                    ),
+                  ],
+                  1
+                ),
+              ],
+              1
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/DashboardPage.vue?vue&type=template&id=70390bc6&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Administrator/DashboardPage.vue?vue&type=template&id=70390bc6&scoped=true& ***!
@@ -32718,19 +33496,23 @@ var render = function () {
                     return [
                       _c("b-navbar-item", { attrs: { href: "#" } }, [
                         _vm._v(
-                          "\r\n                        Home\r\n                    "
+                          "\n                        Home\n                    "
                         ),
                       ]),
                       _vm._v(" "),
-                      _c("b-navbar-item", { attrs: { href: "/users" } }, [
-                        _vm._v(
-                          "\r\n                        Appointments\r\n                    "
-                        ),
-                      ]),
+                      _c(
+                        "b-navbar-item",
+                        { attrs: { href: "/admin-appointments" } },
+                        [
+                          _vm._v(
+                            "\n                        Appointments\n                    "
+                          ),
+                        ]
+                      ),
                       _vm._v(" "),
                       _c("b-navbar-item", { attrs: { href: "/users" } }, [
                         _vm._v(
-                          "\r\n                        Users\r\n                    "
+                          "\n                        Users\n                    "
                         ),
                       ]),
                       _vm._v(" "),
@@ -32738,15 +33520,9 @@ var render = function () {
                         "b-navbar-dropdown",
                         { attrs: { label: _vm.firstname } },
                         [
-                          _c("b-navbar-item", { attrs: { href: "#" } }, [
-                            _vm._v(
-                              "\r\n                            Profile\r\n                        "
-                            ),
-                          ]),
-                          _vm._v(" "),
                           _c("b-navbar-item", { on: { click: _vm.logout } }, [
                             _vm._v(
-                              "\r\n                            Logout\r\n                        "
+                              "\n                            Logout\n                        "
                             ),
                           ]),
                         ],
@@ -32795,7 +33571,7 @@ var render = function () {
       _c("section", { staticClass: "section" }, [
         _c("div", { staticClass: "panel" }, [
           _c("div", { staticClass: "panel-heading" }, [
-            _vm._v("\r\n                USERS\r\n            "),
+            _vm._v("\n                USERS\n            "),
           ]),
           _vm._v(" "),
           _c(
@@ -32952,9 +33728,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.user_id) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -32970,9 +33746,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.username) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -32988,13 +33764,13 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.lname) +
                                 ", " +
                                 _vm._s(props.row.fname) +
                                 " " +
                                 _vm._s(props.row.mname) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -33010,9 +33786,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.sex) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -33028,9 +33804,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.email) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -33046,9 +33822,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\r\n                        " +
+                              "\n                        " +
                                 _vm._s(props.row.role) +
-                                "\r\n                    "
+                                "\n                    "
                             ),
                           ]
                         },
@@ -34017,9 +34793,9 @@ var render = function () {
           _c("div", { staticClass: "panel" }, [
             _c("div", { staticClass: "panel-heading" }, [
               _vm._v(
-                "\r\n                        NO OF VISITOR TODAY AS OF " +
+                "\n                        NO OF VISITOR TODAY AS OF " +
                   _vm._s(new Date().toLocaleDateString()) +
-                  "\r\n                    "
+                  "\n                    "
               ),
             ]),
             _vm._v(" "),
@@ -34090,6 +34866,19 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "b-navbar-dropdown",
+                  { attrs: { label: "Report" } },
+                  [
+                    _c("b-navbar-item", { attrs: { href: "/log-report" } }, [
+                      _vm._v(
+                        "\n                    Log Report\n                "
+                      ),
+                    ]),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-navbar-dropdown",
                   { attrs: { label: "My Account" } },
                   [
                     _c(
@@ -34110,19 +34899,6 @@ var render = function () {
                     _vm._v(" "),
                     _c("b-navbar-item", { on: { click: _vm.logout } }, [
                       _vm._v("\n                    LOGOUT\n                "),
-                    ]),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-navbar-dropdown",
-                  { attrs: { label: "Report" } },
-                  [
-                    _c("b-navbar-item", { attrs: { href: "/log-report" } }, [
-                      _vm._v(
-                        "\n                    Log Report\n                "
-                      ),
                     ]),
                   ],
                   1
@@ -34621,7 +35397,7 @@ var render = function () {
           _c("div", { staticClass: "panel" }, [
             _c("div", { staticClass: "panel-heading" }, [
               _vm._v(
-                "\r\n                        My Appointment\r\n                    "
+                "\n                        My Appointment\n                    "
               ),
             ]),
             _vm._v(" "),
@@ -34778,9 +35554,9 @@ var render = function () {
                           fn: function (props) {
                             return [
                               _vm._v(
-                                "\r\n                                " +
+                                "\n                                " +
                                   _vm._s(props.row.appointment_id) +
-                                  "\r\n                            "
+                                  "\n                            "
                               ),
                             ]
                           },
@@ -34799,11 +35575,11 @@ var render = function () {
                           fn: function (props) {
                             return [
                               _vm._v(
-                                "\r\n                                " +
+                                "\n                                " +
                                   _vm._s(props.row.appointment_date) +
                                   " (" +
                                   _vm._s(props.row.meridian) +
-                                  ")\r\n                            "
+                                  ")\n                            "
                               ),
                             ]
                           },
@@ -34819,9 +35595,9 @@ var render = function () {
                           fn: function (props) {
                             return [
                               _vm._v(
-                                "\r\n                                " +
+                                "\n                                " +
                                   _vm._s(props.row.inmate) +
-                                  "\r\n                            "
+                                  "\n                            "
                               ),
                             ]
                           },
@@ -34830,7 +35606,43 @@ var render = function () {
                     }),
                     _vm._v(" "),
                     _c("b-table-column", {
-                      attrs: { field: "is_cancel", label: "Inmate" },
+                      attrs: { field: "is_approved", label: "Approve" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "default",
+                          fn: function (props) {
+                            return [
+                              props.row.is_approved == 0
+                                ? _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "orange",
+                                        "font-weight": "bold",
+                                        "font-size": "small",
+                                      },
+                                    },
+                                    [_vm._v("NO")]
+                                  )
+                                : _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "green",
+                                        "font-weight": "bold",
+                                        "font-size": "small",
+                                      },
+                                    },
+                                    [_vm._v("APPROVED")]
+                                  ),
+                            ]
+                          },
+                        },
+                      ]),
+                    }),
+                    _vm._v(" "),
+                    _c("b-table-column", {
+                      attrs: { field: "is_cancel", label: "Cancel" },
                       scopedSlots: _vm._u([
                         {
                           key: "default",
@@ -34841,12 +35653,12 @@ var render = function () {
                                     "span",
                                     {
                                       staticStyle: {
-                                        color: "green",
+                                        color: "orange",
                                         "font-weight": "bold",
                                         "font-size": "small",
                                       },
                                     },
-                                    [_vm._v("ACTIVE")]
+                                    [_vm._v("NO")]
                                   )
                                 : _c(
                                     "span",
@@ -34857,7 +35669,7 @@ var render = function () {
                                         "font-size": "small",
                                       },
                                     },
-                                    [_vm._v("CANCELED")]
+                                    [_vm._v("CANCELLED")]
                                   ),
                             ]
                           },
@@ -35115,7 +35927,7 @@ var render = function () {
                               _vm._s(_vm.user.fname) +
                               " " +
                               _vm._s(_vm.user.mname) +
-                              "\r\n                                    "
+                              "\n                                    "
                           ),
                         ]),
                       ]),
@@ -37032,11 +37844,11 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "sign-name-area" }, [
         _c("div", { staticClass: "sign-name" }, [
-          _vm._v("RANK SHIELA G. CONOL"),
+          _vm._v("J/INSP JEFFRY A. RIBLES"),
         ]),
         _vm._v(" "),
         _c("div", { staticStyle: { "text-align": "center" } }, [
-          _vm._v("POSITION"),
+          _vm._v("District Jail Warden"),
         ]),
       ]),
     ])
@@ -61495,6 +62307,7 @@ Vue.compile = compileToFunctions;
 
 var map = {
 	"./components/AboutPage.vue": "./resources/js/components/AboutPage.vue",
+	"./components/Administrator/AdminAppointments.vue": "./resources/js/components/Administrator/AdminAppointments.vue",
 	"./components/Administrator/DashboardPage.vue": "./resources/js/components/Administrator/DashboardPage.vue",
 	"./components/Administrator/NavbarAdmin.vue": "./resources/js/components/Administrator/NavbarAdmin.vue",
 	"./components/Administrator/UserPage.vue": "./resources/js/components/Administrator/UserPage.vue",
@@ -61542,7 +62355,7 @@ webpackContext.id = "./resources/js sync recursive \\.vue$/";
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Users\\\\wayne\\\\Desktop\\\\GitHub\\\\bjmplogsystem"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\Users\\\\wayne\\\\Desktop\\\\GitHub\\\\bjmplogsystem","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/","#USER"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\Users\\\\eshen\\\\Desktop\\\\Github\\\\bjmplogsystem","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

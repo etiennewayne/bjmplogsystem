@@ -15,6 +15,13 @@
                 <b-navbar-item href="/qr-scanner">
                     QR Scanner
                 </b-navbar-item>
+
+                 <b-navbar-dropdown label="Report">
+                    <b-navbar-item href="/log-report">
+                        Log Report
+                    </b-navbar-item>
+                </b-navbar-dropdown>
+
                 <b-navbar-dropdown label="My Account">
                     <b-navbar-item @click="modalChangePassword = true">
                         Change Password
@@ -22,12 +29,6 @@
                     <b-navbar-item @click="logout">
                         LOGOUT
                     </b-navbar-item>
-                </b-navbar-dropdown>
-                 <b-navbar-dropdown label="Report">
-                    <b-navbar-item href="/log-report">
-                        Log Report
-                    </b-navbar-item>
-                   
                 </b-navbar-dropdown>
             </template>
 

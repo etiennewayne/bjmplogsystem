@@ -65,11 +65,17 @@
                                 {{ props.row.inmate }}
                             </b-table-column>
 
-                            <b-table-column field="is_cancel" label="Inmate" v-slot="props">
-                                <span style="color: green; font-weight: bold; font-size: small;" v-if="props.row.is_cancel == 0">ACTIVE</span>
-                                <span style="color: red; font-weight: bold; font-size: small;" v-else>CANCELED</span>
-
+                            <b-table-column field="is_approved" label="Approve" v-slot="props">
+                                <span style="color: orange; font-weight: bold; font-size: small;" v-if="props.row.is_approved == 0">NO</span>
+                                <span style="color: green; font-weight: bold; font-size: small;" v-else>APPROVED</span>
                             </b-table-column>
+
+                            <b-table-column field="is_cancel" label="Cancel" v-slot="props">
+                                <span style="color: orange; font-weight: bold; font-size: small;" v-if="props.row.is_cancel == 0">NO</span>
+                                <span style="color: red; font-weight: bold; font-size: small;" v-else>CANCELLED</span>
+                            </b-table-column>
+
+
 
                             <b-table-column label="Action" v-slot="props">
                                 <div class="is-flex">

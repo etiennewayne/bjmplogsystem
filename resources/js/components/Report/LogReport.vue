@@ -57,8 +57,8 @@
                         <div class="signatory-area">
                             <div style="font-weight: bold;">APPROVED BY:</div>
                             <div class="sign-name-area">
-                                <div class="sign-name">RANK SHIELA G. CONOL</div>
-                                <div style="text-align: center;">POSITION</div>
+                                <div class="sign-name">J/INSP JEFFRY A. RIBLES</div>
+                                <div style="text-align: center;">District Jail Warden</div>
                             </div>
 
                         </div>

@@ -44,13 +44,21 @@ Route::get('/fetch-address-provinces', [App\Http\Controllers\AddressController::
 
 
 
-//ADMINISTRATOR
+/*  ADMINISTRATOR CONTROLLER AND ROUTES */
 Route::resource('/dashboard', App\Http\Controllers\Administrator\AdminDashboardController::class);
 
 Route::resource('/users', App\Http\Controllers\Administrator\UserController::class);
 
 Route::get('/get-users', [App\Http\Controllers\Administrator\UserController::class, 'getUsers']);
 Route::post('/user-reset-password/{id}', [App\Http\Controllers\Administrator\UserController::class, 'resetPassword']);
+
+Route::resource('/admin-appointments', App\Http\Controllers\Administrator\AdminAppointmentController::class);
+Route::get('/get-all-appointments', [App\Http\Controllers\Administrator\AdminAppointmentController::class, 'getAllAppointments']);
+Route::post('/admin-appointment-cancel/{id}', [App\Http\Controllers\Administrator\AdminAppointmentController::class, 'cancelAppointment']);
+Route::post('/admin-appointment-approve/{id}', [App\Http\Controllers\Administrator\AdminAppointmentController::class, 'approveAppointment']);
+
+/*  END ADMINISTRATOR CONTROLLER AND ROUTES */
+
 
 
 //ADDRESS

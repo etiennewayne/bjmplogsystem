@@ -12,7 +12,7 @@
                     <b-navbar-item href="#">
                         Home
                     </b-navbar-item>
-                    <b-navbar-item href="/users">
+                    <b-navbar-item href="/admin-appointments">
                         Appointments
                     </b-navbar-item>
                     <b-navbar-item href="/users">
@@ -20,9 +20,9 @@
                     </b-navbar-item>
 
                     <b-navbar-dropdown :label="firstname">
-                        <b-navbar-item href="#">
-                            Profile
-                        </b-navbar-item>
+<!--                        <b-navbar-item href="#">-->
+<!--                            Profile-->
+<!--                        </b-navbar-item>-->
                         <b-navbar-item @click="logout">
                             Logout
                         </b-navbar-item>
