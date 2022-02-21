@@ -80,9 +80,20 @@
 
                     <b-table-column field="ay_id" label="Action" v-slot="props">
                         <div class="is-flex">
-                            <b-button class="button is-small is-warning mr-1" tag="a" icon-right="pencil" @click="getData(props.row.user_id)"></b-button>
-                            <b-button class="button is-small is-danger mr-1" icon-right="delete" @click="confirmDelete(props.row.user_id)"></b-button>
-                            <b-button class="button is-small is-link mr-1" icon-right="lock-reset" @click="openModalResetPassword(props.row.user_id)"></b-button>
+                            <b-tooltip label="Edit" type="is-warning">
+                                <b-button class="button is-small is-warning mr-1" tag="a" icon-right="pencil" @click="getData(props.row.user_id)"></b-button>
+                            </b-tooltip>
+
+                            <b-tooltip label="Reset password" type="is-danger">
+                                <b-button class="button is-small is-danger mr-1" icon-right="delete" @click="confirmDelete(props.row.user_id)"></b-button>
+                            </b-tooltip>
+
+                            <b-tooltip label="Reset password">
+                                <b-button class="button is-small is-link mr-1" icon-right="lock-reset" @click="openModalResetPassword(props.row.user_id)"></b-button>
+                            </b-tooltip>
+                            <b-tooltip label="User appointment(s)">
+                                <b-button class="button is-small is-link mr-1" icon-right="view-list-outline" @click="openUserAppointments(props.row)"></b-button>
+                            </b-tooltip>
                         </div>
                     </b-table-column>
 
@@ -311,7 +322,7 @@
         <form @submit.prevent="submitResetPassword">
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">User Password</p>
+                    <p class="modal-card-title"></p>
                     <button
                         type="button"
                         class="delete"
@@ -352,6 +363,102 @@
 
 
 
+
+    <!--modal create-->
+    <b-modal v-model="modalUserAppointment" has-modal-card
+             trap-focus
+             :width="640"
+             aria-role="dialog"
+             aria-label="Modal"
+             aria-modal>
+
+        <form @submit.prevent="submitResetPassword">
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">{{ fullname }}</p>
+                    <button
+                        type="button"
+                        class="delete"
+                        @click="modalUserAppointment = false"/>
+                </header>
+
+                <section class="modal-card-body">
+                    <div class="">
+                        <div class="level">
+                            <div class="level-left">
+                                <b-field label="Page">
+                                    <b-select v-model="perPage" @input="setPerPageApp">
+                                        <option value="5">5 per page</option>
+                                        <option value="10">10 per page</option>
+                                        <option value="15">15 per page</option>
+                                        <option value="20">20 per page</option>
+                                    </b-select>
+                                </b-field>
+                            </div>
+
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <b-field label="Search">
+                                        <b-datepicker
+                                                 v-model="search.appdate" placeholder="Search Lastname"/>
+                                        <p class="control">
+                                            <b-button type="is-primary" label="Search" @click="loadAsyncDataApp()"/>
+                                        </p>
+                                    </b-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <b-table
+                            :data="dataApp"
+                            :loading="loadingApp"
+                            paginated
+                            backend-pagination
+                            :total="totalApp"
+                            :per-page="perPageApp"
+                            @page-change="onPageChangeApp"
+                            aria-next-label="Next page"
+                            aria-previous-label="Previous page"
+                            aria-page-label="Page"
+                            aria-current-label="Current page"
+                            backend-sorting
+                            :default-sort-direction="defaultSortDirectionApp"
+                            @sort="onSortApp">
+
+                            <b-table-column field="id" label="ID" v-slot="props">
+                                {{ props.row.user_id }}
+                            </b-table-column>
+
+                            <b-table-column field="appointment_date" label="Appointment Date" v-slot="props">
+                                {{ props.row.appointment_date }}
+                            </b-table-column>
+
+                            <b-table-column field="meridian" label="Meridian" v-slot="props">
+                                {{ props.row.meridian }}
+                            </b-table-column>
+
+                            <b-table-column field="inmate" label="Inmate" v-slot="props">
+                                {{ props.row.inmate }}
+                            </b-table-column>
+
+                            <b-table-column field="inmate_relationship" label="Relationship" v-slot="props">
+                                {{ props.row.inmate_relationship }}
+                            </b-table-column>
+                        </b-table>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <b-button
+                        label="Close"
+                        @click="modalUserAppointment=false"/>
+                </footer>
+            </div>
+        </form><!--close form-->
+    </b-modal>
+    <!--close modal user appointment-->
+
+
+
 </div>
 </template>
 
@@ -369,6 +476,17 @@ export default {
             perPage: 20,
             defaultSortDirection: 'asc',
             //table variables
+
+            dataApp: [],
+            totalApp: 0,
+            loadingApp: false,
+            sortFieldApp: 'appointment_id',
+            sortOrderApp: 'desc',
+            pageApp: 1,
+            perPageApp: 20,
+            defaultSortDirectionApp: 'asc',
+
+            appointment: {},
 
             search: {
                 lname: '',
@@ -391,6 +509,7 @@ export default {
 
             isModalCreate: false,
             isModalResetPassword: false,
+            modalUserAppointment: false,
         }
     },
     methods: {
@@ -425,23 +544,71 @@ export default {
                     throw error
                 })
         },
-        /*
-    * Handle page-change event
-    */
         onPageChange(page) {
             this.page = page
             this.loadAsyncData()
         },
-
         onSort(field, order) {
             this.sortField = field
             this.sortOrder = order
             this.loadAsyncData()
         },
-
         setPerPage(){
             this.loadAsyncData()
         },
+
+        /*-----------USER APPOINTMENT------------*/
+        loadAsyncDataApp() {
+
+            let ndate = new Date(this.search.appdate);
+            ndate = ndate.getFullYear() + '/' + (ndate.getMonth() + 1) +'/'+ ndate.getDate();
+            const params = [
+                `sort_by=${this.sortFieldApp}.${this.sortOrderApp}`,
+                `appdate=${ndate}`,
+                `perpage=${this.perPageApp}`,
+                `page=${this.pageApp}`
+            ].join('&')
+
+            this.loadingApp = true
+            axios.get(`/get-user-appointments/${this.appointment.user_id}?${params}`)
+                .then(({ data }) => {
+                    this.dataApp = [];
+                    let currentTotal = data.totalApp
+                    if (data.total / this.perPageApp > 1000) {
+                        currentTotal = this.perPageApp * 1000
+                    }
+
+                    this.totalApp = currentTotal
+                    data.data.forEach((item) => {
+                        //item.release_date = item.release_date ? item.release_date.replace(/-/g, '/') : null
+                        this.dataApp.push(item)
+                    })
+                    this.loadingApp = false
+                })
+                .catch((error) => {
+                    this.dataApp = []
+                    this.totalApp = 0
+                    this.loadingApp = false
+                    throw error
+                })
+        },
+        onPageChangeApp(page) {
+            this.pageApp = page
+            this.loadAsyncDataApp()
+        },
+        onSortApp(field, order) {
+            this.sortFieldApp = field
+            this.sortOrderApp = order
+            this.loadAsyncDataApp()
+        },
+        setPerPageApp(){
+            this.loadAsyncDataApp()
+        },
+
+        /*-----------USER APPOINTMENT------------*/
+
+
+
         openModal(){
             this.isModalCreate=true;
             this.fields = {};
@@ -586,6 +753,7 @@ export default {
         //---------RESET PASSWORD---------//
 
         openModalResetPassword(dataId){
+
             this.fields = {};
             this.isModalResetPassword = true;
             this.global_id = dataId;
@@ -611,12 +779,25 @@ export default {
                     this.errors = err.response.data.errors;
                 }
             })
+        },
+
+        openUserAppointments(row) {
+            this.search.appdate = new Date();
+            this.appointment = row;
+            this.modalUserAppointment = true;
+            this.loadAsyncDataApp();
         }
 
     },
     mounted() {
         this.loadAsyncData();
         this.loadProvince();
+    },
+
+    computed: {
+        fullname(){
+            return this.appointment.lname + ', ' + this.appointment.fname + ' ' + this.appointment.mname;
+        }
     }
 }
 </script>

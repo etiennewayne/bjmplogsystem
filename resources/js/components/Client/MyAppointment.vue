@@ -65,22 +65,23 @@
                                 {{ props.row.inmate }}
                             </b-table-column>
 
-                            <b-table-column field="is_approved" label="Approve" v-slot="props">
-                                <span style="color: orange; font-weight: bold; font-size: small;" v-if="props.row.is_approved == 0">NO</span>
-                                <span style="color: green; font-weight: bold; font-size: small;" v-else>APPROVED</span>
-                            </b-table-column>
-
-                            <b-table-column field="is_cancel" label="Cancel" v-slot="props">
-                                <span style="color: orange; font-weight: bold; font-size: small;" v-if="props.row.is_cancel == 0">NO</span>
+                            <b-table-column field="status" label="Status" v-slot="props">
+                                <span style="color: orange; font-weight: bold; font-size: small;" v-if="props.row.status == 0">PENDING</span>
+                                <span style="color: green; font-weight: bold; font-size: small;" v-else-if="props.row.status == 1">APPROVED</span>
                                 <span style="color: red; font-weight: bold; font-size: small;" v-else>CANCELLED</span>
                             </b-table-column>
-
-
 
                             <b-table-column label="Action" v-slot="props">
                                 <div class="is-flex">
 <!--                                    <b-button class="button is-small is-warning mr-1" tag="a" icon-right="pencil" @click="getData(props.row.appointment_id)"></b-button>-->
-                                    <b-button class="button is-small is-danger mr-1" icon-right="file-cancel-outline" @click="cancelAppointment(props.row.appointment_id)"></b-button>
+                                    <b-tooltip label="View Reason">
+                                        <b-button v-if="props.row.reason" class="button is-small is-link mr-1" icon-right="file-cancel-outline" @click="showCancelReason(props.row)"></b-button>
+                                    </b-tooltip>
+
+                                    <b-tooltip label="Cancel appointment" type="is-danger">
+                                        <b-button class="button is-small is-danger mr-1" icon-right="trash-can" @click="cancelAppointment(props.row.appointment_id)"></b-button>
+                                    </b-tooltip>
+
                                 </div>
                             </b-table-column>
                         </b-table>
@@ -93,6 +94,46 @@
             </div>
         </div>
     </div>
+
+
+
+    <!--modal create-->
+    <b-modal v-model="modalViewReason" has-modal-card
+         trap-focus
+         :width="640"
+         aria-role="dialog"
+         aria-label="Modal"
+         aria-modal>
+
+
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">REASON</p>
+                <button
+                    type="button"
+                    class="delete"
+                    @click="modalViewReason = false"/>
+            </header>
+
+            <section class="modal-card-body">
+                <div class="">
+                    <div class="columns">
+                        <div class="column">
+                            <p>{{ reason }}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <b-button
+                    label="Close"
+                    @click="modalViewReason=false"/>
+            </footer>
+        </div>
+
+    </b-modal>
+    <!--close modal reset password-->
+
 
 
 
@@ -118,9 +159,13 @@ export default {
 
             global_id : 0,
 
+            modalViewReason: false,
+
             search: {
                 appointment_date: null,
             },
+
+            reason: '',
 
             fields: {},
             errors: {},
@@ -239,6 +284,12 @@ export default {
             this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate();
            // console.log(this.search.appointhis.loadAsyncData();
             this.loadAsyncData();
+        },
+
+        showCancelReason(row){
+            this.reason = null;
+            this.modalViewReason = true;
+            this.reason = row.reason;
         }
 
     },

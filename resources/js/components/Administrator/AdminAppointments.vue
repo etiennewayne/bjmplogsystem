@@ -3,7 +3,7 @@
 
         <div class="section">
             <div class="columns">
-                <div class="column is-8 is-offset-2">
+                <div class="column is-10 is-offset-1">
                     <div class="panel">
                         <div class="panel-heading">
                             Appointment List
@@ -85,22 +85,23 @@
                                     {{ props.row.inmate }}
                                 </b-table-column>
 
-                                <b-table-column field="is_approved" label="Approve" v-slot="props">
-                                    <span style="color: orange; font-weight: bold; font-size: small;" v-if="props.row.is_approved == 0">NO</span>
-                                    <span style="color: green; font-weight: bold; font-size: small;" v-else>APPROVED</span>
+                                <b-table-column field="status" label="Status" v-slot="props">
+                                    <span style="color: orange; font-weight: bold; font-size: small;" v-if="props.row.status == 0">PENDING</span>
+                                    <span style="color: green; font-weight: bold; font-size: small;" v-else-if="props.row.status == 1">APPROVED</span>
+                                    <span style="color: red; font-weight: bold; font-size: small;" v-else>CANCELLED</span>
                                 </b-table-column>
 
-                                <b-table-column field="is_cancel" label="Cancel" v-slot="props">
-                                    <span style="color: orange; font-weight: bold; font-size: small;" v-if="props.row.is_cancel == 0">NO</span>
-                                    <span style="color: red; font-weight: bold; font-size: small;" v-else>CANCELED</span>
 
+
+                                <b-table-column field="reason" label="Reason" v-slot="props">
+                                    {{ props.row.reason }}
                                 </b-table-column>
 
                                 <b-table-column label="Action" v-slot="props">
                                     <div class="is-flex">
                                         <!--                                    <b-button class="button is-small is-warning mr-1" tag="a" icon-right="pencil" @click="getData(props.row.appointment_id)"></b-button>-->
                                         <b-button class="button is-small is-primary mr-1" icon-right="thumb-up" @click="approveAppointment(props.row.appointment_id)"></b-button>
-                                        <b-button class="button is-small is-danger mr-1" icon-right="file-cancel-outline" @click="cancelAppointment(props.row.appointment_id)"></b-button>
+                                        <b-button class="button is-small is-danger mr-1" icon-right="trash-can" @click="cancelAppointment(props.row.appointment_id)"></b-button>
                                     </div>
                                 </b-table-column>
                             </b-table>
@@ -115,8 +116,57 @@
         </div>
 
 
+        <!--modal create-->
+        <b-modal v-model="modalCancelReason" has-modal-card
+                 trap-focus
+                 :width="640"
+                 aria-role="dialog"
+                 aria-label="Modal"
+                 aria-modal>
 
-    </div>
+            <form @submit.prevent="cancelConfirm">
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Cancel Appointment?</p>
+                        <button
+                            type="button"
+                            class="delete"
+                            @click="modalCancelReason = false"/>
+                    </header>
+
+                    <section class="modal-card-body">
+                        <div class="">
+                            <div class="columns">
+                                <div class="column">
+                                    <p>Are you sure you want to cancel appointment? Please state the reason of cancellation.</p>
+                                </div>
+                            </div>
+
+                            <b-field label="Purpose" label-position="on-border"
+                                     :type="this.errors.reason ? 'is-danger':''"
+                                     :message="this.errors.reason ? this.errors.reason[0] : ''">
+                                <b-input v-model="fields.reason" placeholder="Purpose of cancellation">
+                                </b-input>
+                            </b-field>
+
+                        </div>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <b-button
+                            label="Close"
+                            @click="modalCancelReason=false"/>
+                        <button
+                            :class="btnClass"
+                            label="Save"
+                            type="is-primary">CONFIRM CANCELLATION</button>
+                    </footer>
+                </div>
+            </form><!--close form-->
+        </b-modal>
+        <!--close modal reset password-->
+
+
+    </div> <!-- div root -->
 
 </template>
 
@@ -137,6 +187,8 @@ export default {
             mydateSearch: new Date(),
 
             global_id : 0,
+
+            modalCancelReason: false,
 
             search: {
                 appointment_date: null,
@@ -261,18 +313,22 @@ export default {
 
         //alert box ask for deletion
         cancelAppointment(data_id) {
-            this.$buefy.dialog.confirm({
-                title: 'DELETE!',
-                type: 'is-warning',
-                message: 'Are you sure you want to cancel your appointment?',
-                cancelText: 'Close',
-                confirmText: 'CANCEL APPOINTMENT?',
-                onConfirm: () => this.cancelConfirm(data_id)
-            });
+            // this.$buefy.dialog.confirm({
+            //     title: 'DELETE!',
+            //     type: 'is-warning',
+            //     message: 'Are you sure you want to cancel your appointment?',
+            //     cancelText: 'Close',
+            //     confirmText: 'CANCEL APPOINTMENT?',
+            //     onConfirm: () => this.cancelConfirm(data_id)
+            // });
+            this.fields = {};
+            this.modalCancelReason = true;
+            this.global_id = data_id;
         },
         //execute delete after confirming
-        cancelConfirm(data_id) {
-            axios.post('/admin-appointment-cancel/' + data_id).then(res => {
+        cancelConfirm() {
+
+            axios.post('/admin-appointment-cancel/' + this.global_id, this.fields).then(res => {
                 if(res.data.status === 'canceled'){
                     this.$buefy.dialog.alert({
                         title: 'CANCELLED.',
@@ -281,6 +337,8 @@ export default {
                     });
                 }
                 this.loadAsyncData();
+                this.global_id = 0;
+                this.modalCancelReason = false;
             }).catch(err => {
                 if (err.response.status === 422) {
                     this.errors = err.response.data.errors;

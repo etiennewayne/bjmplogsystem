@@ -164,4 +164,18 @@ class UserController extends Controller
         ]);
     }
 
+
+    public function getUserAppointments(Request $req){
+
+        $appdate = date("Y-m-d", strtotime($req->appdate));
+
+        $data = DB::table('appointments as a')
+            ->join('users as b', 'a.user_id', 'b.user_id')
+            ->where('a.appointment_date', 'like', $appdate. '%')
+            ->paginate($req->perpage);
+
+        return $data;
+
+    }
+
 }

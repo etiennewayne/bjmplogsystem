@@ -72,14 +72,14 @@
                                     <b-field label="Last Name"
                                         :type="this.errors.lname ? 'is-danger':''"
                                         :message="this.errors.lname ? this.errors.lname[0] : ''" >
-                                        <b-input icon="account" placeholder="First Lastname" v-model="fields.lname" type="text"></b-input>
+                                        <b-input @blur="capitalLname" icon="account" placeholder="Last Name" v-model="fields.lname" type="text"></b-input>
                                     </b-field>
                                 </div>
                                 <div class="column">
                                     <b-field label="First Name"
                                         :type="this.errors.fname ? 'is-danger':''"
                                         :message="this.errors.fname ? this.errors.fname[0] : ''">
-                                        <b-input icon="account" v-model="fields.fname" placeholder="First Name" type="text"></b-input>
+                                        <b-input icon="account" @blur="capitalFname" v-model="fields.fname" placeholder="First Name" type="text"></b-input>
                                     </b-field>
                                 </div>
                             </div>
@@ -243,7 +243,22 @@ export default {
                     this.errors = err.response.data.errors;
                 }
             });
-        }
+        },
+
+        capitalLname() {
+            this.fields.lname = this.fields.lname.charAt(0).toUpperCase() + this.fields.lname.slice(1);
+        },
+        capitalFname() {
+            this.fields.fname = this.fields.fname.charAt(0).toUpperCase() + this.fields.fname.slice(1);
+        },
+        capitalMname() {
+            this.fields.mname = this.fields.mname.charAt(0).toUpperCase() + this.fields.mname.slice(1);
+        },
+        capitalSuffix() {
+            this.fields.suffix = this.fields.suffix.charAt(0).toUpperCase() + this.fields.suffix.slice(1);
+        },
+
+
     },
 
 
@@ -261,5 +276,6 @@ export default {
     .panel-body{
         padding: 20px;
     }
+
 </style>
 

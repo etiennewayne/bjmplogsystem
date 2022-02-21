@@ -48,6 +48,7 @@ Route::get('/fetch-address-provinces', [App\Http\Controllers\AddressController::
 Route::resource('/dashboard', App\Http\Controllers\Administrator\AdminDashboardController::class);
 
 Route::resource('/users', App\Http\Controllers\Administrator\UserController::class);
+Route::get('/get-user-appointments/{userid}', [App\Http\Controllers\Administrator\UserController::class, 'getUserAppointments']);
 
 Route::get('/get-users', [App\Http\Controllers\Administrator\UserController::class, 'getUsers']);
 Route::post('/user-reset-password/{id}', [App\Http\Controllers\Administrator\UserController::class, 'resetPassword']);

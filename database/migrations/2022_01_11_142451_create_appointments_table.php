@@ -24,10 +24,12 @@ class CreateAppointmentsTable extends Migration
             $table->string('inmate', 100);
             $table->tinyInteger('is_approved')->default(0);
             $table->tinyInteger('is_cancel')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->string('inmate_relationship')->nullable();
             $table->string('purpose')->nullable();
             $table->tinyInteger('is_scanned')->default(0);
             $table->text('frisking_items')->nullable();
+            $table->text('reason')->nullable();
             $table->timestamps();
 
         });

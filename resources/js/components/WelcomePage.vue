@@ -52,6 +52,7 @@
                                     placeholder="Type or select a date..."
                                     icon="calendar-today"
                                     :locale="locale"
+                                    @input="formatMeridian"
                                     v-model="fields.appointment_date"
                                     editable>
                                 </b-datepicker >
@@ -61,9 +62,10 @@
                             <b-field expanded
                                      :type="errors.meridian ? 'is-danger' : ''"
                                      :message="errors.meridian ? errors.meridian[0] : ''">
-                                <b-select expanded v-model="fields.meridian">
-                                    <option value="AM">MORNING</option>
-                                    <option value="PM">AFTERNOON</option>
+                                <b-select expanded v-model="fields.meridian" :disabled="allowMeridian">
+                                    <option :disabled="amDisable" value="AM">MORNING</option>
+                                    <option :disabled="pmDisable" value="PM">AFTERNOON</option>
+
                                 </b-select>
                             </b-field>
                         </div>
@@ -409,6 +411,9 @@ export default {
 
             inmate_relationships: [],
 
+            amDisable: false,
+            pmDisable: false,
+
         }
     },
     methods: {
@@ -499,12 +504,47 @@ export default {
             if(this.propUser != ''){
                 this.user = JSON.parse(this.propUser);
             }
+        },
+
+        formatMeridian(){
+            this.fields.meridian = '';
+            let mydate = new Date(this.fields.appointment_date);
+
+            let todayDate = new Date();
+
+            var hours = todayDate.getHours();
+
+            if(mydate.getFullYear() >= todayDate.getFullYear() && mydate.getMonth() >= todayDate.getMonth() && mydate.getDate() >= todayDate.getDate()){
+                //true
+                this.amDisable = false;
+                this.pmDisable = false;
+
+                if(hours >= 12) {
+                    this.amDisable = true;
+                }
+            }else{
+                //false
+                this.amDisable = true;
+                this.pmDisable = true;
+            }
         }
+
+
     },
 
     mounted() {
         this.loadInmateRelationship();
         this.initData();
+    },
+
+    computed: {
+        allowMeridian(){
+            if(this.fields.appointment_date){
+                return false;
+            }else{
+                return true;
+            }
+        }
     }
 }
 </script>

@@ -13,7 +13,8 @@ class Appointment extends Model
 
     protected $primaryKey = 'appointment_id';
 
-    protected $fillable = ['appointment_date', 'meridian', 'inmate', 'is_approved', 'is_cancel', 'inmate_relationship', 'user_id', 'purpose', 'is_scanned', 'frisking_items'];
+    protected $fillable = ['appointment_date', 'meridian', 'inmate', 'is_approved', 'is_cancel', 'status', 'inmate_relationship', 'user_id', 'purpose',
+        'is_scanned', 'frisking_items', 'reason'];
 
 
 

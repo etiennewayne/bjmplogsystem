@@ -26,29 +26,30 @@ CREATE TABLE `appointments` (
   `appointment_date` date NOT NULL,
   `meridian` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `inmate` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_approved` tinyint(4) DEFAULT 0,
-  `is_cancel` tinyint(4) NOT NULL DEFAULT 0,
+  `status` tinyint(4) DEFAULT NULL,
   `inmate_relationship` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `purpose` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_scanned` tinyint(4) NOT NULL DEFAULT 0,
   `frisking_items` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reason` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`appointment_id`),
   KEY `appointments_user_id_foreign` (`user_id`),
   CONSTRAINT `appointments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `appointments` */
 
-insert  into `appointments`(`appointment_id`,`user_id`,`appointment_date`,`meridian`,`inmate`,`is_approved`,`is_cancel`,`inmate_relationship`,`purpose`,`is_scanned`,`frisking_items`,`created_at`,`updated_at`) values 
-(2,4,'2022-02-15','PM','NIMCHIE',0,0,'COUNCIL','NGAYO KWRTA',1,NULL,'2022-02-15 21:26:43','2022-02-15 22:57:57'),
-(3,3,'2022-02-15','PM','BENJO ROD',0,0,'FRIEND','VISIT',0,NULL,'2022-02-15 21:30:53','2022-02-15 21:30:53'),
-(4,3,'2022-02-15','PM','JASON',0,1,'FRIEND','ASKING',0,NULL,'2022-02-15 21:31:58','2022-02-15 22:46:56'),
-(5,7,'2022-02-15','PM','JASON',0,0,'FRIEND','MONEY',0,NULL,'2022-02-15 21:36:50','2022-02-15 21:36:50'),
-(6,8,'2022-02-15','PM','JACK',0,0,'FRIEND','SENDING FOOD',0,NULL,'2022-02-15 21:37:50','2022-02-15 21:37:50'),
-(7,2,'2022-02-15','PM','BARBS',1,0,'FRIEND','BUY',1,'grenade','2022-02-15 22:34:55','2022-02-15 22:42:18'),
-(8,3,'2022-02-15','PM','CJKEN LENUGON',0,1,'FRIEND','VISIT',0,NULL,'2022-02-15 22:39:11','2022-02-15 22:46:27');
+insert  into `appointments`(`appointment_id`,`user_id`,`appointment_date`,`meridian`,`inmate`,`status`,`inmate_relationship`,`purpose`,`is_scanned`,`frisking_items`,`reason`,`created_at`,`updated_at`) values 
+(2,4,'2022-02-15','PM','NIMCHIE',0,'COUNCIL','NGAYO KWRTA',1,NULL,NULL,'2022-02-15 21:26:43','2022-02-15 22:57:57'),
+(3,3,'2022-02-15','PM','BENJO ROD',1,'FRIEND','VISIT',0,NULL,NULL,'2022-02-15 21:30:53','2022-02-15 21:30:53'),
+(4,3,'2022-02-15','PM','JASON',0,'FRIEND','ASKING',0,NULL,NULL,'2022-02-15 21:31:58','2022-02-15 22:46:56'),
+(5,7,'2022-02-15','PM','JASON',1,'FRIEND','MONEY',0,NULL,NULL,'2022-02-15 21:36:50','2022-02-15 21:36:50'),
+(6,8,'2022-02-15','PM','JACK',0,'FRIEND','SENDING FOOD',0,NULL,NULL,'2022-02-15 21:37:50','2022-02-15 21:37:50'),
+(7,2,'2022-02-15','PM','BARBS',1,'FRIEND','BUY',1,'grenade',NULL,'2022-02-15 22:34:55','2022-02-15 22:42:18'),
+(8,3,'2022-02-15','PM','CJKEN LENUGON',2,'FRIEND',NULL,0,NULL,'samnple reason ni xa','2022-02-15 22:39:11','2022-02-20 19:34:18'),
+(9,3,'2022-02-15','PM','JOSHUA FLORIZA',0,'FRIEND','VISIT',1,'nag dalag bunal',NULL,'2022-02-15 23:14:24','2022-02-15 23:17:00');
 
 /*Table structure for table `barangays` */
 
@@ -43783,7 +43784,7 @@ CREATE TABLE `companions` (
   PRIMARY KEY (`companion_id`),
   KEY `companions_appointment_id_foreign` (`appointment_id`),
   CONSTRAINT `companions_appointment_id_foreign` FOREIGN KEY (`appointment_id`) REFERENCES `appointments` (`appointment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `companions` */
 
@@ -43792,7 +43793,8 @@ insert  into `companions`(`companion_id`,`appointment_id`,`fullname`,`inmate_rel
 (2,7,'Jack','FRIEND','2022-02-15 22:34:55','2022-02-15 22:34:55'),
 (3,7,'Sanya','FRIEND','2022-02-15 22:34:55','2022-02-15 22:34:55'),
 (4,7,'Kim','FRIEND','2022-02-15 22:34:55','2022-02-15 22:34:55'),
-(5,8,'Reche Maglangit','FRIEND','2022-02-15 22:39:11','2022-02-15 22:39:11');
+(5,8,'Reche Maglangit','FRIEND','2022-02-15 22:39:11','2022-02-15 22:39:11'),
+(6,9,'Jansen Floriza','FRIEND','2022-02-15 23:14:24','2022-02-15 23:14:24');
 
 /*Table structure for table `failed_jobs` */
 

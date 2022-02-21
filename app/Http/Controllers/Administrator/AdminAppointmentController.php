@@ -34,10 +34,14 @@ class AdminAppointmentController extends Controller
             ->paginate($req->perpage);
     }
 
-    public function cancelAppointment($id){
+    public function cancelAppointment(Request $req, $id){
+
+        $req->validate([
+            'reason' => ['required']
+        ]);
         $data = Appointment::find($id);
-        $data->is_approved = 0;
-        $data->is_cancel = 1;
+        $data->reason = $req->reason;
+        $data->status = 2;
         $data->save();
 
         return response()->json([
@@ -47,8 +51,8 @@ class AdminAppointmentController extends Controller
 
     public function approveAppointment($id){
         $data = Appointment::find($id);
-        $data->is_approved = 1;
-        $data->is_cancel = 0;
+        $data->reason = null;
+        $data->status = 1;
         $data->save();
 
         return response()->json([
