@@ -24,10 +24,10 @@ class AdminAppointmentController extends Controller
 
         $sort = explode('.', $req->sort_by);
         $date =  $req->appointment_date;
-        $ndate = date("Y-m-d", strtotime($date));
+        //$ndate = date("Y-m-d", strtotime($date));
 
 
-        return Appointment::where('appointment_date', 'like', $ndate . '%')
+        return Appointment::where('appointment_date', 'like', $date . '%')
             ->join('users', 'appointments.user_id', 'users.user_id')
             ->where('users.lname', 'like', $req->appointer . '%')
             ->orderBy($sort[0], $sort[1])

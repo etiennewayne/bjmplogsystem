@@ -7930,7 +7930,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     searchAppointment: function searchAppointment() {
       var ndate = new Date(this.mydateSearch);
-      this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate(); // console.log(this.search.appointhis.loadAsyncData();
+
+      if (this.mydateSearch) {
+        this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate();
+      } else {
+        this.search.appointment_date = '';
+      } // console.log(this.search.appointhis.loadAsyncData();
+
 
       this.loadAsyncData();
     }
@@ -9615,7 +9621,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     searchAppointment: function searchAppointment() {
       var ndate = new Date(this.mydateSearch);
-      this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate(); // console.log(this.search.appointhis.loadAsyncData();
+
+      if (this.mydateSearch) {
+        this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate();
+      } else {
+        this.search.appointment_date = '';
+      } // console.log(this.search.appointhis.loadAsyncData();
+
 
       this.loadAsyncData();
     },
@@ -11046,7 +11058,7 @@ __webpack_require__.r(__webpack_exports__);
         if (res.data.status === 'saved') {
           _this2.$buefy.dialog.alert({
             title: 'BOOKED!',
-            message: 'Your book information successfully saved.',
+            message: 'Your book information successfully saved. Go to your dashboard to view your appointment and get the QR Code.',
             type: 'is-success'
           });
 
@@ -33569,7 +33581,10 @@ var render = function () {
                             },
                             [
                               _c("b-datepicker", {
-                                attrs: { placeholder: "Appointment date..." },
+                                attrs: {
+                                  editable: "",
+                                  placeholder: "Appointment date...",
+                                },
                                 nativeOn: {
                                   keyup: function ($event) {
                                     if (
@@ -36496,7 +36511,10 @@ var render = function () {
                             },
                             [
                               _c("b-datepicker", {
-                                attrs: { placeholder: "Appointment date..." },
+                                attrs: {
+                                  editable: "",
+                                  placeholder: "Appointment date...",
+                                },
                                 nativeOn: {
                                   keyup: function ($event) {
                                     if (

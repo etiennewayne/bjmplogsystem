@@ -439,7 +439,7 @@ export default {
                 if(res.data.status === 'saved'){
                     this.$buefy.dialog.alert({
                         title: 'BOOKED!',
-                        message: 'Your book information successfully saved.',
+                        message: 'Your book information successfully saved. Go to your dashboard to view your appointment and get the QR Code.',
                         type: 'is-success',
                     })
 

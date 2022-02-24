@@ -23,12 +23,12 @@ class MyAppointmentController extends Controller
     public function getAppointments(Request $req){
 
         $sort = explode('.', $req->sort_by);
-        $date =  $req->appointment_date;
-        $ndate = date("Y-m-d", strtotime($date));
+        //$date =  $req->appointment_date;
+        //$ndate = date("Y-m-d", strtotime($date));
 
         $userid = Auth::user()->user_id;
 
-        return Appointment::where('appointment_date', 'like', $ndate . '%')
+        return Appointment::where('appointment_date', 'like', $req->appointment_date . '%')
             ->where('user_id', $userid)
             ->orderBy($sort[0], $sort[1])
             ->paginate($req->perpage);

@@ -27,7 +27,7 @@
                             <div class="level-right">
                                 <div class="level-item">
                                     <b-field label="Appointment Date" label-position="on-border">
-                                        <b-datepicker v-model="mydateSearch" @keyup.native.enter="searchAppointment" placeholder="Appointment date..."></b-datepicker>
+                                        <b-datepicker editable v-model="mydateSearch" @keyup.native.enter="searchAppointment" placeholder="Appointment date..."></b-datepicker>
                                         <p class="control">
                                             <b-button type="is-link" icon-left="magnify" @click="searchAppointment"></b-button>
                                         </p>
@@ -280,8 +280,12 @@ export default {
 
         searchAppointment: function(){
             let ndate = new Date(this.mydateSearch);
+            if(this.mydateSearch){
+                this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate();
+            }else{
+                this.search.appointment_date = '';
+            }
 
-            this.search.appointment_date = ndate.getFullYear() + '-' + (ndate.getMonth() + 1) + '-' + ndate.getDate();
            // console.log(this.search.appointhis.loadAsyncData();
             this.loadAsyncData();
         },
