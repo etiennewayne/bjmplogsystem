@@ -20,6 +20,9 @@
                     <b-navbar-item href="/log-report">
                         Log Report
                     </b-navbar-item>
+                     <b-navbar-item href="/log-frisk-item-report">
+                         Frisk Item Report
+                     </b-navbar-item>
                 </b-navbar-dropdown>
 
                 <b-navbar-dropdown label="My Account">

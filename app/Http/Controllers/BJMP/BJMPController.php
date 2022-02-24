@@ -19,7 +19,7 @@ class BJMPController extends Controller
         $ndate = date('Y-m-d');
 
         $count = Appointment::where('appointment_date', $ndate)
-            ->where('is_cancel', 0)
+            ->where('status', 1)
             ->where('is_scanned', 1)
             ->count();
 
@@ -28,5 +28,5 @@ class BJMPController extends Controller
     }
 
 
-    
+
 }

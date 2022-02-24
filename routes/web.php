@@ -126,6 +126,8 @@ Route::post('/client-change-password', [App\Http\Controllers\Client\MyChangePass
 //REPORT //REPORT //REPORT
 Route::get('/log-report', [App\Http\Controllers\Report\LogReportController::class, 'index']);
 Route::get('/get-log-report', [App\Http\Controllers\Report\LogReportController::class, 'getLogReport']);
+Route::get('/log-frisk-item-report', [App\Http\Controllers\Report\FriskItemReportController::class, 'index']);
+Route::get('/get-log-frisk-item-report', [App\Http\Controllers\Report\FriskItemReportController::class, 'getLogFriskItemReport']);
 
 
 

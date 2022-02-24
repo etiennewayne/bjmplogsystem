@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BJMP;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use App\Models\FriskItem;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -43,10 +44,8 @@ class QRScannerController extends Controller
             })
             ->where('appointment_date', $ndate)
             ->where('meridian', $meridian)
-            ->where('is_approved', 1)
-            ->where('is_cancel', 0)
+            ->where('status', 1)
             ->first();
-
 
 
         if($data){
@@ -69,13 +68,16 @@ class QRScannerController extends Controller
                 'status' => 'invalid'
             ],422);
         }
-
-
     }
 
     public function saveFriskItem(Request $req, $id){
-        //return $req->frisk_item;
 
+        foreach($req->friskItems as $item){
+            FriskItem::create([
+                'appointment_id' => $id,
+                'item_name' => $item['item_name']
+            ]);
+        }
         $data = Appointment::find($id);
         $data->frisking_items = $req->frisk_item;
         $data->save();

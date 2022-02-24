@@ -34,6 +34,7 @@ class AppointmentController extends Controller
             'appointment_date' => $ndate,
             'meridian' => $req->meridian,
             'inmate' => strtoupper($req->inmate),
+            'status' => 0,
             'purpose' => strtoupper($req->purpose),
             'inmate_relationship' => $req->inmate_relationship,
             'user_id' => $id

@@ -5,7 +5,6 @@
             <template #brand>
                 <b-navbar-item>
                     <b-icon icon="cog-outline"></b-icon>
-
                 </b-navbar-item>
             </template>
             <template #start>

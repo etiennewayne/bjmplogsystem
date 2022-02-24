@@ -39,20 +39,16 @@
 
                         <table>
                             <thead>
-                                <th>Visitor</th>
                                 <th>Appointment Date</th>
                                 <th>Meridian</th>
                                 <th>Inmate</th>
-                                <th>Relationship</th>
-
+                                <th>Frisk Item</th>
                             </thead>
                             <tr v-for="(item, index) in data" :key="index">
                                 <td>{{ item.fname }} {{ item.mname }} {{ item.lname }}</td>
                                 <td>{{ item.appointment_date }}</td>
                                 <td>{{ item.meridian }}</td>
-                                <td>{{ item.inmate }}</td>
-                                <td>{{ item.inmate_relationship }}</td>
-
+                                <td>{{ item.item_name }}</td>
                             </tr>
                         </table>
 
@@ -96,7 +92,7 @@ export default {
                 `dateto=${this.search.dateStringTo}`
             ].join('&')
 
-            axios.get(`/get-log-report?${param}`).then(res=>{
+            axios.get(`/get-log-frisk-item-report?${param}`).then(res=>{
                 this.data = res.data;
             })
 
@@ -107,34 +103,34 @@ export default {
 </script>
 
 <style scoped>
-    .header-area{
-        display: flex;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
+.header-area{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
 
 
-    .img-left, .img-right{
-        height: 100px;
-    }
+.img-left, .img-right{
+    height: 100px;
+}
 
-    .header-phrase{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.header-phrase{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .signatory-area{
-        margin-top: 100px;
-        margin-left: 100px;
-    }
+.signatory-area{
+    margin-top: 100px;
+    margin-left: 100px;
+}
 
-    .sign-name-area{
-        margin-top: 100px;
-        width: 200px;
-    }
-    .sign-name{
-        font-weight: bold;
-        border-bottom: 1px solid black;
-    }
+.sign-name-area{
+    margin-top: 100px;
+    width: 200px;
+}
+.sign-name{
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
 </style>

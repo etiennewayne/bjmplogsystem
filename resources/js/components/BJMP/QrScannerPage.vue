@@ -33,6 +33,7 @@
         <b-modal v-model="isModalValidModal" has-modal-card
                  trap-focus
                  :width="640"
+                 scroll="clip"
                  aria-role="dialog"
                  aria-label="Modal"
                  aria-modal>
@@ -48,8 +49,7 @@
                             @click="isModalValidModal = false"/>
                     </header>
 
-                    <section class="modal-card-body">
-
+                    <section class="modal-card-body" style="overflow: auto;">
                         <div class="">
                             <div class="columns">
                                 <div class="column">
@@ -73,11 +73,16 @@
                                 </div>
                             </div>
 
-                            <div class="columns">
-                                <div class="column">
-                                    <b-field label="Frisk Item(s)">
-                                        <b-input v-model="fields.frisk_item" type="textarea"></b-input>
-                                    </b-field>
+                            <h3 class="title is-6">Frisk Item(s)</h3>
+                            <div class="frisk-item-wrapper">
+                                <b-field v-for="(item, index) in this.fields.friskItems" :key="index" expanded>
+                                    <b-input expanded v-model="item.item_name" type="text" placeholder="Item Name"></b-input>
+                                    <p class="controls">
+                                        <b-button type="is-danger" @click="remove(index)" icon-left="trash-can"></b-button>
+                                    </p>
+                                </b-field>
+                                <div class="buttons is-right">
+                                    <b-button @click="add" type="is-success" class="is-small" icon-left="plus">ADD</b-button>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +122,9 @@ export default {
 
             isModalValidModal: false,
 
-            fields: {},
+            fields: {
+                friskItems: [],
+            },
 
             remark: '',
         }
@@ -194,14 +201,26 @@ export default {
                 if(res.data.status === 'saved'){
                     this.isModalValidModal = false;
                     this.$buefy.toast.open({
-                        message: 'Frist item save successfully.',
+                        message: 'Frisk item save successfully.',
                         type: 'is-success'
                     });
 
-                    this.fields = {};
+                    this.fields = {
+                        friskItems: [],
+                    };
                 }
             })
-        }
+        },
+
+        add () {
+            this.fields.friskItems.push({
+                item_name: '',
+            })
+        },
+        remove(index){
+            //alert(index);
+            this.fields.friskItems.splice(index, 1);
+        },
 
     },
 
@@ -271,5 +290,10 @@ export default {
 
 .companion{
     margin: 15px 0 10px 25px;
+}
+
+.frisk-item-wrapper{
+    max-height: 200px;
+    overflow: auto;
 }
 </style>
