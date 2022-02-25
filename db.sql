@@ -37,7 +37,7 @@ CREATE TABLE `appointments` (
   PRIMARY KEY (`appointment_id`),
   KEY `appointments_user_id_foreign` (`user_id`),
   CONSTRAINT `appointments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `appointments` */
 
@@ -49,7 +49,9 @@ insert  into `appointments`(`appointment_id`,`user_id`,`appointment_date`,`merid
 (6,8,'2022-02-15','PM','JACK',0,'FRIEND','SENDING FOOD',0,NULL,NULL,'2022-02-15 21:37:50','2022-02-15 21:37:50'),
 (7,2,'2022-02-15','PM','BARBS',1,'FRIEND','BUY',1,'grenade',NULL,'2022-02-15 22:34:55','2022-02-15 22:42:18'),
 (8,3,'2022-02-15','PM','CJKEN LENUGON',2,'FRIEND',NULL,0,NULL,'samnple reason ni xa','2022-02-15 22:39:11','2022-02-20 19:34:18'),
-(9,3,'2022-02-15','PM','JOSHUA FLORIZA',0,'FRIEND','VISIT',1,'nag dalag bunal',NULL,'2022-02-15 23:14:24','2022-02-15 23:17:00');
+(9,3,'2022-02-15','PM','JOSHUA FLORIZA',0,'FRIEND','VISIT',1,'nag dalag bunal',NULL,'2022-02-15 23:14:24','2022-02-15 23:17:00'),
+(12,2,'2022-02-24','PM','SAMPLE.LNG',1,'FRIEND','HAHHAH',0,NULL,NULL,'2022-02-24 20:26:18','2022-02-24 20:28:55'),
+(13,4,'2022-02-25','AM','SAMPLE',1,'FRIEND','NGAYU KWRTA',1,NULL,NULL,'2022-02-25 04:22:42','2022-02-25 05:58:50');
 
 /*Table structure for table `barangays` */
 
@@ -43813,6 +43815,40 @@ CREATE TABLE `failed_jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `failed_jobs` */
+
+/*Table structure for table `frisk_items` */
+
+DROP TABLE IF EXISTS `frisk_items`;
+
+CREATE TABLE `frisk_items` (
+  `frisk_item_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `appointment_id` bigint(20) unsigned NOT NULL,
+  `item_name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`frisk_item_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `frisk_items` */
+
+insert  into `frisk_items`(`frisk_item_id`,`appointment_id`,`item_name`,`created_at`,`updated_at`) values 
+(1,12,NULL,'2022-02-24 21:19:06','2022-02-24 21:19:06'),
+(2,12,NULL,'2022-02-24 21:19:06','2022-02-24 21:19:06'),
+(3,12,NULL,'2022-02-24 21:21:54','2022-02-24 21:21:54'),
+(4,12,NULL,'2022-02-24 21:21:54','2022-02-24 21:21:54'),
+(5,12,'adsawd','2022-02-24 21:22:46','2022-02-24 21:22:46'),
+(6,12,'sadwdaw','2022-02-24 21:22:46','2022-02-24 21:22:46'),
+(7,13,'sample 1','2022-02-25 05:57:23','2022-02-25 05:57:23'),
+(8,13,'sapmel 2','2022-02-25 05:57:23','2022-02-25 05:57:23'),
+(9,13,'sample 3','2022-02-25 05:57:23','2022-02-25 05:57:23'),
+(10,13,'another 1','2022-02-25 05:57:53','2022-02-25 05:57:53'),
+(11,13,'another 2','2022-02-25 05:57:53','2022-02-25 05:57:53'),
+(12,13,'other 1','2022-02-25 05:58:11','2022-02-25 05:58:11'),
+(13,13,'other 2','2022-02-25 05:58:11','2022-02-25 05:58:11'),
+(14,13,'other 3','2022-02-25 05:58:11','2022-02-25 05:58:11'),
+(15,13,'mao nani 1','2022-02-25 05:59:04','2022-02-25 05:59:04'),
+(16,13,'mao nani 2','2022-02-25 05:59:04','2022-02-25 05:59:04'),
+(17,13,'item 3 mao nani','2022-02-25 05:59:04','2022-02-25 05:59:04');
 
 /*Table structure for table `inmate_relationships` */
 
