@@ -39,9 +39,9 @@
 
                         <table>
                             <thead>
+                                <th>Visitors Name</th>
                                 <th>Appointment Date</th>
                                 <th>Meridian</th>
-                                <th>Inmate</th>
                                 <th>Frisk Item</th>
                             </thead>
                             <tr v-for="(item, index) in data" :key="index">

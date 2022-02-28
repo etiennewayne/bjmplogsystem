@@ -29642,7 +29642,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.validation-success[data-v-749c9f13],\n.validation-failure[data-v-749c9f13],\n.validation-pending[data-v-749c9f13] {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n\n    background-color: rgba(255, 255, 255, .8);\n    text-align: center;\n    font-weight: bold;\n    font-size: 1.4rem;\n    padding: 10px;\n\n    display: flex;\n    flex-flow: column nowrap;\n    justify-content: center;\n}\n.validation-success[data-v-749c9f13] {\n    color: green;\n}\n.validation-failure[data-v-749c9f13] {\n    color: red;\n}\n.camera[data-v-749c9f13]{\n    margin: auto;\n    width: 240px;\n    height: 320px;\n    border: 1px solid gray;\n}\n.decode-result[data-v-749c9f13]{\n    text-align: center;\n}\n.visitor-img[data-v-749c9f13]{\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n    width: 50%;\n}\n.companion[data-v-749c9f13]{\n    margin: 15px 0 10px 25px;\n}\n.frisk-item-wrapper[data-v-749c9f13]{\n    max-height: 200px;\n    overflow: auto;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.validation-success[data-v-749c9f13],\r\n.validation-failure[data-v-749c9f13],\r\n.validation-pending[data-v-749c9f13] {\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n\r\n    background-color: rgba(255, 255, 255, .8);\r\n    text-align: center;\r\n    font-weight: bold;\r\n    font-size: 1.4rem;\r\n    padding: 10px;\r\n\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: center;\n}\n.validation-success[data-v-749c9f13] {\r\n    color: green;\n}\n.validation-failure[data-v-749c9f13] {\r\n    color: red;\n}\n.camera[data-v-749c9f13]{\r\n    margin: auto;\r\n    width: 240px;\r\n    height: 320px;\r\n    border: 1px solid gray;\n}\n.decode-result[data-v-749c9f13]{\r\n    text-align: center;\n}\n.visitor-img[data-v-749c9f13]{\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    width: 50%;\n}\n.companion[data-v-749c9f13]{\r\n    margin: 15px 0 10px 25px;\n}\n.frisk-item-wrapper[data-v-749c9f13]{\r\n    max-height: 200px;\r\n    overflow: auto;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29714,7 +29714,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.panel-body{\n    padding: 25px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.panel-body{\r\n    padding: 25px;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29786,7 +29786,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.header-area[data-v-1a95023a]{\n    display: flex;\n    justify-content: center;\n    margin-bottom: 10px;\n}\n.img-left[data-v-1a95023a], .img-right[data-v-1a95023a]{\n    height: 100px;\n}\n.header-phrase[data-v-1a95023a]{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n.signatory-area[data-v-1a95023a]{\n    margin-top: 100px;\n    margin-left: 100px;\n}\n.sign-name-area[data-v-1a95023a]{\n    margin-top: 100px;\n    width: 200px;\n}\n.sign-name[data-v-1a95023a]{\n    font-weight: bold;\n    border-bottom: 1px solid black;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.header-area[data-v-1a95023a]{\r\n    display: flex;\r\n    justify-content: center;\r\n    margin-bottom: 10px;\n}\n.img-left[data-v-1a95023a], .img-right[data-v-1a95023a]{\r\n    height: 100px;\n}\n.header-phrase[data-v-1a95023a]{\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\n}\n.signatory-area[data-v-1a95023a]{\r\n    margin-top: 100px;\r\n    margin-left: 100px;\n}\n.sign-name-area[data-v-1a95023a]{\r\n    margin-top: 100px;\r\n    width: 200px;\n}\n.sign-name[data-v-1a95023a]{\r\n    font-weight: bold;\r\n    border-bottom: 1px solid black;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34452,7 +34452,7 @@ var render = function () {
                     return [
                       _c("b-navbar-item", { attrs: { href: "#" } }, [
                         _vm._v(
-                          "\n                        Home\n                    "
+                          "\r\n                        Home\r\n                    "
                         ),
                       ]),
                       _vm._v(" "),
@@ -34461,14 +34461,14 @@ var render = function () {
                         { attrs: { href: "/admin-appointments" } },
                         [
                           _vm._v(
-                            "\n                        Appointments\n                    "
+                            "\r\n                        Appointments\r\n                    "
                           ),
                         ]
                       ),
                       _vm._v(" "),
                       _c("b-navbar-item", { attrs: { href: "/users" } }, [
                         _vm._v(
-                          "\n                        Users\n                    "
+                          "\r\n                        Users\r\n                    "
                         ),
                       ]),
                       _vm._v(" "),
@@ -34478,7 +34478,7 @@ var render = function () {
                         [
                           _c("b-navbar-item", { on: { click: _vm.logout } }, [
                             _vm._v(
-                              "\n                            Logout\n                        "
+                              "\r\n                            Logout\r\n                        "
                             ),
                           ]),
                         ],
@@ -34527,7 +34527,7 @@ var render = function () {
       _c("section", { staticClass: "section" }, [
         _c("div", { staticClass: "panel" }, [
           _c("div", { staticClass: "panel-heading" }, [
-            _vm._v("\n                USERS\n            "),
+            _vm._v("\r\n                USERS\r\n            "),
           ]),
           _vm._v(" "),
           _c(
@@ -34684,9 +34684,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\n                        " +
+                              "\r\n                        " +
                                 _vm._s(props.row.user_id) +
-                                "\n                    "
+                                "\r\n                    "
                             ),
                           ]
                         },
@@ -34702,9 +34702,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\n                        " +
+                              "\r\n                        " +
                                 _vm._s(props.row.username) +
-                                "\n                    "
+                                "\r\n                    "
                             ),
                           ]
                         },
@@ -34720,13 +34720,13 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\n                        " +
+                              "\r\n                        " +
                                 _vm._s(props.row.lname) +
                                 ", " +
                                 _vm._s(props.row.fname) +
                                 " " +
                                 _vm._s(props.row.mname) +
-                                "\n                    "
+                                "\r\n                    "
                             ),
                           ]
                         },
@@ -34742,9 +34742,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\n                        " +
+                              "\r\n                        " +
                                 _vm._s(props.row.sex) +
-                                "\n                    "
+                                "\r\n                    "
                             ),
                           ]
                         },
@@ -34760,9 +34760,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\n                        " +
+                              "\r\n                        " +
                                 _vm._s(props.row.email) +
-                                "\n                    "
+                                "\r\n                    "
                             ),
                           ]
                         },
@@ -34778,9 +34778,9 @@ var render = function () {
                         fn: function (props) {
                           return [
                             _vm._v(
-                              "\n                        " +
+                              "\r\n                        " +
                                 _vm._s(props.row.role) +
-                                "\n                    "
+                                "\r\n                    "
                             ),
                           ]
                         },
@@ -35950,9 +35950,9 @@ var render = function () {
                                 fn: function (props) {
                                   return [
                                     _vm._v(
-                                      "\n                                " +
+                                      "\r\n                                " +
                                         _vm._s(props.row.user_id) +
-                                        "\n                            "
+                                        "\r\n                            "
                                     ),
                                   ]
                                 },
@@ -35971,9 +35971,9 @@ var render = function () {
                                 fn: function (props) {
                                   return [
                                     _vm._v(
-                                      "\n                                " +
+                                      "\r\n                                " +
                                         _vm._s(props.row.appointment_date) +
-                                        "\n                            "
+                                        "\r\n                            "
                                     ),
                                   ]
                                 },
@@ -35989,9 +35989,9 @@ var render = function () {
                                 fn: function (props) {
                                   return [
                                     _vm._v(
-                                      "\n                                " +
+                                      "\r\n                                " +
                                         _vm._s(props.row.meridian) +
-                                        "\n                            "
+                                        "\r\n                            "
                                     ),
                                   ]
                                 },
@@ -36007,9 +36007,9 @@ var render = function () {
                                 fn: function (props) {
                                   return [
                                     _vm._v(
-                                      "\n                                " +
+                                      "\r\n                                " +
                                         _vm._s(props.row.inmate) +
-                                        "\n                            "
+                                        "\r\n                            "
                                     ),
                                   ]
                                 },
@@ -36028,9 +36028,9 @@ var render = function () {
                                 fn: function (props) {
                                   return [
                                     _vm._v(
-                                      "\n                                " +
+                                      "\r\n                                " +
                                         _vm._s(props.row.inmate_relationship) +
-                                        "\n                            "
+                                        "\r\n                            "
                                     ),
                                   ]
                                 },
@@ -36779,7 +36779,7 @@ var render = function () {
             _c("div", { staticClass: "panel" }, [
               _c("div", { staticClass: "panel-heading" }, [
                 _vm._v(
-                  "\n                        My Appointment\n                    "
+                  "\r\n                        My Appointment\r\n                    "
                 ),
               ]),
               _vm._v(" "),
@@ -36939,9 +36939,9 @@ var render = function () {
                             fn: function (props) {
                               return [
                                 _vm._v(
-                                  "\n                                " +
+                                  "\r\n                                " +
                                     _vm._s(props.row.appointment_id) +
-                                    "\n                            "
+                                    "\r\n                            "
                                 ),
                               ]
                             },
@@ -36960,11 +36960,11 @@ var render = function () {
                             fn: function (props) {
                               return [
                                 _vm._v(
-                                  "\n                                " +
+                                  "\r\n                                " +
                                     _vm._s(props.row.appointment_date) +
                                     " (" +
                                     _vm._s(props.row.meridian) +
-                                    ")\n                            "
+                                    ")\r\n                            "
                                 ),
                               ]
                             },
@@ -36980,9 +36980,9 @@ var render = function () {
                             fn: function (props) {
                               return [
                                 _vm._v(
-                                  "\n                                " +
+                                  "\r\n                                " +
                                     _vm._s(props.row.inmate) +
-                                    "\n                            "
+                                    "\r\n                            "
                                 ),
                               ]
                             },
@@ -37389,7 +37389,7 @@ var render = function () {
                               _vm._s(_vm.user.fname) +
                               " " +
                               _vm._s(_vm.user.mname) +
-                              "\n                                    "
+                              "\r\n                                    "
                           ),
                         ]),
                       ]),
@@ -39292,11 +39292,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
+      _c("th", [_vm._v("Visitors Name")]),
+      _vm._v(" "),
       _c("th", [_vm._v("Appointment Date")]),
       _vm._v(" "),
       _c("th", [_vm._v("Meridian")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Inmate")]),
       _vm._v(" "),
       _c("th", [_vm._v("Frisk Item")]),
     ])
@@ -64017,7 +64017,7 @@ webpackContext.id = "./resources/js sync recursive \\.vue$/";
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/","#USER"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\Users\\\\eshen\\\\Desktop\\\\Github\\\\bjmplogsystem","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 
