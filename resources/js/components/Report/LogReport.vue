@@ -39,10 +39,10 @@
 
                         <table>
                             <thead>
-                                <th>Visitor</th>
+                                <th>Visitor Name</th>
                                 <th>Appointment Date</th>
                                 <th>Meridian</th>
-                                <th>Inmate</th>
+                                <th>Inmates Name</th>
                                 <th>Relationship</th>
 
                             </thead>

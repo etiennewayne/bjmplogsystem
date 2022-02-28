@@ -39470,13 +39470,13 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
-      _c("th", [_vm._v("Visitor")]),
+      _c("th", [_vm._v("Visitor Name")]),
       _vm._v(" "),
       _c("th", [_vm._v("Appointment Date")]),
       _vm._v(" "),
       _c("th", [_vm._v("Meridian")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Inmate")]),
+      _c("th", [_vm._v("Inmates Name")]),
       _vm._v(" "),
       _c("th", [_vm._v("Relationship")]),
     ])
