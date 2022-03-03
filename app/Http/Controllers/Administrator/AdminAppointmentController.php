@@ -24,7 +24,13 @@ class AdminAppointmentController extends Controller
 
         $sort = explode('.', $req->sort_by);
         $date =  $req->appointment_date;
-        $date = date("Y-m-d", strtotime($date));
+        
+        if($date){
+            $date = date("Y-m-d", strtotime($date));
+        }else{
+            $date = '';
+        }
+       
 
         return Appointment::where('appointment_date', 'like', $date . '%')
             ->join('users', 'appointments.user_id', 'users.user_id')
